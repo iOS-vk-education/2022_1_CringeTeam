@@ -21,5 +21,12 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+		<string>GTEestiProText-Regular.ttf</string>
+		<string>GTEestiProText-Medium.ttf</string>
+		<string>GTEestiProText-Bold.ttf</string>
+	</array>
 </dict>
 </plist>
