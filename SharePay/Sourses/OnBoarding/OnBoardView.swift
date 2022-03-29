@@ -19,14 +19,12 @@ class OnBoardView: UIView {
     let bottomRedCircle = UILabel()
     let bottomBlueCircle = UILabel()
     let logoLabel = UILabel()
-    let topRedCircle = UILabel()
     let topBlueCircle = UILabel()
     
     
     init() {
         super.init(frame: CGRect())
         backgroundColor = UIColor(named: "WhiteColor")
-        
         setViews()
         setConstraints()
         
@@ -39,14 +37,12 @@ class OnBoardView: UIView {
         enterButton.setTitle("Вход", for: .normal)
         enterButton.layer.cornerRadius = 25
         enterButton.tintColor = UIColor(named: "WhiteColor")
+        enterButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
+        
         //Элипс
-        
-        //После рантайма выдает что то похожее на ошибку. Как сделать скругление зависящее от размера экрана по другому ?
         elipse.layer.cornerRadius = UIScreen.main.bounds.size.height / 2.2
-        //elipse.layer.cornerRadius = 360
-        
-        
         elipse.layer.backgroundColor = UIColor(named: "BlueColor")?.cgColor
+        
         //Название
         title.text = "SharePay"
         title.textColor = UIColor(named: "BlackColor")
@@ -92,22 +88,21 @@ class OnBoardView: UIView {
         logoLabel.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
         logoLabel.layer.borderWidth = 3
         logoLabel.layer.cornerRadius = 15
-        //Создание градиента
         
+        //Создание градиента
         let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
         layer.cornerRadius = 20
-        layer.colors = [UIColor(named: "BlueColor")?.cgColor, UIColor(named: "RedColor")?.cgColor]
+        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "RedColor")?.cgColor as Any]
         layer.locations = [0.5, 0.5]
         layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
         
         logoLabel.layer.insertSublayer(layer, at: 0)
-        
-
-
     }
+    
     //Настройка расположения на экране
     func setConstraints() {
+       
         //Добавляем сабвью
         addSubview(enterButton)
         addSubview(elipse)
@@ -119,13 +114,13 @@ class OnBoardView: UIView {
                                                   forthLineLabel])
         fourLabels.axis = .vertical
         addSubview(fourLabels)
+        
         addSubview(bottomRedCircle)
         addSubview(bottomBlueCircle)
         addSubview(topBlueCircle)
         addSubview(logoLabel)
         
         //Отключаем маску автомасштабирования
-        
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         elipse.translatesAutoresizingMaskIntoConstraints = false
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -148,7 +143,6 @@ class OnBoardView: UIView {
         elipse.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         elipse.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -340).isActive = true
         elipse.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
-        
         
         //Название
         title.topAnchor.constraint(equalTo: topAnchor, constant: 56).isActive = true
