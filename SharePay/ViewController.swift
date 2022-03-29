@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         view = onBoardView
         
     }
+    
+    
 
 
 }

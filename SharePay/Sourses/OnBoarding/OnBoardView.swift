@@ -26,6 +26,7 @@ class OnBoardView: UIView {
     init() {
         super.init(frame: CGRect())
         backgroundColor = UIColor(named: "WhiteColor")
+        
         setViews()
         setConstraints()
         
@@ -88,6 +89,19 @@ class OnBoardView: UIView {
         topBlueCircle.layer.backgroundColor = UIColor(named: "BlueColorTransparent20")?.cgColor
         
         //Логотип
+        logoLabel.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
+        logoLabel.layer.borderWidth = 3
+        logoLabel.layer.cornerRadius = 15
+        //Создание градиента
+        
+        let layer = CAGradientLayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        layer.cornerRadius = 20
+        layer.colors = [UIColor(named: "BlueColor")?.cgColor, UIColor(named: "RedColor")?.cgColor]
+        layer.locations = [0.5, 0.5]
+        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
+        
+        logoLabel.layer.insertSublayer(layer, at: 0)
         
 
 
@@ -162,11 +176,12 @@ class OnBoardView: UIView {
         topBlueCircle.topAnchor.constraint(equalTo: topAnchor, constant: -30).isActive = true
         topBlueCircle.widthAnchor.constraint(equalToConstant: 110).isActive = true
         topBlueCircle.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        
         //Логотип
         logoLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
         logoLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
-        logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+        logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55).isActive = true
+        logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
 
         
     }
@@ -176,3 +191,4 @@ class OnBoardView: UIView {
     }
     
 }
+
