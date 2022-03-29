@@ -18,6 +18,9 @@ class OnBoardView: UIView {
     let forthLineLabel = UILabel()
     let bottomRedCircle = UILabel()
     let bottomBlueCircle = UILabel()
+    let logoLabel = UILabel()
+    let topRedCircle = UILabel()
+    let topBlueCircle = UILabel()
     
     
     init() {
@@ -39,7 +42,7 @@ class OnBoardView: UIView {
         
         //После рантайма выдает что то похожее на ошибку. Как сделать скругление зависящее от размера экрана по другому ?
         elipse.layer.cornerRadius = UIScreen.main.bounds.size.height / 2.2
-        
+        //elipse.layer.cornerRadius = 360
         
         
         elipse.layer.backgroundColor = UIColor(named: "BlueColor")?.cgColor
@@ -75,6 +78,19 @@ class OnBoardView: UIView {
         //Нижний красный круг
         bottomRedCircle.layer.cornerRadius = 46
         bottomRedCircle.layer.backgroundColor = UIColor(named: "RedColor")?.cgColor
+        
+        //Нижний синий круг
+        bottomBlueCircle.layer.cornerRadius = 35
+        bottomBlueCircle.layer.backgroundColor = UIColor(named: "BlueColorTransparent")?.cgColor
+        
+        //Верхний синий круг
+        topBlueCircle.layer.cornerRadius = 55
+        topBlueCircle.layer.backgroundColor = UIColor(named: "BlueColorTransparent20")?.cgColor
+        
+        //Логотип
+        
+
+
     }
     //Настройка расположения на экране
     func setConstraints() {
@@ -89,8 +105,11 @@ class OnBoardView: UIView {
                                                   forthLineLabel])
         fourLabels.axis = .vertical
         addSubview(fourLabels)
-        
         addSubview(bottomRedCircle)
+        addSubview(bottomBlueCircle)
+        addSubview(topBlueCircle)
+        addSubview(logoLabel)
+        
         //Отключаем маску автомасштабирования
         
         enterButton.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +117,9 @@ class OnBoardView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         fourLabels.translatesAutoresizingMaskIntoConstraints = false
         bottomRedCircle.translatesAutoresizingMaskIntoConstraints = false
-        
+        bottomBlueCircle.translatesAutoresizingMaskIntoConstraints = false
+        topBlueCircle.translatesAutoresizingMaskIntoConstraints = false
+        logoLabel.translatesAutoresizingMaskIntoConstraints = false
         
         //Настраиваем констреинты
         
@@ -125,9 +146,29 @@ class OnBoardView: UIView {
         
         //Нижний красный круг
         bottomRedCircle.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -100).isActive = true
-        bottomRedCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
+        
+        bottomRedCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         bottomRedCircle.widthAnchor.constraint(equalToConstant: 92).isActive = true
         bottomRedCircle.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        
+        //Нижний синий круг
+        bottomBlueCircle.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -80).isActive = true
+        bottomBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 15).isActive = true
+        bottomBlueCircle.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        bottomBlueCircle.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        //Верхний синий круг
+        topBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30).isActive = true
+        topBlueCircle.topAnchor.constraint(equalTo: topAnchor, constant: -30).isActive = true
+        topBlueCircle.widthAnchor.constraint(equalToConstant: 110).isActive = true
+        topBlueCircle.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        //Логотип
+        logoLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        logoLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+
+        
     }
     
     required init?(coder: NSCoder) {
