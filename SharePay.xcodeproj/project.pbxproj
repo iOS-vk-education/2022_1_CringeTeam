@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3672B45127F22C9900A735B1 /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */; };
+		3672B46027F234EB00A735B1 /* GTEestiProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45827F234AA00A735B1 /* GTEestiProText-Medium.ttf */; };
+		3672B46127F234EB00A735B1 /* GTEestiProDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45427F2347A00A735B1 /* GTEestiProDisplay-Bold.ttf */; };
+		3672B46227F234EB00A735B1 /* GTEestiProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45727F2349E00A735B1 /* GTEestiProText-Bold.ttf */; };
+		3672B46327F234EB00A735B1 /* GTEestiProDisplay-UltraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45627F2349400A735B1 /* GTEestiProDisplay-UltraBold.ttf */; };
+		3672B46427F234EB00A735B1 /* GTEestiProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45527F2348700A735B1 /* GTEestiProDisplay-Medium.ttf */; };
+		3672B46527F234EB00A735B1 /* GTEestiProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3672B45927F234B100A735B1 /* GTEestiProText-Regular.ttf */; };
+		3672B46827F2378400A735B1 /* UIColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B46727F2378400A735B1 /* UIColorFromHex.swift */; };
+		3672B46C27F24DF200A735B1 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3672B46B27F24DF200A735B1 /* KAPinField */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
@@ -17,6 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
+		3672B45427F2347A00A735B1 /* GTEestiProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-Bold.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		3672B45527F2348700A735B1 /* GTEestiProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-Medium.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		3672B45627F2349400A735B1 /* GTEestiProDisplay-UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-UltraBold.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-UltraBold.ttf"; sourceTree = "<group>"; };
+		3672B45727F2349E00A735B1 /* GTEestiProText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Bold.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Bold.ttf"; sourceTree = "<group>"; };
+		3672B45827F234AA00A735B1 /* GTEestiProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Medium.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Medium.ttf"; sourceTree = "<group>"; };
+		3672B45927F234B100A735B1 /* GTEestiProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Regular.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Regular.ttf"; sourceTree = "<group>"; };
+		3672B46727F2378400A735B1 /* UIColorFromHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHex.swift; sourceTree = "<group>"; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6D50F3F227F0FB7B00627394 /* SharePay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharePay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D50F3F527F0FB7B00627394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,12 +50,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3672B46C27F24DF200A735B1 /* KAPinField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3672B44B27F22BAD00A735B1 /* SMSAuth */ = {
+			isa = PBXGroup;
+			children = (
+				3672B44F27F22C8400A735B1 /* Code */,
+			);
+			path = SMSAuth;
+			sourceTree = "<group>";
+		};
+		3672B44F27F22C8400A735B1 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		3672B45227F233C200A735B1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3672B46627F2374400A735B1 /* Helpers */,
+				3672B45327F233D900A735B1 /* Fonts */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		3672B45327F233D900A735B1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3672B45927F234B100A735B1 /* GTEestiProText-Regular.ttf */,
+				3672B45827F234AA00A735B1 /* GTEestiProText-Medium.ttf */,
+				3672B45727F2349E00A735B1 /* GTEestiProText-Bold.ttf */,
+				3672B45627F2349400A735B1 /* GTEestiProDisplay-UltraBold.ttf */,
+				3672B45527F2348700A735B1 /* GTEestiProDisplay-Medium.ttf */,
+				3672B45427F2347A00A735B1 /* GTEestiProDisplay-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3672B46627F2374400A735B1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3672B46727F2378400A735B1 /* UIColorFromHex.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6D50F3E927F0FB7B00627394 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +123,8 @@
 		6D50F3F427F0FB7B00627394 /* SharePay */ = {
 			isa = PBXGroup;
 			children = (
+				3672B45227F233C200A735B1 /* Source */,
+				3672B44B27F22BAD00A735B1 /* SMSAuth */,
 				6D50F3F527F0FB7B00627394 /* AppDelegate.swift */,
 				6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */,
 				6D50F3F927F0FB7B00627394 /* ViewController.swift */,
@@ -86,6 +152,9 @@
 			dependencies = (
 			);
 			name = SharePay;
+			packageProductDependencies = (
+				3672B46B27F24DF200A735B1 /* KAPinField */,
+			);
 			productName = SharePay;
 			productReference = 6D50F3F227F0FB7B00627394 /* SharePay.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +183,9 @@
 				Base,
 			);
 			mainGroup = 6D50F3E927F0FB7B00627394;
+			packageReferences = (
+				3672B46A27F24DF200A735B1 /* XCRemoteSwiftPackageReference "KAPinField" */,
+			);
 			productRefGroup = 6D50F3F327F0FB7B00627394 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,8 +201,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
+				3672B46227F234EB00A735B1 /* GTEestiProText-Bold.ttf in Resources */,
+				3672B46527F234EB00A735B1 /* GTEestiProText-Regular.ttf in Resources */,
 				6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */,
+				3672B46127F234EB00A735B1 /* GTEestiProDisplay-Bold.ttf in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
+				3672B46327F234EB00A735B1 /* GTEestiProDisplay-UltraBold.ttf in Resources */,
+				3672B46027F234EB00A735B1 /* GTEestiProText-Medium.ttf in Resources */,
+				3672B46427F234EB00A735B1 /* GTEestiProDisplay-Medium.ttf in Resources */,
 				6D50F3FD27F0FB7B00627394 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +223,8 @@
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
+				3672B45127F22C9900A735B1 /* SMSCodeViewController.swift in Sources */,
+				3672B46827F2378400A735B1 /* UIColorFromHex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,13 +371,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5GK82H92HM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharePay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,8 +406,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,6 +445,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3672B46A27F24DF200A735B1 /* XCRemoteSwiftPackageReference "KAPinField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kirualex/KAPinField";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3672B46B27F24DF200A735B1 /* KAPinField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3672B46A27F24DF200A735B1 /* XCRemoteSwiftPackageReference "KAPinField" */;
+			productName = KAPinField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D50F3EA27F0FB7B00627394 /* Project object */;
 }
