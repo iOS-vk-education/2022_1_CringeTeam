@@ -9,116 +9,112 @@ import UIKit
 
 class OnBoardView: UIView {
     
-    let enterButton = UIButton()
-    let elipse = UILabel()
-    let title = UILabel()
-    let firstLineLabel = UILabel()
-    let secondLineLabel = UILabel()
-    let thirdLineLabel = UILabel()
-    let forthLineLabel = UILabel()
-    let bottomRedCircle = UILabel()
-    let bottomBlueCircle = UILabel()
-    let logoLabel = UILabel()
-    let topBlueCircle = UILabel()
+    //Настройка внешнего вида элементов
+    //Кнопка
+    let enterButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "BlackColor")
+        button.setTitle("Вход", for: .normal)
+        button.layer.cornerRadius = 25
+        button.tintColor = UIColor(named: "WhiteColor")
+        button.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
+        return button
+    }()
     
+    //Элипс
+    let elipse: UILabel = {
+        let label = UILabel()
+        label.layer.cornerRadius = UIScreen.main.bounds.size.height / 2.2
+        label.layer.backgroundColor = UIColor(named: "BlueColor")?.cgColor
+        return label
+    }()
+    
+    //Название
+    let title = UILabel(text: "SharePay", color: "BlackColor", size: 48)
+    
+    //1 строка
+    let firstLineLabel = UILabel(text: "дели", color: "BlueColor")
+    
+    //2 строка
+    let secondLineLabel = UILabel(text: "счета", color: "MagentaColor")
+    
+    //3 строка
+    let thirdLineLabel = UILabel(text: "плати", color: "BlueColor")
+    
+    //4 строка
+    let forthLineLabel = UILabel(text: "долги", color: "MagentaColor")
+    
+    //Нижний красный круг
+    let bottomRedCircle: UILabel = {
+        let label = UILabel()
+        label.layer.cornerRadius = 46
+        label.layer.backgroundColor = UIColor(named: "MagentaColor")?.cgColor
+        return label
+    }()
+        
+    //Нижний синий круг
+    let bottomBlueCircle: UILabel = {
+        let label = UILabel()
+        label.layer.cornerRadius = 35
+        label.layer.backgroundColor = UIColor(named: "BlueColorTransparent")?.cgColor
+        return label
+    }()
+    
+    //Верхний синий круг
+    let topBlueCircle: UILabel = {
+        let label = UILabel()
+        label.layer.cornerRadius = 55
+        label.layer.backgroundColor = UIColor(named: "BlueColorTransparent20")?.cgColor
+        return label
+    }()
+    
+    //Логотип
+    var logoLabel: UILabel = {
+        var label = UILabel()
+        label.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
+        label.layer.borderWidth = 3
+        label.layer.cornerRadius = 15
+        label.layer.insertSublayer(label.applyGradient(), at: 0)
+        
+        //Создание градиента
+//        let layer = CAGradientLayer()
+//        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
+//        layer.cornerRadius = 20
+//        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "MagentaColor")?.cgColor as Any]
+//        layer.locations = [0.5, 0.5]
+//        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
+//
+//        logoLabel.layer.insertSublayer(layer, at: 0)
+        return label
+    }()
     
     init() {
         super.init(frame: CGRect())
         backgroundColor = UIColor(named: "WhiteColor")
-        setViews()
         setConstraints()
         
-    }
-    
-    //Настройка внешнего вида элементов
-    func setViews() {
-        //Кнопка
-        enterButton.backgroundColor = UIColor(named: "BlackColor")
-        enterButton.setTitle("Вход", for: .normal)
-        enterButton.layer.cornerRadius = 25
-        enterButton.tintColor = UIColor(named: "WhiteColor")
-        enterButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
-        
-        //Элипс
-        elipse.layer.cornerRadius = UIScreen.main.bounds.size.height / 2.2
-        elipse.layer.backgroundColor = UIColor(named: "BlueColor")?.cgColor
-        
-        //Название
-        title.text = "SharePay"
-        title.textColor = UIColor(named: "BlackColor")
-        title.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 48)
-        
-        //1 строка
-        firstLineLabel.text = "дели"
-        firstLineLabel.textColor = UIColor(named: "BlueColor")
-        firstLineLabel.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 42)
-        firstLineLabel.textAlignment = .right
-        
-        //2 строка
-        secondLineLabel.text = "счета"
-        secondLineLabel.textColor = UIColor(named: "RedColor")
-        secondLineLabel.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 42)
-        secondLineLabel.textAlignment = .right
-        
-        //3 строка
-        thirdLineLabel.text = "плати"
-        thirdLineLabel.textColor = UIColor(named: "BlueColor")
-        thirdLineLabel.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 42)
-        thirdLineLabel.textAlignment = .right
-        
-        //4 строка
-        forthLineLabel.text = "долги"
-        forthLineLabel.textColor = UIColor(named: "RedColor")
-        forthLineLabel.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 42)
-        forthLineLabel.textAlignment = .right
-        
-        //Нижний красный круг
-        bottomRedCircle.layer.cornerRadius = 46
-        bottomRedCircle.layer.backgroundColor = UIColor(named: "RedColor")?.cgColor
-        
-        //Нижний синий круг
-        bottomBlueCircle.layer.cornerRadius = 35
-        bottomBlueCircle.layer.backgroundColor = UIColor(named: "BlueColorTransparent")?.cgColor
-        
-        //Верхний синий круг
-        topBlueCircle.layer.cornerRadius = 55
-        topBlueCircle.layer.backgroundColor = UIColor(named: "BlueColorTransparent20")?.cgColor
-        
-        //Логотип
-        logoLabel.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
-        logoLabel.layer.borderWidth = 3
-        logoLabel.layer.cornerRadius = 15
-        
-        //Создание градиента
-        let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
-        layer.cornerRadius = 20
-        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "RedColor")?.cgColor as Any]
-        layer.locations = [0.5, 0.5]
-        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
-        
-        logoLabel.layer.insertSublayer(layer, at: 0)
     }
     
     //Настройка расположения на экране
     func setConstraints() {
        
         //Добавляем сабвью
-        addSubview(enterButton)
-        addSubview(elipse)
-        addSubview(title)
-        
         let fourLabels = UIStackView(arrangedSubviews: [firstLineLabel,
-                                                  secondLineLabel,
-                                                  thirdLineLabel,
-                                                  forthLineLabel])
+                                                        secondLineLabel,
+                                                        thirdLineLabel,
+                                                        forthLineLabel])
         fourLabels.axis = .vertical
-        addSubview(fourLabels)
-        
-        addSubview(bottomRedCircle)
-        addSubview(bottomBlueCircle)
-        addSubview(topBlueCircle)
-        addSubview(logoLabel)
+      
+        [enterButton,
+        elipse,
+        title,
+        fourLabels,
+        bottomRedCircle,
+        bottomBlueCircle,
+        topBlueCircle,
+        logoLabel].forEach {
+            addSubview($0)
+        }
         
         //Отключаем маску автомасштабирования
         enterButton.translatesAutoresizingMaskIntoConstraints = false
@@ -133,51 +129,49 @@ class OnBoardView: UIView {
         //Настраиваем констреинты
         
         //Кнопка
-        enterButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        enterButton.heightAnchor.constraint(equalToConstant: 54).isActive = true
-        enterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26).isActive = true
-        enterButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28).isActive = true
+        NSLayoutConstraint.activate([enterButton.centerXAnchor.constraint(equalTo:                                       centerXAnchor),
+                                     enterButton.heightAnchor.constraint(equalToConstant: 52*(UIScreen.main.bounds.height/812)),
+                                     enterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26*(UIScreen.main.bounds.width/375)),
+                                     enterButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28*(UIScreen.main.bounds.height/812))])
         
         //Элипс
-        elipse.widthAnchor.constraint(equalToConstant: 500).isActive = true
-        elipse.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        elipse.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -340).isActive = true
-        elipse.topAnchor.constraint(equalTo: topAnchor, constant: 32).isActive = true
+        NSLayoutConstraint.activate([elipse.widthAnchor.constraint(equalToConstant: 500),
+                                     elipse.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     elipse.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -340),
+                                     elipse.topAnchor.constraint(equalTo: topAnchor, constant: 32)])
         
         //Название
-        title.topAnchor.constraint(equalTo: topAnchor, constant: 56).isActive = true
-        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        NSLayoutConstraint.activate([title.topAnchor.constraint(equalTo: topAnchor,                                      constant: 56),
+                                     title.centerXAnchor.constraint(equalTo: centerXAnchor)])
         
         //Стэк из 4 слов
-        fourLabels.topAnchor.constraint(equalTo: topAnchor, constant: 170).isActive = true
-        fourLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
+        NSLayoutConstraint.activate([fourLabels.topAnchor.constraint(equalTo: topAnchor,                                 constant: 170),
+                                     fourLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)])
         
         //Нижний красный круг
-        bottomRedCircle.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -100).isActive = true
-        
-        bottomRedCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        bottomRedCircle.widthAnchor.constraint(equalToConstant: 92).isActive = true
-        bottomRedCircle.heightAnchor.constraint(equalToConstant: 92).isActive = true
+        NSLayoutConstraint.activate([bottomRedCircle.bottomAnchor.constraint(equalTo:                                    enterButton.topAnchor, constant: -100),
+                                     bottomRedCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+                                     bottomRedCircle.widthAnchor.constraint(equalToConstant: 92),
+                                     bottomRedCircle.heightAnchor.constraint(equalToConstant: 92)])
+      
         
         //Нижний синий круг
-        bottomBlueCircle.bottomAnchor.constraint(equalTo: enterButton.topAnchor, constant: -80).isActive = true
-        bottomBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 15).isActive = true
-        bottomBlueCircle.widthAnchor.constraint(equalToConstant: 70).isActive = true
-        bottomBlueCircle.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        NSLayoutConstraint.activate([bottomBlueCircle.bottomAnchor.constraint(equalTo:                                   enterButton.topAnchor, constant: -80),
+                                     bottomBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 15),
+                                     bottomBlueCircle.widthAnchor.constraint(equalToConstant: 70),
+                                     bottomBlueCircle.heightAnchor.constraint(equalToConstant: 70)])
         
         //Верхний синий круг
-        topBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30).isActive = true
-        topBlueCircle.topAnchor.constraint(equalTo: topAnchor, constant: -30).isActive = true
-        topBlueCircle.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        topBlueCircle.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        NSLayoutConstraint.activate([topBlueCircle.trailingAnchor.constraint(equalTo:                                    trailingAnchor, constant: 30),
+                                     topBlueCircle.topAnchor.constraint(equalTo: topAnchor, constant: -30),
+                                     topBlueCircle.widthAnchor.constraint(equalToConstant: 110),
+                                     topBlueCircle.heightAnchor.constraint(equalToConstant: 110)])
         
         //Логотип
-        logoLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        logoLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55).isActive = true
-        logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40).isActive = true
-
-        
+        NSLayoutConstraint.activate([logoLabel.widthAnchor.constraint(equalToConstant: 30),
+                                     logoLabel.heightAnchor.constraint(equalToConstant: 30),
+                                     logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55),
+                                     logoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40)])
     }
     
     required init?(coder: NSCoder) {
@@ -185,4 +179,3 @@ class OnBoardView: UIView {
     }
     
 }
-

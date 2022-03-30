@@ -12,6 +12,7 @@
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
 		6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F927F0FB7B00627394 /* ViewController.swift */; };
 		6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F3FE27F0FB7C00627394 /* Assets.xcassets */; };
+		CEAE193A27F502E30088ABB9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE193927F502E30088ABB9 /* Extensions.swift */; };
 		CEFF457C27F229AE00D34161 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF457B27F229AE00D34161 /* OnBoardView.swift */; };
 		CEFF458727F24B4900D34161 /* gteestiprodisplay_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458127F24B4900D34161 /* gteestiprodisplay_bold.otf */; };
 		CEFF458827F24B4900D34161 /* gteestiprodisplay_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458227F24B4900D34161 /* gteestiprodisplay_medium.otf */; };
@@ -29,6 +30,7 @@
 		6D50F3F927F0FB7B00627394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D50F3FE27F0FB7C00627394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D50F40327F0FB7C00627394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAE193927F502E30088ABB9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEFF457B27F229AE00D34161 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		CEFF458127F24B4900D34161 /* gteestiprodisplay_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_bold.otf; path = "/Users/user/Desktop/2022_1_CringeTeam/SharePay/Fonts/../../../GT Eesti Pro Display/gteestiprodisplay_bold.otf"; sourceTree = "<absolute>"; };
 		CEFF458227F24B4900D34161 /* gteestiprodisplay_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_medium.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_medium.otf"; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 			path = SharePay;
 			sourceTree = "<group>";
 		};
+		CEAE193827F502BA0088ABB9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CEAE193927F502E30088ABB9 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		CEFF457D27F229B700D34161 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		CEFF457F27F24B0800D34161 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE193827F502BA0088ABB9 /* Helpers */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAE193A27F502E30088ABB9 /* Extensions.swift in Sources */,
 				CEFF457C27F229AE00D34161 /* OnBoardView.swift in Sources */,
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,

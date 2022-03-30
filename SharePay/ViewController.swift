@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view = onBoardView
         
+        
     }
     
     
