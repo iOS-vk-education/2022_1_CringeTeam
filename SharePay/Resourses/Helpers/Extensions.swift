@@ -10,7 +10,7 @@ import UIKit
 
 //Градиент
 extension UILabel {
-    func applyGradient(width: Int = 29, height: Int = 29, corner: Int = 20, firstColor: String = "BlueColor", secondColor: String = "MagentaColor") -> CAGradientLayer {
+    func applyGradient(width: Int, height: Int, corner: Int, firstColor: String, secondColor: String) -> CAGradientLayer {
         
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: width, height: height)

@@ -69,22 +69,24 @@ class OnBoardView: UIView {
     }()
     
     //Логотип
-    var logoLabel: UILabel = {
-        var label = UILabel()
+    let logoLabel: UILabel = {
+        let label = UILabel()
         label.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
         label.layer.borderWidth = 3
         label.layer.cornerRadius = 15
-        label.layer.insertSublayer(label.applyGradient(), at: 0)
         
-        //Создание градиента
-//        let layer = CAGradientLayer()
-//        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
-//        layer.cornerRadius = 20
-//        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "MagentaColor")?.cgColor as Any]
-//        layer.locations = [0.5, 0.5]
-//        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
-//
-//        logoLabel.layer.insertSublayer(layer, at: 0)
+        //Создание градиента через extension
+       // label.layer.insertSublayer(label.applyGradient(), at: 0)
+        
+        //Создание градиента обычным путем
+        let layer = CAGradientLayer()
+        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
+        layer.cornerRadius = 20
+        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "MagentaColor")?.cgColor as Any]
+        layer.locations = [0.5, 0.5]
+        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
+
+        label.layer.insertSublayer(layer, at: 0)
         return label
     }()
     
