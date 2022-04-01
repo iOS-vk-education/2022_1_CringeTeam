@@ -100,18 +100,11 @@ final class SMSCodeViewController: UIViewController {
     
     func setLayout(){
         
-        continueButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -350),
-            continueButton.widthAnchor.constraint(equalToConstant: 360),
-            continueButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 90),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height/10)
         ])
         
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -150,6 +143,15 @@ final class SMSCodeViewController: UIViewController {
             resendCodeLabel.topAnchor.constraint(equalTo: notSentCodeLabel.bottomAnchor, constant: 0),
             resendCodeLabel.widthAnchor.constraint(equalToConstant: 260)
         ])
+        
+        continueButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            continueButton.topAnchor.constraint(equalTo: resendCodeLabel.bottomAnchor, constant: 24),
+            continueButton.widthAnchor.constraint(equalToConstant: 360),
+            continueButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
         
     }
     
