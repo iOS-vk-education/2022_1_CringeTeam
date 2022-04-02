@@ -4,12 +4,12 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>gteestiprodisplay_bold.otf</string>
-		<string>gteestiprodisplay_light.otf</string>
-		<string>gteestiprodisplay_medium.otf</string>
-		<string>gteestiprodisplay_regular.otf</string>
-		<string>gteestiprodisplay_thin.otf</string>
-		<string>gteestiprodisplay_ultrabold.otf</string>
+	<string>GTEestiProDisplay-Bold.otf</string>
+		<string>GTEestiProDisplay-Light.otf</string>
+		<string>GTEestiProDisplay-Medium.otf</string>
+		<string>GTEestiProDisplay-Regular.otf</string>
+		<string>GTEestiProDisplay-Thin.otf</string>
+		<string>GTEestiProDisplay-UltraBold.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

@@ -12,15 +12,16 @@
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
 		6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F927F0FB7B00627394 /* ViewController.swift */; };
 		6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F3FE27F0FB7C00627394 /* Assets.xcassets */; };
-		CE93D59027F8607D003067E5 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58927F8607D003067E5 /* COPYRIGHT.txt */; };
-		CE93D59127F8607D003067E5 /* gteestiprodisplay_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */; };
-		CE93D59227F8607D003067E5 /* gteestiprodisplay_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */; };
-		CE93D59327F8607D003067E5 /* gteestiprodisplay_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */; };
-		CE93D59427F8607D003067E5 /* gteestiprodisplay_ultrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */; };
-		CE93D59527F8607D003067E5 /* gteestiprodisplay_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */; };
-		CE93D59627F8607D003067E5 /* gteestiprodisplay_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */; };
-		CEAE193A27F502E30088ABB9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE193927F502E30088ABB9 /* Extensions.swift */; };
-		CEFF457C27F229AE00D34161 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF457B27F229AE00D34161 /* OnBoardView.swift */; };
+    
+		6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */; };
+		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
+		6D9466EC27F8932700593679 /* GTEestiProDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */; };
+		6D9466ED27F8932700593679 /* GTEestiProDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */; };
+		6D9466EE27F8932700593679 /* GTEestiProDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */; };
+		6D9466EF27F8932700593679 /* GTEestiProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */; };
+		6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */; };
+		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,15 +32,15 @@
 		6D50F3F927F0FB7B00627394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D50F3FE27F0FB7C00627394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D50F40327F0FB7C00627394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE93D58927F8607D003067E5 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
-		CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_medium.otf; sourceTree = "<group>"; };
-		CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_thin.otf; sourceTree = "<group>"; };
-		CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_bold.otf; sourceTree = "<group>"; };
-		CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_ultrabold.otf; sourceTree = "<group>"; };
-		CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_regular.otf; sourceTree = "<group>"; };
-		CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_light.otf; sourceTree = "<group>"; };
-		CEAE193927F502E30088ABB9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		CEFF457B27F229AE00D34161 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
+
+		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Bold.otf"; sourceTree = "<group>"; };
+		6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Light.otf"; sourceTree = "<group>"; };
+		6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Regular.otf"; sourceTree = "<group>"; };
+		6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Thin.otf"; sourceTree = "<group>"; };
+		6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-UltraBold.otf"; sourceTree = "<group>"; };
+		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,62 +74,48 @@
 		6D50F3F427F0FB7B00627394 /* SharePay */ = {
 			isa = PBXGroup;
 			children = (
-				CEFF458027F24B1000D34161 /* Sourses */,
-				CEFF457F27F24B0800D34161 /* Resourses */,
+
+				6D9466E327F8930C00593679 /* Resources */,
+
 				6D50F3F527F0FB7B00627394 /* AppDelegate.swift */,
 				6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */,
 				6D50F3F927F0FB7B00627394 /* ViewController.swift */,
 				6D50F3FE27F0FB7C00627394 /* Assets.xcassets */,
 				6D50F40327F0FB7C00627394 /* Info.plist */,
+				6D9466F827F8944F00593679 /* Localizable.strings */,
 			);
 			path = SharePay;
 			sourceTree = "<group>";
 		};
-		CE93D58827F8607D003067E5 /* Fonts */ = {
+
+		6D9466E327F8930C00593679 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CE93D58927F8607D003067E5 /* COPYRIGHT.txt */,
-				CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */,
-				CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */,
-				CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */,
-				CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */,
-				CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */,
-				CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */,
+				6D9466E427F8931100593679 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6D9466E427F8931100593679 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6D9466E527F8931A00593679 /* GTEestiProDisplay */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		CEAE193827F502BA0088ABB9 /* Helpers */ = {
+		6D9466E527F8931A00593679 /* GTEestiProDisplay */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE193927F502E30088ABB9 /* Extensions.swift */,
+				6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */,
+				6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */,
+				6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */,
+				6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */,
+				6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */,
+				6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */,
 			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		CEFF457D27F229B700D34161 /* OnBoarding */ = {
-			isa = PBXGroup;
-			children = (
-				CEFF457B27F229AE00D34161 /* OnBoardView.swift */,
-			);
-			path = OnBoarding;
-			sourceTree = "<group>";
-		};
-		CEFF457F27F24B0800D34161 /* Resourses */ = {
-			isa = PBXGroup;
-			children = (
-				CE93D58827F8607D003067E5 /* Fonts */,
-				CEAE193827F502BA0088ABB9 /* Helpers */,
-			);
-			path = Resourses;
-			sourceTree = "<group>";
-		};
-		CEFF458027F24B1000D34161 /* Sourses */ = {
-			isa = PBXGroup;
-			children = (
-				CEFF457D27F229B700D34161 /* OnBoarding */,
-			);
-			path = Sourses;
+			path = GTEestiProDisplay;
+
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +160,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 6D50F3E927F0FB7B00627394;
 			productRefGroup = 6D50F3F327F0FB7B00627394 /* Products */;
@@ -189,15 +177,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D9466F627F8944F00593679 /* Localizable.strings in Resources */,
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
-				CE93D59627F8607D003067E5 /* gteestiprodisplay_light.otf in Resources */,
-				CE93D59527F8607D003067E5 /* gteestiprodisplay_regular.otf in Resources */,
-				CE93D59327F8607D003067E5 /* gteestiprodisplay_bold.otf in Resources */,
-				CE93D59427F8607D003067E5 /* gteestiprodisplay_ultrabold.otf in Resources */,
+
+				6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */,
+				6D9466EC27F8932700593679 /* GTEestiProDisplay-Bold.otf in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
-				CE93D59027F8607D003067E5 /* COPYRIGHT.txt in Resources */,
-				CE93D59227F8607D003067E5 /* gteestiprodisplay_thin.otf in Resources */,
-				CE93D59127F8607D003067E5 /* gteestiprodisplay_medium.otf in Resources */,
+				6D50F3FD27F0FB7B00627394 /* Main.storyboard in Resources */,
+				6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */,
+				6D9466EF27F8932700593679 /* GTEestiProDisplay-Thin.otf in Resources */,
+				6D9466ED27F8932700593679 /* GTEestiProDisplay-Light.otf in Resources */,
+				6D9466EE27F8932700593679 /* GTEestiProDisplay-Regular.otf in Resources */,
+				6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,11 +210,42 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+
+/* Begin PBXVariantGroup section */
+		6D50F3FB27F0FB7B00627394 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D50F3FC27F0FB7B00627394 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D50F40127F0FB7C00627394 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6D9466F827F8944F00593679 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D9466F727F8944F00593679 /* en */,
+				6D9466F927F8947A00593679 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+
 /* Begin XCBuildConfiguration section */
 		6D50F40427F0FB7C00627394 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -283,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
