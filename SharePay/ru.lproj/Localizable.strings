@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  SharePay
+
+  Created by Никита Колесников on 02.04.2022.
+  
+*/
+
+// Naming convention: "ViewName.Source.Name" = "Translation";
+// eg "SMSViewController.Button.Continue" = "Continue";
