@@ -12,14 +12,15 @@
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
 		6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F927F0FB7B00627394 /* ViewController.swift */; };
 		6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F3FE27F0FB7C00627394 /* Assets.xcassets */; };
+		CE93D59027F8607D003067E5 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58927F8607D003067E5 /* COPYRIGHT.txt */; };
+		CE93D59127F8607D003067E5 /* gteestiprodisplay_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */; };
+		CE93D59227F8607D003067E5 /* gteestiprodisplay_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */; };
+		CE93D59327F8607D003067E5 /* gteestiprodisplay_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */; };
+		CE93D59427F8607D003067E5 /* gteestiprodisplay_ultrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */; };
+		CE93D59527F8607D003067E5 /* gteestiprodisplay_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */; };
+		CE93D59627F8607D003067E5 /* gteestiprodisplay_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */; };
 		CEAE193A27F502E30088ABB9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE193927F502E30088ABB9 /* Extensions.swift */; };
 		CEFF457C27F229AE00D34161 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF457B27F229AE00D34161 /* OnBoardView.swift */; };
-		CEFF458727F24B4900D34161 /* gteestiprodisplay_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458127F24B4900D34161 /* gteestiprodisplay_bold.otf */; };
-		CEFF458827F24B4900D34161 /* gteestiprodisplay_medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458227F24B4900D34161 /* gteestiprodisplay_medium.otf */; };
-		CEFF458927F24B4900D34161 /* gteestiprodisplay_thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458327F24B4900D34161 /* gteestiprodisplay_thin.otf */; };
-		CEFF458A27F24B4900D34161 /* gteestiprodisplay_ultrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458427F24B4900D34161 /* gteestiprodisplay_ultrabold.otf */; };
-		CEFF458B27F24B4900D34161 /* gteestiprodisplay_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458527F24B4900D34161 /* gteestiprodisplay_regular.otf */; };
-		CEFF458C27F24B4900D34161 /* gteestiprodisplay_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CEFF458627F24B4900D34161 /* gteestiprodisplay_light.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +31,15 @@
 		6D50F3F927F0FB7B00627394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D50F3FE27F0FB7C00627394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D50F40327F0FB7C00627394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE93D58927F8607D003067E5 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
+		CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_medium.otf; sourceTree = "<group>"; };
+		CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_thin.otf; sourceTree = "<group>"; };
+		CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_bold.otf; sourceTree = "<group>"; };
+		CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_ultrabold.otf; sourceTree = "<group>"; };
+		CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_regular.otf; sourceTree = "<group>"; };
+		CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gteestiprodisplay_light.otf; sourceTree = "<group>"; };
 		CEAE193927F502E30088ABB9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CEFF457B27F229AE00D34161 /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
-		CEFF458127F24B4900D34161 /* gteestiprodisplay_bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_bold.otf; path = "/Users/user/Desktop/2022_1_CringeTeam/SharePay/Fonts/../../../GT Eesti Pro Display/gteestiprodisplay_bold.otf"; sourceTree = "<absolute>"; };
-		CEFF458227F24B4900D34161 /* gteestiprodisplay_medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_medium.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_medium.otf"; sourceTree = "<group>"; };
-		CEFF458327F24B4900D34161 /* gteestiprodisplay_thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_thin.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_thin.otf"; sourceTree = "<group>"; };
-		CEFF458427F24B4900D34161 /* gteestiprodisplay_ultrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_ultrabold.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_ultrabold.otf"; sourceTree = "<group>"; };
-		CEFF458527F24B4900D34161 /* gteestiprodisplay_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_regular.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_regular.otf"; sourceTree = "<group>"; };
-		CEFF458627F24B4900D34161 /* gteestiprodisplay_light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = gteestiprodisplay_light.otf; path = "../../../GT Eesti Pro Display/gteestiprodisplay_light.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +75,6 @@
 			children = (
 				CEFF458027F24B1000D34161 /* Sourses */,
 				CEFF457F27F24B0800D34161 /* Resourses */,
-				CEFF457E27F24AFD00D34161 /* Fonts */,
 				6D50F3F527F0FB7B00627394 /* AppDelegate.swift */,
 				6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */,
 				6D50F3F927F0FB7B00627394 /* ViewController.swift */,
@@ -81,6 +82,20 @@
 				6D50F40327F0FB7C00627394 /* Info.plist */,
 			);
 			path = SharePay;
+			sourceTree = "<group>";
+		};
+		CE93D58827F8607D003067E5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE93D58927F8607D003067E5 /* COPYRIGHT.txt */,
+				CE93D58A27F8607D003067E5 /* gteestiprodisplay_medium.otf */,
+				CE93D58B27F8607D003067E5 /* gteestiprodisplay_thin.otf */,
+				CE93D58C27F8607D003067E5 /* gteestiprodisplay_bold.otf */,
+				CE93D58D27F8607D003067E5 /* gteestiprodisplay_ultrabold.otf */,
+				CE93D58E27F8607D003067E5 /* gteestiprodisplay_regular.otf */,
+				CE93D58F27F8607D003067E5 /* gteestiprodisplay_light.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		CEAE193827F502BA0088ABB9 /* Helpers */ = {
@@ -99,22 +114,10 @@
 			path = OnBoarding;
 			sourceTree = "<group>";
 		};
-		CEFF457E27F24AFD00D34161 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				CEFF458127F24B4900D34161 /* gteestiprodisplay_bold.otf */,
-				CEFF458627F24B4900D34161 /* gteestiprodisplay_light.otf */,
-				CEFF458227F24B4900D34161 /* gteestiprodisplay_medium.otf */,
-				CEFF458527F24B4900D34161 /* gteestiprodisplay_regular.otf */,
-				CEFF458327F24B4900D34161 /* gteestiprodisplay_thin.otf */,
-				CEFF458427F24B4900D34161 /* gteestiprodisplay_ultrabold.otf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
 		CEFF457F27F24B0800D34161 /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				CE93D58827F8607D003067E5 /* Fonts */,
 				CEAE193827F502BA0088ABB9 /* Helpers */,
 			);
 			path = Resourses;
@@ -187,13 +190,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
-				CEFF458727F24B4900D34161 /* gteestiprodisplay_bold.otf in Resources */,
+				CE93D59627F8607D003067E5 /* gteestiprodisplay_light.otf in Resources */,
+				CE93D59527F8607D003067E5 /* gteestiprodisplay_regular.otf in Resources */,
+				CE93D59327F8607D003067E5 /* gteestiprodisplay_bold.otf in Resources */,
+				CE93D59427F8607D003067E5 /* gteestiprodisplay_ultrabold.otf in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
-				CEFF458927F24B4900D34161 /* gteestiprodisplay_thin.otf in Resources */,
-				CEFF458A27F24B4900D34161 /* gteestiprodisplay_ultrabold.otf in Resources */,
-				CEFF458C27F24B4900D34161 /* gteestiprodisplay_light.otf in Resources */,
-				CEFF458B27F24B4900D34161 /* gteestiprodisplay_regular.otf in Resources */,
-				CEFF458827F24B4900D34161 /* gteestiprodisplay_medium.otf in Resources */,
+				CE93D59027F8607D003067E5 /* COPYRIGHT.txt in Resources */,
+				CE93D59227F8607D003067E5 /* gteestiprodisplay_thin.otf in Resources */,
+				CE93D59127F8607D003067E5 /* gteestiprodisplay_medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
