@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3672B4A127F8C26C00A735B1 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3672B46B27F24DF200A735B1 /* KAPinField */; };
+		3672B4A327F8C33900A735B1 /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */; };
+		3672B4A427F8C35500A735B1 /* UIColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B46727F2378400A735B1 /* UIColorFromHex.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
@@ -15,12 +18,6 @@
 		6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F3FE27F0FB7C00627394 /* Assets.xcassets */; };
 		6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */; };
 		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
-		6D9466EC27F8932700593679 /* GTEestiProDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */; };
-		6D9466ED27F8932700593679 /* GTEestiProDisplay-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */; };
-		6D9466EE27F8932700593679 /* GTEestiProDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */; };
-		6D9466EF27F8932700593679 /* GTEestiProDisplay-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */; };
-		6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */; };
-		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,12 +40,6 @@
 		6D50F40327F0FB7C00627394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Bold.otf"; sourceTree = "<group>"; };
-		6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Light.otf"; sourceTree = "<group>"; };
-		6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Regular.otf"; sourceTree = "<group>"; };
-		6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Thin.otf"; sourceTree = "<group>"; };
-		6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-UltraBold.otf"; sourceTree = "<group>"; };
-		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3672B46C27F24DF200A735B1 /* KAPinField in Frameworks */,
+				3672B4A127F8C26C00A735B1 /* KAPinField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,35 +134,6 @@
 			path = SharePay;
 			sourceTree = "<group>";
 		};
-		6D9466E327F8930C00593679 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6D9466E427F8931100593679 /* Fonts */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		6D9466E427F8931100593679 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				6D9466E527F8931A00593679 /* GTEestiProDisplay */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		6D9466E527F8931A00593679 /* GTEestiProDisplay */ = {
-			isa = PBXGroup;
-			children = (
-				6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */,
-				6D9466E727F8932700593679 /* GTEestiProDisplay-Light.otf */,
-				6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */,
-				6D9466E827F8932700593679 /* GTEestiProDisplay-Regular.otf */,
-				6D9466E927F8932700593679 /* GTEestiProDisplay-Thin.otf */,
-				6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */,
-			);
-			path = GTEestiProDisplay;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,20 +201,9 @@
 			files = (
 				6D9466F627F8944F00593679 /* Localizable.strings in Resources */,
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
-				3672B46227F234EB00A735B1 /* GTEestiProText-Bold.ttf in Resources */,
-				3672B46527F234EB00A735B1 /* GTEestiProText-Regular.ttf in Resources */,
 				6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */,
-				3672B46127F234EB00A735B1 /* GTEestiProDisplay-Bold.ttf in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
-				3672B46327F234EB00A735B1 /* GTEestiProDisplay-UltraBold.ttf in Resources */,
-				3672B46027F234EB00A735B1 /* GTEestiProText-Medium.ttf in Resources */,
-				3672B46427F234EB00A735B1 /* GTEestiProDisplay-Medium.ttf in Resources */,
 				6D50F3FD27F0FB7B00627394 /* Main.storyboard in Resources */,
-				6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */,
-				6D9466EF27F8932700593679 /* GTEestiProDisplay-Thin.otf in Resources */,
-				6D9466ED27F8932700593679 /* GTEestiProDisplay-Light.otf in Resources */,
-				6D9466EE27F8932700593679 /* GTEestiProDisplay-Regular.otf in Resources */,
-				6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +217,8 @@
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
-				3672B45127F22C9900A735B1 /* SMSCodeViewController.swift in Sources */,
-				3672B46827F2378400A735B1 /* UIColorFromHex.swift in Sources */,
+				3672B4A327F8C33900A735B1 /* SMSCodeViewController.swift in Sources */,
+				3672B4A427F8C35500A735B1 /* UIColorFromHex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
