@@ -10,6 +10,7 @@
 		3672B4A127F8C26C00A735B1 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3672B46B27F24DF200A735B1 /* KAPinField */; };
 		3672B4A327F8C33900A735B1 /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */; };
 		3672B4A427F8C35500A735B1 /* UIColorFromHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3672B46727F2378400A735B1 /* UIColorFromHex.swift */; };
+		3672B4AE27F8C5A100A735B1 /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 3672B4AD27F8C5A100A735B1 /* Resources */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
@@ -22,13 +23,8 @@
 
 /* Begin PBXFileReference section */
 		3672B45027F22C9900A735B1 /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
-		3672B45427F2347A00A735B1 /* GTEestiProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-Bold.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-Bold.ttf"; sourceTree = "<group>"; };
-		3672B45527F2348700A735B1 /* GTEestiProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-Medium.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-Medium.ttf"; sourceTree = "<group>"; };
-		3672B45627F2349400A735B1 /* GTEestiProDisplay-UltraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProDisplay-UltraBold.ttf"; path = "../../../../../../Downloads/font/GTEestiProDisplay-UltraBold.ttf"; sourceTree = "<group>"; };
-		3672B45727F2349E00A735B1 /* GTEestiProText-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Bold.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Bold.ttf"; sourceTree = "<group>"; };
-		3672B45827F234AA00A735B1 /* GTEestiProText-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Medium.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Medium.ttf"; sourceTree = "<group>"; };
-		3672B45927F234B100A735B1 /* GTEestiProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTEestiProText-Regular.ttf"; path = "../../../../../../Downloads/font/GTEestiProText-Regular.ttf"; sourceTree = "<group>"; };
 		3672B46727F2378400A735B1 /* UIColorFromHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHex.swift; sourceTree = "<group>"; };
+		3672B4AD27F8C5A100A735B1 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6D50F3F227F0FB7B00627394 /* SharePay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharePay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D50F3F527F0FB7B00627394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,22 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				3672B46627F2374400A735B1 /* Helpers */,
-				3672B45327F233D900A735B1 /* Fonts */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		3672B45327F233D900A735B1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				3672B45927F234B100A735B1 /* GTEestiProText-Regular.ttf */,
-				3672B45827F234AA00A735B1 /* GTEestiProText-Medium.ttf */,
-				3672B45727F2349E00A735B1 /* GTEestiProText-Bold.ttf */,
-				3672B45627F2349400A735B1 /* GTEestiProDisplay-UltraBold.ttf */,
-				3672B45527F2348700A735B1 /* GTEestiProDisplay-Medium.ttf */,
-				3672B45427F2347A00A735B1 /* GTEestiProDisplay-Bold.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3672B46627F2374400A735B1 /* Helpers */ = {
@@ -120,6 +102,7 @@
 		6D50F3F427F0FB7B00627394 /* SharePay */ = {
 			isa = PBXGroup;
 			children = (
+				3672B4AD27F8C5A100A735B1 /* Resources */,
 				3672B45227F233C200A735B1 /* Source */,
 				3672B44B27F22BAD00A735B1 /* SMSAuth */,
 				6D50F3F527F0FB7B00627394 /* AppDelegate.swift */,
@@ -201,6 +184,7 @@
 			files = (
 				6D9466F627F8944F00593679 /* Localizable.strings in Resources */,
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
+				3672B4AE27F8C5A100A735B1 /* Resources in Resources */,
 				6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
 				6D50F3FD27F0FB7B00627394 /* Main.storyboard in Resources */,
@@ -374,6 +358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5GK82H92HM;
@@ -393,6 +378,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cringeteam.SharePay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
