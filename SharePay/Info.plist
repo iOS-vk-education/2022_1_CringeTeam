@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GTEestiProDisplay-Bold.otf</string>
+		<string>GTEestiProDisplay-Light.otf</string>
+		<string>GTEestiProDisplay-Medium.otf</string>
+		<string>GTEestiProDisplay-Regular.otf</string>
+		<string>GTEestiProDisplay-Thin.otf</string>
+		<string>GTEestiProDisplay-UltraBold.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
