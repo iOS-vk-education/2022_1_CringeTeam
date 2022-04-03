@@ -10,7 +10,6 @@
 		3606D57427F8D58C006A4157 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3606D57327F8D58C006A4157 /* KAPinField */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
 		3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */; };
-		3B702180D921844FD84943BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B70214ED0F020F725ED1A7F /* Extensions.swift */; };
 		3B70218BE2CF9F7C7B325A89 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702DCC17583552DD2AC821 /* OnBoardView.swift */; };
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
@@ -29,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B70214ED0F020F725ED1A7F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Helpers/Extensions.swift; sourceTree = "<group>"; };
 		3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				6D9466E427F8931100593679 /* Fonts */,
-				3B70214ED0F020F725ED1A7F /* Extensions.swift */,
 				3B702EE92822C9DB36BB25B6 /* Helpers */,
 			);
 			path = Resources;
@@ -269,7 +266,6 @@
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
-				3B702180D921844FD84943BB /* Extensions.swift in Sources */,
 				3B70218BE2CF9F7C7B325A89 /* OnBoardView.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
