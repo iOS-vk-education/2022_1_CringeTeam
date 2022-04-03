@@ -14,10 +14,10 @@ final class SMSCodeViewController: UIViewController {
     
     
     // TODO синхронизиировать цвета
-    let blueColor : UIColor? = UIColor(hex: "#005DFF", alpha: CGFloat(255))
-    let darkGrayColor : UIColor? =  UIColor(hex: "#142A42", alpha: CGFloat(255))
-    let magentaColor : UIColor? = UIColor(hex: "#F90F54", alpha: CGFloat(255))
-    let lightGrayColor : UIColor? = UIColor(hex: "#7E7E7E", alpha: CGFloat(255))
+    let blueColor : UIColor? = UIColor(named: "BlueColor")
+    let darkGrayColor : UIColor? =  UIColor(named: "MagentaColor")
+    let magentaColor : UIColor? = UIColor(named: "MagentaColor")
+    let lightGrayColor : UIColor? = UIColor(named: "MagentaColor")
     
     
     let phoneNumber = "+79013511292" // TODO
