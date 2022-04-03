@@ -9,8 +9,9 @@ import UIKit
 
 class OnBoardView: UIView {
     
-    //Настройка внешнего вида элементов
-    //Кнопка
+    /// --- Документацию описывают через тройные кавычки
+    /// --- Настройка внешнего вида элементов
+    /// --- Кнопка
     let enterButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "BlackColor")
@@ -21,7 +22,7 @@ class OnBoardView: UIView {
         return button
     }()
     
-    //Элипс
+    /// --- Элипс
     let elipse: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = UIScreen.main.bounds.size.height / 2.2
@@ -29,22 +30,22 @@ class OnBoardView: UIView {
         return label
     }()
     
-    //Название
+    /// --- Название
     let title = UILabel(text: "SharePay", color: "BlackColor", size: 48)
     
-    //1 строка
+    /// --- 1 строка
     let firstLineLabel = UILabel(text: "дели", color: "BlueColor")
     
-    //2 строка
+    /// --- 2 строка
     let secondLineLabel = UILabel(text: "счета", color: "MagentaColor")
     
-    //3 строка
+    /// --- 3 строка
     let thirdLineLabel = UILabel(text: "плати", color: "BlueColor")
     
-    //4 строка
+    /// --- 4 строка
     let forthLineLabel = UILabel(text: "долги", color: "MagentaColor")
     
-    //Нижний красный круг
+    /// --- Нижний красный круг
     let bottomRedCircle: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 46
@@ -52,7 +53,7 @@ class OnBoardView: UIView {
         return label
     }()
         
-    //Нижний синий круг
+    /// --- Нижний синий круг
     let bottomBlueCircle: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 35
@@ -60,7 +61,7 @@ class OnBoardView: UIView {
         return label
     }()
     
-    //Верхний синий круг
+    /// --- Верхний синий круг
     let topBlueCircle: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 55
@@ -68,25 +69,12 @@ class OnBoardView: UIView {
         return label
     }()
     
-    //Логотип
+    /// --- Логотип
     let logoLabel: UILabel = {
         let label = UILabel()
         label.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
         label.layer.borderWidth = 3
         label.layer.cornerRadius = 15
-        
-        //Создание градиента через extension
-       // label.layer.insertSublayer(label.applyGradient(), at: 0)
-        
-        //Создание градиента обычным путем
-        let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 0, width: 29, height: 29)
-        layer.cornerRadius = 20
-        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "MagentaColor")?.cgColor as Any]
-        layer.locations = [0.5, 0.5]
-        layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
-
-        label.layer.insertSublayer(layer, at: 0)
         return label
     }()
     
@@ -97,10 +85,23 @@ class OnBoardView: UIView {
         
     }
     
-    //Настройка расположения на экране
+    /// --- Градиент применится если он нарисуется здесь logoLabel
+    override func draw(_ rect: CGRect) {
+        /// Так можно применить плавный градиент
+//        self.logoLabel.applyGradient(colors:  [UIColor(named: "BlueColor") ?? UIColor.white, UIColor(named: "MagentaColor") ?? UIColor.white],
+//                                     cornerRadius: 29/2,
+//                                     position: .leftToRight)
+        self.logoLabel.applyCuttingGradient(width: 29,
+                                            height: 29,
+                                            corner: 29/2,
+                                            firstColor: "BlueColor",
+                                            secondColor: "MagentaColor")
+    }
+    
+    /// --- Настройка расположения на экране
     func setConstraints() {
        
-        //Добавляем сабвью
+        /// --- Добавляем сабвью
         let fourLabels = UIStackView(arrangedSubviews: [firstLineLabel,
                                                         secondLineLabel,
                                                         thirdLineLabel,
@@ -118,7 +119,7 @@ class OnBoardView: UIView {
             addSubview($0)
         }
         
-        //Отключаем маску автомасштабирования
+        /// --- Отключаем маску автомасштабирования
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         elipse.translatesAutoresizingMaskIntoConstraints = false
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -128,48 +129,47 @@ class OnBoardView: UIView {
         topBlueCircle.translatesAutoresizingMaskIntoConstraints = false
         logoLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        //Настраиваем констреинты
-        
-        //Кнопка
+        /// --- Настраиваем констреинты
+        /// --- Кнопка
         NSLayoutConstraint.activate([enterButton.centerXAnchor.constraint(equalTo:                                       centerXAnchor),
                                      enterButton.heightAnchor.constraint(equalToConstant: 52*(UIScreen.main.bounds.height/812)),
                                      enterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26*(UIScreen.main.bounds.width/375)),
                                      enterButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28*(UIScreen.main.bounds.height/812))])
         
-        //Элипс
+        /// --- Элипс
         NSLayoutConstraint.activate([elipse.widthAnchor.constraint(equalToConstant: 500),
                                      elipse.centerYAnchor.constraint(equalTo: centerYAnchor),
                                      elipse.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -340),
                                      elipse.topAnchor.constraint(equalTo: topAnchor, constant: 32)])
         
-        //Название
+        /// --- Название
         NSLayoutConstraint.activate([title.topAnchor.constraint(equalTo: topAnchor,                                      constant: 56),
                                      title.centerXAnchor.constraint(equalTo: centerXAnchor)])
         
-        //Стэк из 4 слов
+        /// --- Стэк из 4 слов
         NSLayoutConstraint.activate([fourLabels.topAnchor.constraint(equalTo: topAnchor,                                 constant: 170),
                                      fourLabels.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)])
         
-        //Нижний красный круг
+        /// --- Нижний красный круг
         NSLayoutConstraint.activate([bottomRedCircle.bottomAnchor.constraint(equalTo:                                    enterButton.topAnchor, constant: -100),
                                      bottomRedCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
                                      bottomRedCircle.widthAnchor.constraint(equalToConstant: 92),
                                      bottomRedCircle.heightAnchor.constraint(equalToConstant: 92)])
       
         
-        //Нижний синий круг
+        /// --- Нижний синий круг
         NSLayoutConstraint.activate([bottomBlueCircle.bottomAnchor.constraint(equalTo:                                   enterButton.topAnchor, constant: -80),
                                      bottomBlueCircle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 15),
                                      bottomBlueCircle.widthAnchor.constraint(equalToConstant: 70),
                                      bottomBlueCircle.heightAnchor.constraint(equalToConstant: 70)])
         
-        //Верхний синий круг
+        /// --- Верхний синий круг
         NSLayoutConstraint.activate([topBlueCircle.trailingAnchor.constraint(equalTo:                                    trailingAnchor, constant: 30),
                                      topBlueCircle.topAnchor.constraint(equalTo: topAnchor, constant: -30),
                                      topBlueCircle.widthAnchor.constraint(equalToConstant: 110),
                                      topBlueCircle.heightAnchor.constraint(equalToConstant: 110)])
         
-        //Логотип
+        /// --- Логотип
         NSLayoutConstraint.activate([logoLabel.widthAnchor.constraint(equalToConstant: 30),
                                      logoLabel.heightAnchor.constraint(equalToConstant: 30),
                                      logoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55),
