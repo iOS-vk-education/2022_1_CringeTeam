@@ -11,17 +11,17 @@ import KAPinField
 
 
 final class SMSCodeViewController: UIViewController {
-    
-    
-    // TODO синхронизиировать цвета
-    let blueColor : UIColor? = UIColor(named: "BlueColor")
-    let darkGrayColor : UIColor? =  UIColor(named: "MagentaColor")
-    let magentaColor : UIColor? = UIColor(named: "MagentaColor")
-    let lightGrayColor : UIColor? = UIColor(named: "MagentaColor")
-    
-    
+
+
+    let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
+    let labelColor: UIColor? = UIColor(named: "Label")
+    let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
+    let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
+    let fillColor: UIColor? = UIColor(named: "Fill")
+
+
     let phoneNumber = "+79013511292" // TODO
-    
+
     let continueButton: UIButton = {
         let continueButton = UIButton()
         continueButton.setTitle(NSLocalizedString("SMSCodeViewController.Button.Continue", comment: ""), for: .normal)
@@ -29,7 +29,7 @@ final class SMSCodeViewController: UIViewController {
         continueButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return continueButton
     }()
-    
+
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
@@ -37,14 +37,14 @@ final class SMSCodeViewController: UIViewController {
         titleLabel.text = NSLocalizedString("SMSCodeViewController.Label.Title", comment: "")
         return titleLabel
     }()
-    
+
     let subtitleLabel: UILabel = {
-        let subtitleLabel =  UILabel()
+        let subtitleLabel = UILabel()
         subtitleLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         subtitleLabel.textAlignment = .center
         return subtitleLabel
     }()
-    
+
     let pinField: KAPinField = {
         let pinField = KAPinField()
         pinField.properties.token = "-"
@@ -56,7 +56,7 @@ final class SMSCodeViewController: UIViewController {
         pinField.appearance.keyboardType = UIKeyboardType.numberPad
         return pinField
     }()
-    
+
     let errorCodeLabel: UILabel = {
         let errorCodeLabel = UILabel()
         errorCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
@@ -64,7 +64,7 @@ final class SMSCodeViewController: UIViewController {
         errorCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.errorCode", comment: "")
         return errorCodeLabel
     }()
-    
+
     let notSentCodeLabel: UILabel = {
         let notSentCodeLabel = UILabel()
         notSentCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
@@ -72,15 +72,15 @@ final class SMSCodeViewController: UIViewController {
         notSentCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.notSentCode", comment: "")
         return notSentCodeLabel
     }()
-    
+
     let resendCodeLabel: UILabel = {
-        let resendCodeLabel =  UILabel()
+        let resendCodeLabel = UILabel()
         resendCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         resendCodeLabel.textAlignment = .center
         resendCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.resendCode", comment: "")
         return resendCodeLabel
     }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         pinField.becomeFirstResponder()
@@ -91,23 +91,23 @@ final class SMSCodeViewController: UIViewController {
         super.viewDidLoad()
         setView()
         setLayout()
-        view.backgroundColor = .white
+        view.backgroundColor = fillColor
         pinField.becomeFirstResponder()
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
-    func setLayout(){
-        
+
+    func setLayout() {
+
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height/10)
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 10)
         ])
-        
+
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.numberOfLines = 2
         NSLayoutConstraint.activate([
@@ -116,35 +116,35 @@ final class SMSCodeViewController: UIViewController {
             subtitleLabel.widthAnchor.constraint(equalToConstant: 260),
             subtitleLabel.heightAnchor.constraint(equalToConstant: 36)
         ])
-        
-        pinField.translatesAutoresizingMaskIntoConstraints =  false
+
+        pinField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             pinField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pinField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 40),
             pinField.widthAnchor.constraint(equalToConstant: 260)
         ])
-        
-        errorCodeLabel.translatesAutoresizingMaskIntoConstraints =  false
+
+        errorCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             errorCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             errorCodeLabel.bottomAnchor.constraint(equalTo: pinField.topAnchor, constant: -4),
             errorCodeLabel.widthAnchor.constraint(equalToConstant: 260)
         ])
-        
+
         notSentCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             notSentCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             notSentCodeLabel.topAnchor.constraint(equalTo: pinField.bottomAnchor, constant: 40),
             notSentCodeLabel.widthAnchor.constraint(equalToConstant: 260)
         ])
-        
+
         resendCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             resendCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             resendCodeLabel.topAnchor.constraint(equalTo: notSentCodeLabel.bottomAnchor, constant: 0),
             resendCodeLabel.widthAnchor.constraint(equalToConstant: 260)
         ])
-        
+
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -152,36 +152,38 @@ final class SMSCodeViewController: UIViewController {
             continueButton.widthAnchor.constraint(equalToConstant: 360),
             continueButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-        
-        
+
+
     }
-    
-    func setView(){
-        
-        [continueButton,titleLabel,subtitleLabel, pinField, errorCodeLabel, notSentCodeLabel, resendCodeLabel].forEach{view.addSubview($0)}
-        
+
+    func setView() {
+
+        [continueButton, titleLabel, subtitleLabel, pinField, errorCodeLabel, notSentCodeLabel, resendCodeLabel].forEach {
+            view.addSubview($0)
+        }
+
         continueButton.backgroundColor = blueColor
-        
-        titleLabel.textColor = darkGrayColor
-        subtitleLabel.textColor = lightGrayColor
-        notSentCodeLabel.textColor = darkGrayColor
-        resendCodeLabel.textColor = darkGrayColor
-        
+
+        titleLabel.textColor = labelColor
+        subtitleLabel.textColor = secondaryLabelColor
+        notSentCodeLabel.textColor = labelColor
+        resendCodeLabel.textColor = labelColor
+
         errorCodeLabel.textColor = magentaColor
         errorCodeLabel.isHidden = true
-        
+
         pinField.appearance.textColor = magentaColor
-        pinField.appearance.tokenColor = darkGrayColor
+        pinField.appearance.tokenColor = labelColor
         pinField.properties.delegate = self
-        
-        subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""),phoneNumber)
-        
+
+        subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
+
     }
-    
-    
+
+
 }
 
-extension SMSCodeViewController: KAPinFieldDelegate{
+extension SMSCodeViewController: KAPinFieldDelegate {
     func pinField(_ field: KAPinField, didFinishWith code: String) {
         pinField.animateSuccess(with: "👍") // onSuccess
         // TODO action when finish input SMS code

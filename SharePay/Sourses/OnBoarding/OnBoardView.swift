@@ -13,7 +13,7 @@ class OnBoardView: UIView {
     //Кнопка
     let enterButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(named: "BlackColor")
+        button.backgroundColor = UIColor(named: "DarkBlueColor")
         button.setTitle("Вход", for: .normal)
         button.layer.cornerRadius = 25
         button.tintColor = UIColor(named: "WhiteColor")
