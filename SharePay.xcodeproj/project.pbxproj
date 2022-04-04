@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3604363627FB8B980005E732 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3604363527FB8B980005E732 /* PhoneNumberKit */; };
+		3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3604363C27FB92BF0005E732 /* welcomeImage.png */; };
 		3606D57427F8D58C006A4157 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3606D57327F8D58C006A4157 /* KAPinField */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
 		3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */; };
 		3B70218BE2CF9F7C7B325A89 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702DCC17583552DD2AC821 /* OnBoardView.swift */; };
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
+		3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
@@ -28,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3604363C27FB92BF0005E732 /* welcomeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeImage.png; sourceTree = "<group>"; };
+		3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -55,16 +60,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				3606D57427F8D58C006A4157 /* KAPinField in Frameworks */,
+				3604363627FB8B980005E732 /* PhoneNumberKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3604363327FB88C10005E732 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		3604363727FB8F860005E732 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3604363C27FB92BF0005E732 /* welcomeImage.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		3B702229368921CAEFDCCD0F /* SMSAuth */ = {
 			isa = PBXGroup;
 			children = (
 				3B70236DB099FDFC4AFE6C94 /* Code */,
+				3B702C28A30C8DA4A187E8D7 /* PhoneNumber */,
 			);
 			name = SMSAuth;
 			path = SharePay/SMSAuth;
@@ -104,6 +127,14 @@
 			path = Sourses;
 			sourceTree = "<group>";
 		};
+		3B702C28A30C8DA4A187E8D7 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
 		3B702EE92822C9DB36BB25B6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +149,7 @@
 				6D31126527F0FCCE004FF26E /* .gitignore */,
 				6D50F3F427F0FB7B00627394 /* SharePay */,
 				6D50F3F327F0FB7B00627394 /* Products */,
+				3604363327FB88C10005E732 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +180,7 @@
 		6D9466E327F8930C00593679 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3604363727FB8F860005E732 /* Images */,
 				6D9466E427F8931100593679 /* Fonts */,
 				3B702EE92822C9DB36BB25B6 /* Helpers */,
 			);
@@ -193,6 +226,7 @@
 			name = SharePay;
 			packageProductDependencies = (
 				3606D57327F8D58C006A4157 /* KAPinField */,
+				3604363527FB8B980005E732 /* PhoneNumberKit */,
 			);
 			productName = SharePay;
 			productReference = 6D50F3F227F0FB7B00627394 /* SharePay.app */;
@@ -225,6 +259,7 @@
 			mainGroup = 6D50F3E927F0FB7B00627394;
 			packageReferences = (
 				3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */,
+				3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 			);
 			productRefGroup = 6D50F3F327F0FB7B00627394 /* Products */;
 			projectDirPath = "";
@@ -244,8 +279,8 @@
 				6D31126627F0FCCE004FF26E /* .gitignore in Resources */,
 				6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */,
 				6D9466EC27F8932700593679 /* GTEestiProDisplay-Bold.otf in Resources */,
+				3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */,
 				6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */,
-				6D50F3FD27F0FB7B00627394,
 				6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */,
 				6D9466EF27F8932700593679 /* GTEestiProDisplay-Thin.otf in Resources */,
 				6D9466ED27F8932700593679 /* GTEestiProDisplay-Light.otf in Resources */,
@@ -261,8 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEAE193A27F502E30088ABB9,
-				CEFF457C27F229AE00D34161,
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
@@ -270,24 +303,16 @@
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
 				3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */,
+				3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6D50F3FB27F0FB7B00627394 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D50F3FC27F0FB7B00627394,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6D50F40127F0FB7C00627394,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -500,6 +525,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kirualex/KAPinField";
@@ -511,6 +544,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3604363527FB8B980005E732 /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
+		};
 		3606D57327F8D58C006A4157 /* KAPinField */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */;
