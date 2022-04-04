@@ -8,3 +8,11 @@
 
 // Naming convention: "ViewName.Source.Name" = "Translation";
 // eg "SMSViewController.Button.Continue" = "Continue";
+
+"SMSCodeViewController.Label.Title" = "Enter the confirmation code";
+"SMSCodeViewController.Label.Subtitle" =  "The code has been sent \n to the number %@ by SMS";
+"SMSCodeViewController.Label.errorCode" = "Invalid SMS code";
+"SMSCodeViewController.Label.notSentCode" = "Didn't get the code?";
+"SMSCodeViewController.Label.resendCode" = "Resend the code";
+"SMSCodeViewController.Button.Continue" = "Continue";
+
