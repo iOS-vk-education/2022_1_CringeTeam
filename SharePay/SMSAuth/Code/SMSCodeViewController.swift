@@ -17,7 +17,7 @@ final class SMSCodeViewController: UIViewController {
     let labelColor: UIColor? = UIColor(named: "Label")
     let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
     let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
-    let fillColor: UIColor? = UIColor(named: "Fill")
+    let backgroundFillColor: UIColor? = UIColor(named: "Fill")
 
 
     let phoneNumber = "+79013511292" // TODO
@@ -91,7 +91,7 @@ final class SMSCodeViewController: UIViewController {
         super.viewDidLoad()
         setView()
         setLayout()
-        view.backgroundColor = fillColor
+        view.backgroundColor = backgroundFillColor
         pinField.becomeFirstResponder()
     }
 
