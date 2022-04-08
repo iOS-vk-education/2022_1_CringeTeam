@@ -16,3 +16,9 @@
 "SMSCodeViewController.Label.resendCode" = "Resend the code";
 "SMSCodeViewController.Button.Continue" = "Continue";
 
+
+
+
+"PhoneNumberViewController.Label.Title" = "Enter your phone number";
+"PhoneNumberViewController.Label.Subtitle" =  "To log in or become a SharePay client";
+"PhoneNumberViewController.Button.Continue" =  "Continue";

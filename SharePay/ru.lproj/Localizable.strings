@@ -16,5 +16,6 @@
 "SMSCodeViewController.Label.resendCode" = "Повторно отправить SMS";
 "SMSCodeViewController.Button.Continue" = "Продолжить";
 
-""
-
+"PhoneNumberViewController.Label.Title" = "Введите номер телефона";
+"PhoneNumberViewController.Label.Subtitle" =  "Чтобы войти или стать клиентом SharePay";
+"PhoneNumberViewController.Button.Continue" =  "Продолжить";
