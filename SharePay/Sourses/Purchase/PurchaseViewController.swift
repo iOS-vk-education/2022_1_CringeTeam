@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import EmojiPicker
 
 
 final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
@@ -19,6 +20,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     
     var participantCollectionView: UICollectionView?
+    
+    let emojiPickerVC = EmojiPicker.viewController
+
 
     let namePurchaseLabel: UILabel = {
         let namePurchaseLabel: UILabel = UILabel()
@@ -136,6 +140,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         let billSwitch: UISwitch = UISwitch()
         return billSwitch
     }()
+
     
     
     override func viewDidLoad() {
@@ -148,13 +153,16 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         participantCollectionView?.dataSource = self
         participantCollectionView?.delegate = self
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PurchaseViewController.selectEmoji))
+        emojiSelectLabel.isUserInteractionEnabled = true
+        emojiSelectLabel.addGestureRecognizer(tap)
     }
-
-    func configureNavigationItem(){
-        navigationItem.title = "Создание покупки"
-        let attributes = [NSAttributedString.Key.font: UIFont(name: "GTEestiProDisplay-Bold", size: 20)!]
-        UINavigationBar.appearance().titleTextAttributes = attributes
+    
+    @objc func selectEmoji(sender:UITapGestureRecognizer) {
+        present(emojiPickerVC, animated: true, completion: nil)
+        print("click")
     }
+    
     
     func configureLayoutCollectionView(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -362,6 +370,10 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         addParticipantButton.backgroundColor = greenColor
         equalSplitButton.backgroundColor = blueColor
         saveButton.backgroundColor = blueColor
+        
+        emojiPickerVC.delegate = self
+        emojiPickerVC.size = CGSize(width: 300, height: 400)
+        emojiPickerVC.dismissAfterSelected = true
     }
 
 
@@ -372,7 +384,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 // TODO
 extension PurchaseViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -384,6 +396,12 @@ extension PurchaseViewController: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         return participantCell
+    }
+}
+
+extension PurchaseViewController: EmojiPickerViewControllerDelegate{
+    func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
+        emojiSelectLabel.text = emoji
     }
 }
 

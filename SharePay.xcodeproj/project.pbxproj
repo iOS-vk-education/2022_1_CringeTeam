@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3604363627FB8B980005E732 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3604363527FB8B980005E732 /* PhoneNumberKit */; };
 		3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3604363C27FB92BF0005E732 /* welcomeImage.png */; };
-		3606D57427F8D58C006A4157 /* KAPinField in Frameworks */ = {isa = PBXBuildFile; productRef = 3606D57327F8D58C006A4157 /* KAPinField */; };
 		365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */; };
 		365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E602800D68B00E7DC27 /* ParticipantCell.swift */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
@@ -17,6 +15,7 @@
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
 		3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */; };
 		3B7029641DBC08ED3AA9F696 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7024D2C79AB567ED5C56C6 /* PurchaseViewController.swift */; };
+		63AF1B2F38747893296790BE /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 810DFDCEA0FE2600ADCCFD88 /* Pods_SharePay.framework */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
@@ -56,6 +55,9 @@
 		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		810DFDCEA0FE2600ADCCFD88 /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BABA662A7F6F47812845C09 /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
+		DA32CC17A42737DD9CED1A88 /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +65,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3606D57427F8D58C006A4157 /* KAPinField in Frameworks */,
-				3604363627FB8B980005E732 /* PhoneNumberKit in Frameworks */,
+				63AF1B2F38747893296790BE /* Pods_SharePay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D22BE82F96C03C8EC53363F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				810DFDCEA0FE2600ADCCFD88 /* Pods_SharePay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3604363327FB88C10005E732 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +174,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5CA3AB3EE9316FCCF830A357 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BABA662A7F6F47812845C09 /* Pods-SharePay.debug.xcconfig */,
+				DA32CC17A42737DD9CED1A88 /* Pods-SharePay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6D50F3E927F0FB7B00627394 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +190,8 @@
 				6D50F3F427F0FB7B00627394 /* SharePay */,
 				6D50F3F327F0FB7B00627394 /* Products */,
 				3604363327FB88C10005E732 /* Recovered References */,
+				5CA3AB3EE9316FCCF830A357 /* Pods */,
+				2D22BE82F96C03C8EC53363F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,9 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D50F40627F0FB7C00627394 /* Build configuration list for PBXNativeTarget "SharePay" */;
 			buildPhases = (
+				F737A2EEDA1945D1A1A58323 /* [CP] Check Pods Manifest.lock */,
 				6D50F3EE27F0FB7B00627394 /* Sources */,
 				6D50F3EF27F0FB7B00627394 /* Frameworks */,
 				6D50F3F027F0FB7B00627394 /* Resources */,
+				7A17BF3B6199084325C68E6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -246,8 +268,6 @@
 			);
 			name = SharePay;
 			packageProductDependencies = (
-				3606D57327F8D58C006A4157 /* KAPinField */,
-				3604363527FB8B980005E732 /* PhoneNumberKit */,
 			);
 			productName = SharePay;
 			productReference = 6D50F3F227F0FB7B00627394 /* SharePay.app */;
@@ -279,8 +299,6 @@
 			);
 			mainGroup = 6D50F3E927F0FB7B00627394;
 			packageReferences = (
-				3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */,
-				3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 			);
 			productRefGroup = 6D50F3F327F0FB7B00627394 /* Products */;
 			projectDirPath = "";
@@ -311,6 +329,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7A17BF3B6199084325C68E6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F737A2EEDA1945D1A1A58323 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SharePay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D50F3EE27F0FB7B00627394 /* Sources */ = {
@@ -470,6 +530,7 @@
 		};
 		6D50F40727F0FB7C00627394 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BABA662A7F6F47812845C09 /* Pods-SharePay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -498,6 +559,7 @@
 		};
 		6D50F40827F0FB7C00627394 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA32CC17A42737DD9CED1A88 /* Pods-SharePay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -546,38 +608,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kirualex/KAPinField";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3604363527FB8B980005E732 /* PhoneNumberKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3604363427FB8B980005E732 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
-			productName = PhoneNumberKit;
-		};
-		3606D57327F8D58C006A4157 /* KAPinField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3606D57227F8D58C006A4157 /* XCRemoteSwiftPackageReference "KAPinField" */;
-			productName = KAPinField;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6D50F3EA27F0FB7B00627394 /* Project object */;
 }
