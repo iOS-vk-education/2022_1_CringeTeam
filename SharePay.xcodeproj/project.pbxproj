@@ -28,6 +28,7 @@
 		6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */; };
 		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
 		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
+		F18506C728020ABA00D7DAAD /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18506C628020ABA00D7DAAD /* PurchaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F18506C628020ABA00D7DAAD /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		3B702A8E216487654C918FE6 /* Sourses */ = {
 			isa = PBXGroup;
 			children = (
+				F18506C528020AA000D7DAAD /* Purchases */,
 				3B7022C999E4663EFC156A9E /* OnBoarding */,
 				3B702229368921CAEFDCCD0F /* SMSAuth */,
 			);
@@ -206,6 +209,14 @@
 				6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */,
 			);
 			path = GTEestiProDisplay;
+			sourceTree = "<group>";
+		};
+		F18506C528020AA000D7DAAD /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				F18506C628020ABA00D7DAAD /* PurchaseViewController.swift */,
+			);
+			path = Purchases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +314,7 @@
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
 				3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */,
+				F18506C728020ABA00D7DAAD /* PurchaseViewController.swift in Sources */,
 				3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
