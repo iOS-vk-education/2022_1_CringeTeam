@@ -21,7 +21,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     let nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text =  "Имя Фамилия"
+        nameLabel.text =  "Дмитрий Пудовкин"
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 16)
         return nameLabel
@@ -29,9 +29,11 @@ final class ParticipantCell: UICollectionViewCell{
     
     let letterNameLabel: UILabel = {
         let letterName = UILabel()
-        letterName.text = "Л"
+        letterName.text = "ДП"
         letterName.textAlignment = .center
-        letterName.font = UIFont(name: "GTEestiProDisplay-Bold", size: 32)
+        letterName.font = UIFont(name: "GTEestiProDisplay-Bold", size: 18)
+        letterName.layer.cornerRadius = 18
+        letterName.layer.masksToBounds = true
         return letterName
     }()
     
@@ -47,7 +49,7 @@ final class ParticipantCell: UICollectionViewCell{
     let removeButton: UIButton = {
         let removeButton = UIButton()
         removeButton.setTitle("-", for: .normal)
-        removeButton.layer.cornerRadius = 25
+        removeButton.layer.cornerRadius = 18
         removeButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 24)
         return removeButton
     }()
@@ -67,8 +69,11 @@ final class ParticipantCell: UICollectionViewCell{
          removeButton].forEach{self.contentView.addSubview($0)}
         
         nameLabel.textColor = labelColor
-        letterNameLabel.textColor = labelColor
+        
         totalTextField.textColor = labelColor
+        
+        letterNameLabel.textColor = .white
+        letterNameLabel.backgroundColor = secondaryLabelColor
         
         removeButton.backgroundColor = magentaColor
         

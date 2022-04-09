@@ -22,6 +22,10 @@ final class ParticipantDataSource: NSObject, UICollectionViewDataSource{
         return 10
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let participantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ParticipantCell", for: indexPath) as? ParticipantCell else {
             return UICollectionViewCell()

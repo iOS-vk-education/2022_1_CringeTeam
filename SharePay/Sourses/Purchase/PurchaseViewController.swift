@@ -79,7 +79,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     let addParticipantButton: UIButton = {
         let addParticipantButton: UIButton = UIButton()
         addParticipantButton.setTitle("Добавить", for: .normal)
-        addParticipantButton.layer.cornerRadius = 25
+        addParticipantButton.layer.cornerRadius = 20
         addParticipantButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return addParticipantButton
     }()
@@ -87,7 +87,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     let equalSplitButton: UIButton = {
         let equalSplitButton: UIButton = UIButton()
         equalSplitButton.setTitle("Поровну", for: .normal)
-        equalSplitButton.layer.cornerRadius = 25
+        equalSplitButton.layer.cornerRadius = 20
         equalSplitButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return equalSplitButton
     }()
@@ -100,9 +100,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         return saveButton
     }()
     
-     // TODO добавит кнопку delete Button
-    
-    
     let infoTextLabel: UILabel = {
         let textLabel: UILabel = UILabel()
         textLabel.text = "После сохранения покупки не забудьте выставить счета всем участникам"
@@ -112,18 +109,43 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         return textLabel
     }()
     
+    let datePurchaseLabel: UILabel = {
+        let datePurchaseLabel: UILabel = UILabel()
+        datePurchaseLabel.text = "Дата покупки"
+        datePurchaseLabel.textAlignment = .left
+        datePurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
+        return datePurchaseLabel
+    }()
     
-
-
-
+    let datePicker: UIDatePicker = {
+        let datePicker: UIDatePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        return datePicker
+    }()
+    
+    let applyBillLabel: UILabel = {
+        let applyBillLabel: UILabel = UILabel()
+        applyBillLabel.text = "Выставить счета после сохранения покупки"
+        applyBillLabel.numberOfLines = 2
+        applyBillLabel.textAlignment = .left
+        applyBillLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
+        return applyBillLabel
+    }()
+    
+    let billSwitch: UISwitch = {
+        let billSwitch: UISwitch = UISwitch()
+        return billSwitch
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayoutCollectionView()
         setView()
         setLayout()
         
-        let dataSource = ParticipantDataSource()
-        participantCollectionView?.dataSource = dataSource
+        //let dataSource = ParticipantDataSource()
+        participantCollectionView?.dataSource = self
         participantCollectionView?.delegate = self
         
     }
@@ -137,10 +159,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     func configureLayoutCollectionView(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.view.frame.width, height: 50)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
-        participantCollectionView = UICollectionView(frame: CGRect(x: 0, y: view.frame.height/2.5, width: view.frame.width, height: view.frame.height/3), collectionViewLayout: layout)
-        participantCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "ParticipantCell")
+        participantCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        participantCollectionView?.register(ParticipantCell.self, forCellWithReuseIdentifier: "ParticipantCell")
         participantCollectionView?.backgroundColor = backgroundFillColor
     }
     
@@ -215,11 +236,72 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             participantLabel.topAnchor.constraint(equalTo: totalTextField.bottomAnchor, constant: 8)
         ])
         
+        // Row #6
+        participantCollectionView?.translatesAutoresizingMaskIntoConstraints =  false
+        NSLayoutConstraint.activate([
+            participantCollectionView!.topAnchor.constraint(equalTo:  participantLabel.bottomAnchor, constant: 4),
+            participantCollectionView!.widthAnchor.constraint(equalToConstant: view.frame.width),
+            participantCollectionView!.heightAnchor.constraint(equalToConstant: view.frame.height/4),
+            participantCollectionView!.leftAnchor.constraint(equalTo: rootView.leftAnchor)
+           ])
+        
+        
+        // Row #6
+        addParticipantButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addParticipantButton.topAnchor.constraint(equalTo: participantCollectionView!.bottomAnchor,constant: 16),
+            addParticipantButton.widthAnchor.constraint(equalToConstant: rootView.frame.width/3),
+            addParticipantButton.leftAnchor.constraint(equalTo: rootView.leftAnchor, constant: 12),
+            addParticipantButton.heightAnchor.constraint(equalToConstant: 40)
+            ])
+        
+        equalSplitButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            equalSplitButton.topAnchor.constraint(equalTo: participantCollectionView!.bottomAnchor,constant: 16),
+            equalSplitButton.widthAnchor.constraint(equalToConstant: rootView.frame.width/4),
+            equalSplitButton.rightAnchor.constraint(equalTo: rootView.rightAnchor, constant: -48),
+            equalSplitButton.heightAnchor.constraint(equalToConstant: 40)
+            ])
+        
+        // Row #7
+        datePurchaseLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            datePurchaseLabel.widthAnchor.constraint(equalToConstant: contentWidth*0.7),
+            datePurchaseLabel.heightAnchor.constraint(equalToConstant: 24),
+            datePurchaseLabel.leftAnchor.constraint(equalTo:  rootView.leftAnchor, constant: 12),
+            datePurchaseLabel.topAnchor.constraint(equalTo: addParticipantButton.bottomAnchor, constant: 8)
+        ])
+        
+        // Row #8
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            datePicker.heightAnchor.constraint(equalToConstant: 40),
+            datePicker.leftAnchor.constraint(equalTo:  rootView.leftAnchor, constant: 12),
+            datePicker.topAnchor.constraint(equalTo: datePurchaseLabel.bottomAnchor, constant: 4)
+        ])
+        
+        // Row #9
+        applyBillLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            applyBillLabel.widthAnchor.constraint(lessThanOrEqualToConstant: rootView.frame.width*0.8),
+            applyBillLabel.heightAnchor.constraint(equalToConstant: 32),
+            applyBillLabel.leftAnchor.constraint(equalTo:  rootView.leftAnchor, constant: 12),
+            applyBillLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 12)
+        ])
+        
+        billSwitch.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            billSwitch.rightAnchor.constraint(equalTo:  rootView.rightAnchor, constant: -12),
+            billSwitch.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 12)
+            ])
+        
+        
+        
         
         // # Bottom
         infoTextLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            infoTextLabel.widthAnchor.constraint(equalToConstant: rootView.frame.width/1.5),
+            infoTextLabel.widthAnchor.constraint(equalToConstant: rootView.frame.width/1.2),
             infoTextLabel.heightAnchor.constraint(equalToConstant: 40),
             infoTextLabel.centerXAnchor.constraint(equalTo: rootView.centerXAnchor),
             infoTextLabel.bottomAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.bottomAnchor, constant: -8)
@@ -255,6 +337,10 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
          participantLabel,
          saveButton,
          infoTextLabel,
+         datePurchaseLabel,
+         datePicker,
+         applyBillLabel,
+         billSwitch,
          participantCollectionView!].forEach{view.addSubview($0)}
 
         // Установка цвета для label
@@ -262,6 +348,8 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         totalLabel.textColor = labelColor
         namePurchaseLabel.textColor = labelColor
         emojiSelectLabel.textColor = labelColor
+        datePurchaseLabel.textColor = labelColor
+        applyBillLabel.textColor = labelColor
         
         // Установка цвета для secondaryLabel
         infoTextLabel.textColor = secondaryLabelColor
@@ -277,5 +365,25 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     }
 
 
+}
+
+
+
+// TODO
+extension PurchaseViewController: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let participantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ParticipantCell", for: indexPath) as? ParticipantCell else {
+            return UICollectionViewCell()
+        }
+        return participantCell
+    }
 }
 
