@@ -19,3 +19,9 @@
 "PhoneNumberViewController.Label.Title" = "Введите номер телефона";
 "PhoneNumberViewController.Label.Subtitle" =  "Чтобы войти или стать клиентом SharePay";
 "PhoneNumberViewController.Button.Continue" =  "Продолжить";
+
+"PurchasesViewController.Sum.Title" = "Сумма покупок";
+"PurchasesViewController.FirstButton.Title" = "Все";
+"PurchasesViewController.SecondButton.Title" = "Черновики";
+"PurchasesViewController.ThirdButton.Title" = "Подтвержденные";
+"PurchasesViewController.Type.Title" = " Черновик ";
