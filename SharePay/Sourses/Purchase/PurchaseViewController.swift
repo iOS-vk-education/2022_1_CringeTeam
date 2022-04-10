@@ -180,9 +180,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            iconLabel.widthAnchor.constraint(equalToConstant: 40),
+            iconLabel.widthAnchor.constraint(equalToConstant: 60),
             iconLabel.heightAnchor.constraint(equalToConstant: 24),
-            iconLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 32),
+            iconLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 4),
             iconLabel.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
         
@@ -199,7 +199,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         NSLayoutConstraint.activate([
             emojiSelectLabel.widthAnchor.constraint(equalToConstant: 40),
             emojiSelectLabel.heightAnchor.constraint(equalToConstant: 40),
-            emojiSelectLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 32),
+            emojiSelectLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 16),
             emojiSelectLabel.topAnchor.constraint(equalTo: iconLabel.bottomAnchor, constant: 4)
         ])
         
