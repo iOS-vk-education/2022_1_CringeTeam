@@ -16,17 +16,15 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     let greenColor: UIColor? = UIColor(named:"GreenAccentColor")
     let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
     let backgroundFillColor: UIColor? = UIColor(named: "Fill")
+    let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
+    let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
 
-
-    
     var participantCollectionView: UICollectionView?
-    
     let emojiPickerVC = EmojiPicker.viewController
-
 
     let namePurchaseLabel: UILabel = {
         let namePurchaseLabel: UILabel = UILabel()
-        namePurchaseLabel.text =  "Название покупки"
+        namePurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.NamePurchase", comment: "")
         namePurchaseLabel.textAlignment = .left
         namePurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return namePurchaseLabel
@@ -34,7 +32,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     let totalLabel: UILabel = {
         let totalPurchaseLabel: UILabel = UILabel()
-        totalPurchaseLabel.text = "Сумма покупки"
+        totalPurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.TotalPurchase", comment: "")
         totalPurchaseLabel.textAlignment = .left
         totalPurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return totalPurchaseLabel
@@ -42,7 +40,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     let iconLabel: UILabel = {
         let iconLabel: UILabel = UILabel()
-        iconLabel.text = "Иконка"
+        iconLabel.text = NSLocalizedString("PurchaseViewController.Label.Icon", comment: "")
         iconLabel.textAlignment = .center
         iconLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return iconLabel
@@ -51,30 +49,30 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     let emojiSelectLabel: UILabel = {
         let emojiSelectLabel: UILabel = UILabel()
         emojiSelectLabel.text = "✈️"
-        emojiSelectLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 32) // TODO
+        emojiSelectLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 20)
         emojiSelectLabel.textAlignment = .center
+        emojiSelectLabel.layer.cornerRadius = 20
+        emojiSelectLabel.layer.borderWidth = 1.0
+        emojiSelectLabel.layer.masksToBounds = true
         return emojiSelectLabel
     }()
     
     let nameTextField: UITextField = {
-        let nameTextField: UITextField = UITextField()
-        nameTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18) // TODO
-        nameTextField.placeholder = "Билеты на самолет)" // TODO
-        nameTextField.textAlignment = .left
+        let nameTextField: UITextField = UITextField(cornerRadius: 20)
+        nameTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18)
         return nameTextField
     }()
     
     let totalTextField: UITextField = {
-        let totalTextField: UITextField = UITextField()
-        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18) // TODO
-        totalTextField.placeholder = "1000"
+        let totalTextField: UITextField = UITextField(cornerRadius: 20)
+        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18)
         totalTextField.keyboardType = .numberPad
         return totalTextField
     }()
     
     let participantLabel: UILabel = {
         let participantLabel: UILabel = UILabel()
-        participantLabel.text = "Участники"
+        participantLabel.text = NSLocalizedString("PurchaseViewController.Label.Participant", comment: "")
         participantLabel.textAlignment = .left
         participantLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return participantLabel
@@ -82,7 +80,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let addParticipantButton: UIButton = {
         let addParticipantButton: UIButton = UIButton()
-        addParticipantButton.setTitle("Добавить", for: .normal)
+        addParticipantButton.setTitle(NSLocalizedString("PurchaseViewController.Button.AddParticipant", comment: ""), for: .normal)
         addParticipantButton.layer.cornerRadius = 20
         addParticipantButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return addParticipantButton
@@ -90,7 +88,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let equalSplitButton: UIButton = {
         let equalSplitButton: UIButton = UIButton()
-        equalSplitButton.setTitle("Поровну", for: .normal)
+        equalSplitButton.setTitle(NSLocalizedString("PurchaseViewController.Button.EqualSplit", comment: ""), for: .normal)
         equalSplitButton.layer.cornerRadius = 20
         equalSplitButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return equalSplitButton
@@ -98,7 +96,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
-        saveButton.setTitle("Сохранить", for: .normal)
+        saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
         saveButton.layer.cornerRadius = 25
         saveButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return saveButton
@@ -106,7 +104,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let infoTextLabel: UILabel = {
         let textLabel: UILabel = UILabel()
-        textLabel.text = "После сохранения покупки не забудьте выставить счета всем участникам"
+        textLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 2
         textLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
@@ -115,7 +113,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let datePurchaseLabel: UILabel = {
         let datePurchaseLabel: UILabel = UILabel()
-        datePurchaseLabel.text = "Дата покупки"
+        datePurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.DatePurchase", comment: "")
         datePurchaseLabel.textAlignment = .left
         datePurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         return datePurchaseLabel
@@ -129,19 +127,14 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let applyBillLabel: UILabel = {
         let applyBillLabel: UILabel = UILabel()
-        applyBillLabel.text = "Выставить счета после сохранения покупки"
+        applyBillLabel.text = NSLocalizedString("PurchaseViewController.Label.ApplyBill", comment: "")
         applyBillLabel.numberOfLines = 2
         applyBillLabel.textAlignment = .left
         applyBillLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         return applyBillLabel
     }()
     
-    let billSwitch: UISwitch = {
-        let billSwitch: UISwitch = UISwitch()
-        return billSwitch
-    }()
-
-    
+    let billSwitch: UISwitch = UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +142,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         setView()
         setLayout()
         
-        //let dataSource = ParticipantDataSource()
         participantCollectionView?.dataSource = self
         participantCollectionView?.delegate = self
         
@@ -163,7 +155,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         print("click")
     }
     
-    
     func configureLayoutCollectionView(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.view.frame.width, height: 50)
@@ -172,13 +163,10 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         participantCollectionView?.register(ParticipantCell.self, forCellWithReuseIdentifier: "ParticipantCell")
         participantCollectionView?.backgroundColor = backgroundFillColor
     }
-    
-    
 
     func setLayout(){
         
         let rootView = view!
-        
         let contentWidth = rootView.frame.width
         
         // Row #1
@@ -190,15 +178,13 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             namePurchaseLabel.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
         
-        
         iconLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            iconLabel.widthAnchor.constraint(equalToConstant: contentWidth*0.2),
+            iconLabel.widthAnchor.constraint(equalToConstant: 40),
             iconLabel.heightAnchor.constraint(equalToConstant: 24),
-            iconLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 0),
+            iconLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 32),
             iconLabel.topAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
-        
         
         // Row #2
         nameTextField.translatesAutoresizingMaskIntoConstraints =  false
@@ -211,9 +197,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         
         emojiSelectLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            emojiSelectLabel.widthAnchor.constraint(equalToConstant: contentWidth*0.2),
+            emojiSelectLabel.widthAnchor.constraint(equalToConstant: 40),
             emojiSelectLabel.heightAnchor.constraint(equalToConstant: 40),
-            emojiSelectLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 0),
+            emojiSelectLabel.leftAnchor.constraint(equalTo: namePurchaseLabel.rightAnchor, constant: 32),
             emojiSelectLabel.topAnchor.constraint(equalTo: iconLabel.bottomAnchor, constant: 4)
         ])
         
@@ -229,7 +215,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         // Row #4
         totalTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            totalTextField.widthAnchor.constraint(equalToConstant: contentWidth*0.8),
+            totalTextField.widthAnchor.constraint(equalToConstant: contentWidth*0.7),
             totalTextField.heightAnchor.constraint(equalToConstant: 40),
             totalTextField.leftAnchor.constraint(equalTo:  rootView.leftAnchor, constant: 12),
             totalTextField.topAnchor.constraint(equalTo: totalLabel.bottomAnchor, constant: 4)
@@ -303,9 +289,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             billSwitch.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 12)
             ])
         
-        
-        
-        
         // # Bottom
         infoTextLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -314,7 +297,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             infoTextLabel.centerXAnchor.constraint(equalTo: rootView.centerXAnchor),
             infoTextLabel.bottomAnchor.constraint(equalTo: rootView.safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
-
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -323,17 +305,11 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             saveButton.bottomAnchor.constraint(equalTo: infoTextLabel.topAnchor, constant: -16)
         ])
-        
-        
     }
 
     func setView(){
         self.view.backgroundColor = backgroundFillColor
-        self.navigationItem.title = "Создние покупки" // TODO
-        self.navigationController?.navigationBar.prefersLargeTitles = true // TODO
     
-        
-        // Список элементов view
         [emojiSelectLabel,
          iconLabel,
          totalLabel,
@@ -371,20 +347,20 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         equalSplitButton.backgroundColor = blueColor
         saveButton.backgroundColor = blueColor
         
+        emojiSelectLabel.backgroundColor = secondaryFillColor
+        emojiSelectLabel.layer.borderColor = weakAccentColor?.cgColor
+        
         emojiPickerVC.delegate = self
         emojiPickerVC.size = CGSize(width: 300, height: 400)
         emojiPickerVC.dismissAfterSelected = true
     }
-
-
 }
-
 
 
 // TODO
 extension PurchaseViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -399,9 +375,9 @@ extension PurchaseViewController: UICollectionViewDataSource{
     }
 }
 
+// Выбор иконки эмоджи
 extension PurchaseViewController: EmojiPickerViewControllerDelegate{
     func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
         emojiSelectLabel.text = emoji
     }
 }
-

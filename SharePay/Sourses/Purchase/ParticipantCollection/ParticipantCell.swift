@@ -21,7 +21,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     let nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text =  "Дмитрий Пудовкин"
+        nameLabel.text =  "Алиса" // hardcode
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 16)
         return nameLabel
@@ -29,7 +29,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     let letterNameLabel: UILabel = {
         let letterName = UILabel()
-        letterName.text = "ДП"
+        letterName.text = "А" // hardcode
         letterName.textAlignment = .center
         letterName.font = UIFont(name: "GTEestiProDisplay-Bold", size: 18)
         letterName.layer.cornerRadius = 18
@@ -38,10 +38,9 @@ final class ParticipantCell: UICollectionViewCell{
     }()
     
     let totalTextField: UITextField = {
-        let totalTextField = UITextField()
+        let totalTextField = UITextField(cornerRadius: 20)
         totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18) // TODO
-        totalTextField.placeholder = "1000" // TODO
-        totalTextField.textAlignment = .left
+        //totalTextField.placeholder = "1000" // TODO
         totalTextField.keyboardType = .numberPad
         return totalTextField
     }()
@@ -94,7 +93,7 @@ final class ParticipantCell: UICollectionViewCell{
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.widthAnchor.constraint(equalToConstant: contentWidth*0.4),
+            nameLabel.widthAnchor.constraint(equalToConstant: contentWidth*0.37),
             nameLabel.heightAnchor.constraint(equalToConstant: 40),
             nameLabel.leftAnchor.constraint(equalTo:  letterNameLabel.rightAnchor, constant: 8),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8)
@@ -112,7 +111,7 @@ final class ParticipantCell: UICollectionViewCell{
         
         totalTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            totalTextField.widthAnchor.constraint(equalToConstant: contentWidth*0.2),
+            totalTextField.widthAnchor.constraint(equalToConstant: contentWidth*0.25),
             totalTextField.heightAnchor.constraint(equalToConstant: 40),
             totalTextField.rightAnchor.constraint(equalTo:  removeButton.leftAnchor, constant: -8),
             totalTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8)
