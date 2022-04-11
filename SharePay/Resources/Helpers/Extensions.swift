@@ -34,3 +34,18 @@ extension UILabel {
     }
 }
 
+extension UITextField {
+    
+    convenience init(cornerRadius: CGFloat){
+        self.init()
+        
+        let secondaryLabelColor: UIColor? = UIColor(named: "WeakAccentColor")
+        let backgroundSecondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
+        self.textAlignment = .center
+        self.backgroundColor = backgroundSecondaryFillColor
+        self.layer.cornerRadius = cornerRadius
+        self.layer.borderColor = secondaryLabelColor?.cgColor
+        self.layer.borderWidth = 1.0
+    }
+
+}
