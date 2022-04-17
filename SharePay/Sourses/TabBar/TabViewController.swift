@@ -16,25 +16,25 @@ class TabViewController: UITabBarController {
     }
     
     func createTabBar() {
-        let controller1 = PurchasesViewController()
-        controller1.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.FirstTab", comment: ""), image: UIImage(named: "firstTab"), tag: 1)
-        let nav1 = UINavigationController(rootViewController: controller1)
+        let purchasesViewController = PurchasesViewController()
+        purchasesViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.FirstTab", comment: ""), image: UIImage(named: "firstTab"), tag: 1)
+        let nav1 = UINavigationController(rootViewController: purchasesViewController)
         
-        let controller2 = DebtsViewController()
-        controller2.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
-        let nav2 = UINavigationController(rootViewController: controller2)
+        let debtsViewController = DebtsViewController()
+        debtsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
+        let nav2 = UINavigationController(rootViewController: debtsViewController)
 
-        let controller3 = PurchasesViewController()
-        let nav3 = UINavigationController(rootViewController: controller3)
+        let plusViewController = PurchasesViewController()
+        let nav3 = UINavigationController(rootViewController: plusViewController)
         nav3.title = ""
 
-        let controller4 = ViewController()
-        controller4.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
-        let nav4 = UINavigationController(rootViewController: controller4)
+        let transferViewController = ViewController()
+        transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
+        let nav4 = UINavigationController(rootViewController: transferViewController)
 
-        let controller5 = ViewController()
-        controller5.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
-        let nav5 = UINavigationController(rootViewController: controller5)
+        let settingsViewController = ViewController()
+        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
+        let nav5 = UINavigationController(rootViewController: settingsViewController)
         
         viewControllers = [nav1, nav2, nav3, nav4, nav5]
     }
@@ -52,7 +52,7 @@ class TabViewController: UITabBarController {
         let menuButton = UIButton(frame: CGRect(x: 0, y: 0, width: 77, height: 77))
         var menuButtonFrame = menuButton.frame
         
-        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height - 45
+        menuButtonFrame.origin.y = view.bounds.height - menuButtonFrame.height - 10
         menuButtonFrame.origin.x = view.bounds.width/2 - menuButtonFrame.size.width/2
         menuButton.frame = menuButtonFrame
 

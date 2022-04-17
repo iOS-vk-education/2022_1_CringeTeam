@@ -29,7 +29,7 @@
 		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
 		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
 		95E5415F7660173D379F47E1 /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827421EA49B5753463A6025A /* Pods_SharePay.framework */; };
-		CE76C65D280C7F83008FE5B4 /* PurchesesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65C280C7F83008FE5B4 /* PurchesesViewController.swift */; };
+		CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */; };
 		CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */; };
 		CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C660280C800B008FE5B4 /* TabViewController.swift */; };
 		CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C662280C8051008FE5B4 /* DebtsViewController.swift */; };
@@ -62,7 +62,7 @@
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		827421EA49B5753463A6025A /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C202387802EA105F3E3DC51E /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
-		CE76C65C280C7F83008FE5B4 /* PurchesesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchesesViewController.swift; sourceTree = "<group>"; };
+		CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewCell.swift; sourceTree = "<group>"; };
 		CE76C660280C800B008FE5B4 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CE76C662280C8051008FE5B4 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		CE76C659280C7F52008FE5B4 /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
-				CE76C65C280C7F83008FE5B4 /* PurchesesViewController.swift */,
+				CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */,
 				CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */,
 			);
 			path = Purchases;
@@ -419,7 +419,7 @@
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
-				CE76C65D280C7F83008FE5B4 /* PurchesesViewController.swift in Sources */,
+				CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
