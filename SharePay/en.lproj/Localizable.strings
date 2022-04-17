@@ -29,3 +29,8 @@
 "PurchasesViewController.ThirdButton.Title" = "Confirmed";
 "PurchasesViewController.Type.Title" = "Draft";
 
+"TabBarController.Type.FirstTab" = "Purcheses";
+"TabBarController.Type.SecondTab" = "Debts";
+"TabBarController.Type.ThirdTab" = "Transfers";
+"TabBarController.Type.ForthTab" = "Settings";
+

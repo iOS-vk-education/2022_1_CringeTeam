@@ -151,7 +151,7 @@ $0.translatesAutoresizingMaskIntoConstraints = false
             tableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: Constants.headerHeight),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80)
         ]
         NSLayoutConstraint.activate(tableViewConstraints)
         

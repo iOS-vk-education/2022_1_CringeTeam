@@ -25,3 +25,8 @@
 "PurchasesViewController.SecondButton.Title" = "Черновики";
 "PurchasesViewController.ThirdButton.Title" = "Подтвержденные";
 "PurchasesViewController.Type.Title" = " Черновик ";
+
+"TabBarController.Type.FirstTab" = "Покупки";
+"TabBarController.Type.SecondTab" = "Долги";
+"TabBarController.Type.ThirdTab" = "Переводы";
+"TabBarController.Type.ForthTab" = "Настройки";
