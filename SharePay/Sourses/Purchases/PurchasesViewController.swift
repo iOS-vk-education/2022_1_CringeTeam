@@ -124,18 +124,9 @@ final class PurchasesViewController: UIViewController {
         headerContainerView.addSubview(menuView)
         menuView.addSubview(stackView)
         
-        topView.translatesAutoresizingMaskIntoConstraints = false
-        mainTitle.translatesAutoresizingMaskIntoConstraints = false
-        logoLabel.translatesAutoresizingMaskIntoConstraints = false
-        bellButton.translatesAutoresizingMaskIntoConstraints = false
-        headerContainerView.translatesAutoresizingMaskIntoConstraints = false
-        stackLabelView.translatesAutoresizingMaskIntoConstraints = false
-        sumLabel.translatesAutoresizingMaskIntoConstraints = false
-        sumTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
+        [topView, mainTitle, logoLabel, bellButton, headerContainerView, stackLabelView, sumLabel, sumTitleLabel, menuView, stackView, tableView].forEach {
+$0.translatesAutoresizingMaskIntoConstraints = false
+}
         
         let topViewConstraints: [NSLayoutConstraint] = [
             topView.topAnchor.constraint(equalTo: view.topAnchor),
