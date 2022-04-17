@@ -28,9 +28,13 @@
 "PurchasesViewController.SecondButton.Title" = "Drafts";
 "PurchasesViewController.ThirdButton.Title" = "Confirmed";
 "PurchasesViewController.Type.Title" = "Draft";
+"PurchasesViewController.Type.Title2" = " Billed ";
 
 "TabBarController.Type.FirstTab" = "Purcheses";
 "TabBarController.Type.SecondTab" = "Debts";
 "TabBarController.Type.ThirdTab" = "Transfers";
 "TabBarController.Type.ForthTab" = "Settings";
 
+"DebtsViewController.Sum.Title" = "Balance";
+"DebtsViewController.SecondButton.Title" = "Pay";
+"DebtsViewController.ThirdButton.Title" = "Remind";

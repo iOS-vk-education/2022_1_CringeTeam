@@ -29,6 +29,8 @@
 		CEAA6562280318A900CD74EE /* PurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA6561280318A900CD74EE /* PurchasesTableViewCell.swift */; };
 		CEAA6564280332CF00CD74EE /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA6563280332CF00CD74EE /* OnBoardView.swift */; };
 		CEAA6568280C131000CD74EE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA6567280C131000CD74EE /* TabViewController.swift */; };
+		CEAA6578280C32EE00CD74EE /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA6577280C32EE00CD74EE /* DebtsViewController.swift */; };
+		CEAA657A280C346E00CD74EE /* DebtsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA6579280C346D00CD74EE /* DebtsTableViewCell.swift */; };
 		F18506C728020ABA00D7DAAD /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18506C628020ABA00D7DAAD /* PurchasesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		CEAA6561280318A900CD74EE /* PurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewCell.swift; sourceTree = "<group>"; };
 		CEAA6563280332CF00CD74EE /* OnBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnBoardView.swift; path = SharePay/Resources/Helpers/OnBoardView.swift; sourceTree = SOURCE_ROOT; };
 		CEAA6567280C131000CD74EE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		CEAA6577280C32EE00CD74EE /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
+		CEAA6579280C346D00CD74EE /* DebtsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsTableViewCell.swift; sourceTree = "<group>"; };
 		F18506C628020ABA00D7DAAD /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				CEAA6567280C131000CD74EE /* TabViewController.swift */,
+				CEAA6576280C32C700CD74EE /* Debts */,
 				F18506C528020AA000D7DAAD /* Purchases */,
 				3B7022C999E4663EFC156A9E /* OnBoarding */,
 				3B702229368921CAEFDCCD0F /* SMSAuth */,
@@ -202,6 +207,15 @@
 				6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */,
 			);
 			path = GTEestiProDisplay;
+			sourceTree = "<group>";
+		};
+		CEAA6576280C32C700CD74EE /* Debts */ = {
+			isa = PBXGroup;
+			children = (
+				CEAA6577280C32EE00CD74EE /* DebtsViewController.swift */,
+				CEAA6579280C346D00CD74EE /* DebtsTableViewCell.swift */,
+			);
+			path = Debts;
 			sourceTree = "<group>";
 		};
 		F18506C528020AA000D7DAAD /* Purchases */ = {
@@ -304,6 +318,8 @@
 				CEAA6568280C131000CD74EE /* TabViewController.swift in Sources */,
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
+				CEAA6578280C32EE00CD74EE /* DebtsViewController.swift in Sources */,
+				CEAA657A280C346E00CD74EE /* DebtsTableViewCell.swift in Sources */,
 				CEAA6562280318A900CD74EE /* PurchasesTableViewCell.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,

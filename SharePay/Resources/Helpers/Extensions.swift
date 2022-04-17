@@ -83,3 +83,40 @@ extension PurchasesViewController: UITableViewDelegate {
     
 }
 
+
+//DEBT Паралах эффект
+extension DebtsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+            
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+           
+        } else {
+
+        }
+    }
+}
+//DEBT Таблица делегаты
+extension DebtsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellD", for: indexPath) as! DebtsTableViewCell
+        
+        return cell
+    }
+}
+
+//Debt Таблица делегаты
+extension DebtsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+    
+}
+
+

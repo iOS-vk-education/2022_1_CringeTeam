@@ -1,12 +1,13 @@
 //
-//  File.swift
+//  DebtsViewCobtroller.swift
 //  SharePay
 //
-//  Created by Denis Kholod on 09.04.2022.
+//  Created by User on 17.04.2022.
+
 
 import UIKit
 
-final class PurchasesViewController: UIViewController {
+final class DebtsViewController: UIViewController {
     
     struct Constants {
         static let headerHeight: CGFloat = 200
@@ -50,7 +51,7 @@ final class PurchasesViewController: UIViewController {
     }()
     
 ///Сумма покупок
-    let sumTitleLabel = UILabel(text: NSLocalizedString("PurchasesViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
+    let sumTitleLabel = UILabel(text: NSLocalizedString("DebtsViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
     
     let sumLabel = UILabel(text: "100098 \u{20BD}", color: "WhiteColor", size: 24)
     
@@ -80,15 +81,15 @@ final class PurchasesViewController: UIViewController {
     
     let firstButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
     
-    let secondButton = UIButton(text: NSLocalizedString("PurchasesViewController.SecondButton.Title", comment: ""), width: 100)
+    let secondButton = UIButton(text: NSLocalizedString("DebtsViewController.SecondButton.Title", comment: ""), width: 100)
     
-    let thirdButton = UIButton(text: NSLocalizedString("PurchasesViewController.ThirdButton.Title", comment: ""), width: 150)
+    let thirdButton = UIButton(text: NSLocalizedString("DebtsViewController.ThirdButton.Title", comment: ""), width: 120)
   
     
 ///Таблица
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(DebtsTableViewCell.self, forCellReuseIdentifier: "cellD")
         table.backgroundColor = UIColor(named: "WhiteColor")
         table.separatorStyle = .none
         return table
