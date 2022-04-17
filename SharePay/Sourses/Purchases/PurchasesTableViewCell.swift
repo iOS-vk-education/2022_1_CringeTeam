@@ -43,7 +43,6 @@ class PurchasesTableViewCell: UITableViewCell {
     
     let tapButton: UIImageView = {
         let imageView = UIImageView()
-        //imageView.backgroundColor = .clear
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "chevron.right")
@@ -70,7 +69,6 @@ class PurchasesTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         self.addSubview(logo)
-     //   typeLabel.layer.cornerRadius = 50
         let firstStackView = UIStackView(arrangedSubviews: [nameLabel, typeLabel])
         firstStackView.axis = .vertical
         firstStackView.spacing = 10
