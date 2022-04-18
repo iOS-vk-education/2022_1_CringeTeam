@@ -39,8 +39,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     let totalTextField: UITextField = {
         let totalTextField = UITextField(cornerRadius: 20)
-        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18) // TODO
-        //totalTextField.placeholder = "1000" // TODO
+        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18)
         totalTextField.keyboardType = .numberPad
         return totalTextField
     }()
@@ -119,6 +118,25 @@ final class ParticipantCell: UICollectionViewCell{
         
     }
     
+    func setData(name: String, amount: Int64){
+
+        let nameAttrs = name.components(separatedBy: .whitespacesAndNewlines)
+        var letters = nameAttrs[0].prefix(1)
+        if nameAttrs.count>1{
+            letters+=nameAttrs[1].prefix(1)
+        }
+        
+        letterNameLabel.text = String(letters)
+        nameLabel.text =  name
+        totalTextField.text = String(amount)
+    }
+    
+    func setDeleteAction(completion: @escaping ()->Void){
+        removeButton.removeTarget(nil, action: nil, for: .allEvents)
+        removeButton.addAction(for: .touchUpInside) {
+            completion()
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

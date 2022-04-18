@@ -5,9 +5,21 @@
 import Foundation
 import UIKit
 import EmojiPicker
+import ContactsUI
+
+
+protocol PurchaseView: AnyObject {
+    func onAddPurchaseParticipant(name: String, phoneNumber: String)
+    func onDeletePurchaseParticipant()
+    func onUnableAddPurchaseParticipant()
+}
 
 
 final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
+    
+    // Ссылка на presenter
+    var presenter: PurchasePresenter!
+    
 
     // Инициализация цветов
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
@@ -138,6 +150,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter = PurchasePresenter(view: self)
+        
         configureLayoutCollectionView()
         setView()
         setLayout()
@@ -145,14 +160,24 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         participantCollectionView?.dataSource = self
         participantCollectionView?.delegate = self
         
+        //Выбор эмоджи
         let tap = UITapGestureRecognizer(target: self, action: #selector(PurchaseViewController.selectEmoji))
         emojiSelectLabel.isUserInteractionEnabled = true
         emojiSelectLabel.addGestureRecognizer(tap)
+        
+        // Добавление нового участника
+        addParticipantButton.addTarget(self, action:#selector(PurchaseViewController.addParticipant),  for: .touchUpInside)
     }
     
     @objc func selectEmoji(sender:UITapGestureRecognizer) {
         present(emojiPickerVC, animated: true, completion: nil)
         print("click")
+    }
+    
+    @objc func addParticipant(){
+        let contactPickerVC = CNContactPickerViewController()
+        contactPickerVC.delegate = self
+        present(contactPickerVC, animated: true)
     }
     
     func configureLayoutCollectionView(){
@@ -356,11 +381,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     }
 }
 
-
-// TODO
 extension PurchaseViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.presenter.listParticipants().count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -370,6 +393,11 @@ extension PurchaseViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let participantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ParticipantCell", for: indexPath) as? ParticipantCell else {
             return UICollectionViewCell()
+        }
+        let item = self.presenter.listParticipants()[indexPath.row]
+        participantCell.setData(name: item.name, amount: item.amount)
+        participantCell.setDeleteAction {
+            self.presenter.deletePurchaseParticipant(phoneNumber: item.phoneNumber)
         }
         return participantCell
     }
@@ -381,3 +409,33 @@ extension PurchaseViewController: EmojiPickerViewControllerDelegate{
         emojiSelectLabel.text = emoji
     }
 }
+
+// Выбор иконки контакта
+extension PurchaseViewController: CNContactPickerDelegate{
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        self.presenter.addPurchaseParticipant(name: "\(contact.familyName) \(contact.givenName)", phoneNumber: contact.phoneNumbers[0].value.stringValue)
+    }
+}
+
+// Реализация view протокола
+extension PurchaseViewController: PurchaseView{
+    
+    func onUnableAddPurchaseParticipant() {
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.UnableToAddParticipant", comment: ""), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    func onAddPurchaseParticipant(name: String, phoneNumber: String) {
+        self.participantCollectionView?.reloadData()
+    }
+    
+    func onDeletePurchaseParticipant() {
+        self.participantCollectionView?.reloadData()
+    }
+}
+
