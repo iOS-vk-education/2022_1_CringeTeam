@@ -135,4 +135,26 @@ extension DebtsViewController: UITableViewDelegate {
 
 }
 
+//Transfer Таблица делегаты
+extension TransfersViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellT", for: indexPath) as! TransfersTableViewCell
+
+        return cell
+    }
+}
+
+//Transfer Таблица делегаты
+extension TransfersViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+
+}
+
 

@@ -34,6 +34,9 @@
 		CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C660280C800B008FE5B4 /* TabViewController.swift */; };
 		CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C662280C8051008FE5B4 /* DebtsViewController.swift */; };
 		CE76C665280C8077008FE5B4 /* DebtsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C664280C8077008FE5B4 /* DebtsTableViewCell.swift */; };
+		CE76C669280D603A008FE5B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C668280D603A008FE5B4 /* SettingsViewController.swift */; };
+		CE76C66B280D604F008FE5B4 /* TransfersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C66A280D604F008FE5B4 /* TransfersViewController.swift */; };
+		CE76C66D280D61E9008FE5B4 /* TransfersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C66C280D61E9008FE5B4 /* TransfersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +70,9 @@
 		CE76C660280C800B008FE5B4 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CE76C662280C8051008FE5B4 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
 		CE76C664280C8077008FE5B4 /* DebtsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsTableViewCell.swift; sourceTree = "<group>"; };
+		CE76C668280D603A008FE5B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CE76C66A280D604F008FE5B4 /* TransfersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewController.swift; sourceTree = "<group>"; };
+		CE76C66C280D61E9008FE5B4 /* TransfersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersTableViewCell.swift; sourceTree = "<group>"; };
 		DBE009239B62B72287568BD1 /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +158,8 @@
 		3B702A8E216487654C918FE6 /* Sourses */ = {
 			isa = PBXGroup;
 			children = (
+				CE76C667280D555A008FE5B4 /* Settings */,
+				CE76C666280D5551008FE5B4 /* Transfers */,
 				CE76C65B280C7F62008FE5B4 /* Debts */,
 				CE76C65A280C7F5A008FE5B4 /* TabBar */,
 				CE76C659280C7F52008FE5B4 /* Purchases */,
@@ -288,6 +296,23 @@
 			path = Debts;
 			sourceTree = "<group>";
 		};
+		CE76C666280D5551008FE5B4 /* Transfers */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C66A280D604F008FE5B4 /* TransfersViewController.swift */,
+				CE76C66C280D61E9008FE5B4 /* TransfersTableViewCell.swift */,
+			);
+			path = Transfers;
+			sourceTree = "<group>";
+		};
+		CE76C667280D555A008FE5B4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C668280D603A008FE5B4 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -419,13 +444,16 @@
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
+				CE76C669280D603A008FE5B4 /* SettingsViewController.swift in Sources */,
 				CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
+				CE76C66B280D604F008FE5B4 /* TransfersViewController.swift in Sources */,
 				3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */,
 				3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */,
+				CE76C66D280D61E9008FE5B4 /* TransfersTableViewCell.swift in Sources */,
 				3B7029641DBC08ED3AA9F696 /* PurchaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

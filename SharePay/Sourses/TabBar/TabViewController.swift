@@ -28,7 +28,7 @@ class TabViewController: UITabBarController {
         let nav3 = UINavigationController(rootViewController: plusViewController)
         nav3.title = ""
 
-        let transferViewController = ViewController()
+        let transferViewController = TransfersViewController()
         transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
