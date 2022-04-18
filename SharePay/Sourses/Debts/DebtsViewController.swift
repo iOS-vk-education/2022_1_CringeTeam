@@ -33,7 +33,7 @@ final class DebtsViewController: UIViewController {
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: 11, height: 11)
         layer.cornerRadius = 5
-        layer.colors = [UIColor(named: "BlueColor")?.cgColor as Any, UIColor(named: "MagentaColor")?.cgColor as Any]
+        layer.colors = [UIColor(named: "BlueColor")?.cgColor ?? UIColor.blue.cgColor, UIColor(named: "MagentaColor")?.cgColor ?? UIColor.red.cgColor]
         layer.locations = [0.5, 0.5]
         layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
 

@@ -28,7 +28,7 @@ final class PurchasesViewController: UIViewController {
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 6
         
-    ///Создание градиента
+    ///Создание градиент
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: 11, height: 11)
         layer.cornerRadius = 5
