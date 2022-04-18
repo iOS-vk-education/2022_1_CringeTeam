@@ -31,3 +31,20 @@
 "PurchaseViewController.Label.InfoText" = "After saving the purchase, do not forget to issue invoices to all participants";
 "PurchaseViewController.Label.DatePurchase" = "Date purchase";
 "PurchaseViewController.Label.ApplyBill" = "Issue invoices after saving the purchase";
+
+
+"PurchasesViewController.Sum.Title" = "Total sum";
+"PurchasesViewController.FirstButton.Title" = "All";
+"PurchasesViewController.SecondButton.Title" = "Drafts";
+"PurchasesViewController.ThirdButton.Title" = "Confirmed";
+"PurchasesViewController.Type.Title" = "Draft";
+"PurchasesViewController.Type.Title2" = " Billed ";
+
+"TabBarController.Type.FirstTab" = "Purcheses";
+"TabBarController.Type.SecondTab" = "Debts";
+"TabBarController.Type.ThirdTab" = "Transfers";
+"TabBarController.Type.ForthTab" = "Settings";
+
+"DebtsViewController.Sum.Title" = "Balance";
+"DebtsViewController.SecondButton.Title" = "Pay";
+"DebtsViewController.ThirdButton.Title" = "Remind";

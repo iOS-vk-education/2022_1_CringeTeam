@@ -31,5 +31,22 @@
 "PurchaseViewController.Label.DatePurchase" = "Дата покупки";
 "PurchaseViewController.Label.ApplyBill" = "Выставить счета после сохранения покупки";
 
+"PurchasesViewController.Sum.Title" = "Сумма покупок";
+"PurchasesViewController.FirstButton.Title" = "Все";
+"PurchasesViewController.SecondButton.Title" = "Черновики";
+"PurchasesViewController.ThirdButton.Title" = "Подтвержденные";
+"PurchasesViewController.Type.Title" = " Черновик ";
+"PurchasesViewController.Type.Title2" = " Счета выставлены ";
+
+
+"TabBarController.Type.FirstTab" = "Покупки";
+"TabBarController.Type.SecondTab" = "Долги";
+"TabBarController.Type.ThirdTab" = "Переводы";
+"TabBarController.Type.ForthTab" = "Настройки";
+
+"DebtsViewController.Sum.Title" = "Общий баланс";
+"DebtsViewController.SecondButton.Title" = "Оплатить";
+"DebtsViewController.ThirdButton.Title" = "Напомнить";
+
 
 

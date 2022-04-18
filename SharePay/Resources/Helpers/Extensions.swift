@@ -25,13 +25,28 @@ extension UILabel {
 
 //Onboard
 extension UILabel {
-    convenience init(text: String, color: String, size: Int = 42) {
+    convenience init(text: String, color: String, size: Int = 42, name: String = "GTEestiProDisplay-UltraBold") {
         self.init()
         self.text = text
         self.textColor = UIColor(named: color)
-        self.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: CGFloat(size))
+        self.font = UIFont(name: name, size: CGFloat(size))
         self.textAlignment = .right
     }
+}
+
+//Purchases UIbutton
+extension UIButton {
+    convenience init(text: String, width: CGFloat) {
+        self.init()
+        self.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Regular", size: 16)
+        self.backgroundColor = self.isSelected ? UIColor(named: "BlueColor") : UIColor(named: "LightGreyColor")
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(self.isSelected ? UIColor(named: "WhiteColor") : UIColor(named: "GreyColor"), for: .normal)
+        self.layer.cornerRadius = 16
+        self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
+    }
+    
 }
 
 extension UITextField {
@@ -49,3 +64,75 @@ extension UITextField {
     }
 
 }
+//Паралах эффект
+extension PurchasesViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+
+        } else {
+
+        }
+    }
+}
+//Purchases Таблица делегаты
+extension PurchasesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PurchasesTableViewCell
+
+        return cell
+    }
+}
+
+//Purchases Таблица делегаты
+extension PurchasesViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+
+}
+
+
+//DEBT Паралах эффект
+extension DebtsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+
+        } else {
+
+        }
+    }
+}
+//DEBT Таблица делегаты
+extension DebtsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellD", for: indexPath) as! DebtsTableViewCell
+
+        return cell
+    }
+}
+
+//Debt Таблица делегаты
+extension DebtsViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+
+}
+
+
