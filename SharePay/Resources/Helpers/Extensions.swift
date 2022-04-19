@@ -25,12 +25,12 @@ extension UILabel {
 
 //Onboard
 extension UILabel {
-    convenience init(text: String, color: String, size: Int = 42, name: String = "GTEestiProDisplay-UltraBold") {
+    convenience init(text: String, color: String, size: Int = 42, name: String = "GTEestiProDisplay-UltraBold", alignment: NSTextAlignment = .right) {
         self.init()
         self.text = text
         self.textColor = UIColor(named: color)
         self.font = UIFont(name: name, size: CGFloat(size))
-        self.textAlignment = .right
+        self.textAlignment = alignment
     }
 }
 

@@ -32,7 +32,7 @@ class TabViewController: UITabBarController {
         transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
-        let settingsViewController = ViewController()
+        let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
         let nav5 = UINavigationController(rootViewController: settingsViewController)
         
