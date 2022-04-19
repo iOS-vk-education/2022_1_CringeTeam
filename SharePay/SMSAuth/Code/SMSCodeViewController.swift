@@ -27,6 +27,7 @@ final class SMSCodeViewController: UIViewController {
         continueButton.setTitle(NSLocalizedString("SMSCodeViewController.Button.Continue", comment: ""), for: .normal)
         continueButton.layer.cornerRadius = 25
         continueButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
+        continueButton.addTarget(self, action: #selector(tap2(sender:)), for: .touchUpInside)
         return continueButton
     }()
 
@@ -178,6 +179,12 @@ final class SMSCodeViewController: UIViewController {
 
         subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
 
+    }
+    
+    @objc private func tap2(sender: UIButton) {
+        let navVC = UINavigationController(rootViewController: TabViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
 
 

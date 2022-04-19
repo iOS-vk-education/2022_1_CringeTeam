@@ -54,6 +54,7 @@ final class PhoneNumberViewController: UIViewController{
         getCodeButton.setTitle(NSLocalizedString("PhoneNumberViewController.Button.Continue", comment: ""), for: .normal)
         getCodeButton.layer.cornerRadius = 25
         getCodeButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
+        getCodeButton.addTarget(self, action: #selector(tap(sender:)), for: .touchUpInside)
         return getCodeButton
     }()
 
@@ -124,6 +125,12 @@ final class PhoneNumberViewController: UIViewController{
         phoneTextField.textColor = labelColor
 
         welcomeImageView.contentMode = UIView.ContentMode.scaleAspectFit
+    }
+    
+    @objc private func tap(sender: UIButton) {
+        let navVC = UINavigationController(rootViewController: SMSCodeViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
 
 }
