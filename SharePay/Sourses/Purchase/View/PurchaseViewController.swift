@@ -151,8 +151,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = PurchasePresenter(view: self)
-        
         configureLayoutCollectionView()
         setView()
         setLayout()
