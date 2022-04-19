@@ -21,7 +21,6 @@ final class ParticipantCell: UICollectionViewCell{
     
     let nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.text =  "Алиса" // hardcode
         nameLabel.textAlignment = .left
         nameLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 16)
         return nameLabel
@@ -29,7 +28,6 @@ final class ParticipantCell: UICollectionViewCell{
     
     let letterNameLabel: UILabel = {
         let letterName = UILabel()
-        letterName.text = "А" // hardcode
         letterName.textAlignment = .center
         letterName.font = UIFont(name: "GTEestiProDisplay-Bold", size: 18)
         letterName.layer.cornerRadius = 18
@@ -39,8 +37,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     let totalTextField: UITextField = {
         let totalTextField = UITextField(cornerRadius: 20)
-        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18) // TODO
-        //totalTextField.placeholder = "1000" // TODO
+        totalTextField.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18)
         totalTextField.keyboardType = .numberPad
         return totalTextField
     }()
@@ -80,7 +77,7 @@ final class ParticipantCell: UICollectionViewCell{
     
     private func setupLayout(){
         
-        let contentWidth = contentView.frame.width // Проверить возможно width = 0
+        let contentWidth = contentView.frame.width
         
         // # Left side
         letterNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -119,6 +116,27 @@ final class ParticipantCell: UICollectionViewCell{
         
     }
     
+    func setData(name: String, amount: Int64){
+        let nameAttrs = name.components(separatedBy: .whitespacesAndNewlines)
+        guard var letters = nameAttrs.first?.prefix(1) else {
+              return
+        }
+
+        if nameAttrs.count>1 && nameAttrs[1].count>0{
+            letters+=nameAttrs[1].prefix(1)
+        }
+        
+        letterNameLabel.text = String(letters)
+        nameLabel.text =  name
+        totalTextField.text = String(amount)
+    }
+    
+    func setDeleteAction(completion: @escaping ()->Void){
+        removeButton.removeTarget(nil, action: nil, for: .allEvents)
+        removeButton.addAction(for: .touchUpInside) {
+            completion()
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

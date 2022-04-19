@@ -20,7 +20,7 @@ final class SMSCodeViewController: UIViewController {
     let backgroundFillColor: UIColor? = UIColor(named: "Fill")
 
 
-    let phoneNumber = "+79013511292" // TODO
+    let phoneNumber = ""
 
     let continueButton: UIButton = {
         let continueButton = UIButton()
@@ -177,7 +177,6 @@ final class SMSCodeViewController: UIViewController {
         pinField.properties.delegate = self
 
         subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
-
     }
 
 

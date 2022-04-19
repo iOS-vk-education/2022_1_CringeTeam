@@ -9,6 +9,9 @@
 // Naming convention: "ViewName.Source.Name" = "Translation";
 // eg "SMSViewController.Button.Continue" = "Continue";
 
+"Common.Error" = "Ошибка";
+"Common.Ok" = "Ок";
+
 "SMSCodeViewController.Label.Title" = "Введите код подтверждения";
 "SMSCodeViewController.Label.Subtitle" =  "Код был отправлен \n на номер %@ по SMS";
 "SMSCodeViewController.Label.errorCode" = "Неверный SMS код";
@@ -31,6 +34,8 @@
 "PurchaseViewController.Label.DatePurchase" = "Дата покупки";
 "PurchaseViewController.Label.ApplyBill" = "Выставить счета после сохранения покупки";
 
+"PurchaseViewPresenter.Message.UnableToAddParticipant" = "Участник покупки уже существует";
+
 "PurchasesViewController.Sum.Title" = "Сумма покупок";
 "PurchasesViewController.FirstButton.Title" = "Все";
 "PurchasesViewController.SecondButton.Title" = "Черновики";
@@ -47,6 +52,3 @@
 "DebtsViewController.Sum.Title" = "Общий баланс";
 "DebtsViewController.SecondButton.Title" = "Оплатить";
 "DebtsViewController.ThirdButton.Title" = "Напомнить";
-
-
-

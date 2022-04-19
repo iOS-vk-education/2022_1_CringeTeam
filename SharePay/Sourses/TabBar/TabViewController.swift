@@ -68,7 +68,14 @@ class TabViewController: UITabBarController {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
-        let tap = PurchaseViewController()
-        present(tap, animated: true, completion: nil)
+        presentPurchase()
+    }
+    
+    // MVP Assemble and present purchase
+    func presentPurchase() {
+        let view = PurchaseViewController()
+        let presenter = PurchasePresenter(view: view)
+        view.presenter = presenter
+        self.present(view, animated: true, completion: nil)
     }
 }
