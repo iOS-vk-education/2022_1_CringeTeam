@@ -52,3 +52,5 @@
 "DebtsViewController.Sum.Title" = "Общий баланс";
 "DebtsViewController.SecondButton.Title" = "Оплатить";
 "DebtsViewController.ThirdButton.Title" = "Напомнить";
+
+"DebtViewController.Label.Events" =  "События";

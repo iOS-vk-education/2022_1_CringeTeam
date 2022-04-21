@@ -51,3 +51,5 @@
 "DebtsViewController.Sum.Title" = "Balance";
 "DebtsViewController.SecondButton.Title" = "Pay";
 "DebtsViewController.ThirdButton.Title" = "Remind";
+
+"DebtViewController.Label.Events" =  "Events";

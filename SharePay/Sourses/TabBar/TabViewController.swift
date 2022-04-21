@@ -68,7 +68,8 @@ class TabViewController: UITabBarController {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
-        presentPurchase()
+        //presentPurchase()
+        presentDebt()
     }
     
     // MVP Assemble and present purchase
@@ -76,6 +77,12 @@ class TabViewController: UITabBarController {
         let view = PurchaseViewController()
         let presenter = PurchasePresenter(view: view)
         view.presenter = presenter
+        self.present(view, animated: true, completion: nil)
+    }
+    
+    // TODO only for test
+    func presentDebt(){
+        let view = DebtViewController()
         self.present(view, animated: true, completion: nil)
     }
 }
