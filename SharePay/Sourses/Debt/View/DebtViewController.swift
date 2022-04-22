@@ -21,11 +21,14 @@ class DebtViewController: UIViewController{
     let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
     let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
     
+    
+    var eventsCollectionView: UICollectionView?
+    
     let eventLabel: UILabel = {
         let eventLabel: UILabel = UILabel()
         eventLabel.text = NSLocalizedString("DebtViewController.Label.Events" , comment: "")
         eventLabel.textAlignment = .left
-        eventLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24) // TODO define font size
+        eventLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
         return eventLabel
     }()
     
@@ -34,10 +37,23 @@ class DebtViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureCollectioView()
         setViews()
         setLayout()
+        
+        eventsCollectionView?.dataSource = self
+        eventsCollectionView?.delegate =  self
     }
     
+    func configureCollectioView(){
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: self.view.frame.width, height: 70)
+        
+        eventsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        eventsCollectionView?.register(EventCell.self, forCellWithReuseIdentifier: "EventCell")
+        eventsCollectionView?.backgroundColor = backgroundFillColor
+    }
     
     
     func setLayout(){
@@ -58,6 +74,14 @@ class DebtViewController: UIViewController{
             eventLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
            ])
         
+        eventsCollectionView?.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            eventsCollectionView!.topAnchor.constraint(equalTo: eventLabel.bottomAnchor, constant: 8),
+            eventsCollectionView!.widthAnchor.constraint(equalToConstant: view.frame.width),
+            eventsCollectionView!.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            eventsCollectionView!.leftAnchor.constraint(equalTo: view.leftAnchor)
+        ])
+        
     }
     
     
@@ -66,10 +90,26 @@ class DebtViewController: UIViewController{
         
         self.view.addSubview(eventLabel)
         self.view.addSubview(paymentView)
+        self.view.addSubview(eventsCollectionView!)
         
         eventLabel.textColor = labelColor
     }
+}
+
+
+extension DebtViewController: UICollectionViewDataSource, UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9 // TODO
+    }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as? EventCell else {
+            return UICollectionViewCell()
+        }
+        return eventCell // TODO
+    }
 }

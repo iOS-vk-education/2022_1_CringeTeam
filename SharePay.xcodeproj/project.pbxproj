@@ -10,6 +10,7 @@
 		3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3604363C27FB92BF0005E732 /* welcomeImage.png */; };
 		3646772E2811D61100DA62D0 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646772D2811D61100DA62D0 /* DebtViewController.swift */; };
 		364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364677302811D88900DA62D0 /* PaymentBadge.swift */; };
+		36467734281353FA00DA62D0 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36467733281353FA00DA62D0 /* EventCell.swift */; };
 		365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */; };
 		365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E602800D68B00E7DC27 /* ParticipantCell.swift */; };
 		369658E8280DDE7E00D07858 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658E7280DDE7E00D07858 /* Entity.swift */; };
@@ -43,6 +44,7 @@
 		3604363C27FB92BF0005E732 /* welcomeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeImage.png; sourceTree = "<group>"; };
 		3646772D2811D61100DA62D0 /* DebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtViewController.swift; sourceTree = "<group>"; };
 		364677302811D88900DA62D0 /* PaymentBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBadge.swift; sourceTree = "<group>"; };
+		36467733281353FA00DA62D0 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		365C4E602800D68B00E7DC27 /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		3646772B2811D5E900DA62D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36467732281353E200DA62D0 /* EventCollection */,
 				3646772F2811D86D00DA62D0 /* PaymentBadge */,
 				3646772D2811D61100DA62D0 /* DebtViewController.swift */,
 			);
@@ -144,6 +147,14 @@
 				364677302811D88900DA62D0 /* PaymentBadge.swift */,
 			);
 			path = PaymentBadge;
+			sourceTree = "<group>";
+		};
+		36467732281353E200DA62D0 /* EventCollection */ = {
+			isa = PBXGroup;
+			children = (
+				36467733281353FA00DA62D0 /* EventCell.swift */,
+			);
+			path = EventCollection;
 			sourceTree = "<group>";
 		};
 		365C4E5C2800C1B500E7DC27 /* Purchase */ = {
@@ -495,6 +506,7 @@
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
 				369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */,
 				3646772E2811D61100DA62D0 /* DebtViewController.swift in Sources */,
+				36467734281353FA00DA62D0 /* EventCell.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
 				364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */,

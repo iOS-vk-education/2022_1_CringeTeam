@@ -83,7 +83,7 @@ class PaymentBadge: UIView{
     
     public func setMode(mode: PaymentBadgeMode){
         self.mode = mode
-        onModeChange() // TODO
+        onModeChange()
     }
     
     private func setLayout(){
