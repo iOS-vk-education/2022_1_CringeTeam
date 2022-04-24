@@ -7,23 +7,29 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.4)
   - PhoneNumberKit/UIKit (3.3.4):
     - PhoneNumberKit/PhoneNumberKitCore
+  - ZSWSuffixTextView (1.0):
+    - ZSWSuffixTextView/Core (= 1.0)
+  - ZSWSuffixTextView/Core (1.0)
 
 DEPENDENCIES:
   - EmojiPicker (= 1.1)
   - KAPinField (= 5.0.2)
   - PhoneNumberKit
+  - ZSWSuffixTextView (~> 1.0)
 
 SPEC REPOS:
   trunk:
     - EmojiPicker
     - KAPinField
     - PhoneNumberKit
+    - ZSWSuffixTextView
 
 SPEC CHECKSUMS:
   EmojiPicker: 7d9cb698a2983501c0fa800e759dd7744638a0b9
   KAPinField: b7c0a68a3887f3a1c42446bfc4cbf76d5abf0f4f
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
+  ZSWSuffixTextView: 6f51208083b9d0cd6d1c92285e24f6f65ecb033c
 
-PODFILE CHECKSUM: 3a260d776283362dc4f38b8a255ddca7c6fc6ca6
+PODFILE CHECKSUM: 47cad8c7d07fdc12a7523a418f3a72c26e05f2a5
 
 COCOAPODS: 1.11.3

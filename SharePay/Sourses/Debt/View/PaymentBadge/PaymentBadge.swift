@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import PhoneNumberKit
 
 enum PaymentBadgeMode {
     case Pay
@@ -15,8 +16,7 @@ enum PaymentBadgeMode {
 
 class PaymentBadge: UIView{
     
-    // TODO добавить валюту
-    // TODO добавить подтверждение оплаты
+    // На первом этапе валюта - рубль
     
     // Инициализация цветов
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
@@ -30,10 +30,9 @@ class PaymentBadge: UIView{
     
     var mode: PaymentBadgeMode = PaymentBadgeMode.Pay
     
-    
     let totalDebtTitleLabel: UILabel = {
         let totalDebtTitleLabel = UILabel()
-        totalDebtTitleLabel.text = "Суммарная задолженность" // TODO
+        totalDebtTitleLabel.text = NSLocalizedString("PaymentBadge.Label.TotalAmount", comment: "")
         totalDebtTitleLabel.textAlignment = .left
         totalDebtTitleLabel.font = UIFont(name: "GTEestiProDisplay-Regular", size: 16)
         return totalDebtTitleLabel
@@ -41,7 +40,6 @@ class PaymentBadge: UIView{
     
     let totalDebtLabel: UILabel = {
         let totalDebtLabel = UILabel()
-        totalDebtLabel.text =  "-9000 Р" // сумма задолженности
         totalDebtLabel.textAlignment = .left
         totalDebtLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
         return totalDebtLabel
@@ -50,18 +48,25 @@ class PaymentBadge: UIView{
     let paymentAmountField: UITextField = {
         let paymentAmountField = UITextField()
         paymentAmountField.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
-        paymentAmountField.textAlignment = .center
-        paymentAmountField.placeholder = "Сумма оплаты"
+        paymentAmountField.textAlignment = .right
+        paymentAmountField.placeholder = "0"
         paymentAmountField.keyboardType = .numberPad
         return paymentAmountField
     }()
     
     let actionButton: UIButton = {
         let actionButton = UIButton()
-        actionButton.setTitle("action button", for: .normal)
+        actionButton.setTitle(NSLocalizedString("PaymentBadge.Label.Pay", comment: ""), for: .normal)
         actionButton.layer.cornerRadius = 20
         actionButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return actionButton
+    }()
+    
+    let currencyLabel: UILabel = {
+        let currencyLabel = UILabel()
+        currencyLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
+        currencyLabel.textAlignment =  .left
+        return currencyLabel
     }()
     
     
@@ -81,13 +86,19 @@ class PaymentBadge: UIView{
         setView()
     }
     
-    public func setMode(mode: PaymentBadgeMode){
-        self.mode = mode
+    public func setAmount(amount: Int, currrency: String){
+        if amount>0{
+            self.mode = .Remind
+        } else {
+            self.mode = .Pay
+        }
+        currencyLabel.text = currrency
+        totalDebtLabel.text = "\(amount) \(currrency)"
         onModeChange()
     }
     
+    
     private func setLayout(){
-        
         
         totalDebtTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -112,13 +123,20 @@ class PaymentBadge: UIView{
             actionButton.widthAnchor.constraint(equalToConstant: 120)
            ])
         
-        
         paymentAmountField.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
             paymentAmountField.bottomAnchor.constraint(equalTo:  self.bottomAnchor,constant:  -16),
             paymentAmountField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             paymentAmountField.heightAnchor.constraint(equalToConstant: 40),
-            paymentAmountField.rightAnchor.constraint(equalTo: actionButton.leftAnchor, constant: -8)
+            paymentAmountField.widthAnchor.constraint(equalToConstant: 72)
+           ])
+        
+        currencyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            currencyLabel.bottomAnchor.constraint(equalTo:  self.bottomAnchor,constant:  -16),
+            currencyLabel.leftAnchor.constraint(equalTo: paymentAmountField.rightAnchor, constant: 4),
+            currencyLabel.heightAnchor.constraint(equalToConstant: 40),
+            currencyLabel.rightAnchor.constraint(equalTo: actionButton.leftAnchor, constant: -8)
            ])
         
     }
@@ -128,34 +146,61 @@ class PaymentBadge: UIView{
         self.backgroundColor = secondaryFillColor
         self.layer.cornerRadius = 25
         self.layer.borderColor = secondaryLabelColor?.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = 2.0
     
         [totalDebtLabel,
          totalDebtTitleLabel,
          paymentAmountField,
-         actionButton].forEach{self.addSubview($0)}
+         actionButton,
+        currencyLabel].forEach{self.addSubview($0)}
         
         totalDebtLabel.textColor = labelColor
+        currencyLabel.textColor = labelColor
         
         actionButton.backgroundColor = magentaColor
         
         setLayout()
     }
     
-    func onModeChange(){
+    private func onModeChange(){
         switch self.mode{
         case PaymentBadgeMode.Pay:
+            actionButton.setTitle(NSLocalizedString("PaymentBadge.Label.Pay", comment: ""), for: .normal)
             actionButton.backgroundColor = magentaColor
             paymentAmountField.isHidden = false
+            currencyLabel.isHidden = false
         case PaymentBadgeMode.Remind:
+            actionButton.setTitle(NSLocalizedString("PaymentBadge.Label.Remind", comment: ""), for: .normal)
             actionButton.backgroundColor = greenColor
+            currencyLabel.isHidden = true
             paymentAmountField.isHidden = true
         }
     }
     
-    override class var requiresConstraintBasedLayout: Bool {
-      return true
+    public func setActions(payCompletion: @escaping (Int)-> Void, notifyCompletion: @escaping ()-> Void){
+        actionButton.removeTarget(nil, action: nil, for: .allEvents)
+        
+        actionButton.addAction(for: .touchUpInside) { [weak self] in
+            guard let strongSelf = self else{
+                return
+            }
+            switch strongSelf.mode{
+                case PaymentBadgeMode.Pay:
+                    guard let payAmountStr = self?.paymentAmountField.text else{
+                        return
+                    }
+                    let payAmount = Int(payAmountStr) ?? 0
+                    if payAmount>0{
+                        payCompletion(payAmount)
+                    }
+                case PaymentBadgeMode.Remind:
+                    notifyCompletion()
+            }
+        }
     }
     
     
+    override class var requiresConstraintBasedLayout: Bool {
+      return true
+    }
 }

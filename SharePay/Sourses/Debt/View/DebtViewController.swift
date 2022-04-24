@@ -9,7 +9,14 @@ import Foundation
 
 import UIKit
 
-class DebtViewController: UIViewController{
+protocol DebtView: AnyObject{
+    func onCalculateTotalAmount(amount: Int, currency: String)
+    func onLoadEvents()
+}
+
+final class DebtViewController: UIViewController{
+    
+    var presenter: DebtViewPresenter!
     
     // Инициализация цветов
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
@@ -34,9 +41,9 @@ class DebtViewController: UIViewController{
     
     let paymentView = PaymentBadge()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
         
         configureCollectioView()
         setViews()
@@ -44,6 +51,8 @@ class DebtViewController: UIViewController{
         
         eventsCollectionView?.dataSource = self
         eventsCollectionView?.delegate =  self
+        
+        presenter.loadData()
     }
     
     func configureCollectioView(){
@@ -57,12 +66,11 @@ class DebtViewController: UIViewController{
     
     
     func setLayout(){
-        
         paymentView.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
             paymentView.topAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.topAnchor, constant: view.frame.width*0.05),
             paymentView.widthAnchor.constraint(equalToConstant: view.frame.width*0.9),
-            paymentView.heightAnchor.constraint(equalToConstant: view.frame.height/4),
+            paymentView.heightAnchor.constraint(equalToConstant: view.frame.height/5),
             paymentView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
            ])
         
@@ -84,7 +92,6 @@ class DebtViewController: UIViewController{
         
     }
     
-    
     func setViews(){
         self.view.backgroundColor = backgroundFillColor
         
@@ -93,13 +100,30 @@ class DebtViewController: UIViewController{
         self.view.addSubview(eventsCollectionView!)
         
         eventLabel.textColor = labelColor
+        
+        paymentView.setActions(payCompletion: { [weak self] (amount)->Void in
+            let payAlert = UIAlertController(title: NSLocalizedString("DebtViewController.Alert.Payment" , comment: ""), message: NSLocalizedString("DebtViewController.Alert.PayAcception" , comment: ""), preferredStyle: UIAlertController.Style.alert)
+
+            payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Ok" , comment: ""), style: .default, handler: { (action: UIAlertAction!) in
+                self?.presenter.pay(amount: amount)
+              }))
+
+            payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Cancel" , comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
+              // NOP
+              }))
+            DispatchQueue.main.async{
+                self?.present(payAlert, animated: true, completion: nil)
+            }
+        }, notifyCompletion: { [weak self] ()->Void in
+            self?.presenter.notifyDebtor()
+        })
     }
 }
 
 
 extension DebtViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9 // TODO
+        presenter.listEvents().count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -110,6 +134,18 @@ extension DebtViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as? EventCell else {
             return UICollectionViewCell()
         }
-        return eventCell // TODO
+        eventCell.setData(event: presenter.listEvents()[indexPath.row])
+        return eventCell
+    }
+}
+
+extension DebtViewController: DebtView{
+    
+    func onCalculateTotalAmount(amount: Int, currency: String){
+        paymentView.setAmount(amount: amount, currrency: currency)
+    }
+    
+    func onLoadEvents() {
+        self.eventsCollectionView?.reloadData()
     }
 }

@@ -69,7 +69,7 @@ class TabViewController: UITabBarController {
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
         //presentPurchase()
-        presentDebt()
+        presentDebt() // FOR TEST ONLY
     }
     
     // MVP Assemble and present purchase
@@ -80,9 +80,13 @@ class TabViewController: UITabBarController {
         self.present(view, animated: true, completion: nil)
     }
     
-    // TODO only for test
+    // MVP Assemble and present debt
+    // ATTENTION FOR TEST ONLY
     func presentDebt(){
         let view = DebtViewController()
+        let presenter = DebtPresenter(view: view, ownerPhoneNumer: "89053221212",
+                                      ownerName: "Алиса")
+        view.presenter = presenter
         self.present(view, animated: true, completion: nil)
     }
 }

@@ -24,10 +24,9 @@ final class EventCell: UICollectionViewCell{
     
    let emojiLabel: UILabel = {
        let emojiLabel = UILabel()
-       emojiLabel.layer.borderWidth = 1
-       emojiLabel.text = "🍎" // TODO
+       emojiLabel.layer.borderWidth = 2
        emojiLabel.textAlignment = .center
-       emojiLabel.font = UIFont(name: "GTEestiProDisplay-Regular", size: 24)
+       emojiLabel.font = UIFont(name: "GTEestiProDisplay-Regular", size: 36)
        emojiLabel.clipsToBounds = true
        emojiLabel.layer.cornerRadius = 30
        return emojiLabel
@@ -36,21 +35,18 @@ final class EventCell: UICollectionViewCell{
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 18)
-        titleLabel.text =  "Билеты в турцию"
         return titleLabel
     }()
     
     let amountLabel: UILabel = {
         let amountLabel = UILabel()
         amountLabel.font =  UIFont(name: "GTEestiProDisplay-Medium", size: 20)
-        amountLabel.text = "+2000 Р"
         return amountLabel
     }()
     
     let dateLabel: UILabel = {
         let dateLabel = UILabel()
-        dateLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 12)
-        dateLabel.text = "12.02.2021"
+        dateLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         return dateLabel
     }()
     
@@ -86,7 +82,7 @@ final class EventCell: UICollectionViewCell{
         dateLabel.textColor = secondaryLabelColor
         tapButton.tintColor = secondaryLabelColor
         emojiLabel.backgroundColor = secondaryFillColor
-        emojiLabel.layer.borderColor = secondaryLabelColor?.cgColor
+        emojiLabel.layer.borderColor = weakAccentColor?.cgColor
     }
     
     func setLayout(){
@@ -107,26 +103,46 @@ final class EventCell: UICollectionViewCell{
                                     
         tapButton.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
-            tapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-            tapButton.heightAnchor.constraint(equalToConstant: 40),
+            tapButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            tapButton.heightAnchor.constraint(equalToConstant: 30),
             tapButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            tapButton.widthAnchor.constraint(equalToConstant: 30)
+            tapButton.widthAnchor.constraint(equalToConstant: 20)
         ])
         
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            amountLabel.rightAnchor.constraint(equalTo: self.tapButton.leftAnchor, constant: -24),
-            amountLabel.heightAnchor.constraint(equalToConstant: 24),
-            amountLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-        ])
-        
         dateLabel.translatesAutoresizingMaskIntoConstraints =  false
+        
+        let rightStackView = UIStackView(arrangedSubviews: [amountLabel, dateLabel])
+        rightStackView.axis = .vertical
+        rightStackView.spacing = 8
+        rightStackView.alignment = .trailing
+        
+        rightStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(rightStackView)
+        
         NSLayoutConstraint.activate([
-            dateLabel.leftAnchor.constraint(equalTo: amountLabel.leftAnchor),
-            dateLabel.topAnchor.constraint(equalTo: amountLabel.bottomAnchor, constant: 0),
-            dateLabel.heightAnchor.constraint(equalToConstant: 12)
+            rightStackView.rightAnchor.constraint(equalTo: self.tapButton.leftAnchor, constant: -24),
+            rightStackView.heightAnchor.constraint(equalToConstant: 40),
+            rightStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
 
     }
     
+    
+    func setData(event: Event){
+        emojiLabel.text = event.emoji
+        dateLabel.text = event.date
+        titleLabel.text = event.name
+        
+        if event.amount>0{
+            // Положительная сумма события
+            amountLabel.text = "+\(event.amount) \(event.currency)"
+            amountLabel.textColor = greenColor
+            tapButton.isHidden =  true //  На начальном этапе экранов транзакций нет
+        } else {
+            // Отрициательная сумма события
+            amountLabel.text = "\(event.amount) \(event.currency)"
+            amountLabel.textColor = magentaColor
+        }
+    }
 }
