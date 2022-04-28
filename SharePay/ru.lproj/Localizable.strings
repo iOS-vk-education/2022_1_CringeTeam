@@ -11,6 +11,7 @@
 
 "Common.Error" = "Ошибка";
 "Common.Ok" = "Ок";
+"Common.Cancel" = "Отмена";
 
 "SMSCodeViewController.Label.Title" = "Введите код подтверждения";
 "SMSCodeViewController.Label.Subtitle" =  "Код был отправлен \n на номер %@ по SMS";
@@ -52,3 +53,23 @@
 "DebtsViewController.Sum.Title" = "Общий баланс";
 "DebtsViewController.SecondButton.Title" = "Оплатить";
 "DebtsViewController.ThirdButton.Title" = "Напомнить";
+
+"DebtViewController.Label.Events" =  "События";
+"DebtViewController.Alert.Payment" =  "Оплата";
+"DebtViewController.Alert.PayAcception" =  "Вы уверены, что хотите совершить перевод денежных средств?";
+
+"PaymentBadge.Label.Pay" = "Оплатить";
+"PaymentBadge.Label.Remind"= "Напомнить";
+"PaymentBadge.Label.TotalAmount" = "Сумарная задолженность";
+
+"SettingsViewController.Label.mainTitle" = "Настройки";
+"SettingsViewController.Label.langTitle" = "Язык интерфейса";
+"SettingsViewController.Label.pushTitle" = "Push-уведомления";
+"SettingsViewController.Label.russianTitle" = "Русский";
+"SettingsViewController.Label.englishTitle" = "Английский";
+"SettingsViewController.Label.newBillTitle" = "Новый счет";
+"SettingsViewController.Label.newPayTitle" = "Новая оплата";
+"SettingsViewController.Label.versionTitle" = "Версия";
+"SettingsViewController.Label.usersTitle" = "Всего пользователей";
+"SettingsViewController.Label.developTitle" = "Разработано";
+

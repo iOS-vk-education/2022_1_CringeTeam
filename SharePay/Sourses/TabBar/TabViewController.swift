@@ -28,11 +28,11 @@ class TabViewController: UITabBarController {
         let nav3 = UINavigationController(rootViewController: plusViewController)
         nav3.title = ""
 
-        let transferViewController = ViewController()
+        let transferViewController = TransfersViewController()
         transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
-        let settingsViewController = ViewController()
+        let settingsViewController = SettingsViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
         let nav5 = UINavigationController(rootViewController: settingsViewController)
         
@@ -68,13 +68,24 @@ class TabViewController: UITabBarController {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
-        presentPurchase()
+        //presentPurchase()
+        presentDebt() // FOR TEST ONLY
     }
     
     // MVP Assemble and present purchase
     func presentPurchase() {
         let view = PurchaseViewController()
         let presenter = PurchasePresenter(view: view)
+        view.presenter = presenter
+        self.present(view, animated: true, completion: nil)
+    }
+    
+    // MVP Assemble and present debt
+    // ATTENTION FOR TEST ONLY
+    func presentDebt(){
+        let view = DebtViewController()
+        let presenter = DebtPresenter(view: view, ownerPhoneNumer: "89053221212",
+                                      ownerName: "Алиса")
         view.presenter = presenter
         self.present(view, animated: true, completion: nil)
     }

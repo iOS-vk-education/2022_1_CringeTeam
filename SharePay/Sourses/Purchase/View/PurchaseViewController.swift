@@ -18,7 +18,7 @@ protocol PurchaseView: AnyObject {
 final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     // Ссылка на presenter
-    var presenter: PurchasePresenter!
+    var presenter: PurchaseViewPresenter!
     
 
     // Инициализация цветов
