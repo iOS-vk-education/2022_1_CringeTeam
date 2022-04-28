@@ -11,6 +11,7 @@
 
 "Common.Error" = "Error";
 "Common.Ok" = "Ok";
+"Common.Cancel" = "Cancel";
 
 "SMSCodeViewController.Label.Title" = "Enter the confirmation code";
 "SMSCodeViewController.Label.Subtitle" =  "The code has been sent \n to the number %@ by SMS";
@@ -51,3 +52,12 @@
 "DebtsViewController.Sum.Title" = "Balance";
 "DebtsViewController.SecondButton.Title" = "Pay";
 "DebtsViewController.ThirdButton.Title" = "Remind";
+
+"DebtViewController.Label.Events" =  "Events";
+"DebtViewController.Alert.Payment" =  "Payment";
+"DebtViewController.Alert.PayAcception" =  "Are you sure you want to make a money transfer?";
+
+"PaymentBadge.Label.Pay" = "Pay";
+"PaymentBadge.Label.Remind"= "Remind";
+"PaymentBadge.Label.TotalAmount" = "Total debt";
+
