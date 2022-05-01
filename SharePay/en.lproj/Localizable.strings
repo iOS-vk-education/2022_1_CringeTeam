@@ -61,3 +61,14 @@
 "PaymentBadge.Label.Remind"= "Remind";
 "PaymentBadge.Label.TotalAmount" = "Total debt";
 
+"SettingsViewController.Label.mainTitle" = "Settings";
+"SettingsViewController.Label.langTitle" = "Language";
+"SettingsViewController.Label.pushTitle" = "Push-notifivations";
+"SettingsViewController.Label.russianTitle" = "Russian";
+"SettingsViewController.Label.englishTitle" = "English";
+"SettingsViewController.Label.newBillTitle" = "New bill";
+"SettingsViewController.Label.newPayTitle" = "New payment";
+"SettingsViewController.Label.versionTitle" = "Version";
+"SettingsViewController.Label.usersTitle" = "Logged users";
+"SettingsViewController.Label.developTitle" = "Developed by";
+

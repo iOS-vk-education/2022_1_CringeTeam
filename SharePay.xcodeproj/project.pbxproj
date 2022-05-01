@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C751F61A83DBF9A899AF77F /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117AEA98291B905B4D82D12A /* Pods_SharePay.framework */; };
 		3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3604363C27FB92BF0005E732 /* welcomeImage.png */; };
 		3646772E2811D61100DA62D0 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646772D2811D61100DA62D0 /* DebtViewController.swift */; };
 		364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364677302811D88900DA62D0 /* PaymentBadge.swift */; };
@@ -35,15 +34,18 @@
 		6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */; };
 		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
 		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
+		92878AA7AD9B8AD9734B09F8 /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C004C25515041B40F29FACCF /* Pods_SharePay.framework */; };
 		CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */; };
 		CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */; };
 		CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C660280C800B008FE5B4 /* TabViewController.swift */; };
 		CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C662280C8051008FE5B4 /* DebtsViewController.swift */; };
 		CE76C665280C8077008FE5B4 /* DebtsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C664280C8077008FE5B4 /* DebtsTableViewCell.swift */; };
+		CE76C671281EA1D5008FE5B4 /* TransfersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C670281EA1D5008FE5B4 /* TransfersViewController.swift */; };
+		CE76C673281EA1E4008FE5B4 /* TransfersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C672281EA1E4008FE5B4 /* TransfersTableViewCell.swift */; };
+		CE76C675281EA213008FE5B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C674281EA213008FE5B4 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		117AEA98291B905B4D82D12A /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3604363C27FB92BF0005E732 /* welcomeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeImage.png; sourceTree = "<group>"; };
 		3646772D2811D61100DA62D0 /* DebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtViewController.swift; sourceTree = "<group>"; };
 		364677302811D88900DA62D0 /* PaymentBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBadge.swift; sourceTree = "<group>"; };
@@ -74,13 +76,17 @@
 		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		853FD6E503CFCB5BAAECD5FB /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
-		A53E30D09BBCEE7691042B20 /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
+		7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
+		AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
+		C004C25515041B40F29FACCF /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewCell.swift; sourceTree = "<group>"; };
 		CE76C660280C800B008FE5B4 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		CE76C662280C8051008FE5B4 /* DebtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsViewController.swift; sourceTree = "<group>"; };
 		CE76C664280C8077008FE5B4 /* DebtsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsTableViewCell.swift; sourceTree = "<group>"; };
+		CE76C670281EA1D5008FE5B4 /* TransfersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersViewController.swift; sourceTree = "<group>"; };
+		CE76C672281EA1E4008FE5B4 /* TransfersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersTableViewCell.swift; sourceTree = "<group>"; };
+		CE76C674281EA213008FE5B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C751F61A83DBF9A899AF77F /* Pods_SharePay.framework in Frameworks */,
+				92878AA7AD9B8AD9734B09F8 /* Pods_SharePay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +249,8 @@
 		3B702A8E216487654C918FE6 /* Sourses */ = {
 			isa = PBXGroup;
 			children = (
+				CE76C66F281EA1B3008FE5B4 /* Settings */,
+				CE76C66E281EA1A9008FE5B4 /* Transfers */,
 				364677292811D5CA00DA62D0 /* Debt */,
 				CE76C65B280C7F62008FE5B4 /* Debts */,
 				CE76C65A280C7F5A008FE5B4 /* TabBar */,
@@ -278,8 +286,8 @@
 				6D50F3F427F0FB7B00627394 /* SharePay */,
 				6D50F3F327F0FB7B00627394 /* Products */,
 				3604363327FB88C10005E732 /* Recovered References */,
-				9423A5B1B281FF6826813E87 /* Pods */,
-				744690D37A3B36F95545BB1C /* Frameworks */,
+				F418F0E07B878EB46CD8019A /* Pods */,
+				F5B5A8240D7B343CBBB6CDF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,23 +345,6 @@
 			path = GTEestiProDisplay;
 			sourceTree = "<group>";
 		};
-		744690D37A3B36F95545BB1C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				117AEA98291B905B4D82D12A /* Pods_SharePay.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		9423A5B1B281FF6826813E87 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A53E30D09BBCEE7691042B20 /* Pods-SharePay.debug.xcconfig */,
-				853FD6E503CFCB5BAAECD5FB /* Pods-SharePay.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		CE76C659280C7F52008FE5B4 /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +371,40 @@
 			path = Debts;
 			sourceTree = "<group>";
 		};
+		CE76C66E281EA1A9008FE5B4 /* Transfers */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C670281EA1D5008FE5B4 /* TransfersViewController.swift */,
+				CE76C672281EA1E4008FE5B4 /* TransfersTableViewCell.swift */,
+			);
+			path = Transfers;
+			sourceTree = "<group>";
+		};
+		CE76C66F281EA1B3008FE5B4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C674281EA213008FE5B4 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F418F0E07B878EB46CD8019A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */,
+				7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F5B5A8240D7B343CBBB6CDF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C004C25515041B40F29FACCF /* Pods_SharePay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -387,11 +412,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D50F40627F0FB7C00627394 /* Build configuration list for PBXNativeTarget "SharePay" */;
 			buildPhases = (
-				70C27DFF0F751CA2E1C9CA88 /* [CP] Check Pods Manifest.lock */,
+				0FE9897508F8BAA6BE420C3A /* [CP] Check Pods Manifest.lock */,
 				6D50F3EE27F0FB7B00627394 /* Sources */,
 				6D50F3EF27F0FB7B00627394 /* Frameworks */,
 				6D50F3F027F0FB7B00627394 /* Resources */,
-				20A29D189659FFB409CB1738 /* [CP] Embed Pods Frameworks */,
+				A5F2508496D62CECCBB7D8A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -458,24 +483,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20A29D189659FFB409CB1738 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70C27DFF0F751CA2E1C9CA88 /* [CP] Check Pods Manifest.lock */ = {
+		0FE9897508F8BAA6BE420C3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -495,6 +503,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5F2508496D62CECCBB7D8A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SharePay/Pods-SharePay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -518,13 +543,16 @@
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
 				364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */,
+				CE76C673281EA1E4008FE5B4 /* TransfersTableViewCell.swift in Sources */,
 				CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
+				CE76C671281EA1D5008FE5B4 /* TransfersViewController.swift in Sources */,
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
 				3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */,
 				3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */,
+				CE76C675281EA213008FE5B4 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +696,7 @@
 		};
 		6D50F40727F0FB7C00627394 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A53E30D09BBCEE7691042B20 /* Pods-SharePay.debug.xcconfig */;
+			baseConfigurationReference = AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -697,7 +725,7 @@
 		};
 		6D50F40827F0FB7C00627394 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 853FD6E503CFCB5BAAECD5FB /* Pods-SharePay.release.xcconfig */;
+			baseConfigurationReference = 7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

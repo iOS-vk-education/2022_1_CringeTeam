@@ -61,3 +61,15 @@
 "PaymentBadge.Label.Pay" = "Оплатить";
 "PaymentBadge.Label.Remind"= "Напомнить";
 "PaymentBadge.Label.TotalAmount" = "Сумарная задолженность";
+
+"SettingsViewController.Label.mainTitle" = "Настройки";
+"SettingsViewController.Label.langTitle" = "Язык интерфейса";
+"SettingsViewController.Label.pushTitle" = "Push-уведомления";
+"SettingsViewController.Label.russianTitle" = "Русский";
+"SettingsViewController.Label.englishTitle" = "Английский";
+"SettingsViewController.Label.newBillTitle" = "Новый счет";
+"SettingsViewController.Label.newPayTitle" = "Новая оплата";
+"SettingsViewController.Label.versionTitle" = "Версия";
+"SettingsViewController.Label.usersTitle" = "Всего пользователей";
+"SettingsViewController.Label.developTitle" = "Разработано";
+

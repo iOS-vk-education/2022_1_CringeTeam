@@ -25,12 +25,12 @@ extension UILabel {
 
 //Onboard
 extension UILabel {
-    convenience init(text: String, color: String, size: Int = 42, name: String = "GTEestiProDisplay-UltraBold") {
+    convenience init(text: String, color: String, size: Int = 42, name: String = "GTEestiProDisplay-UltraBold", alignment: NSTextAlignment = .right) {
         self.init()
         self.text = text
         self.textColor = UIColor(named: color)
         self.font = UIFont(name: name, size: CGFloat(size))
-        self.textAlignment = .right
+        self.textAlignment = alignment
     }
 }
 
@@ -152,5 +152,28 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+}
+
+
+//Transfer Таблица делегаты
+extension TransfersViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellT", for: indexPath) as! TransfersTableViewCell
+
+        return cell
+    }
+}
+
+//Transfer Таблица делегаты
+extension TransfersViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+
 }
 
