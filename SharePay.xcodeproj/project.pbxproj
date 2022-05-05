@@ -20,8 +20,12 @@
 		363135512822B6C10015E288 /* AssembleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135502822B6C10015E288 /* AssembleProtocol.swift */; };
 		363135562822C1E40015E288 /* SMSCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135552822C1E40015E288 /* SMSCodePresenter.swift */; };
 		363135582823D1FE0015E288 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135572823D1FE0015E288 /* Router.swift */; };
-		3631355A2823E5E40015E288 /* SharePayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135592823E5E40015E288 /* SharePayService.swift */; };
+		3631355A2823E5E40015E288 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135592823E5E40015E288 /* Service.swift */; };
 		3631355E2823E9190015E288 /* Datastruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631355D2823E9190015E288 /* Datastruct.swift */; };
+		3631356628247F650015E288 /* AuthProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631356528247F650015E288 /* AuthProtocol.swift */; };
+		3631356828247F970015E288 /* DebtsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631356728247F970015E288 /* DebtsProtocol.swift */; };
+		3631356A28247FF80015E288 /* PurchasesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631356928247FF80015E288 /* PurchasesProtocol.swift */; };
+		3631356C2824800E0015E288 /* PaymentsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631356B2824800E0015E288 /* PaymentsProtocol.swift */; };
 		365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */; };
 		365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E602800D68B00E7DC27 /* ParticipantCell.swift */; };
 		369658E8280DDE7E00D07858 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658E7280DDE7E00D07858 /* Entity.swift */; };
@@ -65,8 +69,12 @@
 		363135502822B6C10015E288 /* AssembleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleProtocol.swift; sourceTree = "<group>"; };
 		363135552822C1E40015E288 /* SMSCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodePresenter.swift; sourceTree = "<group>"; };
 		363135572823D1FE0015E288 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		363135592823E5E40015E288 /* SharePayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePayService.swift; sourceTree = "<group>"; };
+		363135592823E5E40015E288 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3631355D2823E9190015E288 /* Datastruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastruct.swift; sourceTree = "<group>"; };
+		3631356528247F650015E288 /* AuthProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProtocol.swift; sourceTree = "<group>"; };
+		3631356728247F970015E288 /* DebtsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsProtocol.swift; sourceTree = "<group>"; };
+		3631356928247FF80015E288 /* PurchasesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesProtocol.swift; sourceTree = "<group>"; };
+		3631356B2824800E0015E288 /* PaymentsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsProtocol.swift; sourceTree = "<group>"; };
 		365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		365C4E602800D68B00E7DC27 /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
@@ -226,8 +234,12 @@
 		3631355C2823E7F90015E288 /* SharePay */ = {
 			isa = PBXGroup;
 			children = (
-				363135592823E5E40015E288 /* SharePayService.swift */,
+				363135592823E5E40015E288 /* Service.swift */,
 				3631355D2823E9190015E288 /* Datastruct.swift */,
+				3631356528247F650015E288 /* AuthProtocol.swift */,
+				3631356728247F970015E288 /* DebtsProtocol.swift */,
+				3631356928247FF80015E288 /* PurchasesProtocol.swift */,
+				3631356B2824800E0015E288 /* PaymentsProtocol.swift */,
 			);
 			path = SharePay;
 			sourceTree = "<group>";
@@ -571,6 +583,7 @@
 			files = (
 				3631354C2822AFCC0015E288 /* ParticipantCell.swift in Sources */,
 				CE76C665280C8077008FE5B4 /* DebtsTableViewCell.swift in Sources */,
+				3631356C2824800E0015E288 /* PaymentsProtocol.swift in Sources */,
 				CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */,
 				CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */,
 				363135362822A7100015E288 /* AuthServiceProtocol.swift in Sources */,
@@ -580,12 +593,15 @@
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				369658E8280DDE7E00D07858 /* Entity.swift in Sources */,
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
+				3631356A28247FF80015E288 /* PurchasesProtocol.swift in Sources */,
 				369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
-				3631355A2823E5E40015E288 /* SharePayService.swift in Sources */,
+				3631355A2823E5E40015E288 /* Service.swift in Sources */,
+				3631356628247F650015E288 /* AuthProtocol.swift in Sources */,
 				3631354A2822AFCC0015E288 /* Entity.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
 				CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */,
+				3631356828247F970015E288 /* DebtsProtocol.swift in Sources */,
 				363135342822A4700015E288 /* NetworkAdaperProtocol.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
 				363135382822AB2C0015E288 /* UserServiceProtocol.swift in Sources */,

@@ -1,0 +1,11 @@
+name: SharePay
+options:
+  bundleIdPrefix: com.cringeTeam
+  deploymentTarget:
+    iOS: 15.0
+targets:
+  SharePay:
+    type: application
+    platform: iOS
+    sources:
+      - path: SharePay

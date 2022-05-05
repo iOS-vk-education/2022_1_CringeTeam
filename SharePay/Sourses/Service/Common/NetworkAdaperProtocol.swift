@@ -51,8 +51,7 @@ class NetworkAdapter: NetworkAdapterProtocol {
             }
 
             guard let urlResponse = response as? HTTPURLResponse else { return completionOnMain(.failure(ManagerErrors.invalidResponse)) }
-            // Временная реализация. На следующем этапе (200..<300)
-            if !(200..<304).contains(urlResponse.statusCode) {
+            if !(200..<300).contains(urlResponse.statusCode) {
                 return completionOnMain(.failure(ManagerErrors.invalidStatusCode(urlResponse.statusCode)))
             }
 

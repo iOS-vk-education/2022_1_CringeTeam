@@ -13,3 +13,10 @@ struct Token: Codable{
         self.token = token
     }
 }
+
+struct Status: Codable{
+    var success: Bool
+    init(success: Bool){
+        self.success = success
+    }
+}

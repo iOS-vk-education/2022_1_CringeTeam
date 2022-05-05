@@ -222,7 +222,7 @@ extension SMSCodeViewController: SMSCodeView{
     }
     
     func onSuccessResendCode() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Message", comment: ""), message:
         NSLocalizedString("SMSCodeViewController.Alert.SuccessResend", comment: ""), preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
         self.present(alertController, animated: true, completion: nil)

@@ -27,10 +27,14 @@ class SMSCodePresenter: SMSCodeViewPresenter{
     }
     
     func resendCode() {
-        router?.sharePayService.getSMSCode(phoneNumber: phoneNumber ?? "", completion: { [weak self] (result: Result<Data, Error>) -> Void in
+        router?.sharePayService.getSMSCode(phoneNumber: phoneNumber ?? "", completion: { [weak self] (result: Result<Status, Error>) -> Void in
             switch result {
-            case .success(_):
-                self?.view?.onSuccessResendCode()
+            case .success(let status):
+                if status.success{
+                    self?.view?.onSuccessResendCode()
+                } else {
+                    self?.view?.onFailResendCode()
+                }
             case .failure(_):
                 self?.view?.onFailResendCode()
             }
