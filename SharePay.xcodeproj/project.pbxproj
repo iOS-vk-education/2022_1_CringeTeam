@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3604363D27FB92BF0005E732 /* welcomeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3604363C27FB92BF0005E732 /* welcomeImage.png */; };
+		363135342822A4700015E288 /* NetworkAdaperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135332822A4700015E288 /* NetworkAdaperProtocol.swift */; };
+		363135362822A7100015E288 /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135352822A7100015E288 /* AuthServiceProtocol.swift */; };
+		363135382822AB2C0015E288 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135372822AB2C0015E288 /* UserServiceProtocol.swift */; };
+		3631353D2822AF4F0015E288 /* PhoneNumberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631353C2822AF4F0015E288 /* PhoneNumberPresenter.swift */; };
+		363135492822AFCC0015E288 /* PurchasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135412822AFCC0015E288 /* PurchasePresenter.swift */; };
+		3631354A2822AFCC0015E288 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135432822AFCC0015E288 /* Entity.swift */; };
+		3631354B2822AFCC0015E288 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135452822AFCC0015E288 /* PurchaseViewController.swift */; };
+		3631354C2822AFCC0015E288 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135472822AFCC0015E288 /* ParticipantCell.swift */; };
+		3631354D2822AFCC0015E288 /* ParticipantDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135482822AFCC0015E288 /* ParticipantDataSource.swift */; };
+		363135512822B6C10015E288 /* AssembleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135502822B6C10015E288 /* AssembleProtocol.swift */; };
+		363135562822C1E40015E288 /* SMSCodePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135552822C1E40015E288 /* SMSCodePresenter.swift */; };
+		363135582823D1FE0015E288 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135572823D1FE0015E288 /* Router.swift */; };
+		3631355A2823E5E40015E288 /* SharePayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135592823E5E40015E288 /* SharePayService.swift */; };
+		3631355E2823E9190015E288 /* Datastruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631355D2823E9190015E288 /* Datastruct.swift */; };
 		365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */; };
 		365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E602800D68B00E7DC27 /* ParticipantCell.swift */; };
 		369658E8280DDE7E00D07858 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658E7280DDE7E00D07858 /* Entity.swift */; };
@@ -39,12 +53,25 @@
 
 /* Begin PBXFileReference section */
 		3604363C27FB92BF0005E732 /* welcomeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeImage.png; sourceTree = "<group>"; };
+		363135332822A4700015E288 /* NetworkAdaperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdaperProtocol.swift; sourceTree = "<group>"; };
+		363135352822A7100015E288 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
+		363135372822AB2C0015E288 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		3631353C2822AF4F0015E288 /* PhoneNumberPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberPresenter.swift; sourceTree = "<group>"; };
+		363135412822AFCC0015E288 /* PurchasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
+		363135432822AFCC0015E288 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		363135452822AFCC0015E288 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		363135472822AFCC0015E288 /* ParticipantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
+		363135482822AFCC0015E288 /* ParticipantDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipantDataSource.swift; sourceTree = "<group>"; };
+		363135502822B6C10015E288 /* AssembleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleProtocol.swift; sourceTree = "<group>"; };
+		363135552822C1E40015E288 /* SMSCodePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodePresenter.swift; sourceTree = "<group>"; };
+		363135572823D1FE0015E288 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		363135592823E5E40015E288 /* SharePayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePayService.swift; sourceTree = "<group>"; };
+		3631355D2823E9190015E288 /* Datastruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datastruct.swift; sourceTree = "<group>"; };
 		365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		365C4E602800D68B00E7DC27 /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		369658EB280DE02E00D07858 /* PurchasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
 		3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
-		3B7024D2C79AB567ED5C56C6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -101,6 +128,110 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		363135322822A4500015E288 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3631355C2823E7F90015E288 /* SharePay */,
+				3631355B2823E7E00015E288 /* Common */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3631353A2822AEF40015E288 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3631353B2822AEFB0015E288 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3631353C2822AF4F0015E288 /* PhoneNumberPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3631353F2822AFCC0015E288 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				363135402822AFCC0015E288 /* Presenter */,
+				363135422822AFCC0015E288 /* Model */,
+				363135442822AFCC0015E288 /* View */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
+		363135402822AFCC0015E288 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				363135412822AFCC0015E288 /* PurchasePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		363135422822AFCC0015E288 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				363135432822AFCC0015E288 /* Entity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		363135442822AFCC0015E288 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				363135452822AFCC0015E288 /* PurchaseViewController.swift */,
+				363135462822AFCC0015E288 /* ParticipantCollection */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		363135462822AFCC0015E288 /* ParticipantCollection */ = {
+			isa = PBXGroup;
+			children = (
+				363135472822AFCC0015E288 /* ParticipantCell.swift */,
+				363135482822AFCC0015E288 /* ParticipantDataSource.swift */,
+			);
+			path = ParticipantCollection;
+			sourceTree = "<group>";
+		};
+		363135532822C1910015E288 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		363135542822C19A0015E288 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				363135552822C1E40015E288 /* SMSCodePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3631355B2823E7E00015E288 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				363135332822A4700015E288 /* NetworkAdaperProtocol.swift */,
+				363135352822A7100015E288 /* AuthServiceProtocol.swift */,
+				363135372822AB2C0015E288 /* UserServiceProtocol.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		3631355C2823E7F90015E288 /* SharePay */ = {
+			isa = PBXGroup;
+			children = (
+				363135592823E5E40015E288 /* SharePayService.swift */,
+				3631355D2823E9190015E288 /* Datastruct.swift */,
+			);
+			path = SharePay;
+			sourceTree = "<group>";
+		};
 		365C4E5C2800C1B500E7DC27 /* Purchase */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,14 +275,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		3B70211D17E7304804332FB1 /* Purchase */ = {
-			isa = PBXGroup;
-			children = (
-				3B7024D2C79AB567ED5C56C6 /* PurchaseViewController.swift */,
-			);
-			path = Purchase;
-			sourceTree = "<group>";
-		};
 		3B702229368921CAEFDCCD0F /* SMSAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +296,8 @@
 		3B70236DB099FDFC4AFE6C94 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				3B7026E4F62D63FA42D1A9F3 /* SMSCodeViewController.swift */,
+				363135542822C19A0015E288 /* Presenter */,
+				363135532822C1910015E288 /* View */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -181,13 +305,14 @@
 		3B702A8E216487654C918FE6 /* Sourses */ = {
 			isa = PBXGroup;
 			children = (
+				3631353F2822AFCC0015E288 /* Purchase */,
+				363135322822A4500015E288 /* Service */,
 				CE76C65B280C7F62008FE5B4 /* Debts */,
 				CE76C65A280C7F5A008FE5B4 /* TabBar */,
 				CE76C659280C7F52008FE5B4 /* Purchases */,
 				365C4E5C2800C1B500E7DC27 /* Purchase */,
 				3B7022C999E4663EFC156A9E /* OnBoarding */,
 				3B702229368921CAEFDCCD0F /* SMSAuth */,
-				3B70211D17E7304804332FB1 /* Purchase */,
 			);
 			path = Sourses;
 			sourceTree = "<group>";
@@ -195,7 +320,8 @@
 		3B702C28A30C8DA4A187E8D7 /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
-				3B7021F6A919826DDDE5D511 /* PhoneNumberViewController.swift */,
+				3631353B2822AEFB0015E288 /* Presenter */,
+				3631353A2822AEF40015E288 /* View */,
 			);
 			path = PhoneNumber;
 			sourceTree = "<group>";
@@ -239,6 +365,8 @@
 				6D50F40327F0FB7C00627394 /* Info.plist */,
 				6D9466F827F8944F00593679 /* Localizable.strings */,
 				3B702A8E216487654C918FE6 /* Sourses */,
+				363135502822B6C10015E288 /* AssembleProtocol.swift */,
+				363135572823D1FE0015E288 /* Router.swift */,
 			);
 			path = SharePay;
 			sourceTree = "<group>";
@@ -441,20 +569,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3631354C2822AFCC0015E288 /* ParticipantCell.swift in Sources */,
 				CE76C665280C8077008FE5B4 /* DebtsTableViewCell.swift in Sources */,
 				CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */,
 				CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */,
+				363135362822A7100015E288 /* AuthServiceProtocol.swift in Sources */,
+				3631353D2822AF4F0015E288 /* PhoneNumberPresenter.swift in Sources */,
+				3631354D2822AFCC0015E288 /* ParticipantDataSource.swift in Sources */,
+				363135512822B6C10015E288 /* AssembleProtocol.swift in Sources */,
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				369658E8280DDE7E00D07858 /* Entity.swift in Sources */,
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
 				369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
+				3631355A2823E5E40015E288 /* SharePayService.swift in Sources */,
+				3631354A2822AFCC0015E288 /* Entity.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
 				CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */,
+				363135342822A4700015E288 /* NetworkAdaperProtocol.swift in Sources */,
 				6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */,
+				363135382822AB2C0015E288 /* UserServiceProtocol.swift in Sources */,
+				363135562822C1E40015E288 /* SMSCodePresenter.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
+				3631354B2822AFCC0015E288 /* PurchaseViewController.swift in Sources */,
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
+				363135582823D1FE0015E288 /* Router.swift in Sources */,
+				3631355E2823E9190015E288 /* Datastruct.swift in Sources */,
+				363135492822AFCC0015E288 /* PurchasePresenter.swift in Sources */,
 				3B7020E09AC63DD332C80705 /* SMSCodeViewController.swift in Sources */,
 				3B7026CF993A9BE2FACC27A5 /* PhoneNumberViewController.swift in Sources */,
 			);

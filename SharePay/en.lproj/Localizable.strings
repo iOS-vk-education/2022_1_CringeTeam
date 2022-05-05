@@ -10,6 +10,7 @@
 // eg "SMSViewController.Button.Continue" = "Continue";
 
 "Common.Error" = "Error";
+"Common.Message" = "Message";
 "Common.Ok" = "Ok";
 
 "SMSCodeViewController.Label.Title" = "Enter the confirmation code";
@@ -18,11 +19,15 @@
 "SMSCodeViewController.Label.notSentCode" = "Didn't get the code?";
 "SMSCodeViewController.Label.resendCode" = "Resend the code";
 "SMSCodeViewController.Button.Continue" = "Continue";
+"SMSCodeViewController.Alert.ServerFail" = "Server error";
+"SMSCodeViewController.Alert.IncorrectCode" = "Incorrect code";
+"SMSCodeViewController.Alert.SuccessResend" = "SMS code was success resent";
 
 "PhoneNumberViewController.Label.Title" = "Enter your phone number";
 "PhoneNumberViewController.Label.Subtitle" =  "To log in or become a SharePay client";
 "PhoneNumberViewController.Button.Continue" =  "Continue";
-
+"PhoneNumberViewController.Alert.InvalidNumber" = "Incorrect phone number";
+"PhoneNumberViewController.Alert.ServerFail" = "Server error";
 
 "PurchaseViewController.Label.NamePurchase" = "Purchase name";
 "PurchaseViewController.Label.TotalPurchase" = "Purchase amount";

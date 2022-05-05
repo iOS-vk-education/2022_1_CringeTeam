@@ -7,6 +7,7 @@ target 'SharePay' do
   pod 'EmojiPicker', '1.1'
   pod 'KAPinField', '5.0.2'
   pod 'PhoneNumberKit'
+  pod 'KeychainSwift', '~> 20.0'
 
   # Pods for SharePay
 

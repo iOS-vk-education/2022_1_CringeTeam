@@ -9,7 +9,15 @@ import Foundation
 import UIKit
 import PhoneNumberKit
 
+protocol PhoneNumberView: AnyObject{
+    func onSuccess() -> Void
+    func onInvalidNumber() -> Void
+    func onServerFail() -> Void
+}
+
 final class PhoneNumberViewController: UIViewController{
+    
+    var presenter: PhoneNumberViewPresenter! // Ссылка на presenter
 
     let blueColor : UIColor? = UIColor(named: "BlueAccentColor")
     let labelColor: UIColor? =   UIColor(named: "Label")
@@ -67,6 +75,14 @@ final class PhoneNumberViewController: UIViewController{
         view.backgroundColor = fillColor
         setView()
         setLayout()
+        navigationItem.hidesBackButton = true;
+        continueButton.addTarget(self, action: #selector(PhoneNumberViewController.didTapContinueButton), for: .touchUpInside)
+        
+    }
+    
+    @objc func didTapContinueButton(){
+        continueButton.isEnabled =  false
+        presenter.tapContinue(phoneNumber: phoneTextField.text ?? "")
     }
 
     override func viewDidLayoutSubviews() {
@@ -126,4 +142,29 @@ final class PhoneNumberViewController: UIViewController{
         welcomeImageView.contentMode = UIView.ContentMode.scaleAspectFit
     }
 
+}
+
+extension PhoneNumberViewController: PhoneNumberView{
+    func onInvalidNumber() {
+        continueButton.isEnabled =  true
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("PhoneNumberViewController.Alert.InvalidNumber", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+        return
+    }
+    
+    func onServerFail() {
+        continueButton.isEnabled =  true
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("PhoneNumberViewController.Alert.ServerFail", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+        return
+    }
+    
+    
+    func onSuccess() {
+        continueButton.isEnabled =  true
+    }
 }
