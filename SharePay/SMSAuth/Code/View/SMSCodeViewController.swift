@@ -199,7 +199,6 @@ final class SMSCodeViewController: UIViewController {
 
         pinField.appearance.textColor = magentaColor
         pinField.appearance.tokenColor = labelColor
-        pinField.properties.delegate = self
 
         subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
     }
