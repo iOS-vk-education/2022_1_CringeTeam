@@ -110,6 +110,8 @@ final class SMSCodeViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(SMSCodeViewController.didTapResendCode))
         resendCodeLabel.isUserInteractionEnabled = true
         resendCodeLabel.addGestureRecognizer(tap)
+        
+        pinField.properties.delegate = self
     }
     
     @objc func didTapContinueButton(){
@@ -202,8 +204,12 @@ final class SMSCodeViewController: UIViewController {
 
         subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
     }
+}
 
-
+extension SMSCodeViewController: KAPinFieldDelegate{
+    func pinField(_ field: KAPinField, didFinishWith code: String) {
+        
+    }
 }
 
 extension SMSCodeViewController: SMSCodeView{
