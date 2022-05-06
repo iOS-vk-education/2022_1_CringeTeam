@@ -20,16 +20,22 @@ enum HttpMethod: String {
 }
 
 protocol NetworkAdapterProtocol: AnyObject{
-    func request<T: Decodable>(fromURL url: URL,
-                               httpMethod: HttpMethod,
-                               httpBody: Data?,
+    func request<T: Decodable>(fromURL url: URL, httpMethod: HttpMethod,
+                               httpBody: Data?, withToken: Bool,
                                completion: @escaping (Result<T, Error>) -> Void)
+    func setToken(authToken: String)
 }
 
 class NetworkAdapter: NetworkAdapterProtocol {
+    
+    var authToken: String = ""
+    
+    func setToken(authToken: String){
+        self.authToken = authToken
+    }
 
     func request<T: Decodable>(fromURL url: URL, httpMethod: HttpMethod = .get,
-                               httpBody: Data? = nil,
+                               httpBody: Data? = nil, withToken: Bool,
                                completion: @escaping (Result<T, Error>) -> Void) {
 
        
@@ -42,7 +48,14 @@ class NetworkAdapter: NetworkAdapterProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.method
         request.httpBody = httpBody
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        if httpBody != nil{
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        }
+
+        if withToken{
+            request.setValue("Bearer \(self.authToken)", forHTTPHeaderField: "Authorization")
+        }
+        
 
         let urlSession = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {

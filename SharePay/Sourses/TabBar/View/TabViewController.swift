@@ -6,7 +6,13 @@
 //
 import UIKit
 
+protocol TabView: AnyObject{
+    
+}
+
 class TabViewController: UITabBarController {
+    
+    var presenter: TabViewPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,17 +74,10 @@ class TabViewController: UITabBarController {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
-        //presentPurchase()
-        presentDebt() // FOR TEST ONLY
+        presenter.newPurchase()
+        //presentDebt() // FOR TEST ONLY
     }
-    
-    // TODO use AssembleProtocol
-    func presentPurchase() {
-        let view = PurchaseViewController()
-        let presenter = PurchasePresenter(view: view)
-        view.presenter = presenter
-        self.present(view, animated: true, completion: nil)
-    }
+
     
     // FOR TEST ONLY
     // TODO use AssembleProtocol
@@ -89,4 +88,8 @@ class TabViewController: UITabBarController {
         view.presenter = presenter
         self.present(view, animated: true, completion: nil)
     }
+}
+
+extension TabViewController: TabView{
+    
 }

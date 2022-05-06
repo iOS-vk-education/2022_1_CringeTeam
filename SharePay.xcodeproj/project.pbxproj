@@ -23,6 +23,7 @@
 		3631359128255C170015E288 /* PhoneNumberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631358C28255C170015E288 /* PhoneNumberPresenter.swift */; };
 		3631359228255C170015E288 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631358E28255C170015E288 /* PhoneNumberViewController.swift */; };
 		3631359428255C9B0015E288 /* AssembleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3631359328255C9B0015E288 /* AssembleProtocol.swift */; };
+		363135982825C4520015E288 /* TabViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363135972825C4520015E288 /* TabViewPresenter.swift */; };
 		3646772E2811D61100DA62D0 /* DebtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646772D2811D61100DA62D0 /* DebtViewController.swift */; };
 		364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364677302811D88900DA62D0 /* PaymentBadge.swift */; };
 		36467734281353FA00DA62D0 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36467733281353FA00DA62D0 /* EventCell.swift */; };
@@ -75,6 +76,7 @@
 		3631358C28255C170015E288 /* PhoneNumberPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberPresenter.swift; sourceTree = "<group>"; };
 		3631358E28255C170015E288 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		3631359328255C9B0015E288 /* AssembleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssembleProtocol.swift; sourceTree = "<group>"; };
+		363135972825C4520015E288 /* TabViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewPresenter.swift; sourceTree = "<group>"; };
 		3646772D2811D61100DA62D0 /* DebtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtViewController.swift; sourceTree = "<group>"; };
 		364677302811D88900DA62D0 /* PaymentBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentBadge.swift; sourceTree = "<group>"; };
 		36467733281353FA00DA62D0 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -84,7 +86,6 @@
 		365C4E602800D68B00E7DC27 /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		369658EB280DE02E00D07858 /* PurchasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
-		3B7024D2C79AB567ED5C56C6 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -234,6 +235,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		363135952825C4240015E288 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C660280C800B008FE5B4 /* TabViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		363135962825C4300015E288 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				363135972825C4520015E288 /* TabViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		364677292811D5CA00DA62D0 /* Debt */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,14 +346,6 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		3B70211D17E7304804332FB1 /* Purchase */ = {
-			isa = PBXGroup;
-			children = (
-				3B7024D2C79AB567ED5C56C6 /* PurchaseViewController.swift */,
-			);
-			path = Purchase;
-			sourceTree = "<group>";
-		};
 		3B7022C999E4663EFC156A9E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +367,6 @@
 				CE76C659280C7F52008FE5B4 /* Purchases */,
 				365C4E5C2800C1B500E7DC27 /* Purchase */,
 				3B7022C999E4663EFC156A9E /* OnBoarding */,
-				3B70211D17E7304804332FB1 /* Purchase */,
 			);
 			path = Sourses;
 			sourceTree = "<group>";
@@ -451,7 +459,8 @@
 		CE76C65A280C7F5A008FE5B4 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				CE76C660280C800B008FE5B4 /* TabViewController.swift */,
+				363135962825C4300015E288 /* Presenter */,
+				363135952825C4240015E288 /* View */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -658,6 +667,7 @@
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
 				3631357C28255B5E0015E288 /* PaymentsProtocol.swift in Sources */,
+				363135982825C4520015E288 /* TabViewPresenter.swift in Sources */,
 				3631357928255B5E0015E288 /* AuthServiceProtocol.swift in Sources */,
 				CE76C675281EA213008FE5B4 /* SettingsViewController.swift in Sources */,
 			);

@@ -13,9 +13,15 @@ enum ServiceError: Error {
     case serverError
 }
 
-protocol SharePayServiceProtocol: SharePayAuthProtocol{}
+protocol SharePayServiceProtocol: SharePayAuthProtocol, SharePayPurchasesProtocol{
+    func setToken(token: String)
+}
 
 class SharePayService: SharePayServiceProtocol{
     let networkAdapter: NetworkAdapterProtocol = NetworkAdapter()
     let api = "https://sharepay.duckdns.org"
+    
+    func setToken(token: String) {
+        networkAdapter.setToken(authToken: token)
+    }
 }

@@ -9,9 +9,12 @@ import ContactsUI
 
 
 protocol PurchaseView: AnyObject {
-    func onAddPurchaseParticipant(name: String, phoneNumber: String)
-    func onDeletePurchaseParticipant()
     func onUnableAddPurchaseParticipant()
+    func onUpdatePurchaseParticipants()
+    func onFailSavePurchase()
+    func onFailGetPurchase()
+    func onUpdatePurchase(purchase: Purchase)
+
 }
 
 
@@ -146,6 +149,8 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         return applyBillLabel
     }()
     
+    // TODO add label "нельзя редактировать счет так как по нему счет уже выставлены"
+    
     let billSwitch: UISwitch = UISwitch()
     
     override func viewDidLoad() {
@@ -165,6 +170,9 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         
         // Добавление нового участника
         addParticipantButton.addTarget(self, action:#selector(PurchaseViewController.addParticipant),  for: .touchUpInside)
+        
+        // Сообщем презентеру что мы готовы
+        presenter.ready()
     }
     
     @objc func selectEmoji(sender:UITapGestureRecognizer) {
@@ -427,13 +435,56 @@ extension PurchaseViewController: PurchaseView{
         }
     }
     
+    func onFailSavePurchase(){
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.UnableToSavePurchase", comment: ""), preferredStyle: .alert) // TODO
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
     
-    func onAddPurchaseParticipant(name: String, phoneNumber: String) {
+    func onUpdatePurchaseParticipants() {
         self.participantCollectionView?.reloadData()
     }
     
-    func onDeletePurchaseParticipant() {
-        self.participantCollectionView?.reloadData()
+    func onUpdatePurchase(purchase: Purchase) {
+        DispatchQueue.main.async{ [weak self] in
+            self?.nameTextField.text = purchase.name
+            self?.emojiSelectLabel.text = purchase.emoji
+            self?.totalTextField.text =  String(purchase.amount)
+            // TODO datePicker set value
+            if purchase.draft {
+                // В режиме черновика доступна возможность редактирования
+                self?.nameTextField.isEnabled =  true
+                self?.emojiSelectLabel.isEnabled = true
+                self?.totalTextField.isEnabled = true
+                self?.saveButton.isEnabled = true
+                self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
+                self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
+               // TODO billSwitch
+                return
+            }
+            
+            // Когда счет выставлены необходимо отключить возможности редактирования
+            self?.nameTextField.isEnabled =  false
+            self?.emojiSelectLabel.isEnabled = false
+            self?.totalTextField.isEnabled = false
+            self?.saveButton.isEnabled = false
+            self?.saveButton.setTitle("OK", for: .normal) // TODO
+            self?.infoTextLabel.text = "Покупку нельзя редактировать так как по ней уже выставлены счета" // TODO
+            
+        }
     }
+    
+    func onFailGetPurchase(){
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.UnableToSavePurchase", comment: ""), preferredStyle: .alert) // TODO
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
 }
 

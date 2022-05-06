@@ -45,6 +45,8 @@ class SMSCodePresenter: SMSCodeViewPresenter{
         router?.sharePayService.login(phoneNumber: phoneNumber ?? "", smsCode: code, completion: { [weak self] (result: Result<Token, Error>) -> Void in
             switch result {
             case .success(let token):
+                // Auth process
+                self?.router?.sharePayService.setToken(token: token.token)
                 self?.router?.authService.setToken(token: token.token)
                 self?.view?.onSuccess()
             case .failure(_):

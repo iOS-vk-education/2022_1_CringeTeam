@@ -20,6 +20,7 @@ protocol RouterEssential: AnyObject{
 protocol RouterProtocol: RouterEssential{
     func initialViewController()
     func showSMSView(phoneNumber: String)
+    func showPurchaseView(purchase_id: Int64)
     func popToRoot()
 }
 
@@ -50,7 +51,11 @@ class Router: RouterProtocol{
             if !authService.isAuth(){
                 guard let phoneNumberViewController = assembleBuilder?.createPhoneNumberModule(router: self)else{ return}
                 navigationController.pushViewController(phoneNumberViewController, animated: true)
+                return
             }
+            
+            // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
+            sharePayService.setToken(token: authService.getToken())
         }
     }
     
@@ -58,6 +63,13 @@ class Router: RouterProtocol{
         if let navigationController = navigationController {
             guard let smsViewControler = assembleBuilder?.createSMSCodeNumberModule(router: self, phoneNumber: phoneNumber) else { return}
             navigationController.pushViewController(smsViewControler, animated: true)
+        }
+    }
+    
+    func showPurchaseView(purchase_id: Int64 = 0){
+        if let navigationController = navigationController {
+            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
+            navigationController.present(purchaseViewControler, animated: true, completion: nil)
         }
     }
     
