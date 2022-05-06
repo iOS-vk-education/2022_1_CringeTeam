@@ -12,6 +12,7 @@
 "Common.Error" = "Ошибка";
 "Common.Ok" = "Ок";
 "Common.Cancel" = "Отмена";
+"Common.Message" = "Сообщение";
 
 "SMSCodeViewController.Label.Title" = "Введите код подтверждения";
 "SMSCodeViewController.Label.Subtitle" =  "Код был отправлен \n на номер %@ по SMS";
@@ -19,10 +20,15 @@
 "SMSCodeViewController.Label.notSentCode" = "Не получили код?";
 "SMSCodeViewController.Label.resendCode" = "Повторно отправить SMS";
 "SMSCodeViewController.Button.Continue" = "Продолжить";
+"SMSCodeViewController.Alert.ServerFail" = "Ошибка сервера";
+"SMSCodeViewController.Alert.IncorrectCode" = "Некорректный код";
+"SMSCodeViewController.Alert.SuccessResend" = "СМС код был успешно отправлен";
 
 "PhoneNumberViewController.Label.Title" = "Введите номер телефона";
 "PhoneNumberViewController.Label.Subtitle" =  "Чтобы войти или стать клиентом SharePay";
 "PhoneNumberViewController.Button.Continue" =  "Продолжить";
+"PhoneNumberViewController.Alert.InvalidNumber" = "Некорректный формат номера телефона";
+"PhoneNumberViewController.Alert.ServerFail" = "Ошибка на стороне сервера";
 
 "PurchaseViewController.Label.NamePurchase" = "Название покупки";
 "PurchaseViewController.Label.TotalPurchase" = "Сумма покупки";
