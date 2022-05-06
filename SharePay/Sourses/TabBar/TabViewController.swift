@@ -72,7 +72,7 @@ class TabViewController: UITabBarController {
         presentDebt() // FOR TEST ONLY
     }
     
-    // MVP Assemble and present purchase
+    // TODO use AssembleProtocol
     func presentPurchase() {
         let view = PurchaseViewController()
         let presenter = PurchasePresenter(view: view)
@@ -80,8 +80,8 @@ class TabViewController: UITabBarController {
         self.present(view, animated: true, completion: nil)
     }
     
-    // MVP Assemble and present debt
-    // ATTENTION FOR TEST ONLY
+    // FOR TEST ONLY
+    // TODO use AssembleProtocol
     func presentDebt(){
         let view = DebtViewController()
         let presenter = DebtPresenter(view: view, ownerPhoneNumer: "89053221212",

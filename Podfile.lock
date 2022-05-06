@@ -1,6 +1,7 @@
 PODS:
   - EmojiPicker (1.1)
   - KAPinField (5.0.2)
+  - KeychainSwift (20.0.0)
   - PhoneNumberKit (3.3.4):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.4)
     - PhoneNumberKit/UIKit (= 3.3.4)
@@ -11,19 +12,22 @@ PODS:
 DEPENDENCIES:
   - EmojiPicker (= 1.1)
   - KAPinField (= 5.0.2)
+  - KeychainSwift (~> 20.0)
   - PhoneNumberKit
 
 SPEC REPOS:
   trunk:
     - EmojiPicker
     - KAPinField
+    - KeychainSwift
     - PhoneNumberKit
 
 SPEC CHECKSUMS:
   EmojiPicker: 7d9cb698a2983501c0fa800e759dd7744638a0b9
   KAPinField: b7c0a68a3887f3a1c42446bfc4cbf76d5abf0f4f
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
 
-PODFILE CHECKSUM: 3a260d776283362dc4f38b8a255ddca7c6fc6ca6
+PODFILE CHECKSUM: e0919875a84bda917f63416d828f303f1b12cea6
 
 COCOAPODS: 1.11.3

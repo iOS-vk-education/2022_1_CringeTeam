@@ -8,10 +8,19 @@
 import Foundation
 import UIKit
 import KAPinField
+import CoreTelephony
 
+
+protocol SMSCodeView: AnyObject{
+    func onFailResendCode() -> Void
+    func onSuccessResendCode() -> Void
+    func onIncorrectCode() -> Void
+    func onSuccess() -> Void
+}
 
 final class SMSCodeViewController: UIViewController {
-
+    
+    var presenter: SMSCodeViewPresenter! // ссылка на презентер
 
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
     let labelColor: UIColor? = UIColor(named: "Label")
@@ -93,6 +102,24 @@ final class SMSCodeViewController: UIViewController {
         setLayout()
         view.backgroundColor = backgroundFillColor
         pinField.becomeFirstResponder()
+        
+        self.navigationItem.backButtonDisplayMode = .default
+        
+        continueButton.addTarget(self, action: #selector(SMSCodeViewController.didTapContinueButton), for: .touchUpInside)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SMSCodeViewController.didTapResendCode))
+        resendCodeLabel.isUserInteractionEnabled = true
+        resendCodeLabel.addGestureRecognizer(tap)
+        
+        pinField.properties.delegate = self
+    }
+    
+    @objc func didTapContinueButton(){
+        presenter.checkCode(code: pinField.text ?? "")
+    }
+    
+    @objc func didTapResendCode(){
+        presenter.resendCode()
     }
 
     override func viewDidLayoutSubviews() {
@@ -174,18 +201,47 @@ final class SMSCodeViewController: UIViewController {
 
         pinField.appearance.textColor = magentaColor
         pinField.appearance.tokenColor = labelColor
-        pinField.properties.delegate = self
 
         subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
     }
-
-
 }
 
-extension SMSCodeViewController: KAPinFieldDelegate {
+extension SMSCodeViewController: KAPinFieldDelegate{
     func pinField(_ field: KAPinField, didFinishWith code: String) {
-        pinField.animateSuccess(with: "👍") // onSuccess
-        // TODO action when finish input SMS code
-        errorCodeLabel.isHidden = false // onFailure
+        
+    }
+}
+
+extension SMSCodeViewController: SMSCodeView{
+    
+    func onFailResendCode() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("SMSCodeViewController.Alert.ServerFail", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onSuccessResendCode() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Message", comment: ""), message:
+        NSLocalizedString("SMSCodeViewController.Alert.SuccessResend", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onIncorrectCode() {
+        errorCodeLabel.isHidden = false
+        pinField.animateFailure(nil)
+        
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("SMSCodeViewController.Alert.IncorrectCode", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onSuccess() {
+        errorCodeLabel.isHidden = true
+        pinField.animateSuccess(with: "👍"){ [weak self] () -> Void in
+            self?.presenter.finishAuth()
+        }
     }
 }
