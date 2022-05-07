@@ -75,18 +75,6 @@ class TabViewController: UITabBarController {
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
         presenter.newPurchase()
-        //presentDebt() // FOR TEST ONLY
-    }
-
-    
-    // FOR TEST ONLY
-    // TODO use AssembleProtocol
-    func presentDebt(){
-        let view = DebtViewController()
-        let presenter = DebtPresenter(view: view, ownerPhoneNumer: "89053221212",
-                                      ownerName: "Алиса")
-        view.presenter = presenter
-        self.present(view, animated: true, completion: nil)
     }
 }
 

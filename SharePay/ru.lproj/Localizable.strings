@@ -65,6 +65,7 @@
 "DebtViewController.Label.Events" =  "События";
 "DebtViewController.Alert.Payment" =  "Оплата";
 "DebtViewController.Alert.PayAcception" =  "Вы уверены, что хотите совершить перевод денежных средств?";
+"DebtViewController.Alert.UnableToLoadDebt" = "Не удалось загрузить данные долга";
 
 "PaymentBadge.Label.Pay" = "Оплатить";
 "PaymentBadge.Label.Remind"= "Напомнить";

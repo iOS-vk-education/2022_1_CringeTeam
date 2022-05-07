@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 protocol DebtView: AnyObject{
-    func onCalculateTotalAmount(amount: Int, currency: String)
     func onLoadEvents()
+    func onLoadDebt()
+    func onFailLoadDebt()
 }
 
 final class DebtViewController: UIViewController{
@@ -141,11 +142,22 @@ extension DebtViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension DebtViewController: DebtView{
     
-    func onCalculateTotalAmount(amount: Int, currency: String){
-        paymentView.setAmount(amount: amount, currrency: currency)
-    }
-    
     func onLoadEvents() {
         self.eventsCollectionView?.reloadData()
+    }
+    
+    func onLoadDebt() {
+        let debt = presenter.getDebt()
+        paymentView.setAmount(amount: Int(debt.amount), currrency: debt.currency)
+        title = debt.name
+    }
+    
+    func onFailLoadDebt() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("DebtViewController.Alert.UnableToLoadDebt", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default, handler: { action in
+            self.presenter.dismiss()
+        }))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

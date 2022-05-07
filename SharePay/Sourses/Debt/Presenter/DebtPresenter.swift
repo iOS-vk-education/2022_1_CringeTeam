@@ -9,31 +9,68 @@ import Foundation
 
 protocol DebtViewPresenter: AnyObject{
     func listEvents() -> [Event]
-    func debtorName() -> String
+    func getDebt() -> Debt
     func loadData()
     func notifyDebtor()
     func pay(amount: Int)
+    func dismiss()
 }
 
 class DebtPresenter: DebtViewPresenter{
     
+    var router: RouterProtocol
     weak var view: DebtView?
     var events: [Event] = []
-    var totalAmount: Int = 0
-    var phoneNumber: String
-    var name: String
+    var debt: Debt
     
     let defaultCurrency = "₽" // На первом этапе только рублевая валюта
     
-    required init(view: DebtView, ownerPhoneNumer: String, ownerName: String) {
-        self.phoneNumber = ownerPhoneNumer
-        self.name = ownerName
+    required init(view: DebtView, router: RouterProtocol, debtID: Int64) {
+        self.router = router
+        self.debt = Debt(debtID: debtID)
         self.view = view
     }
     
     func loadData(){
-        setEvents()
-        view?.onCalculateTotalAmount(amount: totalAmount, currency: defaultCurrency)
+        router.sharePayDebtService.getDebt(debtID: debt.debtID, completion: { [weak self]
+            (result: Result<DebtCodable, Error>) -> Void in
+            switch result {
+            case .success(let newDebt):
+                self?.debt.amount = newDebt.amount
+     
+                let userPhoneNumber = self?.router.authService.getPhone()
+                var phoneNumber = newDebt.debtor_phone
+                if newDebt.creditor_phone == userPhoneNumber{
+                    phoneNumber = newDebt.creditor_phone
+                }
+                
+                self?.debt.phoneNumber = phoneNumber
+                self?.debt.name =  self?.router.contactService.getNameByPhone(phoneNumber: phoneNumber, defaultName: phoneNumber) ?? ""
+                self?.debt.currency = self?.defaultCurrency ?? ""
+                
+                for e in newDebt.events{
+                    self?.events.append(Event(name: e.description ?? "", emoji: e.emoji ?? "", date: e.date ?? "", amount: e.amount))
+                }
+                
+                DispatchQueue.main.async {
+                    self?.view?.onLoadDebt()
+                    self?.view?.onLoadEvents()
+                }
+                
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.view?.onFailLoadDebt()
+                }
+            }
+        })
+    }
+    
+    func getNotUserPhoneNumber(){
+        
+    }
+    
+    func dismiss() {
+        router.dismissView()
     }
      
     // Моковые значения для тестирования
@@ -51,18 +88,19 @@ class DebtPresenter: DebtViewPresenter{
     }
     
     func calculateTotal(){
-        totalAmount = 0
+        var totalAmount: Int64 = 0
         for event in events{
             totalAmount+=event.amount
         }
+        debt.amount = totalAmount
     }
     
     func listEvents() -> [Event]{
         return events
     }
     
-    func debtorName() -> String{
-        return name
+    func getDebt() -> Debt{
+        return debt
     }
     
     func notifyDebtor() {

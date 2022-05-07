@@ -64,6 +64,7 @@
 "DebtViewController.Label.Events" =  "Events";
 "DebtViewController.Alert.Payment" =  "Payment";
 "DebtViewController.Alert.PayAcception" =  "Are you sure you want to make a money transfer?";
+"DebtViewController.Alert.UnableToLoadDebt" = "Failed to load debt data";
 
 "PaymentBadge.Label.Pay" = "Pay";
 "PaymentBadge.Label.Remind"= "Remind";

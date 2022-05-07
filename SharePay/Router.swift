@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-
 protocol RouterEssential: AnyObject{
     var navigationController: UINavigationController? {get set}
     var assembleBuilder: AssembleProtocol? {get set}
     var sharePayAuthService: SharePayAuthProtocol{get set}
     var sharePayPurchaseService: SharePayPurchaseProtocol{get set}
+    var sharePayDebtService: SharePayDebtProtocol{get set}
     var authService: AuthServiceProtocol {get set}
     var userService: UserServiceProtocol {get set}
     var contactService: ContactServiceProtocol {get set}
@@ -23,6 +23,7 @@ protocol RouterProtocol: RouterEssential{
     func initialViewController()
     func showSMSView(phoneNumber: String)
     func showPurchaseView(purchase_id: Int64)
+    func showDebtView(debtId: Int64)
     func popToRoot()
     func dismissView()
     func setToken(token: String)
@@ -31,6 +32,7 @@ protocol RouterProtocol: RouterEssential{
 
 class Router: RouterProtocol{
     
+    var sharePayDebtService: SharePayDebtProtocol
     var sharePayAuthService: SharePayAuthProtocol
     var sharePayPurchaseService: SharePayPurchaseProtocol
     var authService: AuthServiceProtocol
@@ -47,8 +49,8 @@ class Router: RouterProtocol{
         self.sharePayAuthService = SharePayAuthService()
         self.sharePayPurchaseService = SharePayPurchaseService()
         self.contactService = ContactService()
+        self.sharePayDebtService = SharePayDebtService()
     }
-    
     
     func initialViewController() {
         if let navigationController = navigationController {
@@ -79,6 +81,13 @@ class Router: RouterProtocol{
         }
     }
     
+    func showDebtView(debtId: Int64 = 0){
+        if let navigationController = navigationController {
+            guard let debtViewControler = assembleBuilder?.createDebtViewController(router: self, debtID: debtId) else { return}
+            navigationController.present(debtViewControler, animated: true, completion: nil)
+        }
+    }
+    
     func popToRoot() {
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
@@ -93,6 +102,7 @@ class Router: RouterProtocol{
     
     func setToken(token: String){
         // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
-        sharePayPurchaseService.setToken(token: authService.getToken())
+        sharePayPurchaseService.setToken(token: token)
+        sharePayDebtService.setToken(token: token)
     }
 }

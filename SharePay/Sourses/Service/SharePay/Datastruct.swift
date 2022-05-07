@@ -69,3 +69,19 @@ struct CreatePurchaseResponse: Codable{
 struct PurchaseWrapService: Codable{
     var purchase: PurchaseService
 }
+
+struct DebtCodable: Codable{
+    var id: Int64
+    var amount: Int64
+    var creditor_phone: String
+    var debtor_phone: String
+    var events: [EventCodable]
+}
+
+struct EventCodable: Codable{
+    var amount: Int64
+    var date: String?
+    var description: String?
+    var emoji: String?
+    var type: String
+}

@@ -52,6 +52,7 @@ class SMSCodePresenter: SMSCodeViewPresenter{
                 // Auth process
                 self?.router?.setToken(token: token.token)
                 self?.router?.authService.setToken(token: token.token)
+                self?.router?.authService.setPhone(phone: self?.phoneNumber ?? "")
                 DispatchQueue.main.async {
                     self?.view?.onSuccess()
                 }
