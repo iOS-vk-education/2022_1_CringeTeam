@@ -13,7 +13,10 @@ protocol SharePayAuthProtocol: AnyObject{
 }
 
 
-extension SharePayService: SharePayAuthProtocol{
+class SharePayAuthService: SharePayAuthProtocol{
+    
+    let networkAdapter: NetworkAdapterProtocol = NetworkAdapter()
+    let api = "https://sharepay.duckdns.org"
     
     // Получение СМС кода после ввода номера телефона
     func getSMSCode(phoneNumber: String, completion: @escaping (Result<Status,Error>) -> Void) {

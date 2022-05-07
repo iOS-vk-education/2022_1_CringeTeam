@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum ServiceError: Error {
+    case invalidURL
+    case serverError
+}
+
+// Codable структуры для взаимодействия с бэкендом приложения
+
 struct Token: Codable{
     var token: String
     

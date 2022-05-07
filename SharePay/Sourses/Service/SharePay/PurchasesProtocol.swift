@@ -8,12 +8,21 @@
 import Foundation
 
 
-protocol SharePayPurchasesProtocol: AnyObject{
+protocol SharePayPurchaseProtocol: AnyObject{
     func createPurchase(purchase: PurchaseService, completion: @escaping (Result<CreatePurchaseResponse,Error>) -> Void)
     func getPurchase(purchase_id: Int64, completion: @escaping (Result<PurchaseWrapService,Error>) -> Void)
+    func setToken(token: String)
 }
 
-extension SharePayService: SharePayPurchasesProtocol{
+class SharePayPurchaseService: SharePayPurchaseProtocol{
+    
+    let networkAdapter: NetworkAdapterProtocol = NetworkAdapter()
+    let api = "https://sharepay.duckdns.org"
+    
+    func setToken(token: String) {
+        networkAdapter.setToken(authToken: token)
+    }
+    
     func createPurchase(purchase:  PurchaseService, completion: @escaping (Result<CreatePurchaseResponse,Error>) -> Void){
         let endpoint = "/purchases"
         guard let url = URL(string: api+endpoint) else {

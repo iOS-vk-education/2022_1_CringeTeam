@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import ContactsUI
 
 protocol PurchaseViewPresenter: AnyObject{
+    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int64)
     func addPurchaseParticipant(name: String,phoneNumber: String)
     func deletePurchaseParticipant(phoneNumber: String)
+    func splitEqualPurchase()
     func listParticipants() -> [PurchaseParticipant]
-    func savePurchase(purchase: Purchase)
+    func getPurchase() -> Purchase
+    func updatePurchase(name: String, amount: Int64, emoji: String, draft: Bool)
+    func savePurchase()
     func ready() // after viewDidLoad
 }
 
@@ -61,59 +66,99 @@ class PurchasePresenter: PurchaseViewPresenter{
         }
     }
     
+    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int64){
+        for (index,p) in participants.enumerated(){
+            if p.phoneNumber == phoneNumber{
+                participants[index].amount = amount
+                break
+            }
+        }
+    }
+    
     func listParticipants() -> [PurchaseParticipant] {
         return participants
     }
     
-    func savePurchase(purchase: Purchase){
+    func getPurchase() -> Purchase{
+        return purchase
+    }
+    
+    func updatePurchase(name: String, amount: Int64, emoji: String, draft: Bool){
+        purchase.name = name
+        purchase.amount = amount
+        purchase.emoji = emoji
+        purchase.draft = draft
+    }
+    
+    func splitEqualPurchase(){
+        if participants.count == 0{
+            return
+        }
+        let amount = Int(purchase.amount) / participants.count
+        purchase.amount = Int64(amount) * Int64(participants.count)
+        for (index,_) in participants.enumerated(){
+                participants[index].amount = Int64(amount)
+        }
+        view?.onUpdatePurchaseParticipants()
+        view?.onUpdatePurchase()
+    }
+    
+    func savePurchase(){
         var purchaseParticipants: [PurchaseParticipantService] = []
         for p in participants{
             purchaseParticipants.append(PurchaseParticipantService(phone: p.phoneNumber, amount: p.amount))
         }
         
         let newPurchase: PurchaseService = PurchaseService(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants)
-        router.sharePayService.createPurchase(purchase: newPurchase, completion: { (result: Result<CreatePurchaseResponse, Error>) -> Void in
+        router.sharePayPurchaseService.createPurchase(purchase: newPurchase, completion: { (result: Result<CreatePurchaseResponse, Error>) -> Void in
             switch result {
             case .success(_):
-                self.router.popToRoot()
+                DispatchQueue.main.async {
+                    self.router.popToRoot()
+                }
             case .failure(_):
-                self.view?.onUnableAddPurchaseParticipant()
+                DispatchQueue.main.async {
+                    self.view?.onUnableAddPurchaseParticipant()
+                }
             }
         })
     }
     
     func ready(){
-        purchase.id = 3 // ONLY FOR TEST
         if purchase.id != 0{
-            router.sharePayService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseWrapService, Error>) -> Void in
+            router.sharePayPurchaseService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseWrapService, Error>) -> Void in
                 switch result {
                 case .success(let purchaseWrap):
                     let purchase: PurchaseService = purchaseWrap.purchase
+                    
                     // Загружаем участников покупки
                     var purchaseAmount: Int64 = 0
                     var newParticipants: [PurchaseParticipant] = []
                     for p in purchase.user_purchases{
-                        newParticipants.append(PurchaseParticipant(phoneNumber: p.user_phone, name: self.getNameByPhone(phoneNumber: p.user_phone), amount: p.amount))
+                        
+                        newParticipants.append(PurchaseParticipant(phoneNumber: p.user_phone,
+                                                                   name: self.router.contactService.getNameByPhone(phoneNumber: p.user_phone, defaultName: p.user_phone),
+                                                                   amount: p.amount))
                         purchaseAmount+=p.amount
                     }
                     self.participants = newParticipants
-                    self.view?.onUpdatePurchaseParticipants()
                 
-                    // TODO draft
-                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: true, amount: purchaseAmount)
+                    // Загружаем покупку
+                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: true, amount: purchaseAmount) // TODO draft
                     self.purchase = newPurchase
-                    self.view?.onUpdatePurchase(purchase: self.purchase)
+                    
+                    DispatchQueue.main.async{
+                        self.view?.onUpdatePurchaseParticipants()
+                        self.view?.onUpdatePurchase()
+                    }
                 case .failure(_):
-                    self.view?.onFailGetPurchase()
-                    self.router.popToRoot() // TODO
+                    DispatchQueue.main.async{
+                        self.view?.onFailGetPurchase()
+                        self.router.dismissView()
+                    }
                 }
         })
         }
-    }
-    
-    private func getNameByPhone(phoneNumber: String) -> String{
-        // TODO
-        return phoneNumber
     }
     
 }

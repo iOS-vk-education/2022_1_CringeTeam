@@ -38,13 +38,6 @@ class NetworkAdapter: NetworkAdapterProtocol {
                                httpBody: Data? = nil, withToken: Bool,
                                completion: @escaping (Result<T, Error>) -> Void) {
 
-       
-        let completionOnMain: (Result<T, Error>) -> Void = { result in
-            DispatchQueue.main.async {
-                completion(result)
-            }
-        }
-
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod.method
         request.httpBody = httpBody
@@ -59,22 +52,22 @@ class NetworkAdapter: NetworkAdapterProtocol {
 
         let urlSession = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completionOnMain(.failure(error))
+                completion(.failure(error))
                 return
             }
 
-            guard let urlResponse = response as? HTTPURLResponse else { return completionOnMain(.failure(ManagerErrors.invalidResponse)) }
+            guard let urlResponse = response as? HTTPURLResponse else { return completion(.failure(ManagerErrors.invalidResponse)) }
             if !(200..<300).contains(urlResponse.statusCode) {
-                return completionOnMain(.failure(ManagerErrors.invalidStatusCode(urlResponse.statusCode)))
+                return completion(.failure(ManagerErrors.invalidStatusCode(urlResponse.statusCode)))
             }
 
             guard let data = data else { return }
             do {
                 let tData = try JSONDecoder().decode(T.self, from: data)
-                completionOnMain(.success(tData))
+                completion(.success(tData))
             } catch {
                 debugPrint("Could not translate the data to the requested type. Reason: \(error.localizedDescription)")
-                completionOnMain(.failure(error))
+                completion(.failure(error))
             }
         }
         urlSession.resume()

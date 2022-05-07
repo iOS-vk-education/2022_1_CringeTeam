@@ -12,9 +12,11 @@ import UIKit
 protocol RouterEssential: AnyObject{
     var navigationController: UINavigationController? {get set}
     var assembleBuilder: AssembleProtocol? {get set}
-    var sharePayService: SharePayServiceProtocol{get set}
+    var sharePayAuthService: SharePayAuthProtocol{get set}
+    var sharePayPurchaseService: SharePayPurchaseProtocol{get set}
     var authService: AuthServiceProtocol {get set}
     var userService: UserServiceProtocol {get set}
+    var contactService: ContactServiceProtocol {get set}
 }
 
 protocol RouterProtocol: RouterEssential{
@@ -22,23 +24,29 @@ protocol RouterProtocol: RouterEssential{
     func showSMSView(phoneNumber: String)
     func showPurchaseView(purchase_id: Int64)
     func popToRoot()
+    func dismissView()
+    func setToken(token: String)
 }
 
 
 class Router: RouterProtocol{
     
-    var sharePayService: SharePayServiceProtocol
+    var sharePayAuthService: SharePayAuthProtocol
+    var sharePayPurchaseService: SharePayPurchaseProtocol
     var authService: AuthServiceProtocol
     var userService: UserServiceProtocol
     var navigationController: UINavigationController?
     var assembleBuilder: AssembleProtocol?
+    var contactService: ContactServiceProtocol
     
     init(navigationController: UINavigationController?, assembleBuilder: AssembleProtocol?){
         self.navigationController =  navigationController
         self.assembleBuilder = assembleBuilder
         self.authService = AuthService()
         self.userService = UserService()
-        self.sharePayService = SharePayService()
+        self.sharePayAuthService = SharePayAuthService()
+        self.sharePayPurchaseService = SharePayPurchaseService()
+        self.contactService = ContactService()
     }
     
     
@@ -53,9 +61,7 @@ class Router: RouterProtocol{
                 navigationController.pushViewController(phoneNumberViewController, animated: true)
                 return
             }
-            
-            // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
-            sharePayService.setToken(token: authService.getToken())
+            self.setToken(token: authService.getToken())
         }
     }
     
@@ -79,5 +85,14 @@ class Router: RouterProtocol{
         }
     }
     
+    func dismissView(){
+        if let navigationController = navigationController {
+            navigationController.dismiss(animated: true)
+        }
+    }
     
+    func setToken(token: String){
+        // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
+        sharePayPurchaseService.setToken(token: authService.getToken())
+    }
 }

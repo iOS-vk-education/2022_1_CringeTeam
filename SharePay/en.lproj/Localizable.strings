@@ -38,9 +38,12 @@
 "PurchaseViewController.Button.EqualSplit" = "Equally";
 "PurchaseViewController.Button.Save" = "Save";
 "PurchaseViewController.Label.InfoText" = "After saving the purchase, do not forget to issue invoices to all participants";
+"PurchaseViewController.Label.InfoTextNotEdit" = "The purchase cannot be edited because it has already been billed";
 "PurchaseViewController.Label.DatePurchase" = "Date purchase";
 "PurchaseViewController.Label.ApplyBill" = "Issue invoices after saving the purchase";
 "PurchaseViewController.Message.UnableToAddParticipant" = "The participant already exists in purchase";
+"PurchaseViewController.Message.UnableToSavePurchase" = "Failed to save purchase";
+"PurchaseViewController.Message.UnableToGetPurchase" = "Failed to load purchase data";
 
 "PurchasesViewController.Sum.Title" = "Total sum";
 "PurchasesViewController.FirstButton.Title" = "All";
