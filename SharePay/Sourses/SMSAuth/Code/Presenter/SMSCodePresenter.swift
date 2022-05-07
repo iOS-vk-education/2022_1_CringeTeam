@@ -27,28 +27,38 @@ class SMSCodePresenter: SMSCodeViewPresenter{
     }
     
     func resendCode() {
-        router?.sharePayService.getSMSCode(phoneNumber: phoneNumber ?? "", completion: { [weak self] (result: Result<Status, Error>) -> Void in
+        router?.sharePayAuthService.getSMSCode(phoneNumber: phoneNumber ?? "", completion: { [weak self] (result: Result<Status, Error>) -> Void in
             switch result {
             case .success(let status):
-                if status.success{
-                    self?.view?.onSuccessResendCode()
-                } else {
-                    self?.view?.onFailResendCode()
+                DispatchQueue.main.async {
+                    if status.success{
+                        self?.view?.onSuccessResendCode()
+                    } else {
+                        self?.view?.onFailResendCode()
+                    }
                 }
             case .failure(_):
-                self?.view?.onFailResendCode()
+                DispatchQueue.main.async{
+                    self?.view?.onFailResendCode()
+                }
             }
         })
     }
     
     func checkCode(code: String) {
-        router?.sharePayService.login(phoneNumber: phoneNumber ?? "", smsCode: code, completion: { [weak self] (result: Result<Token, Error>) -> Void in
+        router?.sharePayAuthService.login(phoneNumber: phoneNumber ?? "", smsCode: code, completion: { [weak self] (result: Result<Token, Error>) -> Void in
             switch result {
             case .success(let token):
+                // Auth process
+                self?.router?.setToken(token: token.token)
                 self?.router?.authService.setToken(token: token.token)
-                self?.view?.onSuccess()
+                DispatchQueue.main.async {
+                    self?.view?.onSuccess()
+                }
             case .failure(_):
-                self?.view?.onIncorrectCode()
+                DispatchQueue.main.async {
+                    self?.view?.onIncorrectCode()
+                }
             }
         })
     }

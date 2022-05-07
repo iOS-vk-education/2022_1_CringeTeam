@@ -12,32 +12,41 @@ import UIKit
 protocol RouterEssential: AnyObject{
     var navigationController: UINavigationController? {get set}
     var assembleBuilder: AssembleProtocol? {get set}
-    var sharePayService: SharePayServiceProtocol{get set}
+    var sharePayAuthService: SharePayAuthProtocol{get set}
+    var sharePayPurchaseService: SharePayPurchaseProtocol{get set}
     var authService: AuthServiceProtocol {get set}
     var userService: UserServiceProtocol {get set}
+    var contactService: ContactServiceProtocol {get set}
 }
 
 protocol RouterProtocol: RouterEssential{
     func initialViewController()
     func showSMSView(phoneNumber: String)
+    func showPurchaseView(purchase_id: Int64)
     func popToRoot()
+    func dismissView()
+    func setToken(token: String)
 }
 
 
 class Router: RouterProtocol{
     
-    var sharePayService: SharePayServiceProtocol
+    var sharePayAuthService: SharePayAuthProtocol
+    var sharePayPurchaseService: SharePayPurchaseProtocol
     var authService: AuthServiceProtocol
     var userService: UserServiceProtocol
     var navigationController: UINavigationController?
     var assembleBuilder: AssembleProtocol?
+    var contactService: ContactServiceProtocol
     
     init(navigationController: UINavigationController?, assembleBuilder: AssembleProtocol?){
         self.navigationController =  navigationController
         self.assembleBuilder = assembleBuilder
         self.authService = AuthService()
         self.userService = UserService()
-        self.sharePayService = SharePayService()
+        self.sharePayAuthService = SharePayAuthService()
+        self.sharePayPurchaseService = SharePayPurchaseService()
+        self.contactService = ContactService()
     }
     
     
@@ -50,7 +59,9 @@ class Router: RouterProtocol{
             if !authService.isAuth(){
                 guard let phoneNumberViewController = assembleBuilder?.createPhoneNumberModule(router: self)else{ return}
                 navigationController.pushViewController(phoneNumberViewController, animated: true)
+                return
             }
+            self.setToken(token: authService.getToken())
         }
     }
     
@@ -61,11 +72,27 @@ class Router: RouterProtocol{
         }
     }
     
+    func showPurchaseView(purchase_id: Int64 = 0){
+        if let navigationController = navigationController {
+            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
+            navigationController.present(purchaseViewControler, animated: true, completion: nil)
+        }
+    }
+    
     func popToRoot() {
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
         }
     }
     
+    func dismissView(){
+        if let navigationController = navigationController {
+            navigationController.dismiss(animated: true)
+        }
+    }
     
+    func setToken(token: String){
+        // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
+        sharePayPurchaseService.setToken(token: authService.getToken())
+    }
 }

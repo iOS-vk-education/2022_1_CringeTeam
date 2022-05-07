@@ -13,7 +13,10 @@ protocol SharePayAuthProtocol: AnyObject{
 }
 
 
-extension SharePayService: SharePayAuthProtocol{
+class SharePayAuthService: SharePayAuthProtocol{
+    
+    let networkAdapter: NetworkAdapterProtocol = NetworkAdapter()
+    let api = "https://sharepay.duckdns.org"
     
     // Получение СМС кода после ввода номера телефона
     func getSMSCode(phoneNumber: String, completion: @escaping (Result<Status,Error>) -> Void) {
@@ -24,7 +27,7 @@ extension SharePayService: SharePayAuthProtocol{
         }
         let json: [String: Any] = ["auth":["phone": phoneNumber]]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData){ (result: Result<Status, Error>) in
+        networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData, withToken: false){ (result: Result<Status, Error>) in
             completion(result)
         }
     }
@@ -38,7 +41,7 @@ extension SharePayService: SharePayAuthProtocol{
         }
         let json: [String: Any] = ["auth":["phone": phoneNumber, "sms_code": smsCode]]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData){ (result: Result<Token, Error>) in
+        networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData, withToken: false){ (result: Result<Token, Error>) in
             completion(result)
         }
     }

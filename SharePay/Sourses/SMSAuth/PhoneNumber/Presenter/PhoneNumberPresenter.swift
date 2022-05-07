@@ -24,21 +24,27 @@ final class PhoneNumberPresenter: PhoneNumberViewPresenter{
     func tapContinue(phoneNumber: String) {
         let number = phoneNumber.filter {!($0.isWhitespace || $0=="+" || $0=="-")}
         if isValidPhoneNumber(phoneNumber: number){
-            router?.sharePayService.getSMSCode(phoneNumber: phoneNumber, completion: { [weak self] (result: Result<Status,Error>) -> Void in
+            router?.sharePayAuthService.getSMSCode(phoneNumber: phoneNumber, completion: { [weak self] (result: Result<Status,Error>) -> Void in
                 switch result {
                 case .success(let status):
-                    if status.success{
-                        self?.view?.onSuccess()
-                        self?.router?.showSMSView(phoneNumber: phoneNumber)
-                    } else {
-                        self?.view?.onServerFail()
+                    DispatchQueue.main.async{
+                        if status.success{
+                            self?.view?.onSuccess()
+                            self?.router?.showSMSView(phoneNumber: phoneNumber)
+                        } else {
+                            self?.view?.onServerFail()
+                        }
                     }
                 case .failure(_):
-                    self?.view?.onServerFail()
+                    DispatchQueue.main.async{
+                        self?.view?.onServerFail()
+                    }
                 }
             })
         } else{
-            view?.onInvalidNumber()
+            DispatchQueue.main.async{
+                self.view?.onInvalidNumber()
+            }
         }
     }
     

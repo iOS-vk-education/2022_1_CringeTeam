@@ -31,11 +31,10 @@ class AuthService: AuthServiceProtocol {
     }
     
     func isAuth() -> Bool{
-        // Для тестирования авторизации. Убрать после интеграции с бэком
-//        let keychain = KeychainSwift()
-//        if keychain.getData(TOKEN_KEY) != nil{
-//            return true
-//        }
+        let keychain = KeychainSwift()
+        if keychain.getData(TOKEN_KEY) != nil{
+            return true
+        }
         return false
     }
    

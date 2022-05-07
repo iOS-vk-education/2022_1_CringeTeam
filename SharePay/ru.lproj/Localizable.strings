@@ -38,9 +38,11 @@
 "PurchaseViewController.Button.EqualSplit" = "Поровну";
 "PurchaseViewController.Button.Save" = "Сохранить";
 "PurchaseViewController.Label.InfoText" = "После сохранения покупки не забудьте выставить счета всем участникам";
+"PurchaseViewController.Label.InfoTextNotEdit" = "Покупку нельзя редактировать так как по ней уже выставлены счета";
 "PurchaseViewController.Label.DatePurchase" = "Дата покупки";
 "PurchaseViewController.Label.ApplyBill" = "Выставить счета после сохранения покупки";
-
+"PurchaseViewController.Message.UnableToSavePurchase" = "Не удалось сохранить покупку";
+"PurchaseViewController.Message.UnableToGetPurchase" = "Не удалось загрузить данные покупки";
 "PurchaseViewPresenter.Message.UnableToAddParticipant" = "Участник покупки уже существует";
 
 "PurchasesViewController.Sum.Title" = "Сумма покупок";

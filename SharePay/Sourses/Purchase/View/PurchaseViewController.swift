@@ -9,9 +9,11 @@ import ContactsUI
 
 
 protocol PurchaseView: AnyObject {
-    func onAddPurchaseParticipant(name: String, phoneNumber: String)
-    func onDeletePurchaseParticipant()
     func onUnableAddPurchaseParticipant()
+    func onUpdatePurchaseParticipants()
+    func onFailSavePurchase()
+    func onFailGetPurchase()
+    func onUpdatePurchase()
 }
 
 
@@ -19,7 +21,6 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     // Ссылка на presenter
     var presenter: PurchaseViewPresenter!
-    
 
     // Инициализация цветов
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
@@ -165,6 +166,24 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         
         // Добавление нового участника
         addParticipantButton.addTarget(self, action:#selector(PurchaseViewController.addParticipant),  for: .touchUpInside)
+        
+        // Разбиение покупки поровну
+        equalSplitButton.addTarget(self, action: #selector(PurchaseViewController.splitEqual), for:.touchUpInside)
+        
+        // Обновление данных о покупке
+        nameTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
+        totalTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
+        billSwitch.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
+        
+        // Сообщем презентеру что мы готовы
+        presenter.ready()
+    }
+    
+    @objc func updatePurchase(){
+        presenter.updatePurchase(name: nameTextField.text ?? "",
+                                 amount: Int64(totalTextField.text ?? "") ?? 0,
+                                 emoji: emojiSelectLabel.text ?? "",
+                                 draft: !billSwitch.isOn)
     }
     
     @objc func selectEmoji(sender:UITapGestureRecognizer) {
@@ -176,6 +195,10 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         let contactPickerVC = CNContactPickerViewController()
         contactPickerVC.delegate = self
         present(contactPickerVC, animated: true)
+    }
+    
+    @objc func splitEqual(){
+        presenter.splitEqualPurchase()
     }
     
     func configureLayoutCollectionView(){
@@ -303,13 +326,13 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             applyBillLabel.widthAnchor.constraint(lessThanOrEqualToConstant: rootView.frame.width*0.8),
             applyBillLabel.heightAnchor.constraint(equalToConstant: 32),
             applyBillLabel.leftAnchor.constraint(equalTo:  rootView.leftAnchor, constant: 12),
-            applyBillLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 12)
+            applyBillLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 4)
         ])
         
         billSwitch.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             billSwitch.rightAnchor.constraint(equalTo:  rootView.rightAnchor, constant: -12),
-            billSwitch.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 12)
+            billSwitch.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 4)
             ])
         
         // # Bottom
@@ -326,7 +349,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
             saveButton.widthAnchor.constraint(equalToConstant: view.frame.width/2),
             saveButton.heightAnchor.constraint(equalToConstant: 50),
             saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            saveButton.bottomAnchor.constraint(equalTo: infoTextLabel.topAnchor, constant: -16)
+            saveButton.bottomAnchor.constraint(equalTo: infoTextLabel.topAnchor, constant: -8)
         ])
     }
 
@@ -397,6 +420,10 @@ extension PurchaseViewController: UICollectionViewDataSource{
         participantCell.setDeleteAction {
             self.presenter.deletePurchaseParticipant(phoneNumber: item.phoneNumber)
         }
+        participantCell.setEditAction{ (amount: String) -> Void in
+            let amountNum: Int64? = Int64(amount)
+            self.presenter.setPurchaseParticapantAmount(phoneNumber: item.phoneNumber, amount: amountNum ?? 0)
+        }
         return participantCell
     }
 }
@@ -405,6 +432,7 @@ extension PurchaseViewController: UICollectionViewDataSource{
 extension PurchaseViewController: EmojiPickerViewControllerDelegate{
     func emojiPickerViewController(_ controller: EmojiPickerViewController, didSelect emoji: String) {
         emojiSelectLabel.text = emoji
+        updatePurchase()
     }
 }
 
@@ -427,13 +455,58 @@ extension PurchaseViewController: PurchaseView{
         }
     }
     
+    func onFailSavePurchase(){
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.UnableToSavePurchase", comment: ""), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
     
-    func onAddPurchaseParticipant(name: String, phoneNumber: String) {
+    func onUpdatePurchaseParticipants() {
         self.participantCollectionView?.reloadData()
     }
     
-    func onDeletePurchaseParticipant() {
-        self.participantCollectionView?.reloadData()
+    func onUpdatePurchase() {
+        let purchase: Purchase = presenter.getPurchase()
+        DispatchQueue.main.async{ [weak self] in
+            self?.nameTextField.text = purchase.name
+            self?.emojiSelectLabel.text = purchase.emoji
+            self?.totalTextField.text =  String(purchase.amount)
+            self?.datePicker.setDate(purchase.created_at, animated: true)
+            self?.billSwitch.setOn(!purchase.draft, animated: true)
+            
+            if !purchase.draft && purchase.id != 0 {
+                // Когда счет выставлены необходимо отключить возможности редактирования
+                self?.nameTextField.isEnabled =  false
+                self?.emojiSelectLabel.isEnabled = false
+                self?.totalTextField.isEnabled = false
+                self?.saveButton.isEnabled = false
+                self?.saveButton.setTitle(NSLocalizedString("Common.Ok", comment: ""), for: .normal)
+                self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoTextNotEdit", comment: "")
+                self?.billSwitch.isEnabled = false
+                return
+            }
+            
+            // В режиме черновика доступна возможность редактирования
+            self?.nameTextField.isEnabled =  true
+            self?.emojiSelectLabel.isEnabled = true
+            self?.totalTextField.isEnabled = true
+            self?.saveButton.isEnabled = true
+            self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
+            self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
+            self?.billSwitch.isEnabled = true
+        }
     }
+    
+    func onFailGetPurchase(){
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.UnableToGetPurchase", comment: ""), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
 }
-

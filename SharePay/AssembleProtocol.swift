@@ -12,7 +12,7 @@ protocol AssembleProtocol: AnyObject {
     func createPhoneNumberModule(router: RouterProtocol) -> UIViewController
     func createSMSCodeNumberModule(router: RouterProtocol, phoneNumber: String) -> UIViewController
     func createMainViewController(router: RouterProtocol) -> UIViewController
-    func createPurchaseViewController(router: RouterProtocol) -> UIViewController
+    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int64) -> UIViewController
     func createDebtViewController(router: RouterProtocol, phoneNumber: String, ownerName: String) -> UIViewController
 }
 
@@ -34,13 +34,14 @@ class Assemble: AssembleProtocol{
     
     func createMainViewController(router: RouterProtocol) -> UIViewController{
         let view = TabViewController()
+        let presenter = TabPresenter(view: view, router: router)
+        view.presenter = presenter
         return view
-        // TODO MVP assemble
     }
     
-    func createPurchaseViewController(router: RouterProtocol) -> UIViewController{
+    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int64 = 0) -> UIViewController{
         let view = PurchaseViewController()
-        let presenter = PurchasePresenter(view: view)
+        let presenter = PurchasePresenter(view: view, router: router, purchase_id: purchase_id)
         view.presenter = presenter
         return view
     }

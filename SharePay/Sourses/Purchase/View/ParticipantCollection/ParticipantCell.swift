@@ -138,6 +138,13 @@ final class ParticipantCell: UICollectionViewCell{
         }
     }
     
+    func setEditAction(completion: @escaping (String)->Void){
+        totalTextField.removeTarget(nil, action: nil, for: .allEvents)
+        totalTextField.addAction(for: .editingDidEnd){
+            completion(self.totalTextField.text ?? "")
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
