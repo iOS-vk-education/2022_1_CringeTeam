@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DebtViewPresenter: AnyObject{
     func listEvents() -> [Event]
     func getDebt() -> Debt
     func loadData()
     func notifyDebtor()
-    func pay(amount: Int)
+    func pay(amount: Int64)
+    func tapPurchaseEvent(purchase_id: Int64)
     func dismiss()
 }
 
@@ -23,7 +25,8 @@ class DebtPresenter: DebtViewPresenter{
     var events: [Event] = []
     var debt: Debt
     
-    let defaultCurrency = "₽" // На первом этапе только рублевая валюта
+    let defaultCurrency = "rub" // На первом этапе только рублевая валюта
+    let currencySign: [String: String] = ["rub": "₽"]
     
     required init(view: DebtView, router: RouterProtocol, debtID: Int64) {
         self.router = router
@@ -32,25 +35,38 @@ class DebtPresenter: DebtViewPresenter{
     }
     
     func loadData(){
+        events = []
         router.sharePayDebtService.getDebt(debtID: debt.debtID, completion: { [weak self]
             (result: Result<DebtCodable, Error>) -> Void in
             switch result {
             case .success(let newDebt):
-                self?.debt.amount = newDebt.amount
-     
+                
                 let userPhoneNumber = self?.router.authService.getPhone()
                 var phoneNumber = newDebt.debtor_phone
-                if newDebt.creditor_phone == userPhoneNumber{
+                if newDebt.debtor_phone == userPhoneNumber{
                     phoneNumber = newDebt.creditor_phone
                 }
                 
+                self?.debt.amount = newDebt.amount
                 self?.debt.phoneNumber = phoneNumber
                 self?.debt.name =  self?.router.contactService.getNameByPhone(phoneNumber: phoneNumber, defaultName: phoneNumber) ?? ""
-                self?.debt.currency = self?.defaultCurrency ?? ""
-                
+                self?.debt.currency = self?.currencySign[self?.defaultCurrency ?? ""] ?? ""
+    
                 for e in newDebt.events{
-                    self?.events.append(Event(name: e.description ?? "", emoji: e.emoji ?? "", date: e.date ?? "", amount: e.amount))
+                    var newEvent = Event(name: e.description ?? "",
+                                         emoji: e.emoji ?? "",
+                                         date: e.date?.parseRFC3339Date() ?? Date(),
+                                         amount: e.amount,
+                                         type: e.type)
+                    if newEvent.type == PURCHASE_TYPE{
+                        newEvent.purchase_id = e.event_id
+                    }
+                    self?.events.append(newEvent)
                 }
+                
+                self?.events.sort(by: { (a: Event, b: Event) -> Bool in
+                    return a.date > b.date
+                })
                 
                 DispatchQueue.main.async {
                     self?.view?.onLoadDebt()
@@ -65,26 +81,12 @@ class DebtPresenter: DebtViewPresenter{
         })
     }
     
-    func getNotUserPhoneNumber(){
-        
+    func tapPurchaseEvent(purchase_id: Int64){
+        router.pushPurchaseView(purchase_id: purchase_id)
     }
     
     func dismiss() {
         router.dismissView()
-    }
-     
-    // Моковые значения для тестирования
-    // TODO заменить при интеграции на реальные данные
-    func setEvents(){
-        events = [
-            Event(name: "Поход в кино", emoji: "🎥", date: "12.05.2021", amount: -2000),
-            Event(name: "Поездка на море", emoji: "🌴", date: "12.05.2022", amount: -10000),
-            Event(name: "Зачисление", emoji: "💸", date: "12.05.2022", amount: 1000),
-            Event(name: "Роллы", emoji: "🇯🇵", date: "12.05.2021", amount: -1000),
-            Event(name: "Зачисление", emoji: "💸", date: "12.05.2022", amount: 200),
-            Event(name: "Виноград", emoji: "🍇", date: "12.05.2022", amount: -2000),
-        ]
-        calculateTotal()
     }
     
     func calculateTotal(){
@@ -107,7 +109,21 @@ class DebtPresenter: DebtViewPresenter{
         // Implement notification to owner by phone number
     }
     
-    func pay(amount: Int){
-        // Implement payment
+    func pay(amount: Int64){
+        let createPayment: CreatePaymentCodable = CreatePaymentCodable(currency: defaultCurrency, receiver_phone: debt.phoneNumber, amount: amount)
+        router.sharePayPaymentService.createPayment(payment: createPayment, completion: { [weak self]
+            (result: Result<CreatePaymentResponseCodable, Error>) -> Void in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self?.view?.onSuccesPay()
+                    self?.loadData()
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self?.view?.onFailPay()
+                }
+            }
+        })
     }
 }

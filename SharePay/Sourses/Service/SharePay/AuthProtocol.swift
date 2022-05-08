@@ -25,7 +25,7 @@ class SharePayAuthService: SharePayAuthProtocol{
             completion(.failure(ServiceError.invalidURL))
             return
         }
-        let json: [String: Any] = ["auth":["phone": phoneNumber]]
+        let json: [String: Any] = ["phone": phoneNumber]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData, withToken: false){ (result: Result<Status, Error>) in
             completion(result)
@@ -39,7 +39,7 @@ class SharePayAuthService: SharePayAuthProtocol{
             completion(.failure(ServiceError.invalidURL))
             return
         }
-        let json: [String: Any] = ["auth":["phone": phoneNumber, "sms_code": smsCode]]
+        let json: [String: Any] = ["phone": phoneNumber, "sms_code": smsCode]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData, withToken: false){ (result: Result<Token, Error>) in
             completion(result)

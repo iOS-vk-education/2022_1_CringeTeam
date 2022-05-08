@@ -21,6 +21,8 @@ final class EventCell: UICollectionViewCell{
     let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
     let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
     
+    var expandCompletion: (()->Void)?
+    
     
    let emojiLabel: UILabel = {
        let emojiLabel = UILabel()
@@ -93,13 +95,6 @@ final class EventCell: UICollectionViewCell{
             emojiLabel.leftAnchor.constraint(equalTo:  self.leftAnchor, constant: 12),
             emojiLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: emojiLabel.rightAnchor, constant: 12),
-            titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
-        ])
                                     
         tapButton.translatesAutoresizingMaskIntoConstraints =  false
         NSLayoutConstraint.activate([
@@ -125,24 +120,48 @@ final class EventCell: UICollectionViewCell{
             rightStackView.heightAnchor.constraint(equalToConstant: 40),
             rightStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.numberOfLines = 2
+        NSLayoutConstraint.activate([
+            titleLabel.leftAnchor.constraint(equalTo: emojiLabel.rightAnchor, constant: 12),
+            titleLabel.heightAnchor.constraint(equalToConstant: 50),
+            titleLabel.rightAnchor.constraint(equalTo: rightStackView.leftAnchor, constant: -4),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
 
     }
     
+    func setExpandAction(completion: @escaping ()->Void){
+        expandCompletion = completion
+        let tap = UITapGestureRecognizer(target: self, action: #selector(EventCell.didTapButton))
+        tapButton.gestureRecognizers?.removeAll()
+        tapButton.addGestureRecognizer(tap)
+        tapButton.isUserInteractionEnabled = true
+    }
+    
+    @objc func didTapButton(){
+        expandCompletion?()
+    }
     
     func setData(event: Event){
         emojiLabel.text = event.emoji
-        dateLabel.text = event.date
+        dateLabel.text = event.date.decodeToRussianString()
         titleLabel.text = event.name
-        
-        if event.amount>0{
-            // Положительная сумма события
-            amountLabel.text = "+\(event.amount) \(event.currency)"
-            amountLabel.textColor = greenColor
+    
+        if event.type == PAYMENT_TYPE{
             tapButton.isHidden =  true //  На начальном этапе экранов транзакций нет
+            titleLabel.text = NSLocalizedString("DebtViewController.EventCell.Payment", comment: "")
+            emojiLabel.text = "💸"
         } else {
-            // Отрициательная сумма события
-            amountLabel.text = "\(event.amount) \(event.currency)"
+            tapButton.isHidden =  false
+        }
+    
+        amountLabel.text = "\(event.amount) \(event.currency)"
+        if event.amount < 0{
             amountLabel.textColor = magentaColor
+        } else {
+            amountLabel.textColor = greenColor
         }
     }
 }

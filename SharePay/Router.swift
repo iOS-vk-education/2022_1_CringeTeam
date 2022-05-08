@@ -14,6 +14,7 @@ protocol RouterEssential: AnyObject{
     var sharePayAuthService: SharePayAuthProtocol{get set}
     var sharePayPurchaseService: SharePayPurchaseProtocol{get set}
     var sharePayDebtService: SharePayDebtProtocol{get set}
+    var sharePayPaymentService: SharePayPaymentsProtocol{get set}
     var authService: AuthServiceProtocol {get set}
     var userService: UserServiceProtocol {get set}
     var contactService: ContactServiceProtocol {get set}
@@ -21,9 +22,10 @@ protocol RouterEssential: AnyObject{
 
 protocol RouterProtocol: RouterEssential{
     func initialViewController()
-    func showSMSView(phoneNumber: String)
-    func showPurchaseView(purchase_id: Int64)
-    func showDebtView(debtId: Int64)
+    func pushSMSView(phoneNumber: String)
+    func presentPurchaseView(purchase_id: Int64)
+    func pushPurchaseView(purchase_id: Int64)
+    func pushDebtView(debtId: Int64)
     func popToRoot()
     func dismissView()
     func setToken(token: String)
@@ -32,6 +34,7 @@ protocol RouterProtocol: RouterEssential{
 
 class Router: RouterProtocol{
     
+    var sharePayPaymentService: SharePayPaymentsProtocol
     var sharePayDebtService: SharePayDebtProtocol
     var sharePayAuthService: SharePayAuthProtocol
     var sharePayPurchaseService: SharePayPurchaseProtocol
@@ -50,6 +53,10 @@ class Router: RouterProtocol{
         self.sharePayPurchaseService = SharePayPurchaseService()
         self.contactService = ContactService()
         self.sharePayDebtService = SharePayDebtService()
+        self.sharePayPaymentService = SharePayPaymentsService()
+        
+        // TODO для тестирования под несколькими пользователями
+        authService.destroyAllData()
     }
     
     func initialViewController() {
@@ -67,24 +74,31 @@ class Router: RouterProtocol{
         }
     }
     
-    func showSMSView(phoneNumber: String) {
+    func pushSMSView(phoneNumber: String) {
         if let navigationController = navigationController {
             guard let smsViewControler = assembleBuilder?.createSMSCodeNumberModule(router: self, phoneNumber: phoneNumber) else { return}
             navigationController.pushViewController(smsViewControler, animated: true)
         }
     }
     
-    func showPurchaseView(purchase_id: Int64 = 0){
+    func presentPurchaseView(purchase_id: Int64 = 0){
         if let navigationController = navigationController {
             guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
             navigationController.present(purchaseViewControler, animated: true, completion: nil)
         }
     }
     
-    func showDebtView(debtId: Int64 = 0){
+    func pushPurchaseView(purchase_id: Int64 = 0){
+        if let navigationController = navigationController {
+            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
+            navigationController.pushViewController(purchaseViewControler, animated: true)
+        }
+    }
+    
+    func pushDebtView(debtId: Int64 = 0){
         if let navigationController = navigationController {
             guard let debtViewControler = assembleBuilder?.createDebtViewController(router: self, debtID: debtId) else { return}
-            navigationController.present(debtViewControler, animated: true, completion: nil)
+            navigationController.pushViewController(debtViewControler, animated: true)
         }
     }
     
@@ -101,8 +115,9 @@ class Router: RouterProtocol{
     }
     
     func setToken(token: String){
-        // Если пользователь авторизован необходимо указать актуальный токен длля сервиса
+        // Если пользователь авторизован необходимо указать актуальный токен длля сервисов бэкенда
         sharePayPurchaseService.setToken(token: token)
         sharePayDebtService.setToken(token: token)
+        sharePayPaymentService.setToken(token: token)
     }
 }

@@ -177,3 +177,22 @@ extension TransfersViewController: UITableViewDelegate {
 
 }
 
+extension String{
+    func parseRFC3339Date() -> Date{
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        guard let date = newFormatter.date(from: self) else {
+            return Date.init(timeIntervalSince1970: TimeInterval(0))
+        }
+        return date
+    }
+}
+
+extension Date{
+    func decodeToRussianString() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY"
+        return dateFormatter.string(from: self)
+    }
+}
+

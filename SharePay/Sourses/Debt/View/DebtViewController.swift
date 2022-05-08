@@ -13,6 +13,8 @@ protocol DebtView: AnyObject{
     func onLoadEvents()
     func onLoadDebt()
     func onFailLoadDebt()
+    func onFailPay()
+    func onSuccesPay()
 }
 
 final class DebtViewController: UIViewController{
@@ -106,7 +108,7 @@ final class DebtViewController: UIViewController{
             let payAlert = UIAlertController(title: NSLocalizedString("DebtViewController.Alert.Payment" , comment: ""), message: NSLocalizedString("DebtViewController.Alert.PayAcception" , comment: ""), preferredStyle: UIAlertController.Style.alert)
 
             payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Ok" , comment: ""), style: .default, handler: { (action: UIAlertAction!) in
-                self?.presenter.pay(amount: amount)
+                self?.presenter.pay(amount: Int64(amount))
               }))
 
             payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Cancel" , comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
@@ -135,7 +137,13 @@ extension DebtViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let eventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as? EventCell else {
             return UICollectionViewCell()
         }
-        eventCell.setData(event: presenter.listEvents()[indexPath.row])
+        let event: Event = presenter.listEvents()[indexPath.row]
+        eventCell.setData(event: event)
+        if event.type == PURCHASE_TYPE{
+            eventCell.setExpandAction { [weak self] in
+                self?.presenter.tapPurchaseEvent(purchase_id: event.purchase_id)
+            }
+        }
         return eventCell
     }
 }
@@ -158,6 +166,20 @@ extension DebtViewController: DebtView{
         alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default, handler: { action in
             self.presenter.dismiss()
         }))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onFailPay(){
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("DebtViewController.Alert.UnableToPay", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onSuccesPay() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Message", comment: ""), message:
+        NSLocalizedString("DebtViewController.Alert.SuccesPay", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
 }
