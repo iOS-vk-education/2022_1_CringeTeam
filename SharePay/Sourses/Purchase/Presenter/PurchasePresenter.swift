@@ -15,22 +15,24 @@ protocol PurchaseViewPresenter: AnyObject{
     func splitEqualPurchase()
     func listParticipants() -> [PurchaseParticipant]
     func getPurchase() -> Purchase
+    func isEditable() -> Bool
     func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool, created_at: Date)
-    func savePurchase()
-    func ready() // after viewDidLoad
+    func action() // save/ok
+    func ready() // готовность view
 }
 
 class PurchasePresenter: PurchaseViewPresenter{
     
-
     weak var view: PurchaseView?
     var router: RouterProtocol
     var participants: [PurchaseParticipant]
     var phoneNumbers: [String: Bool]
+    
     // Если purchase_id == 0 то покупка еще не создана
     // По умолчанию draft = true, то есть покупка черновик (счета не выставлены)
-    var purchase: Purchase
-    var viewMode: ViewMode
+    var purchase: Purchase // стейт покупки на экране
+    var actualPurchase: Purchase // стейт покупки на сервере
+    var viewMode: ViewMode // режиме открытия view
     
     required init(view: PurchaseView, router: RouterProtocol, purchase_id : Int = 0, mode: ViewMode){
         self.view = view
@@ -38,6 +40,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         self.phoneNumbers =  [String: Bool]()
         self.router = router
         self.purchase = Purchase(id: purchase_id)
+        self.actualPurchase = Purchase(id: purchase_id)
         self.viewMode = mode
     }
     
@@ -87,6 +90,10 @@ class PurchasePresenter: PurchaseViewPresenter{
         return purchase
     }
     
+    func isEditable() -> Bool{
+        return actualPurchase.draft
+    }
+    
     func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool, created_at: Date){
         purchase.name = name
         purchase.amount = amount
@@ -95,6 +102,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         purchase.created_at = created_at
     }
     
+    // Разбиением суммы покупки в равных долях между всеми участниками
     func splitEqualPurchase(){
         if participants.count == 0{
             return
@@ -108,7 +116,12 @@ class PurchasePresenter: PurchaseViewPresenter{
         view?.onUpdatePurchase()
     }
     
-    func savePurchase(){
+    // Сохранение покупки
+    func action(){
+        if !actualPurchase.draft{
+            close()
+            return
+        }
         if !isValidPurchase(){
             self.view?.onInvalidPurchase()
             return
@@ -120,6 +133,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         }
     }
     
+    // Валидация покупки при редактировании
     func isValidPurchase() -> Bool{
         var amount = 0
         for p in participants{
@@ -128,6 +142,16 @@ class PurchasePresenter: PurchaseViewPresenter{
         return amount != 0
     }
     
+    // Закрытие view в зависимости от режима
+    func close(){
+        if self.viewMode == .present{
+            self.router.dismissView()
+        } else {
+            self.router.popToRoot()
+        }
+    }
+    
+    // Создаем покупку
     func createPurchase(){
         var purchaseParticipants: [PurchaseParticipantCodable] = []
         for p in participants{
@@ -141,11 +165,7 @@ class PurchasePresenter: PurchaseViewPresenter{
                 self.purchase.id = purchaseResponse.id
                 DispatchQueue.main.async {
                     self.view?.onUpdatePurchase()
-                    if self.viewMode == .present{
-                        self.router.dismissView()
-                    } else {
-                        self.router.popToRoot()
-                    }
+                    self.close()
                 }
             case .failure(_):
                 DispatchQueue.main.async {
@@ -155,6 +175,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         })
     }
     
+    // Редактируем покупку
     func updatePurchase(){
         var purchaseParticipants: [PurchaseParticipantCodable] = []
         for p in participants{
@@ -164,14 +185,11 @@ class PurchasePresenter: PurchaseViewPresenter{
         let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants,  draft: purchase.draft, created_at: purchase.created_at.formatted())
         router.sharePayPurchaseService.updatePurchase(purchase: newPurchase, purchase_id: purchase.id, completion: { (result: Result<CreateUpdatePurchaseResponse, Error>) -> Void in
             switch result {
-            case .success(let purchaseResponse):
+            case .success(_):
                 DispatchQueue.main.async {
+                    self.actualPurchase = self.purchase
                     self.view?.onUpdatePurchase()
-                    if self.viewMode == .present{
-                        self.router.dismissView()
-                    } else {
-                        self.router.popToRoot()
-                    }
+                    self.close()
                 }
             case .failure(_):
                 DispatchQueue.main.async {
@@ -181,6 +199,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         })
     }
     
+    // Подгружаем покупку
     func ready(){
         if purchase.id != 0{
             router.sharePayPurchaseService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseCodable, Error>) -> Void in
@@ -201,6 +220,7 @@ class PurchasePresenter: PurchaseViewPresenter{
                     // Загружаем покупку
                     let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount, created_at: purchase.created_at.parseRFC3339Date())
                     self.purchase = newPurchase
+                    self.actualPurchase = newPurchase
                     
                     DispatchQueue.main.async{
                         self.view?.onUpdatePurchaseParticipants()
@@ -215,5 +235,4 @@ class PurchasePresenter: PurchaseViewPresenter{
         })
         }
     }
-    
 }

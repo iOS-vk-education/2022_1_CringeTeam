@@ -16,6 +16,7 @@ enum HttpMethod: String {
     case get
     case post
     case patch
+    case delete
     var method: String { rawValue.uppercased() }
 }
 

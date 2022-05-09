@@ -14,7 +14,7 @@ protocol PurchaseView: AnyObject {
     func onFailSavePurchase()
     func onFailGetPurchase()
     func onUpdatePurchase()
-    func onInvalidPurchase() // Unable to save
+    func onInvalidPurchase()
 }
 
 
@@ -173,7 +173,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         
         // Сохранение покупки
         saveButton.addAction{ [weak self] in
-            self?.presenter.savePurchase()
+            self?.presenter.action()
         }
         
         // Обновление данных о покупке
@@ -485,14 +485,11 @@ extension PurchaseViewController: PurchaseView{
             self?.datePicker.setDate(purchase.created_at, animated: true)
             self?.billSwitch.setOn(!purchase.draft, animated: true)
             
-            // TODO Исправить
-            // Некорректное поведение при выставлении флага для уже созданной покупки перед сохранением
-            if !purchase.draft && purchase.id != 0 {
+            if !(self?.presenter.isEditable() ?? false) {
                 // Когда счет выставлены необходимо отключить возможности редактирования
                 self?.nameTextField.isEnabled =  false
                 self?.emojiSelectLabel.isEnabled = false
                 self?.totalTextField.isEnabled = false
-                self?.saveButton.isEnabled = false
                 self?.addParticipantButton.isEnabled = false
                 self?.datePicker.isEnabled = false
                 self?.saveButton.setTitle(NSLocalizedString("Common.Ok", comment: ""), for: .normal)
@@ -505,7 +502,6 @@ extension PurchaseViewController: PurchaseView{
             self?.nameTextField.isEnabled =  true
             self?.emojiSelectLabel.isEnabled = true
             self?.totalTextField.isEnabled = true
-            self?.saveButton.isEnabled = true
             self?.addParticipantButton.isEnabled = true
             self?.datePicker.isEnabled = true
             self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
@@ -528,7 +524,7 @@ extension PurchaseViewController: PurchaseView{
             let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
             NSLocalizedString("PurchaseViewController.Message.OnInvalidPurchase", comment: ""), preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
-            self.present(alertController, animated: true, completion: nil) // TODO
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
