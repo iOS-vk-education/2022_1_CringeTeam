@@ -30,7 +30,7 @@ final class PhoneNumberPresenter: PhoneNumberViewPresenter{
                     DispatchQueue.main.async{
                         if status.success{
                             self?.view?.onSuccess()
-                            self?.router?.showSMSView(phoneNumber: phoneNumber)
+                            self?.router?.pushSMSView(phoneNumber: phoneNumber)
                         } else {
                             self?.view?.onServerFail()
                         }

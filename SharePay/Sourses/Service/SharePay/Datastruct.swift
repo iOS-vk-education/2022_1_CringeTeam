@@ -69,3 +69,42 @@ struct CreatePurchaseResponse: Codable{
 struct PurchaseWrapService: Codable{
     var purchase: PurchaseService
 }
+
+struct DebtCodable: Codable{
+    var id: Int64
+    var amount: Int64
+    var creditor_phone: String
+    var debtor_phone: String
+    var events: [EventCodable]
+}
+
+struct EventCodable: Codable{
+    var amount: Int64
+    var date: String?
+    var description: String?
+    var emoji: String?
+    var type: String
+    var event_id: Int64
+}
+
+struct CreatePaymentCodable: Codable{
+    var amount: Int64
+    var currency: String
+    var receiver_phone: String
+    
+    init(currency: String, receiver_phone: String, amount: Int64){
+        self.amount = amount
+        self.receiver_phone = receiver_phone
+        self.currency = currency
+    }
+}
+
+struct CreatePaymentResponseCodable: Codable{
+    var id: Int64
+    var sender_id: Int64
+    var receiver_id: Int64
+    var created_at: String
+    var updated_at: String
+    var amount: Int64
+    var currency: String
+}

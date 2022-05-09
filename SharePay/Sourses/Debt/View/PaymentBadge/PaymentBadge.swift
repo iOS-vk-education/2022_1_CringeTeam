@@ -87,10 +87,12 @@ class PaymentBadge: UIView{
     }
     
     public func setAmount(amount: Int, currrency: String){
+        // Если сумма брльше нуля значит мы должна
+        // Если сумма меньше нуля значит нам должны
         if amount>0{
-            self.mode = .Remind
-        } else {
             self.mode = .Pay
+        } else {
+            self.mode = .Remind
         }
         currencyLabel.text = currrency
         totalDebtLabel.text = "\(amount) \(currrency)"
@@ -192,6 +194,7 @@ class PaymentBadge: UIView{
                     let payAmount = Int(payAmountStr) ?? 0
                     if payAmount>0{
                         payCompletion(payAmount)
+                        self?.paymentAmountField.text = ""
                     }
                 case PaymentBadgeMode.Remind:
                     notifyCompletion()

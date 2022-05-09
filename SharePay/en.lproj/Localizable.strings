@@ -64,6 +64,10 @@
 "DebtViewController.Label.Events" =  "Events";
 "DebtViewController.Alert.Payment" =  "Payment";
 "DebtViewController.Alert.PayAcception" =  "Are you sure you want to make a money transfer?";
+"DebtViewController.Alert.UnableToLoadDebt" = "Failed to load debt data";
+"DebtViewController.EventCell.Payment" =  "Money transfer";
+"DebtViewController.Alert.SuccesPay" = "Transfer was succesful. Don't forget to make a real payment!";
+"DebtViewController.Alert.UnableToPay" = "Failed to make transfer";
 
 "PaymentBadge.Label.Pay" = "Pay";
 "PaymentBadge.Label.Remind"= "Remind";

@@ -11,17 +11,21 @@ import KeychainSwift
 protocol AuthServiceProtocol: AnyObject {
     func getToken() -> String
     func setToken(token: String) -> Void
+    func getPhone() -> String
+    func setPhone(phone: String) -> Void
     func isAuth() -> Bool
+    func destroyAllData() -> Void
 }
 
 
 class AuthService: AuthServiceProtocol {
     let TOKEN_KEY: String = "SHARE_PAY_TOKEN"
-    let EMPTY_TOKEN: String = ""
+    let PHONE_KEY: String = "SHARE_PAY_PHONE"
+    let EMPTY: String = ""
     
     func getToken() -> String{
         let keychain = KeychainSwift()
-        guard let data = keychain.getData(TOKEN_KEY) else {return EMPTY_TOKEN}
+        guard let data = keychain.getData(TOKEN_KEY) else {return EMPTY}
         return String(decoding: data, as: UTF8.self)
     }
     
@@ -30,12 +34,29 @@ class AuthService: AuthServiceProtocol {
         keychain.set(token, forKey: TOKEN_KEY)
     }
     
+    func setPhone(phone: String) -> Void{
+        let keychain = KeychainSwift()
+        keychain.set(phone, forKey: PHONE_KEY)
+    }
+    
+    func getPhone() -> String{
+        let keychain = KeychainSwift()
+        guard let data = keychain.getData(PHONE_KEY) else {return EMPTY}
+        return String(decoding: data, as: UTF8.self)
+    }
+    
     func isAuth() -> Bool{
         let keychain = KeychainSwift()
         if keychain.getData(TOKEN_KEY) != nil{
             return true
         }
         return false
+    }
+    
+    func destroyAllData(){
+        let keychain = KeychainSwift()
+        keychain.delete(TOKEN_KEY)
+        keychain.delete(PHONE_KEY)
     }
    
 }
