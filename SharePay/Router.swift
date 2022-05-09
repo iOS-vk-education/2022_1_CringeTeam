@@ -23,12 +23,17 @@ protocol RouterEssential: AnyObject{
 protocol RouterProtocol: RouterEssential{
     func initialViewController()
     func pushSMSView(phoneNumber: String)
-    func presentPurchaseView(purchase_id: Int64)
-    func pushPurchaseView(purchase_id: Int64)
-    func pushDebtView(debtId: Int64)
+    func presentPurchaseView(purchase_id: Int)
+    func pushPurchaseView(purchase_id: Int)
+    func pushDebtView(debtId: Int)
     func popToRoot()
     func dismissView()
     func setToken(token: String)
+}
+
+enum ViewMode {
+    case push
+    case present
 }
 
 
@@ -81,21 +86,21 @@ class Router: RouterProtocol{
         }
     }
     
-    func presentPurchaseView(purchase_id: Int64 = 0){
+    func presentPurchaseView(purchase_id: Int = 0){
         if let navigationController = navigationController {
-            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
+            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id, mode: .present) else { return}
             navigationController.present(purchaseViewControler, animated: true, completion: nil)
         }
     }
     
-    func pushPurchaseView(purchase_id: Int64 = 0){
+    func pushPurchaseView(purchase_id: Int = 0){
         if let navigationController = navigationController {
-            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id) else { return}
+            guard let purchaseViewControler = assembleBuilder?.createPurchaseViewController(router: self, purchase_id: purchase_id, mode: .push) else { return}
             navigationController.pushViewController(purchaseViewControler, animated: true)
         }
     }
     
-    func pushDebtView(debtId: Int64 = 0){
+    func pushDebtView(debtId: Int = 0){
         if let navigationController = navigationController {
             guard let debtViewControler = assembleBuilder?.createDebtViewController(router: self, debtID: debtId) else { return}
             navigationController.pushViewController(debtViewControler, animated: true)

@@ -14,6 +14,7 @@ protocol PurchaseView: AnyObject {
     func onFailSavePurchase()
     func onFailGetPurchase()
     func onUpdatePurchase()
+    func onInvalidPurchase() // Unable to save
 }
 
 
@@ -170,6 +171,11 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         // Разбиение покупки поровну
         equalSplitButton.addTarget(self, action: #selector(PurchaseViewController.splitEqual), for:.touchUpInside)
         
+        // Сохранение покупки
+        saveButton.addAction{ [weak self] in
+            self?.presenter.savePurchase()
+        }
+        
         // Обновление данных о покупке
         nameTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
         totalTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
@@ -181,7 +187,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     @objc func updatePurchase(){
         presenter.updatePurchase(name: nameTextField.text ?? "",
-                                 amount: Int64(totalTextField.text ?? "") ?? 0,
+                                 amount: Int(totalTextField.text ?? "") ?? 0,
                                  emoji: emojiSelectLabel.text ?? "",
                                  draft: !billSwitch.isOn)
     }
@@ -421,7 +427,7 @@ extension PurchaseViewController: UICollectionViewDataSource{
             self.presenter.deletePurchaseParticipant(phoneNumber: item.phoneNumber)
         }
         participantCell.setEditAction{ (amount: String) -> Void in
-            let amountNum: Int64? = Int64(amount)
+            let amountNum: Int? = Int(amount)
             self.presenter.setPurchaseParticapantAmount(phoneNumber: item.phoneNumber, amount: amountNum ?? 0)
         }
         return participantCell
@@ -506,6 +512,15 @@ extension PurchaseViewController: PurchaseView{
             NSLocalizedString("PurchaseViewController.Message.UnableToGetPurchase", comment: ""), preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
             self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func onInvalidPurchase() {
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.OnInvalidPurchase", comment: ""), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil) // TODO
         }
     }
     

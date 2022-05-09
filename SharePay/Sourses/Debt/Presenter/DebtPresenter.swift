@@ -13,8 +13,8 @@ protocol DebtViewPresenter: AnyObject{
     func getDebt() -> Debt
     func loadData()
     func notifyDebtor()
-    func pay(amount: Int64)
-    func tapPurchaseEvent(purchase_id: Int64)
+    func pay(amount: Int)
+    func tapPurchaseEvent(purchase_id: Int)
     func dismiss()
 }
 
@@ -28,7 +28,7 @@ class DebtPresenter: DebtViewPresenter{
     let defaultCurrency = "rub" // На первом этапе только рублевая валюта
     let currencySign: [String: String] = ["rub": "₽"]
     
-    required init(view: DebtView, router: RouterProtocol, debtID: Int64) {
+    required init(view: DebtView, router: RouterProtocol, debtID: Int) {
         self.router = router
         self.debt = Debt(debtID: debtID)
         self.view = view
@@ -81,7 +81,7 @@ class DebtPresenter: DebtViewPresenter{
         })
     }
     
-    func tapPurchaseEvent(purchase_id: Int64){
+    func tapPurchaseEvent(purchase_id: Int){
         router.pushPurchaseView(purchase_id: purchase_id)
     }
     
@@ -90,7 +90,7 @@ class DebtPresenter: DebtViewPresenter{
     }
     
     func calculateTotal(){
-        var totalAmount: Int64 = 0
+        var totalAmount: Int = 0
         for event in events{
             totalAmount+=event.amount
         }
@@ -109,7 +109,7 @@ class DebtPresenter: DebtViewPresenter{
         // Implement notification to owner by phone number
     }
     
-    func pay(amount: Int64){
+    func pay(amount: Int){
         let createPayment: CreatePaymentCodable = CreatePaymentCodable(currency: defaultCurrency, receiver_phone: debt.phoneNumber, amount: amount)
         router.sharePayPaymentService.createPayment(payment: createPayment, completion: { [weak self]
             (result: Result<CreatePaymentResponseCodable, Error>) -> Void in

@@ -44,6 +44,7 @@
 "PurchaseViewController.Message.UnableToAddParticipant" = "The participant already exists in purchase";
 "PurchaseViewController.Message.UnableToSavePurchase" = "Failed to save purchase";
 "PurchaseViewController.Message.UnableToGetPurchase" = "Failed to load purchase data";
+"PurchaseViewController.Message.OnInvalidPurchase" = "Сheck the correctness of the entered fields. The number of participants and the purchase amount must be greater than zero";
 
 "PurchasesViewController.Sum.Title" = "Total sum";
 "PurchasesViewController.FirstButton.Title" = "All";

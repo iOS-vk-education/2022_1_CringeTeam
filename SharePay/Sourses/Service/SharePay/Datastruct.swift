@@ -14,6 +14,9 @@ enum ServiceError: Error {
 
 // Codable структуры для взаимодействия с бэкендом приложения
 
+// AUTH
+
+
 struct Token: Codable{
     var token: String
     
@@ -30,69 +33,104 @@ struct Status: Codable{
     }
 }
 
-struct PurchaseService: Codable{
-    var id: Int64
+
+// Purchase
+
+// GET
+struct PurchaseCodable: Codable{
+    var id: Int
     var description: String
     var name: String
     var currency: String = "rub" // На начальном этапе только одна валюта
     var emoji: String
-    var user_purchases: [PurchaseParticipantService]
+    var draft: Bool
+    var created_at: String
+    var user_purchases: [PurchaseParticipantCodable]
     
-    init(id: Int64 = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantService]){
+    init(id: Int = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantCodable],
+         draft: Bool = true,created_at: String = ""){
         self.name = name
         self.description = description
         self.emoji = emoji
         self.user_purchases = participants
         self.id = id
+        self.draft = draft
+        self.created_at = created_at
     }
 }
 
-struct PurchaseParticipantService: Codable{
-    var user_phone: String
-    var amount: Int64
+// CREATE and UPDATE
+struct CreateUpdatePurchaseCodable: Codable{
+    var id: Int
+    var description: String
+    var name: String
+    var currency: String = "rub" // На начальном этапе только одна валюта
+    var emoji: String
+    var draft: Bool
+    var created_at: String
+    var user_purchases_attributes: [PurchaseParticipantCodable]
     
-    init(phone: String, amount: Int64){
+    init(id: Int = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantCodable],
+         draft: Bool = true, created_at: String = ""){
+        self.name = name
+        self.description = description
+        self.emoji = emoji
+        self.user_purchases_attributes = participants
+        self.id = id
+        self.draft = draft
+        self.created_at = created_at
+    }
+}
+
+struct PurchaseParticipantCodable: Codable{
+    var user_phone: String
+    var amount: Int
+    
+    init(phone: String, amount: Int){
         self.amount = amount
         self.user_phone = phone
     }
 }
 
-struct CreatePurchaseResponse: Codable{
-    var id: String
+struct CreateUpdatePurchaseResponse: Codable{
+    var id: Int
     var name: String
     var description: String
     var emoji: String
+    var draft: Bool
     var currency: String
+    var created_at: String
 }
 
-// Temporary
-struct PurchaseWrapService: Codable{
-    var purchase: PurchaseService
-}
+// DEBT
+
 
 struct DebtCodable: Codable{
-    var id: Int64
-    var amount: Int64
+    var id: Int
+    var amount: Int
     var creditor_phone: String
     var debtor_phone: String
     var events: [EventCodable]
 }
 
 struct EventCodable: Codable{
-    var amount: Int64
+    var amount: Int
     var date: String?
     var description: String?
     var emoji: String?
     var type: String
-    var event_id: Int64
+    var event_id: Int
 }
 
+// PAYMENT
+
+
 struct CreatePaymentCodable: Codable{
-    var amount: Int64
+    var amount: Int
     var currency: String
     var receiver_phone: String
     
-    init(currency: String, receiver_phone: String, amount: Int64){
+    init(currency: String, receiver_phone: String, amount: Int){
         self.amount = amount
         self.receiver_phone = receiver_phone
         self.currency = currency
@@ -100,11 +138,11 @@ struct CreatePaymentCodable: Codable{
 }
 
 struct CreatePaymentResponseCodable: Codable{
-    var id: Int64
-    var sender_id: Int64
-    var receiver_id: Int64
+    var id: Int
+    var sender_id: Int
+    var receiver_id: Int
     var created_at: String
     var updated_at: String
-    var amount: Int64
+    var amount: Int
     var currency: String
 }

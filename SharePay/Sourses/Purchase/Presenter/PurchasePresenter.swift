@@ -9,19 +9,20 @@ import Foundation
 import ContactsUI
 
 protocol PurchaseViewPresenter: AnyObject{
-    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int64)
+    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int)
     func addPurchaseParticipant(name: String,phoneNumber: String)
     func deletePurchaseParticipant(phoneNumber: String)
     func splitEqualPurchase()
     func listParticipants() -> [PurchaseParticipant]
     func getPurchase() -> Purchase
-    func updatePurchase(name: String, amount: Int64, emoji: String, draft: Bool)
+    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool)
     func savePurchase()
     func ready() // after viewDidLoad
 }
 
 class PurchasePresenter: PurchaseViewPresenter{
     
+
     weak var view: PurchaseView?
     var router: RouterProtocol
     var participants: [PurchaseParticipant]
@@ -29,24 +30,27 @@ class PurchasePresenter: PurchaseViewPresenter{
     // Если purchase_id == 0 то покупка еще не создана
     // По умолчанию draft = true, то есть покупка черновик (счета не выставлены)
     var purchase: Purchase
+    var viewMode: ViewMode
     
-    required init(view: PurchaseView, router: RouterProtocol, purchase_id : Int64 = 0){
+    required init(view: PurchaseView, router: RouterProtocol, purchase_id : Int = 0, mode: ViewMode){
         self.view = view
         self.participants =  [PurchaseParticipant]()
         self.phoneNumbers =  [String: Bool]()
         self.router = router
         self.purchase = Purchase(id: purchase_id)
+        self.viewMode = mode
     }
     
     
     func addPurchaseParticipant(name: String, phoneNumber: String) {
-        if phoneNumbers[phoneNumber] != nil && phoneNumbers[phoneNumber]! {
+        let number = phoneNumber.toDefaultPhoneFormat()
+        if phoneNumbers[number] != nil && phoneNumbers[number]! {
             view?.onUnableAddPurchaseParticipant()
             return
         }
         
-        participants.append(PurchaseParticipant(phoneNumber: phoneNumber, name: name, amount: 0))
-        phoneNumbers[phoneNumber] = true
+        participants.append(PurchaseParticipant(phoneNumber: number, name: name, amount: 0))
+        phoneNumbers[number] = true
         view?.onUpdatePurchaseParticipants()
     }
     
@@ -66,7 +70,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         }
     }
     
-    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int64){
+    func setPurchaseParticapantAmount(phoneNumber: String, amount: Int){
         for (index,p) in participants.enumerated(){
             if p.phoneNumber == phoneNumber{
                 participants[index].amount = amount
@@ -83,7 +87,7 @@ class PurchasePresenter: PurchaseViewPresenter{
         return purchase
     }
     
-    func updatePurchase(name: String, amount: Int64, emoji: String, draft: Bool){
+    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool){
         purchase.name = name
         purchase.amount = amount
         purchase.emoji = emoji
@@ -95,30 +99,84 @@ class PurchasePresenter: PurchaseViewPresenter{
             return
         }
         let amount = Int(purchase.amount) / participants.count
-        purchase.amount = Int64(amount) * Int64(participants.count)
+        purchase.amount = amount * participants.count
         for (index,_) in participants.enumerated(){
-                participants[index].amount = Int64(amount)
+                participants[index].amount = amount
         }
         view?.onUpdatePurchaseParticipants()
         view?.onUpdatePurchase()
     }
     
     func savePurchase(){
-        var purchaseParticipants: [PurchaseParticipantService] = []
+        if !isValidPurchase(){
+            self.view?.onInvalidPurchase()
+            return
+        }
+        if purchase.id != 0{
+            if purchase.draft{
+                updatePurchase()
+            }
+        } else {
+            createPurchase()
+        }
+    }
+    
+    func isValidPurchase() -> Bool{
+        var amount = 0
         for p in participants{
-            purchaseParticipants.append(PurchaseParticipantService(phone: p.phoneNumber, amount: p.amount))
+            amount += p.amount
+        }
+        return amount != 0
+    }
+    
+    func createPurchase(){
+        var purchaseParticipants: [PurchaseParticipantCodable] = []
+        for p in participants{
+            purchaseParticipants.append(PurchaseParticipantCodable(phone: p.phoneNumber, amount: p.amount))
         }
         
-        let newPurchase: PurchaseService = PurchaseService(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants)
-        router.sharePayPurchaseService.createPurchase(purchase: newPurchase, completion: { (result: Result<CreatePurchaseResponse, Error>) -> Void in
+        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants, draft: purchase.draft, created_at: purchase.created_at.formatted())
+        router.sharePayPurchaseService.createPurchase(purchase: newPurchase, completion: { (result: Result<CreateUpdatePurchaseResponse, Error>) -> Void in
             switch result {
-            case .success(_):
+            case .success(let purchaseResponse):
+                self.purchase.id = purchaseResponse.id
                 DispatchQueue.main.async {
-                    self.router.popToRoot()
+                    self.view?.onUpdatePurchase()
+                    if self.viewMode == .present{
+                        self.router.dismissView()
+                    } else {
+                        self.router.popToRoot()
+                    }
                 }
             case .failure(_):
                 DispatchQueue.main.async {
-                    self.view?.onUnableAddPurchaseParticipant()
+                    self.view?.onFailSavePurchase()
+                }
+            }
+        })
+    }
+    
+    func updatePurchase(){
+        var purchaseParticipants: [PurchaseParticipantCodable] = []
+        for p in participants{
+            purchaseParticipants.append(PurchaseParticipantCodable(phone: p.phoneNumber, amount: p.amount))
+        }
+        
+        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants,  draft: purchase.draft, created_at: purchase.created_at.formatted())
+        router.sharePayPurchaseService.updatePurchase(purchase: newPurchase, purchase_id: purchase.id, completion: { (result: Result<CreateUpdatePurchaseResponse, Error>) -> Void in
+            switch result {
+            case .success(let purchaseResponse):
+                DispatchQueue.main.async {
+                    self.view?.onUpdatePurchase()
+                    if self.viewMode == .present{
+                        self.router.dismissView()
+                    } else {
+                        self.router.popToRoot()
+                    }
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.view?.onFailSavePurchase()
                 }
             }
         })
@@ -126,13 +184,11 @@ class PurchasePresenter: PurchaseViewPresenter{
     
     func ready(){
         if purchase.id != 0{
-            router.sharePayPurchaseService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseWrapService, Error>) -> Void in
+            router.sharePayPurchaseService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseCodable, Error>) -> Void in
                 switch result {
-                case .success(let purchaseWrap):
-                    let purchase: PurchaseService = purchaseWrap.purchase
-                    
+                case .success(let purchase):
                     // Загружаем участников покупки
-                    var purchaseAmount: Int64 = 0
+                    var purchaseAmount: Int = 0
                     var newParticipants: [PurchaseParticipant] = []
                     for p in purchase.user_purchases{
                         
@@ -144,7 +200,7 @@ class PurchasePresenter: PurchaseViewPresenter{
                     self.participants = newParticipants
                 
                     // Загружаем покупку
-                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: true, amount: purchaseAmount) // TODO draft
+                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount)
                     self.purchase = newPurchase
                     
                     DispatchQueue.main.async{

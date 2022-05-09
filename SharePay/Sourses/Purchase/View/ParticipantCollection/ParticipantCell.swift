@@ -116,7 +116,7 @@ final class ParticipantCell: UICollectionViewCell{
         
     }
     
-    func setData(name: String, amount: Int64){
+    func setData(name: String, amount: Int){
         let nameAttrs = name.components(separatedBy: .whitespacesAndNewlines)
         guard var letters = nameAttrs.first?.prefix(1) else {
               return

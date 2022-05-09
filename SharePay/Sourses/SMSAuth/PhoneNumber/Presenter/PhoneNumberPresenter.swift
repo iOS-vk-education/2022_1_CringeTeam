@@ -22,7 +22,7 @@ final class PhoneNumberPresenter: PhoneNumberViewPresenter{
     }
     
     func tapContinue(phoneNumber: String) {
-        let number = phoneNumber.filter {!($0.isWhitespace || $0=="+" || $0=="-")}
+        let number = phoneNumber.toDefaultPhoneFormat()
         if isValidPhoneNumber(phoneNumber: number){
             router?.sharePayAuthService.getSMSCode(phoneNumber: phoneNumber, completion: { [weak self] (result: Result<Status,Error>) -> Void in
                 switch result {

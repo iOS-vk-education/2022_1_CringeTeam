@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SharePayDebtProtocol: AnyObject{
-    func getDebt(debtID: Int64, completion: @escaping (Result<DebtCodable,Error>) -> Void)
+    func getDebt(debtID: Int, completion: @escaping (Result<DebtCodable,Error>) -> Void)
     func setToken(token: String)
 }
 
@@ -20,7 +20,7 @@ class SharePayDebtService: SharePayDebtProtocol{
         networkAdapter.setToken(authToken: token)
     }
     
-    func getDebt(debtID: Int64, completion: @escaping (Result<DebtCodable,Error>) -> Void){
+    func getDebt(debtID: Int, completion: @escaping (Result<DebtCodable,Error>) -> Void){
         let endpoint = "/debts/\(debtID)"
         guard let url = URL(string: api+endpoint) else {
             completion(.failure(ServiceError.invalidURL))

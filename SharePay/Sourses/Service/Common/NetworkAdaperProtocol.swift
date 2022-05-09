@@ -15,7 +15,7 @@ enum ManagerErrors: Error {
 enum HttpMethod: String {
     case get
     case post
-
+    case patch
     var method: String { rawValue.uppercased() }
 }
 

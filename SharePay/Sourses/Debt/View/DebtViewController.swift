@@ -108,7 +108,7 @@ final class DebtViewController: UIViewController{
             let payAlert = UIAlertController(title: NSLocalizedString("DebtViewController.Alert.Payment" , comment: ""), message: NSLocalizedString("DebtViewController.Alert.PayAcception" , comment: ""), preferredStyle: UIAlertController.Style.alert)
 
             payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Ok" , comment: ""), style: .default, handler: { (action: UIAlertAction!) in
-                self?.presenter.pay(amount: Int64(amount))
+                self?.presenter.pay(amount: amount)
               }))
 
             payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Cancel" , comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
