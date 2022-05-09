@@ -180,6 +180,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         nameTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
         totalTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
         billSwitch.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
         
         // Сообщем презентеру что мы готовы
         presenter.ready()
@@ -189,7 +190,8 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         presenter.updatePurchase(name: nameTextField.text ?? "",
                                  amount: Int(totalTextField.text ?? "") ?? 0,
                                  emoji: emojiSelectLabel.text ?? "",
-                                 draft: !billSwitch.isOn)
+                                 draft: !billSwitch.isOn,
+                                 created_at: datePicker.date)
     }
     
     @objc func selectEmoji(sender:UITapGestureRecognizer) {
@@ -483,12 +485,16 @@ extension PurchaseViewController: PurchaseView{
             self?.datePicker.setDate(purchase.created_at, animated: true)
             self?.billSwitch.setOn(!purchase.draft, animated: true)
             
+            // TODO Исправить
+            // Некорректное поведение при выставлении флага для уже созданной покупки перед сохранением
             if !purchase.draft && purchase.id != 0 {
                 // Когда счет выставлены необходимо отключить возможности редактирования
                 self?.nameTextField.isEnabled =  false
                 self?.emojiSelectLabel.isEnabled = false
                 self?.totalTextField.isEnabled = false
                 self?.saveButton.isEnabled = false
+                self?.addParticipantButton.isEnabled = false
+                self?.datePicker.isEnabled = false
                 self?.saveButton.setTitle(NSLocalizedString("Common.Ok", comment: ""), for: .normal)
                 self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoTextNotEdit", comment: "")
                 self?.billSwitch.isEnabled = false
@@ -500,6 +506,8 @@ extension PurchaseViewController: PurchaseView{
             self?.emojiSelectLabel.isEnabled = true
             self?.totalTextField.isEnabled = true
             self?.saveButton.isEnabled = true
+            self?.addParticipantButton.isEnabled = true
+            self?.datePicker.isEnabled = true
             self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
             self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
             self?.billSwitch.isEnabled = true

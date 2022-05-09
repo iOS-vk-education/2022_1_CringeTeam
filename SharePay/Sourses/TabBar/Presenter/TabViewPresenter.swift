@@ -23,7 +23,7 @@ class TabPresenter: TabViewPresenter{
     
     func newPurchase() {
         // Покупка новая -> purchase_id = 0
-        router.presentPurchaseView(purchase_id: 0)
+        router.presentPurchaseView(purchase_id: 6)
         //router.pushDebtView(debtId: 1)
     }
 }

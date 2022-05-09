@@ -181,7 +181,7 @@ extension String{
     
     func parseRFC3339Date() -> Date{
         let newFormatter = DateFormatter()
-        newFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        newFormatter.dateFormat = "yyyy-dd-MM'T'HH:mm:ss.SSS'Z'"
         guard let date = newFormatter.date(from: self) else {
             return Date.init(timeIntervalSince1970: TimeInterval(0))
         }

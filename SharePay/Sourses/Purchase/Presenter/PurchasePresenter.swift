@@ -15,7 +15,7 @@ protocol PurchaseViewPresenter: AnyObject{
     func splitEqualPurchase()
     func listParticipants() -> [PurchaseParticipant]
     func getPurchase() -> Purchase
-    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool)
+    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool, created_at: Date)
     func savePurchase()
     func ready() // after viewDidLoad
 }
@@ -87,11 +87,12 @@ class PurchasePresenter: PurchaseViewPresenter{
         return purchase
     }
     
-    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool){
+    func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool, created_at: Date){
         purchase.name = name
         purchase.amount = amount
         purchase.emoji = emoji
         purchase.draft = draft
+        purchase.created_at = created_at
     }
     
     func splitEqualPurchase(){
@@ -113,9 +114,7 @@ class PurchasePresenter: PurchaseViewPresenter{
             return
         }
         if purchase.id != 0{
-            if purchase.draft{
-                updatePurchase()
-            }
+            updatePurchase()
         } else {
             createPurchase()
         }
@@ -200,7 +199,7 @@ class PurchasePresenter: PurchaseViewPresenter{
                     self.participants = newParticipants
                 
                     // Загружаем покупку
-                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount)
+                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount, created_at: purchase.created_at.parseRFC3339Date())
                     self.purchase = newPurchase
                     
                     DispatchQueue.main.async{
