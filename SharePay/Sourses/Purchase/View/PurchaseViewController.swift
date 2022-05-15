@@ -14,6 +14,7 @@ protocol PurchaseView: AnyObject {
     func onFailSavePurchase()
     func onFailGetPurchase()
     func onUpdatePurchase()
+    func onInvalidPurchase()
 }
 
 
@@ -170,10 +171,16 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         // Разбиение покупки поровну
         equalSplitButton.addTarget(self, action: #selector(PurchaseViewController.splitEqual), for:.touchUpInside)
         
+        // Сохранение покупки
+        saveButton.addAction{ [weak self] in
+            self?.presenter.action()
+        }
+        
         // Обновление данных о покупке
         nameTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
         totalTextField.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .editingChanged)
         billSwitch.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
         
         // Сообщем презентеру что мы готовы
         presenter.ready()
@@ -181,9 +188,10 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     @objc func updatePurchase(){
         presenter.updatePurchase(name: nameTextField.text ?? "",
-                                 amount: Int64(totalTextField.text ?? "") ?? 0,
+                                 amount: Int(totalTextField.text ?? "") ?? 0,
                                  emoji: emojiSelectLabel.text ?? "",
-                                 draft: !billSwitch.isOn)
+                                 draft: !billSwitch.isOn,
+                                 created_at: datePicker.date)
     }
     
     @objc func selectEmoji(sender:UITapGestureRecognizer) {
@@ -421,7 +429,7 @@ extension PurchaseViewController: UICollectionViewDataSource{
             self.presenter.deletePurchaseParticipant(phoneNumber: item.phoneNumber)
         }
         participantCell.setEditAction{ (amount: String) -> Void in
-            let amountNum: Int64? = Int64(amount)
+            let amountNum: Int? = Int(amount)
             self.presenter.setPurchaseParticapantAmount(phoneNumber: item.phoneNumber, amount: amountNum ?? 0)
         }
         return participantCell
@@ -477,12 +485,13 @@ extension PurchaseViewController: PurchaseView{
             self?.datePicker.setDate(purchase.created_at, animated: true)
             self?.billSwitch.setOn(!purchase.draft, animated: true)
             
-            if !purchase.draft && purchase.id != 0 {
+            if !(self?.presenter.isEditable() ?? false) {
                 // Когда счет выставлены необходимо отключить возможности редактирования
                 self?.nameTextField.isEnabled =  false
                 self?.emojiSelectLabel.isEnabled = false
                 self?.totalTextField.isEnabled = false
-                self?.saveButton.isEnabled = false
+                self?.addParticipantButton.isEnabled = false
+                self?.datePicker.isEnabled = false
                 self?.saveButton.setTitle(NSLocalizedString("Common.Ok", comment: ""), for: .normal)
                 self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoTextNotEdit", comment: "")
                 self?.billSwitch.isEnabled = false
@@ -493,7 +502,8 @@ extension PurchaseViewController: PurchaseView{
             self?.nameTextField.isEnabled =  true
             self?.emojiSelectLabel.isEnabled = true
             self?.totalTextField.isEnabled = true
-            self?.saveButton.isEnabled = true
+            self?.addParticipantButton.isEnabled = true
+            self?.datePicker.isEnabled = true
             self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
             self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
             self?.billSwitch.isEnabled = true
@@ -504,6 +514,15 @@ extension PurchaseViewController: PurchaseView{
         DispatchQueue.main.async{
             let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
             NSLocalizedString("PurchaseViewController.Message.UnableToGetPurchase", comment: ""), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func onInvalidPurchase() {
+        DispatchQueue.main.async{
+            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+            NSLocalizedString("PurchaseViewController.Message.OnInvalidPurchase", comment: ""), preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
             self.present(alertController, animated: true, completion: nil)
         }

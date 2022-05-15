@@ -44,6 +44,7 @@
 "PurchaseViewController.Message.UnableToSavePurchase" = "Не удалось сохранить покупку";
 "PurchaseViewController.Message.UnableToGetPurchase" = "Не удалось загрузить данные покупки";
 "PurchaseViewPresenter.Message.UnableToAddParticipant" = "Участник покупки уже существует";
+"PurchaseViewController.Message.OnInvalidPurchase" = "Проверьте правильность введенных полей. Количество участников и сумма покупки должны быть больше нуля";
 
 "PurchasesViewController.Sum.Title" = "Сумма покупок";
 "PurchasesViewController.FirstButton.Title" = "Все";

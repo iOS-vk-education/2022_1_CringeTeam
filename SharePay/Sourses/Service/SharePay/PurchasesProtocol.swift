@@ -9,8 +9,11 @@ import Foundation
 
 
 protocol SharePayPurchaseProtocol: AnyObject{
-    func createPurchase(purchase: PurchaseService, completion: @escaping (Result<CreatePurchaseResponse,Error>) -> Void)
-    func getPurchase(purchase_id: Int64, completion: @escaping (Result<PurchaseWrapService,Error>) -> Void)
+    func createPurchase(purchase: CreateUpdatePurchaseCodable, completion: @escaping (Result<CreateUpdatePurchaseResponse,Error>) -> Void)
+    func updatePurchase(purchase: CreateUpdatePurchaseCodable, purchase_id: Int,
+                        completion: @escaping (Result<CreateUpdatePurchaseResponse,Error>) -> Void)
+    func getPurchase(purchase_id: Int, completion: @escaping (Result<PurchaseCodable,Error>) -> Void)
+    func deletePurchase(purchase_id: Int, completion: @escaping (Result<Status,Error>) -> Void)
     func setToken(token: String)
 }
 
@@ -23,20 +26,30 @@ class SharePayPurchaseService: SharePayPurchaseProtocol{
         networkAdapter.setToken(authToken: token)
     }
     
-    func createPurchase(purchase:  PurchaseService, completion: @escaping (Result<CreatePurchaseResponse,Error>) -> Void){
+    func createPurchase(purchase:  CreateUpdatePurchaseCodable, completion: @escaping (Result<CreateUpdatePurchaseResponse,Error>) -> Void){
         let endpoint = "/purchases"
         guard let url = URL(string: api+endpoint) else {
             completion(.failure(ServiceError.invalidURL))
             return
         }
-        let json: [String: Any] = ["purchase":purchase]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        self.networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData,withToken: true, completion: {(result: Result<CreatePurchaseResponse, Error>) -> Void in
-            completion(result)
-        })
+        let encoder: JSONEncoder = JSONEncoder()
+        let jsonData = try? encoder.encode(purchase)
+        self.networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData,withToken: true, completion: completion)
     }
     
-    func getPurchase(purchase_id: Int64, completion: @escaping (Result<PurchaseWrapService,Error>) -> Void){
+    func updatePurchase(purchase: CreateUpdatePurchaseCodable, purchase_id: Int,
+                        completion: @escaping (Result<CreateUpdatePurchaseResponse,Error>) -> Void){
+        let endpoint = "/purchases/\(purchase_id)"
+        guard let url = URL(string: api+endpoint) else {
+            completion(.failure(ServiceError.invalidURL))
+            return
+        }
+        let encoder: JSONEncoder = JSONEncoder()
+        let jsonData = try? encoder.encode(purchase)
+        self.networkAdapter.request(fromURL: url, httpMethod: .patch, httpBody: jsonData,withToken: true, completion: completion)
+    }
+    
+    func getPurchase(purchase_id: Int, completion: @escaping (Result<PurchaseCodable,Error>) -> Void){
         let endpoint = "/purchases/\(purchase_id)"
         guard let url = URL(string: api+endpoint) else {
             completion(.failure(ServiceError.invalidURL))
@@ -44,5 +57,14 @@ class SharePayPurchaseService: SharePayPurchaseProtocol{
         }
         self.networkAdapter.request(fromURL: url, httpMethod: .get, httpBody: nil,  withToken: true, completion: completion)
         
+    }
+    
+    func deletePurchase(purchase_id: Int, completion: @escaping (Result<Status,Error>) -> Void){
+        let endpoint = "/purchases/\(purchase_id)"
+        guard let url = URL(string: api+endpoint) else {
+            completion(.failure(ServiceError.invalidURL))
+            return
+        }
+        self.networkAdapter.request(fromURL: url, httpMethod: .delete, httpBody: nil,  withToken: true, completion: completion)
     }
 }

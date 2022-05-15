@@ -12,13 +12,13 @@ let PURCHASE_TYPE = "purchase"
 
 struct Debt{
     var phoneNumber: String
-    var debtID: Int64
+    var debtID: Int
     var name: String
-    var amount: Int64
+    var amount: Int
     var currency: String
     
-    init(debtID: Int64, phoneNumber: String = "", name: String = "",
-         amount: Int64 = 0, currecny: String = ""){
+    init(debtID: Int, phoneNumber: String = "", name: String = "",
+         amount: Int = 0, currecny: String = ""){
         self.debtID = debtID
         self.phoneNumber = phoneNumber
         self.name = name
@@ -32,13 +32,13 @@ struct Event{
     var name: String
     var emoji: String
     var date: Date
-    var amount: Int64
+    var amount: Int
     var currency: String // На первом этапе одна валюта RUB
     var type: String
-    var purchase_id: Int64
+    var purchase_id: Int
 
     init(name: String, emoji: String, date: Date,
-         amount:Int64, type: String, purchase_id: Int64 = 0){
+         amount:Int, type: String, purchase_id: Int = 0){
         self.amount = amount
         self.emoji = emoji
         self.date = date

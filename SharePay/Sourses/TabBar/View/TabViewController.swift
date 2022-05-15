@@ -74,7 +74,7 @@ class TabViewController: UITabBarController {
 
     @objc private func menuButtonAction(sender: UIButton) {
         selectedIndex = 2
-        presenter.newPurchase()
+        presenter.showNewPurchase()
     }
 }
 

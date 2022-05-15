@@ -12,8 +12,8 @@ protocol AssembleProtocol: AnyObject {
     func createPhoneNumberModule(router: RouterProtocol) -> UIViewController
     func createSMSCodeNumberModule(router: RouterProtocol, phoneNumber: String) -> UIViewController
     func createMainViewController(router: RouterProtocol) -> UIViewController
-    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int64) -> UIViewController
-    func createDebtViewController(router: RouterProtocol, debtID: Int64) -> UIViewController
+    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int, mode: ViewMode) -> UIViewController
+    func createDebtViewController(router: RouterProtocol, debtID: Int) -> UIViewController
 }
 
 class Assemble: AssembleProtocol{
@@ -39,14 +39,14 @@ class Assemble: AssembleProtocol{
         return view
     }
     
-    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int64 = 0) -> UIViewController{
+    func createPurchaseViewController(router: RouterProtocol, purchase_id: Int = 0, mode: ViewMode) -> UIViewController{
         let view = PurchaseViewController()
-        let presenter = PurchasePresenter(view: view, router: router, purchase_id: purchase_id)
+        let presenter = PurchasePresenter(view: view, router: router, purchase_id: purchase_id, mode: mode)
         view.presenter = presenter
         return view
     }
     
-    func createDebtViewController(router: RouterProtocol, debtID: Int64) -> UIViewController{
+    func createDebtViewController(router: RouterProtocol, debtID: Int) -> UIViewController{
         let view = DebtViewController()
         let presenter = DebtPresenter(view: view, router: router, debtID: debtID)
         view.presenter = presenter

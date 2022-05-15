@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TabViewPresenter: AnyObject{
-    func newPurchase()
+    func showNewPurchase()
 }
 
 
@@ -21,9 +21,8 @@ class TabPresenter: TabViewPresenter{
         self.router = router
     }
     
-    func newPurchase() {
+    func showNewPurchase() {
         // Покупка новая -> purchase_id = 0
-       // router.showPurchaseView(purchase_id: 0)
-        router.pushDebtView(debtId: 1)
+        router.presentPurchaseView(purchase_id: 0)
     }
 }
