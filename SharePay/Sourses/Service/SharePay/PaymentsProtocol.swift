@@ -10,6 +10,7 @@ import Foundation
 protocol SharePayPaymentsProtocol: AnyObject{
     func createPayment(payment: CreatePaymentCodable,
                        completion: @escaping (Result<CreatePaymentResponseCodable,Error>) -> Void)
+    func listPayments(completion: @escaping (Result<[PaymentCodable],Error>) -> Void)
     func setToken(token: String)
 }
 
@@ -32,5 +33,14 @@ class SharePayPaymentsService: SharePayPaymentsProtocol{
         let encoder: JSONEncoder = JSONEncoder()
         let jsonData = try? encoder.encode(payment)
         self.networkAdapter.request(fromURL: url, httpMethod: .post, httpBody: jsonData,withToken: true, completion: completion)
+    }
+    
+    func listPayments(completion: @escaping (Result<[PaymentCodable],Error>) -> Void){
+        let endpoint = "/payments"
+        guard let url = URL(string: api+endpoint) else {
+            completion(.failure(ServiceError.invalidURL))
+            return
+        }
+        self.networkAdapter.request(fromURL: url, httpMethod: .get, httpBody: nil,withToken: true, completion: completion)
     }
 }

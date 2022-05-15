@@ -8,15 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     let onBoardView = OnBoardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view = onBoardView
     }
-
-
-
 }
 

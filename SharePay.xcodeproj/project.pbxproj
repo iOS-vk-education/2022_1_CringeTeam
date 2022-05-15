@@ -31,6 +31,8 @@
 		3646773828158B9300DA62D0 /* DebtEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646773728158B9300DA62D0 /* DebtEntity.swift */; };
 		365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */; };
 		365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365C4E602800D68B00E7DC27 /* ParticipantCell.swift */; };
+		367C43B62830EE4200BF4228 /* TransfersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367C43B52830EE4200BF4228 /* TransfersPresenter.swift */; };
+		367C43B82830F06600BF4228 /* TransfersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367C43B72830F06600BF4228 /* TransfersEntity.swift */; };
 		369658E8280DDE7E00D07858 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658E7280DDE7E00D07858 /* Entity.swift */; };
 		369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658EB280DE02E00D07858 /* PurchasePresenter.swift */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
@@ -84,6 +86,8 @@
 		3646773728158B9300DA62D0 /* DebtEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtEntity.swift; sourceTree = "<group>"; };
 		365C4E5D2800C1B500E7DC27 /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		365C4E602800D68B00E7DC27 /* ParticipantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantCell.swift; sourceTree = "<group>"; };
+		367C43B52830EE4200BF4228 /* TransfersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersPresenter.swift; sourceTree = "<group>"; };
+		367C43B72830F06600BF4228 /* TransfersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersEntity.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		369658EB280DE02E00D07858 /* PurchasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
@@ -321,6 +325,31 @@
 			path = ParticipantCollection;
 			sourceTree = "<group>";
 		};
+		367C43B22830EDF400BF4228 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C672281EA1E4008FE5B4 /* TransfersTableViewCell.swift */,
+				CE76C670281EA1D5008FE5B4 /* TransfersViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		367C43B32830EDFC00BF4228 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				367C43B72830F06600BF4228 /* TransfersEntity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		367C43B42830EE0600BF4228 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				367C43B52830EE4200BF4228 /* TransfersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		369658E6280DDE6200D07858 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,8 +506,9 @@
 		CE76C66E281EA1A9008FE5B4 /* Transfers */ = {
 			isa = PBXGroup;
 			children = (
-				CE76C670281EA1D5008FE5B4 /* TransfersViewController.swift */,
-				CE76C672281EA1E4008FE5B4 /* TransfersTableViewCell.swift */,
+				367C43B42830EE0600BF4228 /* Presenter */,
+				367C43B32830EDFC00BF4228 /* Model */,
+				367C43B22830EDF400BF4228 /* View */,
 			);
 			path = Transfers;
 			sourceTree = "<group>";
@@ -651,6 +681,7 @@
 				36467734281353FA00DA62D0 /* EventCell.swift in Sources */,
 				6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */,
 				365C4E5E2800C1B500E7DC27 /* PurchaseViewController.swift in Sources */,
+				367C43B62830EE4200BF4228 /* TransfersPresenter.swift in Sources */,
 				3631357B28255B5E0015E288 /* UserServiceProtocol.swift in Sources */,
 				364677312811D88900DA62D0 /* PaymentBadge.swift in Sources */,
 				3631358028255B5E0015E288 /* AuthProtocol.swift in Sources */,
@@ -668,6 +699,7 @@
 				3631357C28255B5E0015E288 /* PaymentsProtocol.swift in Sources */,
 				363135982825C4520015E288 /* TabViewPresenter.swift in Sources */,
 				3631357928255B5E0015E288 /* AuthServiceProtocol.swift in Sources */,
+				367C43B82830F06600BF4228 /* TransfersEntity.swift in Sources */,
 				CE76C675281EA213008FE5B4 /* SettingsViewController.swift in Sources */,
 				3631359A2826C81E0015E288 /* ContactServiceProtocol.swift in Sources */,
 			);

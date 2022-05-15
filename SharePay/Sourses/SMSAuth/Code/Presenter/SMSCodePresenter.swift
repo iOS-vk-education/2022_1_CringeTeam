@@ -65,6 +65,6 @@ class SMSCodePresenter: SMSCodeViewPresenter{
     }
     
     func finishAuth(){
-        router?.popToRoot()
+        router?.setMainViewController()
     }
 }

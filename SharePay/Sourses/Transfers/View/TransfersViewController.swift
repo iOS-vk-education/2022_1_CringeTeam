@@ -6,9 +6,15 @@
 //
 import UIKit
 
+protocol TransfersView: AnyObject{
+    func onSuccesssTransfersLoad()
+    func onFailedTransfersLoad()
+}
+
 final class TransfersViewController: UIViewController {
     
-///Подложка
+    var presenter: TransfersViewPresenter!
+    
     let allView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -16,13 +22,10 @@ final class TransfersViewController: UIViewController {
         return view
     }()
     
-///Заголовок
     let mainTitle = UILabel(text: "Переводы", color: "DarkBlueColor", size: 24)
-
-///Таблица
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(TransfersTableViewCell.self, forCellReuseIdentifier: "cellT")
+        table.register(TransfersTableViewCell.self, forCellReuseIdentifier: "TransferCell")
         table.backgroundColor = UIColor(named: "WhiteColor")
         table.separatorStyle = .none
         return table
@@ -35,18 +38,25 @@ final class TransfersViewController: UIViewController {
         tableView.delegate = self
         arrangeConstraints()
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        
+        presenter.refresh()
     }
     
-   //Установка констрэйнток
+    @objc
+    private func didPullToRefresh() {
+        presenter.refresh()
+    }
+    
     func arrangeConstraints() {
         
         view.addSubview(allView)
         allView.addSubview(mainTitle)
         allView.addSubview(tableView)
     
-        [allView, mainTitle, tableView].forEach {
-$0.translatesAutoresizingMaskIntoConstraints = false
-}
+        [allView, mainTitle, tableView].forEach {$0.translatesAutoresizingMaskIntoConstraints = false}
         
         let allViewConstraints: [NSLayoutConstraint] = [
             allView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -56,9 +66,7 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         ]
         NSLayoutConstraint.activate(allViewConstraints)
 
-      
         let tableViewConstraints: [NSLayoutConstraint] = [
-            
             tableView.topAnchor.constraint(equalTo: mainTitle.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -71,6 +79,41 @@ $0.translatesAutoresizingMaskIntoConstraints = false
             mainTitle.centerXAnchor.constraint(equalTo: allView.centerXAnchor),
         ]
         NSLayoutConstraint.activate(mainTitleConstraints)
-        
+    }
+}
+
+
+extension TransfersViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.presenter.listTransfers().count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransferCell", for: indexPath)  as? TransfersTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.setData(transfer: self.presenter.listTransfers()[indexPath.row])
+        return cell
+    }
+}
+
+
+extension TransfersViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+}
+
+extension TransfersViewController: TransfersView {
+    func onFailedTransfersLoad() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("TransfersViewController.Message.FailedLoadTransfer", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func onSuccesssTransfersLoad() {
+        tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
     }
 }

@@ -53,6 +53,8 @@
 "PurchasesViewController.Type.Title" = "Draft";
 "PurchasesViewController.Type.Title2" = " Billed ";
 
+"TransfersViewController.Message.FailedLoadTransfer" = "Failed loading the list of transfers. Try again later";
+
 "TabBarController.Type.FirstTab" = "Purcheses";
 "TabBarController.Type.SecondTab" = "Debts";
 "TabBarController.Type.ThirdTab" = "Transfers";

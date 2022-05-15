@@ -26,6 +26,7 @@ protocol RouterProtocol: RouterEssential{
     func presentPurchaseView(purchase_id: Int)
     func pushPurchaseView(purchase_id: Int)
     func pushDebtView(debtId: Int)
+    func setMainViewController()
     func popToRoot()
     func dismissView()
     func setToken(token: String)
@@ -59,22 +60,20 @@ class Router: RouterProtocol{
         self.contactService = ContactService()
         self.sharePayDebtService = SharePayDebtService()
         self.sharePayPaymentService = SharePayPaymentsService()
-        
-        // TODO для тестирования под несколькими пользователями
-        authService.destroyAllData()
     }
     
     func initialViewController() {
         if let navigationController = navigationController {
-            guard let mainViewController = assembleBuilder?.createMainViewController(router: self) else{ return}
-            navigationController.viewControllers = [mainViewController]
-            
             // TODO onboard check
             if !authService.isAuth(){
                 guard let phoneNumberViewController = assembleBuilder?.createPhoneNumberModule(router: self)else{ return}
-                navigationController.pushViewController(phoneNumberViewController, animated: true)
+                navigationController.viewControllers = [phoneNumberViewController]
                 return
             }
+            
+            guard let mainViewController = assembleBuilder?.createMainViewController(router: self) else{ return}
+            navigationController.viewControllers = [mainViewController]
+            
             self.setToken(token: authService.getToken())
         }
     }
@@ -110,6 +109,13 @@ class Router: RouterProtocol{
     func popToRoot() {
         if let navigationController = navigationController {
             navigationController.popToRootViewController(animated: true)
+        }
+    }
+    
+    func setMainViewController(){
+        if let navigationController = navigationController {
+            guard let mainViewController = assembleBuilder?.createMainViewController(router: self) else{ return}
+            navigationController.viewControllers = [mainViewController]
         }
     }
     

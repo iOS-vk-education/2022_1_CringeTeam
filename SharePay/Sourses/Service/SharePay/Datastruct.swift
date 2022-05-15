@@ -146,3 +146,9 @@ struct CreatePaymentResponseCodable: Codable{
     var amount: Int
     var currency: String
 }
+
+struct PaymentCodable: Codable{
+    var amount: Int
+    var sender_phone: String
+    var created_at: String
+}

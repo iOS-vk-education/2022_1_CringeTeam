@@ -12,14 +12,24 @@ protocol TabView: AnyObject{
 
 class TabViewController: UITabBarController {
     
-    var presenter: TabViewPresenter!
-
+    var presenter: TabViewPresenter
+    
+    init(presenter: TabViewPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setApperrence()
         createTabBar()
         setupMiddleButton()
     }
+    
     
     func createTabBar() {
         let purchasesViewController = PurchasesViewController()
@@ -33,8 +43,8 @@ class TabViewController: UITabBarController {
         let plusViewController = PurchasesViewController()
         let nav3 = UINavigationController(rootViewController: plusViewController)
         nav3.title = ""
-
-        let transferViewController = TransfersViewController()
+        
+        let transferViewController = presenter.getRouter().assembleBuilder?.createTrasnfersViewController(router: presenter.getRouter()) ?? UIViewController()
         transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
