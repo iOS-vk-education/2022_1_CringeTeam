@@ -20,7 +20,6 @@ extension UILabel {
         layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
         return layer
     }
-    
 }
 
 //Onboard
@@ -64,41 +63,6 @@ extension UITextField {
     }
 
 }
-//Паралах эффект
-extension PurchasesViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0.0 {
-
-            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
-            print(scrollView.contentOffset.y)
-
-        } else {
-
-        }
-    }
-}
-//Purchases Таблица делегаты
-extension PurchasesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PurchasesTableViewCell
-
-        return cell
-    }
-}
-
-//Purchases Таблица делегаты
-extension PurchasesViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
-    }
-
-}
-
 
 //DEBT Паралах эффект
 extension DebtsViewController: UIScrollViewDelegate {
@@ -155,7 +119,6 @@ extension UIViewController {
 }
 
 extension String{
-    
     func parseRFC3339Date() -> Date{
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "yyyy-dd-MM'T'HH:mm:ss.SSS'Z'"
@@ -165,8 +128,20 @@ extension String{
         return date
     }
     
+    // Конвертация в clean phone format
     func toDefaultPhoneFormat() -> String{
         return self.filter {!($0.isWhitespace || $0=="+" || $0=="-" || $0==")" || $0=="(")}
+    }
+    
+    // Возвращаем знак валюты по наименованию
+    func toCurrencySign() -> String {
+        let currencyNameSignMap: [String: String] = [
+            "rub" : "₽"
+        ]
+        guard let sign = currencyNameSignMap[self] else {
+            return ""
+        }
+        return sign
     }
 }
 

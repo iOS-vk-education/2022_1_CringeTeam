@@ -18,7 +18,7 @@ protocol PurchaseViewPresenter: AnyObject{
     func isEditable() -> Bool
     func updatePurchase(name: String, amount: Int, emoji: String, draft: Bool, created_at: Date)
     func action() // save/ok
-    func ready() // готовность view
+    func viewDidLoad() // готовность view
 }
 
 class PurchasePresenter: PurchaseViewPresenter{
@@ -200,7 +200,7 @@ class PurchasePresenter: PurchaseViewPresenter{
     }
     
     // Подгружаем покупку
-    func ready(){
+    func viewDidLoad(){
         if purchase.id != 0{
             router.sharePayPurchaseService.getPurchase(purchase_id: purchase.id, completion:{ (result: Result<PurchaseCodable, Error>) -> Void in
                 switch result {
@@ -208,14 +208,16 @@ class PurchasePresenter: PurchaseViewPresenter{
                     // Загружаем участников покупки
                     var purchaseAmount: Int = 0
                     var newParticipants: [PurchaseParticipant] = []
-                    for p in purchase.user_purchases{
-                        
-                        newParticipants.append(PurchaseParticipant(phoneNumber: p.user_phone,
-                                                                   name: self.router.contactService.getNameByPhone(phoneNumber: p.user_phone, defaultName: p.user_phone),
-                                                                   amount: p.amount))
-                        purchaseAmount+=p.amount
+                    if purchase.user_purchases != nil{
+                        for p in purchase.user_purchases!{
+                            
+                            newParticipants.append(PurchaseParticipant(phoneNumber: p.user_phone,
+                                                                       name: self.router.contactService.getNameByPhone(phoneNumber: p.user_phone, defaultName: p.user_phone),
+                                                                       amount: p.amount))
+                            purchaseAmount+=p.amount
+                        }
+                        self.participants = newParticipants
                     }
-                    self.participants = newParticipants
                 
                     // Загружаем покупку
                     let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount, created_at: purchase.created_at.parseRFC3339Date())

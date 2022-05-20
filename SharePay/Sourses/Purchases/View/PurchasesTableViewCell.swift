@@ -8,11 +8,21 @@ import UIKit
 
 class PurchasesTableViewCell: UITableViewCell {
     
+    // Инициализация цветов
+    let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
+    let labelColor: UIColor? = UIColor(named: "Label")
+    let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
+    let greenColor: UIColor? = UIColor(named:"GreenAccentColor")
+    let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
+    let backgroundFillColor: UIColor? = UIColor(named: "Fill")
+    let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
+    let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
+    
+    var actionCompletion: (()->Void)?
+    
    let logo: UILabel = {
        let logo = UILabel()
        logo.layer.borderWidth = 1
-       logo.layer.borderColor = UIColor(named: "LightGreyColor")?.cgColor
-       logo.text = "🍎"
        logo.textAlignment = .center
        logo.font = UIFont(name: "GTEestiProDisplay-Regular", size: 36)
        logo.clipsToBounds = true
@@ -21,13 +31,12 @@ class PurchasesTableViewCell: UITableViewCell {
        return logo
     }()
     
-    let nameLabel = UILabel(text: "Denis Kholod", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
     
     let typeLabel: UILabel = {
        let label = UILabel()
         label.text = NSLocalizedString("PurchasesViewController.Type.Title", comment: "")
-        label.font = UIFont(name: "GTEestiProDisplay-Regular", size: 14)
-        label.backgroundColor = UIColor(named: "DarkBlueColor")
+        label.font = UIFont(name: "GTEestiProDisplay-Bold", size: 14)
         label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
         label.textColor = UIColor(named: "WhiteColor")
@@ -35,17 +44,15 @@ class PurchasesTableViewCell: UITableViewCell {
         return label
     }()
     
-    let sumLabel = UILabel(text: "200 \u{20BD}", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
-      
+    let sumLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
     
-    let dateLabel = UILabel(text: "22.04.2022", color: "GreyColor", size: 14, name: "GTEestiProDisplay-Regular")
+    let dateLabel = UILabel(text: "", color: "GreyColor", size: 14, name: "GTEestiProDisplay-Regular")
     
     let tapButton: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "chevron.right")
-        imageView.tintColor = UIColor(named: "GreyColor")
         return imageView
      }()
     
@@ -53,6 +60,7 @@ class PurchasesTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        setView()
         setConstraints()
     }
     
@@ -60,10 +68,18 @@ class PurchasesTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
+    func setView(){
+        logo.backgroundColor = secondaryFillColor
+        logo.layer.borderColor = weakAccentColor?.cgColor
+        logo.layer.borderWidth = 1
+        nameLabel.textColor = labelColor
+        sumLabel.textColor = labelColor
+        dateLabel.textColor = secondaryLabelColor
+        tapButton.tintColor = secondaryLabelColor
+        typeLabel.backgroundColor = labelColor
+    }
 
     func setConstraints() {
-
         self.backgroundColor = .clear
         self.selectionStyle = .none
         
@@ -86,15 +102,12 @@ class PurchasesTableViewCell: UITableViewCell {
         
         self.addSubview(tapButton)
 
-        
-        
         NSLayoutConstraint.activate([
             logo.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             logo.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             logo.heightAnchor.constraint(equalToConstant: 60),
             logo.widthAnchor.constraint(equalToConstant: 60)
         ])
-        
         
         NSLayoutConstraint.activate([
             firstStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -110,8 +123,32 @@ class PurchasesTableViewCell: UITableViewCell {
             tapButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             tapButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
-        
-        
+    }
     
+    func setData(purchase: PurchaseItem){
+        logo.text = purchase.emoji
+        nameLabel.text =  purchase.name
+        dateLabel.text =  purchase.created_at.decodeToRussianString()
+        sumLabel.text = "\(purchase.amount) \(purchase.currency.toCurrencySign())"
+        if !purchase.isDraft {
+            typeLabel.backgroundColor = greenColor
+            typeLabel.text = "  Счета выставлены  "
+        } else{
+            typeLabel.backgroundColor = UIColor(named: "DarkBlueColor")
+            typeLabel.text = "  Черновик  "
+        }
+    }
+    
+    func setAction(completion: @escaping ()->Void){
+        self.actionCompletion = completion
+        tapButton.gestureRecognizers?.removeAll()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapButton))
+        tapButton.addGestureRecognizer(tap)
+        tapButton.isUserInteractionEnabled = true
+    }
+    
+    @objc func didTapButton(sender: UITapGestureRecognizer){
+        self.actionCompletion?()
     }
 }

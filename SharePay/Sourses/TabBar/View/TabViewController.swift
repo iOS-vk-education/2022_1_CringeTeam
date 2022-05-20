@@ -32,7 +32,7 @@ class TabViewController: UITabBarController {
     
     
     func createTabBar() {
-        let purchasesViewController = PurchasesViewController()
+        let purchasesViewController = presenter.getRouter().assembleBuilder?.createPurchasesViewController(router: presenter.getRouter()) ?? UIViewController()
         purchasesViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.FirstTab", comment: ""), image: UIImage(named: "firstTab"), tag: 1)
         let nav1 = UINavigationController(rootViewController: purchasesViewController)
         
@@ -40,7 +40,7 @@ class TabViewController: UITabBarController {
         debtsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
         let nav2 = UINavigationController(rootViewController: debtsViewController)
 
-        let plusViewController = PurchasesViewController()
+        let plusViewController = PurchaseViewController()
         let nav3 = UINavigationController(rootViewController: plusViewController)
         nav3.title = ""
         

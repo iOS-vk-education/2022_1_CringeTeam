@@ -183,7 +183,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
         datePicker.addTarget(self, action: #selector(PurchaseViewController.updatePurchase), for: .valueChanged)
         
         // Сообщем презентеру что мы готовы
-        presenter.ready()
+        presenter.viewDidLoad()
     }
     
     @objc func updatePurchase(){

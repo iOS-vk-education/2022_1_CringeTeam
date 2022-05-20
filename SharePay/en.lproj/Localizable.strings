@@ -52,6 +52,7 @@
 "PurchasesViewController.ThirdButton.Title" = "Confirmed";
 "PurchasesViewController.Type.Title" = "Draft";
 "PurchasesViewController.Type.Title2" = " Billed ";
+"PurchasesViewController.Alert.FailLoad" =  "Failed to load purchases list";
 
 "TransfersViewController.Message.FailedLoadTransfer" = "Failed loading the list of transfers. Try again later";
 

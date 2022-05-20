@@ -52,6 +52,7 @@
 "PurchasesViewController.ThirdButton.Title" = "Подтвержденные";
 "PurchasesViewController.Type.Title" = " Черновик ";
 "PurchasesViewController.Type.Title2" = " Счета выставлены ";
+"PurchasesViewController.Alert.FailLoad" =  "Не удалось загрузить список покупок";
 
 "TransfersViewController.Message.FailedLoadTransfer" = "Не удалось загрузить список переводов. Повторите попытку позже";
 

@@ -35,6 +35,8 @@
 		367C43B82830F06600BF4228 /* TransfersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367C43B72830F06600BF4228 /* TransfersEntity.swift */; };
 		369658E8280DDE7E00D07858 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658E7280DDE7E00D07858 /* Entity.swift */; };
 		369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369658EB280DE02E00D07858 /* PurchasePresenter.swift */; };
+		36D515212837994A00858C46 /* PurchasesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D515202837994A00858C46 /* PurchasesPresenter.swift */; };
+		36D5152328379AA200858C46 /* PurchasesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5152228379AA200858C46 /* PurchasesEntity.swift */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
@@ -90,6 +92,8 @@
 		367C43B72830F06600BF4228 /* TransfersEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransfersEntity.swift; sourceTree = "<group>"; };
 		369658E7280DDE7E00D07858 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		369658EB280DE02E00D07858 /* PurchasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasePresenter.swift; sourceTree = "<group>"; };
+		36D515202837994A00858C46 /* PurchasesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesPresenter.swift; sourceTree = "<group>"; };
+		36D5152228379AA200858C46 /* PurchasesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesEntity.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -375,6 +379,31 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		36D5151D2837989400858C46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36D5152228379AA200858C46 /* PurchasesEntity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		36D5151E2837989B00858C46 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */,
+				CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36D5151F283798A200858C46 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				36D515202837994A00858C46 /* PurchasesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		3B7022C999E4663EFC156A9E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,8 +508,9 @@
 		CE76C659280C7F52008FE5B4 /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
-				CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */,
-				CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */,
+				36D5151F283798A200858C46 /* Presenter */,
+				36D5151E2837989B00858C46 /* View */,
+				36D5151D2837989400858C46 /* Model */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -669,6 +699,7 @@
 				3646773828158B9300DA62D0 /* DebtEntity.swift in Sources */,
 				CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */,
 				CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */,
+				36D5152328379AA200858C46 /* PurchasesEntity.swift in Sources */,
 				3631359428255C9B0015E288 /* AssembleProtocol.swift in Sources */,
 				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				3631359228255C170015E288 /* PhoneNumberViewController.swift in Sources */,
@@ -691,6 +722,7 @@
 				3631359128255C170015E288 /* PhoneNumberPresenter.swift in Sources */,
 				3631359C28271AF30015E288 /* DebtProtocol.swift in Sources */,
 				3631357F28255B5E0015E288 /* Datastruct.swift in Sources */,
+				36D515212837994A00858C46 /* PurchasesPresenter.swift in Sources */,
 				3631358F28255C170015E288 /* SMSCodePresenter.swift in Sources */,
 				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
 				CE76C671281EA1D5008FE5B4 /* TransfersViewController.swift in Sources */,

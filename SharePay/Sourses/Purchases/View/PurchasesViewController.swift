@@ -5,7 +5,32 @@
 //  Created by Denis Kholod on 09.04.2022.
 import UIKit
 
+protocol PurchasesView: AnyObject{
+    func onSuccessLoad()
+    func onFailesLoad()
+}
+
 final class PurchasesViewController: UIViewController {
+    
+    let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
+    let labelColor: UIColor? = UIColor(named: "Label")
+    let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
+    let greenColor: UIColor? = UIColor(named:"GreenAccentColor")
+    let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
+    let backgroundFillColor: UIColor? = UIColor(named: "Fill")
+    let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
+    let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
+    
+    var presenter: PurchasesViewPresenter
+    
+    init(presenter: PurchasesViewPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     struct Constants {
         static let headerHeight: CGFloat = 200
@@ -51,7 +76,7 @@ final class PurchasesViewController: UIViewController {
 ///Сумма покупок
     let sumTitleLabel = UILabel(text: NSLocalizedString("PurchasesViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
     
-    let sumLabel = UILabel(text: "100098 \u{20BD}", color: "WhiteColor", size: 24)
+    let sumLabel = UILabel(text: "", color: "WhiteColor", size: 24)
     
 ///Констрейнты для паралакса
     var headerTopConstraint: NSLayoutConstraint!
@@ -76,18 +101,17 @@ final class PurchasesViewController: UIViewController {
     }()
 
 ///Кнопки
+    let allButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
     
-    let firstButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
+    let draftButton = UIButton(text: NSLocalizedString("PurchasesViewController.SecondButton.Title", comment: ""), width: 100)
     
-    let secondButton = UIButton(text: NSLocalizedString("PurchasesViewController.SecondButton.Title", comment: ""), width: 100)
-    
-    let thirdButton = UIButton(text: NSLocalizedString("PurchasesViewController.ThirdButton.Title", comment: ""), width: 150)
+    let confirmedButton = UIButton(text: NSLocalizedString("PurchasesViewController.ThirdButton.Title", comment: ""), width: 150)
   
     
 ///Таблица
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "PurchaseItemCell")
         table.backgroundColor = UIColor(named: "WhiteColor")
         table.separatorStyle = .none
         return table
@@ -98,15 +122,27 @@ final class PurchasesViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        setView()
         arrangeConstraints()
         
+        presenter.viewDidLoad()
+    }
+    
+    func setView(){
+        [allButton, draftButton, confirmedButton].forEach{ (button:UIButton) -> Void in
+            button.backgroundColor = weakAccentColor
+            button.titleLabel?.textColor = secondaryLabelColor
+        }
+        self.tableView.backgroundColor = backgroundFillColor
     }
     
    //Установка констрэйнток
     func arrangeConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [firstButton,
-                                                      secondButton,
-                                                      thirdButton])
+        let stackView = UIStackView(arrangedSubviews: [allButton,
+                                                      draftButton,
+                                                    confirmedButton])
+        stackView.backgroundColor = backgroundFillColor
         stackView.axis = .horizontal
         stackView.spacing = 10
         
@@ -199,5 +235,55 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         ]
         NSLayoutConstraint.activate(logoLabelConstraints)
         
+    }
+}
+
+extension PurchasesViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+
+        } else {
+
+        }
+    }
+}
+
+extension PurchasesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.presenter.listPurchases().count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let purchaseCell = tableView.dequeueReusableCell(withIdentifier: "PurchaseItemCell", for: indexPath) as? PurchasesTableViewCell else{
+            return UITableViewCell()
+        }
+        purchaseCell.setData(purchase: presenter.listPurchases()[indexPath.row])
+        purchaseCell.setAction { [weak self] in
+            self?.presenter.showPurchase(purchase_id: self?.presenter.listPurchases()[indexPath.row].id ?? 0)
+        }
+        return purchaseCell
+    }
+}
+
+extension PurchasesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+}
+
+extension PurchasesViewController: PurchasesView{
+    func onSuccessLoad() {
+        self.tableView.reloadData()
+        self.sumLabel.text = "\(self.presenter.getTotalAmount()) \(self.presenter.getCurrency().toCurrencySign())"
+    }
+    
+    func onFailesLoad() {
+        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
+        NSLocalizedString("PurchasesViewController.Alert.FailLoad", comment: ""), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        self.present(alertController, animated: true, completion: nil)
     }
 }

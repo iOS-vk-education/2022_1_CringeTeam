@@ -45,7 +45,7 @@ struct PurchaseCodable: Codable{
     var emoji: String
     var draft: Bool
     var created_at: String
-    var user_purchases: [PurchaseParticipantCodable]
+    var user_purchases: [PurchaseParticipantCodable]?
     
     init(id: Int = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantCodable],
          draft: Bool = true,created_at: String = ""){

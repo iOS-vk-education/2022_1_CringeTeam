@@ -14,6 +14,7 @@ protocol SharePayPurchaseProtocol: AnyObject{
                         completion: @escaping (Result<CreateUpdatePurchaseResponse,Error>) -> Void)
     func getPurchase(purchase_id: Int, completion: @escaping (Result<PurchaseCodable,Error>) -> Void)
     func deletePurchase(purchase_id: Int, completion: @escaping (Result<Status,Error>) -> Void)
+    func listPurchases(completion: @escaping (Result<[PurchaseCodable], Error>) -> Void)
     func setToken(token: String)
 }
 
@@ -66,5 +67,14 @@ class SharePayPurchaseService: SharePayPurchaseProtocol{
             return
         }
         self.networkAdapter.request(fromURL: url, httpMethod: .delete, httpBody: nil,  withToken: true, completion: completion)
+    }
+    
+    func listPurchases(completion: @escaping (Result<[PurchaseCodable], Error>) -> Void){
+        let endpoint = "/purchases"
+        guard let url = URL(string: api+endpoint) else {
+            completion(.failure(ServiceError.invalidURL))
+            return
+        }
+        self.networkAdapter.request(fromURL: url, httpMethod: .get, httpBody: nil,  withToken: true, completion: completion)
     }
 }
