@@ -14,6 +14,7 @@ protocol AssembleProtocol: AnyObject {
     func createMainViewController(router: RouterProtocol) -> UIViewController
     func createPurchaseViewController(router: RouterProtocol, purchase_id: Int, mode: ViewMode) -> UIViewController
     func createDebtViewController(router: RouterProtocol, debtID: Int) -> UIViewController
+    func createTrasnfersViewController(router: RouterProtocol) -> UIViewController
 }
 
 class Assemble: AssembleProtocol{
@@ -33,9 +34,9 @@ class Assemble: AssembleProtocol{
     }
     
     func createMainViewController(router: RouterProtocol) -> UIViewController{
-        let view = TabViewController()
-        let presenter = TabPresenter(view: view, router: router)
-        view.presenter = presenter
+        let presenter = TabPresenter(router: router)
+        let view = TabViewController(presenter: presenter)
+        presenter.view = view
         return view
     }
     
@@ -49,6 +50,13 @@ class Assemble: AssembleProtocol{
     func createDebtViewController(router: RouterProtocol, debtID: Int) -> UIViewController{
         let view = DebtViewController()
         let presenter = DebtPresenter(view: view, router: router, debtID: debtID)
+        view.presenter = presenter
+        return view
+    }
+    
+    func createTrasnfersViewController(router: RouterProtocol) -> UIViewController {
+        let view = TransfersViewController()
+        let presenter = TransfersPresenter(view: view, router: router)
         view.presenter = presenter
         return view
     }

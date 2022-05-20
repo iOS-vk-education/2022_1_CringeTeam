@@ -9,20 +9,23 @@ import Foundation
 
 protocol TabViewPresenter: AnyObject{
     func showNewPurchase()
+    func getRouter() -> RouterProtocol
 }
-
 
 class TabPresenter: TabViewPresenter{
     weak var view: TabView?
     var router: RouterProtocol
     
-    init(view: TabView, router: RouterProtocol){
-        self.view = view
+    init(router: RouterProtocol){
         self.router = router
     }
     
     func showNewPurchase() {
         // Покупка новая -> purchase_id = 0
         router.presentPurchaseView(purchase_id: 0)
+    }
+    
+    func getRouter() ->RouterProtocol {
+        return router
     }
 }

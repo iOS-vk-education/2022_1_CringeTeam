@@ -53,6 +53,7 @@
 "PurchasesViewController.Type.Title" = " Черновик ";
 "PurchasesViewController.Type.Title2" = " Счета выставлены ";
 
+"TransfersViewController.Message.FailedLoadTransfer" = "Не удалось загрузить список переводов. Повторите попытку позже";
 
 "TabBarController.Type.FirstTab" = "Покупки";
 "TabBarController.Type.SecondTab" = "Долги";
