@@ -6,10 +6,26 @@
 
 import UIKit
 
+protocol DebtsView: AnyObject{
+    func onSuccesLoad()
+    func onFailedLoad()
+}
+
 final class DebtsViewController: UIViewController {
     
     struct Constants {
         static let headerHeight: CGFloat = 200
+    }
+    
+    var presenter: DebtsPresenter
+    
+    init(presenter: DebtsPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 ///Верхняя полоска
@@ -87,7 +103,7 @@ final class DebtsViewController: UIViewController {
 ///Таблица
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(DebtsTableViewCell.self, forCellReuseIdentifier: "cellD")
+        table.register(DebtsTableViewCell.self, forCellReuseIdentifier: "DebtTableViewCell")
         table.backgroundColor = UIColor(named: "WhiteColor")
         table.separatorStyle = .none
         return table
@@ -100,6 +116,7 @@ final class DebtsViewController: UIViewController {
         tableView.delegate = self
         arrangeConstraints()
         
+        presenter.loadDebts()
     }
     
    //Установка констрэйнток
@@ -200,4 +217,58 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(logoLabelConstraints)
         
     }
+}
+
+
+extension DebtsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+
+        } else {
+
+        }
+    }
+}
+
+
+extension DebtsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.listDebts().count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let debtCell = tableView.dequeueReusableCell(withIdentifier: "DebtTableViewCell", for: indexPath) as? DebtsTableViewCell else{
+            return UITableViewCell()
+        }
+        
+        let debt = presenter.listDebts()[indexPath.row]
+        debtCell.setData(item: debt)
+        debtCell.setAction { [weak self] in
+            self?.presenter.openDebt(debt_id: debt.id)
+        }
+        
+        return debtCell
+    }
+}
+
+
+extension DebtsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+}
+
+extension DebtsViewController: DebtsView{
+    
+    func onSuccesLoad() {
+        tableView.reloadData()
+    }
+    
+    func onFailedLoad() {
+        // TODO alert
+    }
+    
 }

@@ -110,7 +110,7 @@ struct DebtCodable: Codable{
     var amount: Int
     var creditor_phone: String
     var debtor_phone: String
-    var events: [EventCodable]
+    var events: [EventCodable]?
 }
 
 struct EventCodable: Codable{

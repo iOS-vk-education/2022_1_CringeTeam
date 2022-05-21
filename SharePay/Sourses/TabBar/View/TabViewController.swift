@@ -36,7 +36,8 @@ class TabViewController: UITabBarController {
         purchasesViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.FirstTab", comment: ""), image: UIImage(named: "firstTab"), tag: 1)
         let nav1 = UINavigationController(rootViewController: purchasesViewController)
         
-        let debtsViewController = DebtsViewController()
+        let debtsViewController =
+            presenter.getRouter().assembleBuilder?.createDebtsViewController(router: presenter.getRouter()) ?? UIViewController()
         debtsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
         let nav2 = UINavigationController(rootViewController: debtsViewController)
 

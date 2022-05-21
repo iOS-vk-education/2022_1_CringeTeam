@@ -51,22 +51,24 @@ class DebtPresenter: DebtViewPresenter{
                 self?.debt.phoneNumber = phoneNumber
                 self?.debt.name =  self?.router.contactService.getNameByPhone(phoneNumber: phoneNumber, defaultName: phoneNumber) ?? ""
                 self?.debt.currency = self?.currencySign[self?.defaultCurrency ?? ""] ?? ""
-    
-                for e in newDebt.events{
-                    var newEvent = Event(name: e.description ?? "",
-                                         emoji: e.emoji ?? "",
-                                         date: e.date?.parseRFC3339Date() ?? Date(),
-                                         amount: e.amount,
-                                         type: e.type)
-                    if newEvent.type == PURCHASE_TYPE{
-                        newEvent.purchase_id = e.event_id
+
+                if newDebt.events != nil{
+                    for e in newDebt.events!{
+                        var newEvent = Event(name: e.description ?? "",
+                                             emoji: e.emoji ?? "",
+                                             date: e.date?.parseRFC3339Date() ?? Date(),
+                                             amount: e.amount,
+                                             type: e.type)
+                        if newEvent.type == PURCHASE_TYPE{
+                            newEvent.purchase_id = e.event_id
+                        }
+                        self?.events.append(newEvent)
                     }
-                    self?.events.append(newEvent)
+                    
+                    self?.events.sort(by: { (a: Event, b: Event) -> Bool in
+                        return a.date > b.date
+                    })
                 }
-                
-                self?.events.sort(by: { (a: Event, b: Event) -> Bool in
-                    return a.date > b.date
-                })
                 
                 DispatchQueue.main.async {
                     self?.view?.onLoadDebt()

@@ -8,12 +8,21 @@ import UIKit
 
 class DebtsTableViewCell: UITableViewCell {
     
+    // Инициализация цветов
+    let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
+    let labelColor: UIColor? = UIColor(named: "Label")
+    let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
+    let greenColor: UIColor? = UIColor(named:"GreenAccentColor")
+    let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
+    let backgroundFillColor: UIColor? = UIColor(named: "Fill")
+    
+    var actionCompletion: (()->Void)?
+    
    let logo: UILabel = {
        let logo = UILabel()
        logo.layer.borderWidth = 1
        logo.layer.borderColor = UIColor(named: "LightGreyColor")?.cgColor
        logo.layer.backgroundColor = UIColor(named: "LightGreyColor")?.cgColor
-       logo.text = "A"
        logo.textColor = UIColor(named: "WhiteColor")
        logo.textAlignment = .center
        logo.font = UIFont(name: "GTEestiProDisplay-Medium", size: 30)
@@ -23,7 +32,7 @@ class DebtsTableViewCell: UITableViewCell {
        return logo
     }()
     
-    let nameLabel = UILabel(text: "Denis Kholod", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
     
     let typeLabel: UILabel = {
        let label = UILabel()
@@ -37,7 +46,7 @@ class DebtsTableViewCell: UITableViewCell {
         return label
     }()
     
-    let sumLabel = UILabel(text: "200 \u{20BD}", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let sumLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
     
     let tapButton: UIImageView = {
         let imageView = UIImageView()
@@ -104,8 +113,37 @@ class DebtsTableViewCell: UITableViewCell {
             tapButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             tapButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         ])
-        
-        
+    }
     
+    func setData(item: DebtItem){
+        sumLabel.text = "\(item.amount)"
+        if item.amount > 0{
+            sumLabel.textColor = greenColor
+        } else {
+            sumLabel.textColor = magentaColor
+        }
+        
+        nameLabel.text = item.name
+        
+        let nameAttrs = item.name.components(separatedBy: .whitespacesAndNewlines)
+        guard var letters = nameAttrs.first?.prefix(1) else {
+              return
+        }
+        if nameAttrs.count>1 && nameAttrs[1].count>0{
+            letters+=nameAttrs[1].prefix(1)
+        }
+        logo.text = String(letters)
+    }
+    
+    func setAction(completion: @escaping () -> Void){
+        self.actionCompletion = completion
+        tapButton.gestureRecognizers?.removeAll()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapButton))
+        tapButton.addGestureRecognizer(tap)
+        tapButton.isUserInteractionEnabled = true
+    }
+    
+    @objc func didTapButton(){
+        self.actionCompletion?()
     }
 }
