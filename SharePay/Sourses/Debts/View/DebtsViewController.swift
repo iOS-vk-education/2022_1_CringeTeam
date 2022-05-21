@@ -265,6 +265,7 @@ extension DebtsViewController: DebtsView{
     
     func onSuccesLoad() {
         tableView.reloadData()
+        sumLabel.text = "\(presenter.getTotalCount()) \(presenter.getCurrency().toCurrencySign())"
     }
     
     func onFailedLoad() {

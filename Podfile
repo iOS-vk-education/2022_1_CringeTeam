@@ -8,6 +8,7 @@ target 'SharePay' do
   pod 'KAPinField', '5.0.2'
   pod 'PhoneNumberKit'
   pod 'KeychainSwift', '~> 20.0'
+  pod 'RadioGroup'
 
   # Pods for SharePay
 

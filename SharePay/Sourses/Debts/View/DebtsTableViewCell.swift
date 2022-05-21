@@ -118,13 +118,16 @@ class DebtsTableViewCell: UITableViewCell {
     func setData(item: DebtItem){
         sumLabel.text = "\(item.amount)"
         if item.amount > 0{
-            sumLabel.textColor = greenColor
-        } else {
             sumLabel.textColor = magentaColor
+            typeLabel.text = " Pay "
+            typeLabel.backgroundColor = UIColor(named: "DarkBlueColor")
+        } else {
+            sumLabel.textColor = greenColor
+            typeLabel.text = " Remind "
+            typeLabel.backgroundColor = greenColor
         }
         
         nameLabel.text = item.name
-        
         let nameAttrs = item.name.components(separatedBy: .whitespacesAndNewlines)
         guard var letters = nameAttrs.first?.prefix(1) else {
               return

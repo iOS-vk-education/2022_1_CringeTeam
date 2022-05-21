@@ -10,6 +10,8 @@ import Foundation
 protocol DebtsViewPresenter: AnyObject{
     func loadDebts()
     func listDebts() -> [DebtItem]
+    func getTotalCount() -> Int
+    func getCurrency() -> String
     func openDebt(debt_id: Int)
 }
 
@@ -63,6 +65,14 @@ class DebtsPresenter: DebtsViewPresenter{
     
     func openDebt(debt_id: Int){
         router.pushDebtView(debtId: debt_id)
+    }
+    
+    func getTotalCount() -> Int{
+        return totalAmount
+    }
+    
+    func getCurrency() -> String{
+        return "rub"
     }
     
 }

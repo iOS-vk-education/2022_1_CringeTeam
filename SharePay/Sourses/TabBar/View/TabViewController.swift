@@ -41,15 +41,15 @@ class TabViewController: UITabBarController {
         debtsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
         let nav2 = UINavigationController(rootViewController: debtsViewController)
 
-        let plusViewController = PurchaseViewController()
-        let nav3 = UINavigationController(rootViewController: plusViewController)
+        
+        let nav3 = UINavigationController(rootViewController: presenter.getRouter().assembleBuilder?.createPurchasesViewController(router: presenter.getRouter()) ?? UIViewController())
         nav3.title = ""
         
         let transferViewController = presenter.getRouter().assembleBuilder?.createTrasnfersViewController(router: presenter.getRouter()) ?? UIViewController()
         transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
-        let settingsViewController = SettingsViewController()
+        let settingsViewController = presenter.getRouter().assembleBuilder?.createSettingsViewController(router: presenter.getRouter()) ?? UIViewController()
         settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
         let nav5 = UINavigationController(rootViewController: settingsViewController)
         

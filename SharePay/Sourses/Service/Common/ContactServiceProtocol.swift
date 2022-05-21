@@ -29,7 +29,7 @@ class ContactService: ContactServiceProtocol {
                 do {
                     try store.enumerateContacts(with: request, usingBlock: { (contact, stopPointer) in
                         let phone: String = contact.phoneNumbers.first?.value.stringValue ?? ""
-                        if phone==phoneNumber{
+                        if phone.toDefaultPhoneFormat()==phoneNumber.toDefaultPhoneFormat(){
                             name = contact.givenName
                         }
                     })

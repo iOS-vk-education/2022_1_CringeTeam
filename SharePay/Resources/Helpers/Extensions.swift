@@ -108,6 +108,14 @@ extension String{
         }
         return sign
     }
+    
+    func localized() -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.localizedBundle(), value: "", comment: "")
+    }
+
+    func localizeWithFormat(arguments: CVarArg...) -> String{
+        return String(format: self.localized(), arguments: arguments)
+    }
 }
 
 extension Date{
@@ -116,5 +124,34 @@ extension Date{
         dateFormatter.dateFormat = "dd.MM.YYYY"
         return dateFormatter.string(from: self)
     }
+}
+
+extension Bundle {
+    private static var bundle: Bundle!
+
+    public static func localizedBundle() -> Bundle! {
+        if bundle == nil {
+            let appLang = UserDefaults.standard.string(forKey: "app_lang") ?? "ru"
+            let path = Bundle.main.path(forResource: appLang, ofType: "lproj")
+            bundle = Bundle(path: path!)
+        }
+
+        return bundle;
+    }
+
+    public static func setLanguage(lang: String) {
+        UserDefaults.standard.set(lang, forKey: "app_lang")
+        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        bundle = Bundle(path: path!)
+    }
+    
+    public static func getLanguage() -> String {
+        guard let langCode = UserDefaults.standard.string(forKey: "app_lang") else {
+            setLanguage(lang: Locale.current.languageCode ?? "ru")
+            return Locale.current.languageCode ?? "ru"
+        }
+        return langCode
+    }
+
 }
 

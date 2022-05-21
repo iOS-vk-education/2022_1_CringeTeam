@@ -21,8 +21,17 @@ protocol PurchaseView: AnyObject {
 final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     // Ссылка на presenter
-    var presenter: PurchaseViewPresenter!
-
+    var presenter: PurchaseViewPresenter
+    
+    init(presenter: PurchaseViewPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // Инициализация цветов
     let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
     let labelColor: UIColor? = UIColor(named: "Label")
@@ -475,7 +484,7 @@ extension PurchaseViewController: PurchaseView{
     func onUpdatePurchaseParticipants() {
         self.participantCollectionView?.reloadData()
     }
-    
+
     func onUpdatePurchase() {
         let purchase: Purchase = presenter.getPurchase()
         DispatchQueue.main.async{ [weak self] in

@@ -34,8 +34,7 @@ class PurchasePresenter: PurchaseViewPresenter{
     var actualPurchase: Purchase // стейт покупки на сервере
     var viewMode: ViewMode // режиме открытия view
     
-    required init(view: PurchaseView, router: RouterProtocol, purchase_id : Int = 0, mode: ViewMode){
-        self.view = view
+    required init(router: RouterProtocol, purchase_id : Int = 0, mode: ViewMode){
         self.participants =  [PurchaseParticipant]()
         self.phoneNumbers =  [String: Bool]()
         self.router = router
