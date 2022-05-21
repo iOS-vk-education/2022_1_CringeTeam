@@ -40,6 +40,7 @@
 		36D515282838C40D00858C46 /* DebtsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D515272838C40D00858C46 /* DebtsPresenter.swift */; };
 		36D5152A2838C71A00858C46 /* DebtsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D515292838C71A00858C46 /* DebtsEntity.swift */; };
 		36D5152E28392D7A00858C46 /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5152D28392D7A00858C46 /* SettingPresenter.swift */; };
+		36D5153128393F5E00858C46 /* SettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5153028393F5E00858C46 /* SettingsEntity.swift */; };
 		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
@@ -100,6 +101,7 @@
 		36D515272838C40D00858C46 /* DebtsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsPresenter.swift; sourceTree = "<group>"; };
 		36D515292838C71A00858C46 /* DebtsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsEntity.swift; sourceTree = "<group>"; };
 		36D5152D28392D7A00858C46 /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
+		36D5153028393F5E00858C46 /* SettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntity.swift; sourceTree = "<group>"; };
 		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -451,6 +453,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		36D5152F28393F5100858C46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36D5153028393F5E00858C46 /* SettingsEntity.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3B7022C999E4663EFC156A9E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +604,7 @@
 		CE76C66F281EA1B3008FE5B4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				36D5152F28393F5100858C46 /* Model */,
 				36D5152C28392D4E00858C46 /* Presenter */,
 				36D5152B28392D4900858C46 /* View */,
 			);
@@ -756,6 +767,7 @@
 				369658E8280DDE7E00D07858 /* Entity.swift in Sources */,
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
 				369658EC280DE02E00D07858 /* PurchasePresenter.swift in Sources */,
+				36D5153128393F5E00858C46 /* SettingsEntity.swift in Sources */,
 				3631358328255BB20015E288 /* Router.swift in Sources */,
 				3646772E2811D61100DA62D0 /* DebtViewController.swift in Sources */,
 				3631358128255B5E0015E288 /* PurchasesProtocol.swift in Sources */,

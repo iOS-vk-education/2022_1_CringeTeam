@@ -14,6 +14,9 @@
 "Common.Cancel" = "Отмена";
 "Common.Message" = "Сообщение";
 
+"Lang.Russian"="Русский";
+"Lang.English"="Английский";
+
 "SMSCodeViewController.Label.Title" = "Введите код подтверждения";
 "SMSCodeViewController.Label.Subtitle" =  "Код был отправлен \n на номер %@ по SMS";
 "SMSCodeViewController.Label.errorCode" = "Неверный SMS код";

@@ -116,7 +116,7 @@ final class SettingsViewController: UIViewController {
     let teamTitle = UILabel(text: "CringeTeam", color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-UltraBold")
     
     let radioGroup: RadioGroup = {
-        let radioGroup = RadioGroup(titles: ["Russian", "English"])
+        let radioGroup = RadioGroup(titles: [])
         radioGroup.translatesAutoresizingMaskIntoConstraints = false
         radioGroup.selectedIndex = 0
         radioGroup.titleAlignment = .left
@@ -130,7 +130,26 @@ final class SettingsViewController: UIViewController {
         
         setView()
         arrangeConstraints()
+        
+        radioGroup.addTarget(self, action: #selector(self.languageSelected), for: .valueChanged)
+        radioGroup.titles = presenter.listLanguageItems().map{$0.name}
+        radioGroup.selectedIndex = calculateSelectedIndex(langCode: presenter.getSelectedLanguageCode())
     }
+    
+    func calculateSelectedIndex(langCode: String) -> Int{
+        let items = presenter.listLanguageItems()
+        for (idx, item) in items.enumerated(){
+            if item.code == langCode{
+                return idx
+            }
+        }
+        return 0
+    }
+    
+    @objc func languageSelected(){
+        presenter.selectLanguage(lang: presenter.listLanguageItems()[radioGroup.selectedIndex].code)
+    }
+    
     
     func setView(){
         radioGroup.selectedTintColor = magentaColor
@@ -273,6 +292,7 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(teamTitleConstraints)
         
     }
+
 }
 
 extension SettingsViewController: SettingView{

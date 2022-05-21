@@ -14,6 +14,9 @@
 "Common.Cancel" = "Cancel";
 "Common.Message" = "Message";
 
+"Lang.Russian"="Russian";
+"Lang.English"="English";
+
 "SMSCodeViewController.Label.Title" = "Enter the confirmation code";
 "SMSCodeViewController.Label.Subtitle" =  "The code has been sent \n to the number %@ by SMS";
 "SMSCodeViewController.Label.errorCode" = "Invalid SMS code";
