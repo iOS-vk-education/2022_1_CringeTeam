@@ -76,11 +76,11 @@ final class SettingsViewController: UIViewController {
     
     
 ///Новый счет
-    let newBillTitle = UILabel(text: "SettingsViewController.Label.newBillTitle".localized(), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newBillTitle = UILabel(text: "SettingsViewController.Label.newBillTitle".localized(), color: "Label", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Новая оплата
-    let newPayTitle = UILabel(text: "SettingsViewController.Label.newPayTitle".localized(), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newPayTitle = UILabel(text: "SettingsViewController.Label.newPayTitle".localized(), color: "Label", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Toggle счет
@@ -152,6 +152,10 @@ final class SettingsViewController: UIViewController {
     
     
     func setView(){
+        topView.backgroundColor = backgroundFillColor
+        bottomView.backgroundColor = backgroundFillColor
+        
+        radioGroup.backgroundColor = backgroundFillColor
         radioGroup.selectedTintColor = magentaColor
         radioGroup.tintColor = magentaColor
     }

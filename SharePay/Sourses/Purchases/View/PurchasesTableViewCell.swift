@@ -39,7 +39,7 @@ class PurchasesTableViewCell: UITableViewCell {
         label.font = UIFont(name: "GTEestiProDisplay-Bold", size: 14)
         label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
-        label.textColor = UIColor(named: "Fill")
+        label.textColor = UIColor(named: "WhiteColor")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -132,10 +132,10 @@ class PurchasesTableViewCell: UITableViewCell {
         sumLabel.text = "\(purchase.amount) \(purchase.currency.toCurrencySign())"
         if !purchase.isDraft {
             typeLabel.backgroundColor = greenColor
-            typeLabel.text = "PurchasesViewController.Type.Title2".localized()
+            typeLabel.text = "  \("PurchasesViewController.Type.Title2".localized())  "
         } else{
             typeLabel.backgroundColor = UIColor(named: "DarkBlueColor")
-            typeLabel.text = "PurchasesViewController.Type.Title".localized()
+            typeLabel.text = "  \("PurchasesViewController.Type.Title".localized())  "
         }
     }
     

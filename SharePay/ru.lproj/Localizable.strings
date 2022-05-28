@@ -65,8 +65,8 @@
 "TabBarController.Type.ForthTab" = "Настройки";
 
 "DebtsViewController.Sum.Title" = "Общий баланс";
-"DebtsViewController.SecondButton.Title" = "Оплатить";
-"DebtsViewController.ThirdButton.Title" = "Напомнить";
+"DebtsViewController.Remind" = "Напомнить";
+"DebtsViewController.Pay" = "Оплатить";
 
 "DebtViewController.Label.Events" =  "События";
 "DebtViewController.Alert.Payment" =  "Оплата";

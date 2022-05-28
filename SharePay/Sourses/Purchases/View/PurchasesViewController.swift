@@ -101,11 +101,27 @@ final class PurchasesViewController: UIViewController {
     }()
 
 ///Кнопки
-    let allButton = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
+    let allButton: UIButton = {
+        let button = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
     
-    let draftButton = UIButton(text: "PurchasesViewController.SecondButton.Title".localized(), width: 100)
     
-    let confirmedButton = UIButton(text: "PurchasesViewController.ThirdButton.Title".localized(), width: 150)
+    let draftButton: UIButton = {
+        let button =  UIButton(text: "PurchasesViewController.SecondButton.Title".localized(), width: 100)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
+    
+    let confirmedButton: UIButton = {
+        let button = UIButton(text: "PurchasesViewController.ThirdButton.Title".localized(), width: 150)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
   
     
 ///Таблица

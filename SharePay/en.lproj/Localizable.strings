@@ -65,8 +65,8 @@
 "TabBarController.Type.ForthTab" = "Settings";
 
 "DebtsViewController.Sum.Title" = "Balance";
-"DebtsViewController.SecondButton.Title" = "Pay";
-"DebtsViewController.ThirdButton.Title" = "Remind";
+"DebtsViewController.Remind" = "Remind";
+"DebtsViewController.Pay" = "Pay";
 
 "DebtViewController.Label.Events" =  "Events";
 "DebtViewController.Alert.Payment" =  "Payment";

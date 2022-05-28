@@ -16,9 +16,9 @@ class TransfersTableViewCell: UITableViewCell {
        logo.layer.borderWidth = 1
        logo.layer.borderColor = UIColor(named: "LightGreyColor")?.cgColor
        logo.layer.backgroundColor = UIColor(named: "LightGreyColor")?.cgColor
-       logo.textColor = UIColor(named: "WhiteColor")
+       logo.textColor = UIColor(named: "Label")
        logo.textAlignment = .center
-       logo.font = UIFont(name: "GTEestiProDisplay-Medium", size: 24)
+       logo.font = UIFont(name: "GTEestiProDisplay-Medium", size: 30)
        logo.clipsToBounds = true
        logo.translatesAutoresizingMaskIntoConstraints = false
        logo.layer.cornerRadius = 30

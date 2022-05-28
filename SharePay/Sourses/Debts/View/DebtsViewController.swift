@@ -92,12 +92,26 @@ final class DebtsViewController: UIViewController {
     }()
 
 ///Кнопки
+    let firstButton: UIButton = {
+        let button = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
     
-    let firstButton = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
+    let remindButton: UIButton = {
+        let button = UIButton(text: "DebtsViewController.Remind".localized(), width: 100)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
     
-    let secondButton = UIButton(text: "DebtsViewController.SecondButton.Title".localized(), width: 100)
-    
-    let thirdButton = UIButton(text: "DebtsViewController.ThirdButton.Title".localized(), width: 120)
+    let payButton: UIButton = {
+        let button = UIButton(text: "DebtsViewController.Pay".localized(), width: 120)
+        button.backgroundColor =  UIColor(named: "LightGreyColor")
+        button.titleLabel?.textColor = UIColor(named: "Label")
+        return button
+    }()
   
     
 ///Таблица
@@ -122,8 +136,8 @@ final class DebtsViewController: UIViewController {
    //Установка констрэйнток
     func arrangeConstraints() {
         let stackView = UIStackView(arrangedSubviews: [firstButton,
-                                                      secondButton,
-                                                      thirdButton])
+                                                      remindButton,
+                                                      payButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
         

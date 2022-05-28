@@ -64,7 +64,7 @@ class Router: RouterProtocol{
     
     func initialViewController() {
         if let navigationController = navigationController {
-            // TODO onboard check
+            self.authService.destroyAllData()
             if !authService.isAuth(){
                 guard let phoneNumberViewController = assembleBuilder?.createPhoneNumberModule(router: self)else{ return}
                 navigationController.viewControllers = [phoneNumberViewController]
