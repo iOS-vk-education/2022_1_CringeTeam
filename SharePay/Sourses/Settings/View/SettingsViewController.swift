@@ -47,9 +47,9 @@ final class SettingsViewController: UIViewController {
     let mainTitle = UILabel(text: "SettingsViewController.Label.mainTitle".localized(), color: "DarkBlueColor", size: 24)
  
 ///Язык интерфейса
-    let langTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.langTitle", comment: ""), color:"DarkBlueColor", size: 20, alignment: .left)
+    let langTitle = UILabel(text: "SettingsViewController.Label.langTitle".localized(), color:"DarkBlueColor", size: 20, alignment: .left)
 ///Push уведомления
-    let pushTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.pushTitle", comment: ""), color: "DarkBlueColor", size: 20)
+    let pushTitle = UILabel(text: "SettingsViewController.Label.pushTitle".localized(), color: "DarkBlueColor", size: 20)
     
 ///Верхний View
     let topView: UIView = {
@@ -76,11 +76,11 @@ final class SettingsViewController: UIViewController {
     
     
 ///Новый счет
-    let newBillTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.newBillTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newBillTitle = UILabel(text: "SettingsViewController.Label.newBillTitle".localized(), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Новая оплата
-    let newPayTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.newPayTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newPayTitle = UILabel(text: "SettingsViewController.Label.newPayTitle".localized(), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Toggle счет
@@ -101,15 +101,15 @@ final class SettingsViewController: UIViewController {
     
     
 ///Версия приложения
-    let versionTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.versionTitle", comment: "") + " 1.0.0", color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let versionTitle = UILabel(text: "SettingsViewController.Label.versionTitle".localized() + " 1.0.0", color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Количество пользователей
-    let usersTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.usersTitle", comment: ""), color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let usersTitle = UILabel(text: "SettingsViewController.Label.usersTitle".localized(), color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Метка разработано
-    let developTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.developTitle", comment: ""), color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let developTitle = UILabel(text: "SettingsViewController.Label.developTitle".localized(), color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Название команды

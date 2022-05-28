@@ -36,7 +36,7 @@ final class DebtViewController: UIViewController{
     
     let eventLabel: UILabel = {
         let eventLabel: UILabel = UILabel()
-        eventLabel.text = NSLocalizedString("DebtViewController.Label.Events" , comment: "")
+        eventLabel.text = "DebtViewController.Label.Events".localized()
         eventLabel.textAlignment = .left
         eventLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
         return eventLabel
@@ -105,13 +105,13 @@ final class DebtViewController: UIViewController{
         eventLabel.textColor = labelColor
         
         paymentView.setActions(payCompletion: { [weak self] (amount)->Void in
-            let payAlert = UIAlertController(title: NSLocalizedString("DebtViewController.Alert.Payment" , comment: ""), message: NSLocalizedString("DebtViewController.Alert.PayAcception" , comment: ""), preferredStyle: UIAlertController.Style.alert)
+            let payAlert = UIAlertController(title: "DebtViewController.Alert.Payment".localized(), message: "DebtViewController.Alert.PayAcception".localized(), preferredStyle: UIAlertController.Style.alert)
 
-            payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Ok" , comment: ""), style: .default, handler: { (action: UIAlertAction!) in
+            payAlert.addAction(UIAlertAction(title: "Common.Ok".localized(), style: .default, handler: { (action: UIAlertAction!) in
                 self?.presenter.pay(amount: amount)
               }))
 
-            payAlert.addAction(UIAlertAction(title: NSLocalizedString("Common.Cancel" , comment: ""), style: .cancel, handler: { (action: UIAlertAction!) in
+            payAlert.addAction(UIAlertAction(title: "Common.Cancel".localized(), style: .cancel, handler: { (action: UIAlertAction!) in
               // NOP
               }))
             DispatchQueue.main.async{
@@ -161,25 +161,25 @@ extension DebtViewController: DebtView{
     }
     
     func onFailLoadDebt() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("DebtViewController.Alert.UnableToLoadDebt", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default, handler: { action in
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "DebtViewController.Alert.UnableToLoadDebt".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default, handler: { action in
             self.presenter.dismiss()
         }))
         self.present(alertController, animated: true, completion: nil)
     }
     
     func onFailPay(){
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("DebtViewController.Alert.UnableToPay", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "DebtViewController.Alert.UnableToPay".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     
     func onSuccesPay() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Message", comment: ""), message:
-        NSLocalizedString("DebtViewController.Alert.SuccesPay", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Message".localized(), message:
+        "DebtViewController.Alert.SuccesPay".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
 }

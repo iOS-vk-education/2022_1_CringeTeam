@@ -47,7 +47,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     let namePurchaseLabel: UILabel = {
         let namePurchaseLabel: UILabel = UILabel()
-        namePurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.NamePurchase", comment: "")
+        namePurchaseLabel.text = "PurchaseViewController.Label.NamePurchase".localized()
         namePurchaseLabel.textAlignment = .left
         namePurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return namePurchaseLabel
@@ -55,7 +55,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     let totalLabel: UILabel = {
         let totalPurchaseLabel: UILabel = UILabel()
-        totalPurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.TotalPurchase", comment: "")
+        totalPurchaseLabel.text = "PurchaseViewController.Label.TotalPurchase".localized()
         totalPurchaseLabel.textAlignment = .left
         totalPurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return totalPurchaseLabel
@@ -63,7 +63,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
 
     let iconLabel: UILabel = {
         let iconLabel: UILabel = UILabel()
-        iconLabel.text = NSLocalizedString("PurchaseViewController.Label.Icon", comment: "")
+        iconLabel.text = "PurchaseViewController.Label.Icon".localized()
         iconLabel.textAlignment = .center
         iconLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return iconLabel
@@ -95,7 +95,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let participantLabel: UILabel = {
         let participantLabel: UILabel = UILabel()
-        participantLabel.text = NSLocalizedString("PurchaseViewController.Label.Participant", comment: "")
+        participantLabel.text = "PurchaseViewController.Label.Participant".localized()
         participantLabel.textAlignment = .left
         participantLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return participantLabel
@@ -103,7 +103,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let addParticipantButton: UIButton = {
         let addParticipantButton: UIButton = UIButton()
-        addParticipantButton.setTitle(NSLocalizedString("PurchaseViewController.Button.AddParticipant", comment: ""), for: .normal)
+        addParticipantButton.setTitle("PurchaseViewController.Button.AddParticipant".localized(), for: .normal)
         addParticipantButton.layer.cornerRadius = 20
         addParticipantButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return addParticipantButton
@@ -111,7 +111,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let equalSplitButton: UIButton = {
         let equalSplitButton: UIButton = UIButton()
-        equalSplitButton.setTitle(NSLocalizedString("PurchaseViewController.Button.EqualSplit", comment: ""), for: .normal)
+        equalSplitButton.setTitle("PurchaseViewController.Button.EqualSplit".localized(), for: .normal)
         equalSplitButton.layer.cornerRadius = 20
         equalSplitButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return equalSplitButton
@@ -119,7 +119,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let saveButton: UIButton = {
         let saveButton: UIButton = UIButton()
-        saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
+        saveButton.setTitle("PurchaseViewController.Button.Save".localized(), for: .normal)
         saveButton.layer.cornerRadius = 25
         saveButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return saveButton
@@ -127,7 +127,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let infoTextLabel: UILabel = {
         let textLabel: UILabel = UILabel()
-        textLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
+        textLabel.text = "PurchaseViewController.Label.InfoText".localized()
         textLabel.textAlignment = .center
         textLabel.numberOfLines = 2
         textLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
@@ -136,7 +136,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let datePurchaseLabel: UILabel = {
         let datePurchaseLabel: UILabel = UILabel()
-        datePurchaseLabel.text = NSLocalizedString("PurchaseViewController.Label.DatePurchase", comment: "")
+        datePurchaseLabel.text = "PurchaseViewController.Label.DatePurchase".localized()
         datePurchaseLabel.textAlignment = .left
         datePurchaseLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         return datePurchaseLabel
@@ -150,7 +150,7 @@ final class PurchaseViewController: UIViewController, UICollectionViewDelegate{
     
     let applyBillLabel: UILabel = {
         let applyBillLabel: UILabel = UILabel()
-        applyBillLabel.text = NSLocalizedString("PurchaseViewController.Label.ApplyBill", comment: "")
+        applyBillLabel.text = "PurchaseViewController.Label.ApplyBill".localized()
         applyBillLabel.numberOfLines = 2
         applyBillLabel.textAlignment = .left
         applyBillLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
@@ -465,18 +465,18 @@ extension PurchaseViewController: PurchaseView{
     
     func onUnableAddPurchaseParticipant() {
         DispatchQueue.main.async{
-            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-            NSLocalizedString("PurchaseViewController.Message.UnableToAddParticipant", comment: ""), preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+            "PurchaseViewController.Message.UnableToAddParticipant".localized(), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
             self.present(alertController, animated: true, completion: nil)
         }
     }
     
     func onFailSavePurchase(){
         DispatchQueue.main.async{
-            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-            NSLocalizedString("PurchaseViewController.Message.UnableToSavePurchase", comment: ""), preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+            "PurchaseViewController.Message.UnableToSavePurchase".localized(), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
             self.present(alertController, animated: true, completion: nil)
         }
     }
@@ -501,8 +501,8 @@ extension PurchaseViewController: PurchaseView{
                 self?.totalTextField.isEnabled = false
                 self?.addParticipantButton.isEnabled = false
                 self?.datePicker.isEnabled = false
-                self?.saveButton.setTitle(NSLocalizedString("Common.Ok", comment: ""), for: .normal)
-                self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoTextNotEdit", comment: "")
+                self?.saveButton.setTitle("Common.Ok".localized(), for: .normal)
+                self?.infoTextLabel.text = "PurchaseViewController.Label.InfoTextNotEdit".localized()
                 self?.billSwitch.isEnabled = false
                 return
             }
@@ -513,26 +513,26 @@ extension PurchaseViewController: PurchaseView{
             self?.totalTextField.isEnabled = true
             self?.addParticipantButton.isEnabled = true
             self?.datePicker.isEnabled = true
-            self?.saveButton.setTitle(NSLocalizedString("PurchaseViewController.Button.Save", comment: ""), for: .normal)
-            self?.infoTextLabel.text = NSLocalizedString("PurchaseViewController.Label.InfoText", comment: "")
+            self?.saveButton.setTitle("PurchaseViewController.Button.Save".localized(), for: .normal)
+            self?.infoTextLabel.text = "PurchaseViewController.Label.InfoText".localized()
             self?.billSwitch.isEnabled = true
         }
     }
     
     func onFailGetPurchase(){
         DispatchQueue.main.async{
-            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-            NSLocalizedString("PurchaseViewController.Message.UnableToGetPurchase", comment: ""), preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+            "PurchaseViewController.Message.UnableToGetPurchase".localized(), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
             self.present(alertController, animated: true, completion: nil)
         }
     }
     
     func onInvalidPurchase() {
         DispatchQueue.main.async{
-            let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-            NSLocalizedString("PurchaseViewController.Message.OnInvalidPurchase", comment: ""), preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+            let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+            "PurchaseViewController.Message.OnInvalidPurchase".localized(), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
             self.present(alertController, animated: true, completion: nil)
         }
     }

@@ -91,3 +91,10 @@
 "SettingsViewController.Label.usersTitle" = "Всего пользователей";
 "SettingsViewController.Label.developTitle" = "Разработано";
 
+"TransfersViewController.Label.transfersTitle" = "Переводы";
+
+"OnBoardViewController.Label.Enter" = "Вход";
+"OnBoardViewController.Label.Text1" = "дели";
+"OnBoardViewController.Label.Text2" = "счета";
+"OnBoardViewController.Label.Text3" = "плати";
+"OnBoardViewController.Label.Text4" = "долги";

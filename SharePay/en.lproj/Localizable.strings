@@ -91,3 +91,10 @@
 "SettingsViewController.Label.usersTitle" = "Logged users";
 "SettingsViewController.Label.developTitle" = "Developed by";
 
+"TransfersViewController.Label.transfersTitle" = "Transfers";
+
+"OnBoardViewController.Label.Enter" = "Enter";
+"OnBoardViewController.Label.Text1" = "share";
+"OnBoardViewController.Label.Text2" = "bills";
+"OnBoardViewController.Label.Text3" = "pay";
+"OnBoardViewController.Label.Text4" = "debts";

@@ -36,7 +36,7 @@ class DebtsTableViewCell: UITableViewCell {
     
     let typeLabel: UILabel = {
        let label = UILabel()
-        label.text = " " + NSLocalizedString("DebtsViewController.SecondButton.Title", comment: "") + " "
+        label.text = " " + "DebtsViewController.SecondButton.Title".localized() + " "
         label.font = UIFont(name: "GTEestiProDisplay-Regular", size: 14)
         label.backgroundColor = UIColor(named: "DarkBlueColor")
         label.layer.cornerRadius = 8

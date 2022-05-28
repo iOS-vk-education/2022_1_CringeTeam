@@ -65,7 +65,7 @@ final class DebtsViewController: UIViewController {
     }()
     
 ///Сумма покупок
-    let sumTitleLabel = UILabel(text: NSLocalizedString("DebtsViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
+    let sumTitleLabel = UILabel(text: "DebtsViewController.Sum.Title".localized(), color: "WhiteColor", size: 24)
     
     let sumLabel = UILabel(text: "100098 \u{20BD}", color: "WhiteColor", size: 24)
     
@@ -93,11 +93,11 @@ final class DebtsViewController: UIViewController {
 
 ///Кнопки
     
-    let firstButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
+    let firstButton = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
     
-    let secondButton = UIButton(text: NSLocalizedString("DebtsViewController.SecondButton.Title", comment: ""), width: 100)
+    let secondButton = UIButton(text: "DebtsViewController.SecondButton.Title".localized(), width: 100)
     
-    let thirdButton = UIButton(text: NSLocalizedString("DebtsViewController.ThirdButton.Title", comment: ""), width: 120)
+    let thirdButton = UIButton(text: "DebtsViewController.ThirdButton.Title".localized(), width: 120)
   
     
 ///Таблица

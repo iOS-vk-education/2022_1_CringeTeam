@@ -151,7 +151,7 @@ final class EventCell: UICollectionViewCell{
     
         if event.type == PAYMENT_TYPE{
             tapButton.isHidden =  true //  На начальном этапе экранов транзакций нет
-            titleLabel.text = NSLocalizedString("DebtViewController.EventCell.Payment", comment: "")
+            titleLabel.text = "DebtViewController.EventCell.Payment".localized()
             emojiLabel.text = "💸"
         } else {
             tapButton.isHidden =  false

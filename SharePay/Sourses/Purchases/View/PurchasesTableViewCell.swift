@@ -35,7 +35,7 @@ class PurchasesTableViewCell: UITableViewCell {
     
     let typeLabel: UILabel = {
        let label = UILabel()
-        label.text = NSLocalizedString("PurchasesViewController.Type.Title", comment: "")
+        label.text = "PurchasesViewController.Type.Title".localized()
         label.font = UIFont(name: "GTEestiProDisplay-Bold", size: 14)
         label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
@@ -132,10 +132,10 @@ class PurchasesTableViewCell: UITableViewCell {
         sumLabel.text = "\(purchase.amount) \(purchase.currency.toCurrencySign())"
         if !purchase.isDraft {
             typeLabel.backgroundColor = greenColor
-            typeLabel.text = "  Счета выставлены  "
+            typeLabel.text = "PurchasesViewController.Type.Title2".localized()
         } else{
             typeLabel.backgroundColor = UIColor(named: "DarkBlueColor")
-            typeLabel.text = "  Черновик  "
+            typeLabel.text = "PurchasesViewController.Type.Title".localized()
         }
     }
     

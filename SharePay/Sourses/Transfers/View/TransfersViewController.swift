@@ -22,7 +22,7 @@ final class TransfersViewController: UIViewController {
         return view
     }()
     
-    let mainTitle = UILabel(text: "Переводы", color: "DarkBlueColor", size: 24)
+    let mainTitle = UILabel(text: "TransfersViewController.Label.transfersTitle".localized(), color: "DarkBlueColor", size: 24)
     let tableView: UITableView = {
         let table = UITableView()
         table.register(TransfersTableViewCell.self, forCellReuseIdentifier: "TransferCell")
@@ -106,9 +106,8 @@ extension TransfersViewController: UITableViewDelegate {
 
 extension TransfersViewController: TransfersView {
     func onFailedTransfersLoad() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("TransfersViewController.Message.FailedLoadTransfer", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:"TransfersViewController.Message.FailedLoadTransfer".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     

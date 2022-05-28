@@ -41,12 +41,11 @@
 		36D5152A2838C71A00858C46 /* DebtsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D515292838C71A00858C46 /* DebtsEntity.swift */; };
 		36D5152E28392D7A00858C46 /* SettingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5152D28392D7A00858C46 /* SettingPresenter.swift */; };
 		36D5153128393F5E00858C46 /* SettingsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5153028393F5E00858C46 /* SettingsEntity.swift */; };
-		3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardView.swift */; };
+		3B70203A8C82EE0326FAB960 /* OnBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702902F6252CD701153CE4 /* OnBoardViewController.swift */; };
 		3B7025793CBB767C351AF15A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D26200F834B01F189C6 /* Extensions.swift */; };
 		6D31126627F0FCCE004FF26E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6D31126527F0FCCE004FF26E /* .gitignore */; };
 		6D50F3F627F0FB7B00627394 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F527F0FB7B00627394 /* AppDelegate.swift */; };
 		6D50F3F827F0FB7B00627394 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */; };
-		6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D50F3F927F0FB7B00627394 /* ViewController.swift */; };
 		6D50F3FF27F0FB7C00627394 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F3FE27F0FB7C00627394 /* Assets.xcassets */; };
 		6D50F40227F0FB7C00627394 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D50F40027F0FB7C00627394 /* LaunchScreen.storyboard */; };
 		6D9466EC27F8932700593679 /* GTEestiProDisplay-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */; };
@@ -56,7 +55,7 @@
 		6D9466F027F8932700593679 /* GTEestiProDisplay-UltraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */; };
 		6D9466F127F8932700593679 /* GTEestiProDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */; };
 		6D9466F627F8944F00593679 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D9466F827F8944F00593679 /* Localizable.strings */; };
-		92878AA7AD9B8AD9734B09F8 /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C004C25515041B40F29FACCF /* Pods_SharePay.framework */; };
+		90CAA0A804C88679E8B8079A /* Pods_SharePay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FCF6CB08BEF3C264885788 /* Pods_SharePay.framework */; };
 		CE76C65D280C7F83008FE5B4 /* PurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */; };
 		CE76C65F280C7F95008FE5B4 /* PurchasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */; };
 		CE76C661280C800B008FE5B4 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE76C660280C800B008FE5B4 /* TabViewController.swift */; };
@@ -68,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02EA81FB6FF3AB7F287C7FB4 /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
+		113C177C3A3E1324E8BFAE05 /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
 		3604363C27FB92BF0005E732 /* welcomeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcomeImage.png; sourceTree = "<group>"; };
 		3631356F28255B5E0015E288 /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
 		3631357028255B5E0015E288 /* NetworkAdaperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAdaperProtocol.swift; sourceTree = "<group>"; };
@@ -102,13 +103,13 @@
 		36D515292838C71A00858C46 /* DebtsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsEntity.swift; sourceTree = "<group>"; };
 		36D5152D28392D7A00858C46 /* SettingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPresenter.swift; sourceTree = "<group>"; };
 		36D5153028393F5E00858C46 /* SettingsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEntity.swift; sourceTree = "<group>"; };
-		3B702902F6252CD701153CE4 /* OnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardView.swift; sourceTree = "<group>"; };
+		3B702902F6252CD701153CE4 /* OnBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardViewController.swift; sourceTree = "<group>"; };
 		3B702D26200F834B01F189C6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		50FCF6CB08BEF3C264885788 /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D31126527F0FCCE004FF26E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6D50F3F227F0FB7B00627394 /* SharePay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharePay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D50F3F527F0FB7B00627394 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6D50F3F927F0FB7B00627394 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6D50F3FE27F0FB7C00627394 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D50F40327F0FB7C00627394 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D9466E627F8932700593679 /* GTEestiProDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Bold.otf"; sourceTree = "<group>"; };
@@ -119,9 +120,6 @@
 		6D9466EB27F8932700593679 /* GTEestiProDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GTEestiProDisplay-Medium.otf"; sourceTree = "<group>"; };
 		6D9466F727F8944F00593679 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6D9466F927F8947A00593679 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.release.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.release.xcconfig"; sourceTree = "<group>"; };
-		AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SharePay.debug.xcconfig"; path = "Target Support Files/Pods-SharePay/Pods-SharePay.debug.xcconfig"; sourceTree = "<group>"; };
-		C004C25515041B40F29FACCF /* Pods_SharePay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SharePay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE76C65C280C7F83008FE5B4 /* PurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesViewController.swift; sourceTree = "<group>"; };
 		CE76C65E280C7F95008FE5B4 /* PurchasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesTableViewCell.swift; sourceTree = "<group>"; };
 		CE76C660280C800B008FE5B4 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
@@ -137,13 +135,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92878AA7AD9B8AD9734B09F8 /* Pods_SharePay.framework in Frameworks */,
+				90CAA0A804C88679E8B8079A /* Pods_SharePay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1CD36FADE29C6645A1661058 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50FCF6CB08BEF3C264885788 /* Pods_SharePay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3604363327FB88C10005E732 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +470,7 @@
 		3B7022C999E4663EFC156A9E /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				3B702902F6252CD701153CE4 /* OnBoardView.swift */,
+				3B702902F6252CD701153CE4 /* OnBoardViewController.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -501,8 +507,8 @@
 				6D50F3F427F0FB7B00627394 /* SharePay */,
 				6D50F3F327F0FB7B00627394 /* Products */,
 				3604363327FB88C10005E732 /* Recovered References */,
-				F418F0E07B878EB46CD8019A /* Pods */,
-				F5B5A8240D7B343CBBB6CDF2 /* Frameworks */,
+				99B2396A9FEAEC425A170712 /* Pods */,
+				1CD36FADE29C6645A1661058 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -521,7 +527,6 @@
 				6D9466E327F8930C00593679 /* Resources */,
 				6D50F3F527F0FB7B00627394 /* AppDelegate.swift */,
 				6D50F3F727F0FB7B00627394 /* SceneDelegate.swift */,
-				6D50F3F927F0FB7B00627394 /* ViewController.swift */,
 				6D50F3FE27F0FB7C00627394 /* Assets.xcassets */,
 				6D50F40327F0FB7C00627394 /* Info.plist */,
 				6D9466F827F8944F00593679 /* Localizable.strings */,
@@ -560,6 +565,15 @@
 				6D9466EA27F8932700593679 /* GTEestiProDisplay-UltraBold.otf */,
 			);
 			path = GTEestiProDisplay;
+			sourceTree = "<group>";
+		};
+		99B2396A9FEAEC425A170712 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02EA81FB6FF3AB7F287C7FB4 /* Pods-SharePay.debug.xcconfig */,
+				113C177C3A3E1324E8BFAE05 /* Pods-SharePay.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		CE76C659280C7F52008FE5B4 /* Purchases */ = {
@@ -611,23 +625,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		F418F0E07B878EB46CD8019A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */,
-				7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		F5B5A8240D7B343CBBB6CDF2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C004C25515041B40F29FACCF /* Pods_SharePay.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -635,11 +632,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D50F40627F0FB7C00627394 /* Build configuration list for PBXNativeTarget "SharePay" */;
 			buildPhases = (
-				0FE9897508F8BAA6BE420C3A /* [CP] Check Pods Manifest.lock */,
+				77687EDE2409409DCC265FBD /* [CP] Check Pods Manifest.lock */,
 				6D50F3EE27F0FB7B00627394 /* Sources */,
 				6D50F3EF27F0FB7B00627394 /* Frameworks */,
 				6D50F3F027F0FB7B00627394 /* Resources */,
-				A5F2508496D62CECCBB7D8A6 /* [CP] Embed Pods Frameworks */,
+				C7A770E70FF80BA45EA10529 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -706,7 +703,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0FE9897508F8BAA6BE420C3A /* [CP] Check Pods Manifest.lock */ = {
+		77687EDE2409409DCC265FBD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -728,7 +725,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A5F2508496D62CECCBB7D8A6 /* [CP] Embed Pods Frameworks */ = {
+		C7A770E70FF80BA45EA10529 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -762,7 +759,6 @@
 				36D5152328379AA200858C46 /* PurchasesEntity.swift in Sources */,
 				3631359428255C9B0015E288 /* AssembleProtocol.swift in Sources */,
 				36D515282838C40D00858C46 /* DebtsPresenter.swift in Sources */,
-				6D50F3FA27F0FB7B00627394 /* ViewController.swift in Sources */,
 				3631359228255C170015E288 /* PhoneNumberViewController.swift in Sources */,
 				369658E8280DDE7E00D07858 /* Entity.swift in Sources */,
 				365C4E612800D68B00E7DC27 /* ParticipantCell.swift in Sources */,
@@ -787,7 +783,7 @@
 				3631357F28255B5E0015E288 /* Datastruct.swift in Sources */,
 				36D515212837994A00858C46 /* PurchasesPresenter.swift in Sources */,
 				3631358F28255C170015E288 /* SMSCodePresenter.swift in Sources */,
-				3B70203A8C82EE0326FAB960 /* OnBoardView.swift in Sources */,
+				3B70203A8C82EE0326FAB960 /* OnBoardViewController.swift in Sources */,
 				CE76C671281EA1D5008FE5B4 /* TransfersViewController.swift in Sources */,
 				CE76C663280C8051008FE5B4 /* DebtsViewController.swift in Sources */,
 				3B7025793CBB767C351AF15A /* Extensions.swift in Sources */,
@@ -941,13 +937,13 @@
 		};
 		6D50F40727F0FB7C00627394 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA51CD2C26CC85DF7768B720 /* Pods-SharePay.debug.xcconfig */;
+			baseConfigurationReference = 02EA81FB6FF3AB7F287C7FB4 /* Pods-SharePay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5GK82H92HM;
+				DEVELOPMENT_TEAM = PVFP84ZUS3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharePay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -970,13 +966,13 @@
 		};
 		6D50F40827F0FB7C00627394 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D73E155A9E72EF9C59395C5 /* Pods-SharePay.release.xcconfig */;
+			baseConfigurationReference = 113C177C3A3E1324E8BFAE05 /* Pods-SharePay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PVFP84ZUS3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SharePay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

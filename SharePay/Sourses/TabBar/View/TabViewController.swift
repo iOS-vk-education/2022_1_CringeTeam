@@ -33,12 +33,12 @@ class TabViewController: UITabBarController {
     
     func createTabBar() {
         let purchasesViewController = presenter.getRouter().assembleBuilder?.createPurchasesViewController(router: presenter.getRouter()) ?? UIViewController()
-        purchasesViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.FirstTab", comment: ""), image: UIImage(named: "firstTab"), tag: 1)
+        purchasesViewController.tabBarItem = UITabBarItem(title: "TabBarController.Type.FirstTab".localized(), image: UIImage(named: "firstTab"), tag: 1)
         let nav1 = UINavigationController(rootViewController: purchasesViewController)
         
         let debtsViewController =
             presenter.getRouter().assembleBuilder?.createDebtsViewController(router: presenter.getRouter()) ?? UIViewController()
-        debtsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.SecondTab", comment: ""), image: UIImage(named: "secondTab"), tag: 2)
+        debtsViewController.tabBarItem = UITabBarItem(title: "TabBarController.Type.SecondTab".localized(), image: UIImage(named: "secondTab"), tag: 2)
         let nav2 = UINavigationController(rootViewController: debtsViewController)
 
         
@@ -46,11 +46,11 @@ class TabViewController: UITabBarController {
         nav3.title = ""
         
         let transferViewController = presenter.getRouter().assembleBuilder?.createTrasnfersViewController(router: presenter.getRouter()) ?? UIViewController()
-        transferViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ThirdTab", comment: ""), image: UIImage(named: "thirdTab"), tag: 4)
+        transferViewController.tabBarItem = UITabBarItem(title: "TabBarController.Type.ThirdTab".localized(), image: UIImage(named: "thirdTab"), tag: 4)
         let nav4 = UINavigationController(rootViewController: transferViewController)
 
         let settingsViewController = presenter.getRouter().assembleBuilder?.createSettingsViewController(router: presenter.getRouter()) ?? UIViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("TabBarController.Type.ForthTab", comment: ""), image: UIImage(named: "forthTab"), tag: 5)
+        settingsViewController.tabBarItem = UITabBarItem(title: "TabBarController.Type.ForthTab".localized(), image: UIImage(named: "forthTab"), tag: 5)
         let nav5 = UINavigationController(rootViewController: settingsViewController)
         
         viewControllers = [nav1, nav2, nav3, nav4, nav5]
