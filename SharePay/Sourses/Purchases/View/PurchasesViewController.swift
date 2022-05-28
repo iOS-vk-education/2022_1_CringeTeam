@@ -74,7 +74,7 @@ final class PurchasesViewController: UIViewController {
     }()
     
 ///Сумма покупок
-    let sumTitleLabel = UILabel(text: NSLocalizedString("PurchasesViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
+    let sumTitleLabel = UILabel(text: "PurchasesViewController.Sum.Title".localized(), color: "WhiteColor", size: 24)
     
     let sumLabel = UILabel(text: "", color: "WhiteColor", size: 24)
     
@@ -94,25 +94,25 @@ final class PurchasesViewController: UIViewController {
     let menuView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }()
 
 ///Кнопки
-    let allButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
+    let allButton = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
     
-    let draftButton = UIButton(text: NSLocalizedString("PurchasesViewController.SecondButton.Title", comment: ""), width: 100)
+    let draftButton = UIButton(text: "PurchasesViewController.SecondButton.Title".localized(), width: 100)
     
-    let confirmedButton = UIButton(text: NSLocalizedString("PurchasesViewController.ThirdButton.Title", comment: ""), width: 150)
+    let confirmedButton = UIButton(text: "PurchasesViewController.ThirdButton.Title".localized(), width: 150)
   
     
 ///Таблица
     let tableView: UITableView = {
         let table = UITableView()
         table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "PurchaseItemCell")
-        table.backgroundColor = UIColor(named: "WhiteColor")
+        table.backgroundColor = UIColor(named: "SecondaryFill")
         table.separatorStyle = .none
         return table
     }()
@@ -122,27 +122,19 @@ final class PurchasesViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        setView()
+
         arrangeConstraints()
         
         presenter.viewDidLoad()
     }
     
-    func setView(){
-        [allButton, draftButton, confirmedButton].forEach{ (button:UIButton) -> Void in
-            button.backgroundColor = weakAccentColor
-            button.titleLabel?.textColor = secondaryLabelColor
-        }
-        self.tableView.backgroundColor = backgroundFillColor
-    }
+
     
    //Установка констрэйнток
     func arrangeConstraints() {
         let stackView = UIStackView(arrangedSubviews: [allButton,
                                                       draftButton,
                                                     confirmedButton])
-        stackView.backgroundColor = backgroundFillColor
         stackView.axis = .horizontal
         stackView.spacing = 10
         
@@ -281,9 +273,9 @@ extension PurchasesViewController: PurchasesView{
     }
     
     func onFailesLoad() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("PurchasesViewController.Alert.FailLoad", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+                                                    "PurchasesViewController.Alert.FailLoad".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
 }

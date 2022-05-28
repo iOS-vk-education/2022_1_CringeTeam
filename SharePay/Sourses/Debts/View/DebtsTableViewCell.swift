@@ -32,21 +32,21 @@ class DebtsTableViewCell: UITableViewCell {
        return logo
     }()
     
-    let nameLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let typeLabel: UILabel = {
        let label = UILabel()
         label.text = " " + "DebtsViewController.SecondButton.Title".localized() + " "
         label.font = UIFont(name: "GTEestiProDisplay-Regular", size: 14)
-        label.backgroundColor = UIColor(named: "DarkBlueColor")
+        label.backgroundColor = UIColor(named: "Label")
         label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
-        label.textColor = UIColor(named: "WhiteColor")
+        label.textColor = UIColor(named: "Fill")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let sumLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let sumLabel = UILabel(text: "", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let tapButton: UIImageView = {
         let imageView = UIImageView()
@@ -120,7 +120,7 @@ class DebtsTableViewCell: UITableViewCell {
         if item.amount > 0{
             sumLabel.textColor = magentaColor
             typeLabel.text = " Pay "
-            typeLabel.backgroundColor = UIColor(named: "DarkBlueColor")
+            typeLabel.backgroundColor = UIColor(named: "Label")
         } else {
             sumLabel.textColor = greenColor
             typeLabel.text = " Remind "

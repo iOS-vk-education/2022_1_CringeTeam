@@ -40,7 +40,7 @@ extension UIButton {
         self.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Regular", size: 16)
         self.backgroundColor = self.isSelected ? UIColor(named: "BlueColor") : UIColor(named: "LightGreyColor")
         self.setTitle(text, for: .normal)
-        self.setTitleColor(self.isSelected ? UIColor(named: "WhiteColor") : UIColor(named: "GreyColor"), for: .normal)
+        self.setTitleColor(self.isSelected ? UIColor(named: "WhiteColor") : UIColor(named: "Fill"), for: .normal)
         self.layer.cornerRadius = 16
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         

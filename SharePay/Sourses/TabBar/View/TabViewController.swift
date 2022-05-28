@@ -57,11 +57,11 @@ class TabViewController: UITabBarController {
     }
     
     func setApperrence() {
-        self.tabBar.backgroundColor = UIColor(named: "WhiteColor")
+        self.tabBar.backgroundColor = UIColor(named: "SecondaryFill")
         self.tabBar.layer.borderWidth = 0.5
-        self.tabBar.layer.borderColor = UIColor(named: "GreyColor")?.cgColor
+        self.tabBar.layer.borderColor = UIColor(named: "SecondaryFill")?.cgColor
         self.tabBar.tintColor = UIColor(named: "BlueColor")
-        self.tabBar.unselectedItemTintColor = UIColor(named: "DarkBlueColor")
+        self.tabBar.unselectedItemTintColor = UIColor(named: "Label")
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "GTEestiProDisplay-Medium", size: 12)!], for: .normal)
     }
 
@@ -79,7 +79,7 @@ class TabViewController: UITabBarController {
 
         menuButton.setTitle("+", for: .normal)
         menuButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-UltraBold", size: 70)
-        menuButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+        menuButton.setTitleColor(UIColor(named: "Fill"), for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonAction(sender:)), for: .touchUpInside)
     }
 

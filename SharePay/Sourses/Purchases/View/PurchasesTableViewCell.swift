@@ -31,7 +31,7 @@ class PurchasesTableViewCell: UITableViewCell {
        return logo
     }()
     
-    let nameLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let typeLabel: UILabel = {
        let label = UILabel()
@@ -39,12 +39,12 @@ class PurchasesTableViewCell: UITableViewCell {
         label.font = UIFont(name: "GTEestiProDisplay-Bold", size: 14)
         label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
-        label.textColor = UIColor(named: "WhiteColor")
+        label.textColor = UIColor(named: "Fill")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let sumLabel = UILabel(text: "", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let sumLabel = UILabel(text: "", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let dateLabel = UILabel(text: "", color: "GreyColor", size: 14, name: "GTEestiProDisplay-Regular")
     

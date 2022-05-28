@@ -13,10 +13,10 @@ class OnBoardView: UIViewController {
     //Кнопка
     let enterButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(named: "DarkBlueColor")
+        button.backgroundColor = UIColor(named: "Label")
         button.setTitle("OnBoardViewController.Label.Enter".localized(), for: .normal)
         button.layer.cornerRadius = 25
-        button.tintColor = UIColor(named: "WhiteColor")
+        button.tintColor = UIColor(named: "Fill")
         button.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return button
     }()
@@ -30,7 +30,7 @@ class OnBoardView: UIViewController {
     }()
     
     //Название
-    let titleMain = UILabel(text: "SharePay", color: "BlackColor", size: 48)
+    let titleMain = UILabel(text: "SharePay", color: "Label", size: 48)
     
     //1 строка
     let firstLineLabel = UILabel(text: "OnBoardViewController.Label.Text1".localized(), color: "BlueColor")
@@ -95,7 +95,7 @@ class OnBoardView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         setConstraints()
     }
     

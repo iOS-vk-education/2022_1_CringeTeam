@@ -85,7 +85,7 @@ final class DebtsViewController: UIViewController {
     let menuView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
@@ -104,7 +104,7 @@ final class DebtsViewController: UIViewController {
     let tableView: UITableView = {
         let table = UITableView()
         table.register(DebtsTableViewCell.self, forCellReuseIdentifier: "DebtTableViewCell")
-        table.backgroundColor = UIColor(named: "WhiteColor")
+        table.backgroundColor = UIColor(named: "SecondaryFill")
         table.separatorStyle = .none
         return table
     }()

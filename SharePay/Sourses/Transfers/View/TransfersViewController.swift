@@ -18,15 +18,15 @@ final class TransfersViewController: UIViewController {
     let allView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         return view
     }()
     
-    let mainTitle = UILabel(text: "TransfersViewController.Label.transfersTitle".localized(), color: "DarkBlueColor", size: 24)
+    let mainTitle = UILabel(text: "TransfersViewController.Label.transfersTitle".localized(), color: "Label", size: 24)
     let tableView: UITableView = {
         let table = UITableView()
         table.register(TransfersTableViewCell.self, forCellReuseIdentifier: "TransferCell")
-        table.backgroundColor = UIColor(named: "WhiteColor")
+        table.backgroundColor = UIColor(named: "SecondaryFill")
         table.separatorStyle = .none
         return table
     }()

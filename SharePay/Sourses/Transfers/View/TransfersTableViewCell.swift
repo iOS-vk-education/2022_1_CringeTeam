@@ -25,7 +25,7 @@ class TransfersTableViewCell: UITableViewCell {
        return logo
     }()
     
-    let nameLabel = UILabel(text: "Denis Kholod", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "Denis Kholod", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let sumLabel = UILabel(text: "+200 \u{20BD}", color: "GreenAccentColor", size: 18, name: "GTEestiProDisplay-Medium")
       

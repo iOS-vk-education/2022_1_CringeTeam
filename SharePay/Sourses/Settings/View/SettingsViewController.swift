@@ -39,25 +39,25 @@ final class SettingsViewController: UIViewController {
     let allView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         return view
     }()
     
 ///Заголовок
-    let mainTitle = UILabel(text: "SettingsViewController.Label.mainTitle".localized(), color: "DarkBlueColor", size: 24)
+    let mainTitle = UILabel(text: "SettingsViewController.Label.mainTitle".localized(), color: "Label", size: 24)
  
 ///Язык интерфейса
-    let langTitle = UILabel(text: "SettingsViewController.Label.langTitle".localized(), color:"DarkBlueColor", size: 20, alignment: .left)
+    let langTitle = UILabel(text: "SettingsViewController.Label.langTitle".localized(), color:"Label", size: 20, alignment: .left)
 ///Push уведомления
-    let pushTitle = UILabel(text: "SettingsViewController.Label.pushTitle".localized(), color: "DarkBlueColor", size: 20)
+    let pushTitle = UILabel(text: "SettingsViewController.Label.pushTitle".localized(), color: "Label", size: 20)
     
 ///Верхний View
     let topView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "WhiteColor")
         view.layer.cornerRadius = UIScreen.main.bounds.size.width / 16
-        view.layer.borderColor = UIColor(named: "DarkBlueColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "Label")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
@@ -67,9 +67,9 @@ final class SettingsViewController: UIViewController {
     let bottomView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "WhiteColor")
         view.layer.cornerRadius = UIScreen.main.bounds.size.width / 16
-        view.layer.borderColor = UIColor(named: "DarkBlueColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "Label")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
@@ -94,26 +94,26 @@ final class SettingsViewController: UIViewController {
 ///Линия разделения push
     let pushSeparatedView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor(named: "GreyColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "DarkBlueLabel")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
     
     
 ///Версия приложения
-    let versionTitle = UILabel(text: "SettingsViewController.Label.versionTitle".localized() + " 1.0.0", color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let versionTitle = UILabel(text: "SettingsViewController.Label.versionTitle".localized() + " 1.0.0", color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Количество пользователей
-    let usersTitle = UILabel(text: "SettingsViewController.Label.usersTitle".localized(), color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let usersTitle = UILabel(text: "SettingsViewController.Label.usersTitle".localized(), color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Метка разработано
-    let developTitle = UILabel(text: "SettingsViewController.Label.developTitle".localized(), color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let developTitle = UILabel(text: "SettingsViewController.Label.developTitle".localized(), color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Название команды
-    let teamTitle = UILabel(text: "CringeTeam", color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-UltraBold")
+    let teamTitle = UILabel(text: "CringeTeam", color: "Label", size: 12, name: "GTEestiProDisplay-UltraBold")
     
     let radioGroup: RadioGroup = {
         let radioGroup = RadioGroup(titles: [])
