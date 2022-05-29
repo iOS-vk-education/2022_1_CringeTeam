@@ -50,6 +50,8 @@ final class SettingsViewController: UIViewController {
     let langTitle = UILabel(text: "SettingsViewController.Label.langTitle".localized(), color:"Label", size: 20, alignment: .left)
 ///Push уведомления
     let pushTitle = UILabel(text: "SettingsViewController.Label.pushTitle".localized(), color: "Label", size: 20)
+ // Кнопка выхода
+    let logoutLabel = UILabel(text: "SettingsViewController.Label.Logout".localized(), color:"Label", size: 16, name: "GTEestiProDisplay-Bold")
     
 ///Верхний View
     let topView: UIView = {
@@ -134,6 +136,14 @@ final class SettingsViewController: UIViewController {
         radioGroup.addTarget(self, action: #selector(self.languageSelected), for: .valueChanged)
         radioGroup.titles = presenter.listLanguageItems().map{$0.name}
         radioGroup.selectedIndex = calculateSelectedIndex(langCode: presenter.getSelectedLanguageCode())
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapLogout))
+        logoutLabel.addGestureRecognizer(tap)
+        logoutLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func didTapLogout(){
+        presenter.logout()
     }
     
     func calculateSelectedIndex(langCode: String) -> Int{
@@ -148,6 +158,10 @@ final class SettingsViewController: UIViewController {
     
     @objc func languageSelected(){
         presenter.selectLanguage(lang: presenter.listLanguageItems()[radioGroup.selectedIndex].code)
+        let alertController = UIAlertController(title:  "SettingsViewController.LanguageSelected".localized(), message:
+                                                    "SettingsViewController.LanguageSelectedMessage".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     
@@ -183,8 +197,9 @@ final class SettingsViewController: UIViewController {
         allView.addSubview(usersTitle)
         allView.addSubview(developTitle)
         allView.addSubview(teamTitle)
+        allView.addSubview(logoutLabel)
         
-        [allView, mainTitle, langTitle, topView, pushTitle, bottomView, newBillTitle, billSwitch, pushSeparatedView, newPayTitle, paySwitch, versionTitle, usersTitle, developTitle, teamTitle].forEach {
+        [allView, mainTitle, langTitle, topView, pushTitle, bottomView, newBillTitle, billSwitch, pushSeparatedView, newPayTitle, paySwitch, versionTitle, usersTitle, developTitle, teamTitle, logoutLabel].forEach {
 $0.translatesAutoresizingMaskIntoConstraints = false
 }
         
@@ -294,6 +309,11 @@ $0.translatesAutoresizingMaskIntoConstraints = false
             teamTitle.centerXAnchor.constraint(equalTo: allView.centerXAnchor, constant: 36)
         ]
         NSLayoutConstraint.activate(teamTitleConstraints)
+        
+        NSLayoutConstraint.activate([
+            logoutLabel.centerXAnchor.constraint(equalTo: allView.centerXAnchor),
+            logoutLabel.topAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: 24)
+        ])
         
     }
 

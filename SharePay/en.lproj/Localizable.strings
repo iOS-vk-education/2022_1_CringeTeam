@@ -67,6 +67,8 @@
 "DebtsViewController.Sum.Title" = "Balance";
 "DebtsViewController.Remind" = "Remind";
 "DebtsViewController.Pay" = "Pay";
+"DebtsViewController.Alert.FailLoad" = "Failed to load debts list";
+
 
 "DebtViewController.Label.Events" =  "Events";
 "DebtViewController.Alert.Payment" =  "Payment";
@@ -82,7 +84,7 @@
 
 "SettingsViewController.Label.mainTitle" = "Settings";
 "SettingsViewController.Label.langTitle" = "Language";
-"SettingsViewController.Label.pushTitle" = "Push-notifivations";
+"SettingsViewController.Label.pushTitle" = "Push-notifications";
 "SettingsViewController.Label.russianTitle" = "Russian";
 "SettingsViewController.Label.englishTitle" = "English";
 "SettingsViewController.Label.newBillTitle" = "New bill";
@@ -90,6 +92,9 @@
 "SettingsViewController.Label.versionTitle" = "Version";
 "SettingsViewController.Label.usersTitle" = "Logged users";
 "SettingsViewController.Label.developTitle" = "Developed by";
+"SettingsViewController.Label.Logout" = "Logout";
+"SettingsViewController.LanguageSelected" = "Language changed";
+"SettingsViewController.LanguageSelectedMessage" = "Restart the applications in order to see the changes";
 
 "TransfersViewController.Label.transfersTitle" = "Transfers";
 

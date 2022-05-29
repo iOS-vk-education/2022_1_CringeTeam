@@ -100,6 +100,7 @@ class PurchasesTableViewCell: UITableViewCell {
         secondStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(secondStackView)
         
+        tapButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tapButton)
 
         NSLayoutConstraint.activate([
@@ -142,13 +143,12 @@ class PurchasesTableViewCell: UITableViewCell {
     func setAction(completion: @escaping ()->Void){
         self.actionCompletion = completion
         tapButton.gestureRecognizers?.removeAll()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapButton))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PurchasesTableViewCell.didTapButton))
         tapButton.addGestureRecognizer(tap)
         tapButton.isUserInteractionEnabled = true
     }
     
-    @objc func didTapButton(sender: UITapGestureRecognizer){
+    @objc func didTapButton(){
         self.actionCompletion?()
     }
 }

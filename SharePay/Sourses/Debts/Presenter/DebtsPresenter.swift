@@ -7,12 +7,19 @@
 
 import Foundation
 
+enum debtFilter {
+    case all
+    case pay
+    case remind
+}
+
 protocol DebtsViewPresenter: AnyObject{
-    func loadDebts()
+    func refresh()
     func listDebts() -> [DebtItem]
     func getTotalCount() -> Int
     func getCurrency() -> String
     func openDebt(debt_id: Int)
+    func setFilter(filter: debtFilter)
 }
 
 class DebtsPresenter: DebtsViewPresenter{
@@ -21,6 +28,7 @@ class DebtsPresenter: DebtsViewPresenter{
     var router: RouterProtocol
     var debts: [DebtItem]
     var totalAmount: Int
+    var filter: debtFilter = .all
     
     init(router: RouterProtocol){
         self.router = router
@@ -28,7 +36,7 @@ class DebtsPresenter: DebtsViewPresenter{
         self.totalAmount = 0
     }
     
-    func loadDebts() {
+    func refresh() {
         router.sharePayDebtService.listDebts(completion: {
             (result: Result<[DebtCodable], Error>) -> Void in
             switch result {
@@ -60,7 +68,18 @@ class DebtsPresenter: DebtsViewPresenter{
     }
     
     func listDebts() -> [DebtItem]{
-        return debts
+        switch(filter){
+        case .all:
+            return debts
+        case .pay:
+            return debts.filter{$0.amount>0}
+        case .remind:
+            return debts.filter{$0.amount<0}
+        }
+    }
+    
+    func setFilter(filter: debtFilter) {
+        self.filter = filter
     }
     
     func openDebt(debt_id: Int){

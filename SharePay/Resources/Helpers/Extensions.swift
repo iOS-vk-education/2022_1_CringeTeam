@@ -85,10 +85,15 @@ extension UIViewController {
 
 extension String{
     func parseRFC3339Date() -> Date{
-        let newFormatter = DateFormatter()
+        var newFormatter = DateFormatter()
         newFormatter.dateFormat = "yyyy-dd-MM'T'HH:mm:ss.SSS'Z'"
         guard let date = newFormatter.date(from: self) else {
-            return Date.init(timeIntervalSince1970: TimeInterval(0))
+            newFormatter = DateFormatter()
+            newFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            guard let date = newFormatter.date(from: self) else {
+                return Date.init(timeIntervalSince1970: TimeInterval(0))
+            }
+            return date
         }
         return date
     }

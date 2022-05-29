@@ -11,6 +11,7 @@ protocol SettingViewPresenter: AnyObject{
     func selectLanguage(lang: String)
     func listLanguageItems() -> [LanguageItem]
     func getSelectedLanguageCode() -> String
+    func logout()
 }
 
 class SettingPresenter: SettingViewPresenter{
@@ -45,6 +46,11 @@ class SettingPresenter: SettingViewPresenter{
     
     func getSelectedLanguageCode() -> String{
         return self.selectedLanguage
+    }
+    
+    func logout(){
+        self.router.authService.destroyData()
+        self.router.initialViewController()
     }
 
 }

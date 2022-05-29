@@ -37,8 +37,13 @@ final class TransfersPresenter: TransfersViewPresenter{
                 
                 self?.transfers = []
                 for p in payments{
-                    let name = self?.router.contactService.getNameByPhone(phoneNumber: p.sender_phone,
-                                                                         defaultName: p.sender_phone) ?? ""
+                    var phone = p.sender_phone
+                    if phone == self?.router.authService.getPhone(){
+                        phone = p.receiver_phone
+                    }
+                    
+                    let name = self?.router.contactService.getNameByPhone(phoneNumber: phone,
+                                                                         defaultName: phone) ?? ""
                     self?.transfers.append(Transfer(amount: p.amount,
                                               phone: p.sender_phone,
                                               name: name,

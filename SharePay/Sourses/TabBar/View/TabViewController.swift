@@ -30,7 +30,6 @@ class TabViewController: UITabBarController {
         setupMiddleButton()
     }
     
-    
     func createTabBar() {
         let purchasesViewController = presenter.getRouter().assembleBuilder?.createPurchasesViewController(router: presenter.getRouter()) ?? UIViewController()
         purchasesViewController.tabBarItem = UITabBarItem(title: "TabBarController.Type.FirstTab".localized(), image: UIImage(named: "firstTab"), tag: 1)
@@ -89,6 +88,4 @@ class TabViewController: UITabBarController {
     }
 }
 
-extension TabViewController: TabView{
-    
-}
+extension TabViewController: TabView{}

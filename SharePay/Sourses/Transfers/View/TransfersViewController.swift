@@ -92,6 +92,9 @@ extension TransfersViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransferCell", for: indexPath)  as? TransfersTableViewCell else {
             return UITableViewCell()
         }
+        if indexPath.row >= self.presenter.listTransfers().count{
+            return UITableViewCell()
+        }
         cell.setData(transfer: self.presenter.listTransfers()[indexPath.row])
         return cell
     }

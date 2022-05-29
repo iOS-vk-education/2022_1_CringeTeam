@@ -67,6 +67,7 @@
 "DebtsViewController.Sum.Title" = "Общий баланс";
 "DebtsViewController.Remind" = "Напомнить";
 "DebtsViewController.Pay" = "Оплатить";
+"DebtsViewController.Alert.FailLoad" = "Не удалось загрузить список долгов";
 
 "DebtViewController.Label.Events" =  "События";
 "DebtViewController.Alert.Payment" =  "Оплата";
@@ -90,6 +91,9 @@
 "SettingsViewController.Label.versionTitle" = "Версия";
 "SettingsViewController.Label.usersTitle" = "Всего пользователей";
 "SettingsViewController.Label.developTitle" = "Разработано";
+"SettingsViewController.Label.Logout" = "Выйти";
+"SettingsViewController.LanguageSelected" = "Настройки языка применены";
+"SettingsViewController.LanguageSelectedMessage" = "Перезапустите приложения для того, чтобы увидеть изменения";
 
 "TransfersViewController.Label.transfersTitle" = "Переводы";
 

@@ -219,7 +219,7 @@ class PurchasePresenter: PurchaseViewPresenter{
                     }
                 
                     // Загружаем покупку
-                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description, emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount, created_at: purchase.created_at.parseRFC3339Date())
+                    let newPurchase = Purchase(id: purchase.id, name: purchase.name, description: purchase.description ?? "", emoji: purchase.emoji, draft: purchase.draft, amount: purchaseAmount, created_at: (purchase.created_at ?? "").parseRFC3339Date())
                     self.purchase = newPurchase
                     self.actualPurchase = newPurchase
                     

@@ -36,7 +36,7 @@ final class PurchasesViewController: UIViewController {
         static let headerHeight: CGFloat = 200
     }
     
-///Верхняя полоска
+// Верхняя полоска
     let topView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -44,16 +44,16 @@ final class PurchasesViewController: UIViewController {
         return view
     }()
     
-///Заголовок
+// Заголовок
     let mainTitle = UILabel(text: "SharePay", color: "WhiteColor", size: 24)
-///Логотип
+// Логотип
     let logoLabel: UILabel = {
         let label = UILabel()
         label.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 6
         
-    ///Создание градиент
+    // Создание градиент
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: 11, height: 11)
         layer.cornerRadius = 5
@@ -65,7 +65,7 @@ final class PurchasesViewController: UIViewController {
         label.layer.insertSublayer(layer, at: 0)
         return label
     }()
-///Уведомления
+// Уведомления
     let bellButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "bell"), for: .normal)
@@ -73,16 +73,16 @@ final class PurchasesViewController: UIViewController {
         return button
     }()
     
-///Сумма покупок
+// Сумма покупок
     let sumTitleLabel = UILabel(text: "PurchasesViewController.Sum.Title".localized(), color: "WhiteColor", size: 24)
     
     let sumLabel = UILabel(text: "", color: "WhiteColor", size: 24)
     
-///Констрейнты для паралакса
+// Констрейнты для паралакса
     var headerTopConstraint: NSLayoutConstraint!
     var headerHeightConstraint: NSLayoutConstraint!
     
-///Хедер
+// Хедер
     let headerContainerView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -90,7 +90,7 @@ final class PurchasesViewController: UIViewController {
         return view
     }()
     
-///Меню
+// Меню
     let menuView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -100,31 +100,31 @@ final class PurchasesViewController: UIViewController {
         return view
     }()
 
-///Кнопки
+// Кнопки
     let allButton: UIButton = {
         let button = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
-        button.backgroundColor =  UIColor(named: "LightGreyColor")
-        button.titleLabel?.textColor = UIColor(named: "Label")
+        button.backgroundColor =  UIColor(named: "BlueAccentColor") // кнопка по умолчанию
+        button.setTitleColor(UIColor(named: "White"), for: .normal)
         return button
     }()
     
     
     let draftButton: UIButton = {
         let button =  UIButton(text: "PurchasesViewController.SecondButton.Title".localized(), width: 100)
-        button.backgroundColor =  UIColor(named: "LightGreyColor")
-        button.titleLabel?.textColor = UIColor(named: "Label")
+        button.backgroundColor =  UIColor(named: "DarkFillColor")
+        button.setTitleColor(UIColor(named: "Label"), for: .normal)
         return button
     }()
     
     let confirmedButton: UIButton = {
         let button = UIButton(text: "PurchasesViewController.ThirdButton.Title".localized(), width: 150)
-        button.backgroundColor =  UIColor(named: "LightGreyColor")
-        button.titleLabel?.textColor = UIColor(named: "Label")
+        button.backgroundColor =  UIColor(named: "DarkFillColor")
+        button.setTitleColor(UIColor(named: "Label"), for: .normal)
         return button
     }()
   
     
-///Таблица
+// Таблица
     let tableView: UITableView = {
         let table = UITableView()
         table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "PurchaseItemCell")
@@ -135,18 +135,62 @@ final class PurchasesViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
-
         arrangeConstraints()
-        
-        presenter.viewDidLoad()
+        setFilterButtonsActions()
     }
     
-
+    func setFilterButtonsActions(){
+        allButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "BlueAccentColor")
+            self?.confirmedButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.draftButton.backgroundColor = UIColor(named: "DarkFillColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            self?.confirmedButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.draftButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .all)
+            self?.tableView.reloadData()
+        }
+        
+        confirmedButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.confirmedButton.backgroundColor =  UIColor(named: "BlueAccentColor")
+            self?.draftButton.backgroundColor = UIColor(named: "DarkFillColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.confirmedButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            self?.draftButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .billed)
+            self?.tableView.reloadData()
+        }
+        
+        draftButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.confirmedButton.backgroundColor =  UIColor(named: "DarkFillColor")
+            self?.draftButton.backgroundColor = UIColor(named: "BlueAccentColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.confirmedButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.draftButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .draft)
+            self?.tableView.reloadData()
+        }
+    }
     
-   //Установка констрэйнток
+    override func viewDidAppear(_ animated: Bool) {
+        presenter.refresh()
+    }
+    
+    @objc func didPullToRefresh(){
+        presenter.refresh()
+    }
+    
+   // Установка констрэйнток
     func arrangeConstraints() {
         let stackView = UIStackView(arrangedSubviews: [allButton,
                                                       draftButton,
@@ -249,10 +293,14 @@ $0.translatesAutoresizingMaskIntoConstraints = false
 extension PurchasesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0.0 {
-
             headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
-            print(scrollView.contentOffset.y)
-
+            
+            if scrollView.refreshControl == nil {
+                        let refreshControl = UIRefreshControl()
+                        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+                        scrollView.refreshControl = refreshControl
+            }
+            
         } else {
 
         }
@@ -268,11 +316,13 @@ extension PurchasesViewController: UITableViewDataSource {
         guard let purchaseCell = tableView.dequeueReusableCell(withIdentifier: "PurchaseItemCell", for: indexPath) as? PurchasesTableViewCell else{
             return UITableViewCell()
         }
+        purchaseCell.isUserInteractionEnabled = true
         purchaseCell.setData(purchase: presenter.listPurchases()[indexPath.row])
-        purchaseCell.setAction { [weak self] in
-            self?.presenter.showPurchase(purchase_id: self?.presenter.listPurchases()[indexPath.row].id ?? 0)
-        }
         return purchaseCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.showPurchase(purchase_id: presenter.listPurchases()[indexPath.row].id)
     }
 }
 

@@ -54,7 +54,7 @@ class DebtPresenter: DebtViewPresenter{
 
                 if newDebt.events != nil{
                     for e in newDebt.events!{
-                        var newEvent = Event(name: e.description ?? "",
+                        var newEvent = Event(name: e.name ?? "",
                                              emoji: e.emoji ?? "",
                                              date: e.date?.parseRFC3339Date() ?? Date(),
                                              amount: e.amount,
