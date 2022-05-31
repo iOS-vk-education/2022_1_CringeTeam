@@ -305,12 +305,18 @@ extension DebtsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        if indexPath.row >= presenter.listDebts().count{
+            return UITableViewCell()
+        }
         let debt = presenter.listDebts()[indexPath.row]
         debtCell.setData(item: debt)
         return debtCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row >= presenter.listDebts().count{
+            return
+        }
         let debt = presenter.listDebts()[indexPath.row]
         presenter.openDebt(debt_id: debt.id)
     }

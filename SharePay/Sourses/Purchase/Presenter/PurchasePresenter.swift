@@ -157,7 +157,7 @@ class PurchasePresenter: PurchaseViewPresenter{
             purchaseParticipants.append(PurchaseParticipantCodable(phone: p.phoneNumber, amount: p.amount))
         }
         
-        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants, draft: purchase.draft, created_at: purchase.created_at.formatted())
+        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants, draft: purchase.draft, created_at: purchase.created_at.ISO8601Format())
         router.sharePayPurchaseService.createPurchase(purchase: newPurchase, completion: { (result: Result<CreateUpdatePurchaseResponse, Error>) -> Void in
             switch result {
             case .success(let purchaseResponse):
@@ -181,7 +181,7 @@ class PurchasePresenter: PurchaseViewPresenter{
             purchaseParticipants.append(PurchaseParticipantCodable(phone: p.phoneNumber, amount: p.amount))
         }
         
-        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants,  draft: purchase.draft, created_at: purchase.created_at.formatted())
+        let newPurchase: CreateUpdatePurchaseCodable = CreateUpdatePurchaseCodable(name: purchase.name, description: purchase.description, emoji: purchase.emoji, participants: purchaseParticipants,  draft: purchase.draft, created_at: purchase.created_at.ISO8601Format())
         router.sharePayPurchaseService.updatePurchase(purchase: newPurchase, purchase_id: purchase.id, completion: { (result: Result<CreateUpdatePurchaseResponse, Error>) -> Void in
             switch result {
             case .success(_):

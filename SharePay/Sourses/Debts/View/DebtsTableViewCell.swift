@@ -117,7 +117,7 @@ class DebtsTableViewCell: UITableViewCell {
     }
     
     func setData(item: DebtItem){
-        sumLabel.text = "\(item.amount)"
+        sumLabel.text = "\(item.amount) ₽"
         if item.amount > 0{
             sumLabel.textColor = magentaColor
             typeLabel.text = "  \("DebtsViewController.Pay".localized())  "
