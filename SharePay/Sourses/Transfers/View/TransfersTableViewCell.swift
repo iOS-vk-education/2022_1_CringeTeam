@@ -16,16 +16,16 @@ class TransfersTableViewCell: UITableViewCell {
        logo.layer.borderWidth = 1
        logo.layer.borderColor = UIColor(named: "LightGreyColor")?.cgColor
        logo.layer.backgroundColor = UIColor(named: "LightGreyColor")?.cgColor
-       logo.textColor = UIColor(named: "WhiteColor")
+       logo.textColor = UIColor(named: "Label")
        logo.textAlignment = .center
-       logo.font = UIFont(name: "GTEestiProDisplay-Medium", size: 24)
+       logo.font = UIFont(name: "GTEestiProDisplay-Medium", size: 30)
        logo.clipsToBounds = true
        logo.translatesAutoresizingMaskIntoConstraints = false
        logo.layer.cornerRadius = 30
        return logo
     }()
     
-    let nameLabel = UILabel(text: "Denis Kholod", color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Medium")
+    let nameLabel = UILabel(text: "Denis Kholod", color: "Label", size: 18, name: "GTEestiProDisplay-Medium")
     
     let sumLabel = UILabel(text: "+200 \u{20BD}", color: "GreenAccentColor", size: 18, name: "GTEestiProDisplay-Medium")
       

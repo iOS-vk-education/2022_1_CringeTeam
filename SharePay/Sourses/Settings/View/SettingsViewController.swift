@@ -5,32 +5,61 @@
 //  Created by User on 18.04.2022.
 //
 import UIKit
+import RadioGroup
+
+
+protocol SettingView: AnyObject{
+    
+}
 
 final class SettingsViewController: UIViewController {
+    
+    // Инициализация цветов
+    let blueColor: UIColor? = UIColor(named: "BlueAccentColor")
+    let labelColor: UIColor? = UIColor(named: "Label")
+    let magentaColor: UIColor? = UIColor(named: "MagentaAccentColor")
+    let greenColor: UIColor? = UIColor(named:"GreenAccentColor")
+    let secondaryLabelColor: UIColor? = UIColor(named: "SecondaryLabel")
+    let backgroundFillColor: UIColor? = UIColor(named: "Fill")
+    let secondaryFillColor: UIColor? = UIColor(named: "SecondaryFill")
+    let weakAccentColor: UIColor? = UIColor(named: "WeakAccentColor")
+    
+    var presenter: SettingViewPresenter
+    
+    init(presenter: SettingViewPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 ///Подложка
     let allView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         return view
     }()
     
 ///Заголовок
-    let mainTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.mainTitle", comment: ""), color: "DarkBlueColor", size: 24)
+    let mainTitle = UILabel(text: "SettingsViewController.Label.mainTitle".localized(), color: "Label", size: 24)
  
 ///Язык интерфейса
-    let langTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.langTitle", comment: ""), color:"DarkBlueColor", size: 20, alignment: .left)
+    let langTitle = UILabel(text: "SettingsViewController.Label.langTitle".localized(), color:"Label", size: 20, alignment: .left)
 ///Push уведомления
-    let pushTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.pushTitle", comment: ""), color: "DarkBlueColor", size: 20)
+    let pushTitle = UILabel(text: "SettingsViewController.Label.pushTitle".localized(), color: "Label", size: 20)
+ // Кнопка выхода
+    let logoutLabel = UILabel(text: "SettingsViewController.Label.Logout".localized(), color:"Label", size: 16, name: "GTEestiProDisplay-Bold")
     
 ///Верхний View
     let topView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "WhiteColor")
         view.layer.cornerRadius = UIScreen.main.bounds.size.width / 16
-        view.layer.borderColor = UIColor(named: "DarkBlueColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "Label")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
@@ -40,53 +69,20 @@ final class SettingsViewController: UIViewController {
     let bottomView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "WhiteColor")
         view.layer.cornerRadius = UIScreen.main.bounds.size.width / 16
-        view.layer.borderColor = UIColor(named: "DarkBlueColor")?.cgColor
-        view.layer.borderWidth = 0.5
-        return view
-    }()
-    
-    
-///Флаг русский
-    let russianLogo = UILabel(text: "🇷🇺", color: "DarkBlueColor", size: 24)
-    
-    
-///Флаг английский
-    let englishLogo = UILabel(text: "🇺🇸", color: "DarkBlueColor", size: 24)
-    
-    
-///Русский язык
-    let russianTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.russianTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
-    
-    
-///Английский язык
-    let englishTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.englishTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
-    
-    
-///Метка русский язык
-    let russianTag = UILabel(text: "✔️", color: "DarkBlueColor", size: 20)
-    
-    
-///Метка английский язык
-    let englishTag = UILabel(text: "✔️", color: "WhiteColor", size: 0)
-    
-    
-///Линия разделения языков
-    let langSeparatedView: UIView = {
-        let view = UIView()
-        view.layer.borderColor = UIColor(named: "GreyColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "Label")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
     
     
 ///Новый счет
-    let newBillTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.newBillTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newBillTitle = UILabel(text: "SettingsViewController.Label.newBillTitle".localized(), color: "Label", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Новая оплата
-    let newPayTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.newPayTitle", comment: ""), color: "DarkBlueColor", size: 18, name: "GTEestiProDisplay-Regular")
+    let newPayTitle = UILabel(text: "SettingsViewController.Label.newPayTitle".localized(), color: "Label", size: 18, name: "GTEestiProDisplay-Regular")
     
     
 ///Toggle счет
@@ -100,33 +96,82 @@ final class SettingsViewController: UIViewController {
 ///Линия разделения push
     let pushSeparatedView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor(named: "GreyColor")?.cgColor
+        view.layer.borderColor = UIColor(named: "DarkBlueLabel")?.cgColor
         view.layer.borderWidth = 0.5
         return view
     }()
     
     
 ///Версия приложения
-    let versionTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.versionTitle", comment: "") + " 1.0.0", color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let versionTitle = UILabel(text: "SettingsViewController.Label.versionTitle".localized() + " 1.0.0", color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Количество пользователей
-    let usersTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.usersTitle", comment: ""), color: "GreyColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let usersTitle = UILabel(text: "SettingsViewController.Label.usersTitle".localized(), color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Метка разработано
-    let developTitle = UILabel(text: NSLocalizedString("SettingsViewController.Label.developTitle", comment: ""), color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-Regular")
+    let developTitle = UILabel(text: "SettingsViewController.Label.developTitle".localized(), color: "Label", size: 12, name: "GTEestiProDisplay-Regular")
     
     
 ///Название команды
-    let teamTitle = UILabel(text: "CringeTeam", color: "DarkBlueColor", size: 12, name: "GTEestiProDisplay-UltraBold")
+    let teamTitle = UILabel(text: "CringeTeam", color: "Label", size: 12, name: "GTEestiProDisplay-UltraBold")
     
+    let radioGroup: RadioGroup = {
+        let radioGroup = RadioGroup(titles: [])
+        radioGroup.translatesAutoresizingMaskIntoConstraints = false
+        radioGroup.selectedIndex = 0
+        radioGroup.titleAlignment = .left
+        radioGroup.isButtonAfterTitle = true
+        radioGroup.titleFont = UIFont(name: "GTEestiProDisplay-Regular", size: 20)
+        return radioGroup
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setView()
         arrangeConstraints()
         
+        radioGroup.addTarget(self, action: #selector(self.languageSelected), for: .valueChanged)
+        radioGroup.titles = presenter.listLanguageItems().map{$0.name}
+        radioGroup.selectedIndex = calculateSelectedIndex(langCode: presenter.getSelectedLanguageCode())
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapLogout))
+        logoutLabel.addGestureRecognizer(tap)
+        logoutLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func didTapLogout(){
+        presenter.logout()
+    }
+    
+    func calculateSelectedIndex(langCode: String) -> Int{
+        let items = presenter.listLanguageItems()
+        for (idx, item) in items.enumerated(){
+            if item.code == langCode{
+                return idx
+            }
+        }
+        return 0
+    }
+    
+    @objc func languageSelected(){
+        presenter.selectLanguage(lang: presenter.listLanguageItems()[radioGroup.selectedIndex].code)
+        let alertController = UIAlertController(title:  "SettingsViewController.LanguageSelected".localized(), message:
+                                                    "SettingsViewController.LanguageSelectedMessage".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func setView(){
+        topView.backgroundColor = backgroundFillColor
+        bottomView.backgroundColor = backgroundFillColor
+        
+        radioGroup.backgroundColor = backgroundFillColor
+        radioGroup.selectedTintColor = magentaColor
+        radioGroup.tintColor = magentaColor
     }
     
    ///Установка констрэйнток
@@ -137,13 +182,8 @@ final class SettingsViewController: UIViewController {
         
         allView.addSubview(langTitle)
         allView.addSubview(topView)
-        topView.addSubview(russianLogo)
-        topView.addSubview(russianTitle)
-        topView.addSubview(russianTag)
-        topView.addSubview(langSeparatedView)
-        topView.addSubview(englishLogo)
-        topView.addSubview(englishTitle)
-        topView.addSubview(englishTag)
+        topView.addSubview(radioGroup)
+
 
         allView.addSubview(pushTitle)
         allView.addSubview(bottomView)
@@ -157,8 +197,9 @@ final class SettingsViewController: UIViewController {
         allView.addSubview(usersTitle)
         allView.addSubview(developTitle)
         allView.addSubview(teamTitle)
+        allView.addSubview(logoutLabel)
         
-        [allView, mainTitle, langTitle, topView, russianLogo, russianTitle, russianTag, langSeparatedView, englishLogo, englishTitle, englishTag, pushTitle, bottomView, newBillTitle, billSwitch, pushSeparatedView, newPayTitle, paySwitch, versionTitle, usersTitle, developTitle, teamTitle].forEach {
+        [allView, mainTitle, langTitle, topView, pushTitle, bottomView, newBillTitle, billSwitch, pushSeparatedView, newPayTitle, paySwitch, versionTitle, usersTitle, developTitle, teamTitle, logoutLabel].forEach {
 $0.translatesAutoresizingMaskIntoConstraints = false
 }
         
@@ -191,49 +232,12 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         ]
         NSLayoutConstraint.activate(topViewConstraints)
         
-        let russianLogoConstraints: [NSLayoutConstraint] = [
-            russianLogo.topAnchor.constraint(equalTo: topView.topAnchor, constant: 16),
-            russianLogo.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20),
-        ]
-        NSLayoutConstraint.activate(russianLogoConstraints)
-        
-        let russianTitleConstraints: [NSLayoutConstraint] = [
-            russianTitle.topAnchor.constraint(equalTo: topView.topAnchor, constant: 18),
-            russianTitle.leadingAnchor.constraint(equalTo: russianLogo.trailingAnchor, constant: 10)
-        ]
-        NSLayoutConstraint.activate(russianTitleConstraints)
-        
-        let russianTagConstraints: [NSLayoutConstraint] = [
-            russianTag.topAnchor.constraint(equalTo: topView.topAnchor, constant: 16),
-            russianTag.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -20)
-        ]
-        NSLayoutConstraint.activate(russianTagConstraints)
-        
-        let langSeparatedViewConstraints: [NSLayoutConstraint] = [
-            langSeparatedView.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
-            langSeparatedView.trailingAnchor.constraint(equalTo: topView.trailingAnchor),
-            langSeparatedView.leadingAnchor.constraint(equalTo: russianTitle.leadingAnchor),
-            langSeparatedView.heightAnchor.constraint(equalToConstant: 1)
-        ]
-        NSLayoutConstraint.activate(langSeparatedViewConstraints)
-        
-        let englishLogoConstraints: [NSLayoutConstraint] = [
-            englishLogo.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -16),
-            englishLogo.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 20),
-        ]
-        NSLayoutConstraint.activate(englishLogoConstraints)
-        
-        let englishTitleConstraints: [NSLayoutConstraint] = [
-            englishTitle.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -18),
-            englishTitle.leadingAnchor.constraint(equalTo: russianLogo.trailingAnchor, constant: 10)
-        ]
-        NSLayoutConstraint.activate(englishTitleConstraints)
-        
-        let englishTagConstraints: [NSLayoutConstraint] = [
-            englishTag.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -16),
-            englishTag.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -20)
-        ]
-        NSLayoutConstraint.activate(englishTagConstraints)
+        NSLayoutConstraint.activate([
+            radioGroup.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10),
+            radioGroup.leftAnchor.constraint(equalTo: topView.leftAnchor, constant: 16),
+            radioGroup.rightAnchor.constraint(equalTo: topView.rightAnchor, constant: -16),
+            radioGroup.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -10)
+        ])
         
         let pushTitleConstraints: [NSLayoutConstraint] = [
             pushTitle.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 20),
@@ -252,7 +256,7 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         
         let newBillTitleConstraints: [NSLayoutConstraint] = [
             newBillTitle.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 18),
-            newBillTitle.leadingAnchor.constraint(equalTo: russianLogo.trailingAnchor, constant: 10)
+            newBillTitle.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20)
         ]
         NSLayoutConstraint.activate(newBillTitleConstraints)
         
@@ -272,7 +276,7 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         
         let newPayTitleConstraints: [NSLayoutConstraint] = [
             newPayTitle.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -18),
-            newPayTitle.leadingAnchor.constraint(equalTo: russianLogo.trailingAnchor, constant: 10)
+            newPayTitle.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20)
         ]
         NSLayoutConstraint.activate(newPayTitleConstraints)
         
@@ -306,5 +310,15 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         ]
         NSLayoutConstraint.activate(teamTitleConstraints)
         
+        NSLayoutConstraint.activate([
+            logoutLabel.centerXAnchor.constraint(equalTo: allView.centerXAnchor),
+            logoutLabel.topAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: 24)
+        ])
+        
     }
+
+}
+
+extension SettingsViewController: SettingView{
+    
 }

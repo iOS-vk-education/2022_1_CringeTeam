@@ -20,7 +20,6 @@ extension UILabel {
         layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
         return layer
     }
-    
 }
 
 //Onboard
@@ -41,7 +40,7 @@ extension UIButton {
         self.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Regular", size: 16)
         self.backgroundColor = self.isSelected ? UIColor(named: "BlueColor") : UIColor(named: "LightGreyColor")
         self.setTitle(text, for: .normal)
-        self.setTitleColor(self.isSelected ? UIColor(named: "WhiteColor") : UIColor(named: "GreyColor"), for: .normal)
+        self.setTitleColor(self.isSelected ? UIColor(named: "WhiteColor") : UIColor(named: "Fill"), for: .normal)
         self.layer.cornerRadius = 16
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         
@@ -61,76 +60,6 @@ extension UITextField {
         self.layer.cornerRadius = cornerRadius
         self.layer.borderColor = secondaryLabelColor?.cgColor
         self.layer.borderWidth = 1.0
-    }
-
-}
-//Паралах эффект
-extension PurchasesViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0.0 {
-
-            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
-            print(scrollView.contentOffset.y)
-
-        } else {
-
-        }
-    }
-}
-//Purchases Таблица делегаты
-extension PurchasesViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PurchasesTableViewCell
-
-        return cell
-    }
-}
-
-//Purchases Таблица делегаты
-extension PurchasesViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
-    }
-
-}
-
-
-//DEBT Паралах эффект
-extension DebtsViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0.0 {
-
-            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
-            print(scrollView.contentOffset.y)
-
-        } else {
-
-        }
-    }
-}
-//DEBT Таблица делегаты
-extension DebtsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellD", for: indexPath) as! DebtsTableViewCell
-
-        return cell
-    }
-}
-
-//Debt Таблица делегаты
-extension DebtsViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
     }
 
 }
@@ -155,18 +84,42 @@ extension UIViewController {
 }
 
 extension String{
-    
     func parseRFC3339Date() -> Date{
-        let newFormatter = DateFormatter()
+        var newFormatter = DateFormatter()
         newFormatter.dateFormat = "yyyy-dd-MM'T'HH:mm:ss.SSS'Z'"
         guard let date = newFormatter.date(from: self) else {
-            return Date.init(timeIntervalSince1970: TimeInterval(0))
+            newFormatter = DateFormatter()
+            newFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            guard let date = newFormatter.date(from: self) else {
+                return Date.init(timeIntervalSince1970: TimeInterval(0))
+            }
+            return date
         }
         return date
     }
     
+    // Конвертация в clean phone format
     func toDefaultPhoneFormat() -> String{
         return self.filter {!($0.isWhitespace || $0=="+" || $0=="-" || $0==")" || $0=="(")}
+    }
+    
+    // Возвращаем знак валюты по наименованию
+    func toCurrencySign() -> String {
+        let currencyNameSignMap: [String: String] = [
+            "rub" : "₽"
+        ]
+        guard let sign = currencyNameSignMap[self] else {
+            return ""
+        }
+        return sign
+    }
+    
+    func localized() -> String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.localizedBundle(), value: "", comment: "")
+    }
+
+    func localizeWithFormat(arguments: CVarArg...) -> String{
+        return String(format: self.localized(), arguments: arguments)
     }
 }
 
@@ -176,5 +129,34 @@ extension Date{
         dateFormatter.dateFormat = "dd.MM.YYYY"
         return dateFormatter.string(from: self)
     }
+}
+
+extension Bundle {
+    private static var bundle: Bundle!
+
+    public static func localizedBundle() -> Bundle! {
+        if bundle == nil {
+            let appLang = UserDefaults.standard.string(forKey: "app_lang") ?? "ru"
+            let path = Bundle.main.path(forResource: appLang, ofType: "lproj")
+            bundle = Bundle(path: path!)
+        }
+
+        return bundle;
+    }
+
+    public static func setLanguage(lang: String) {
+        UserDefaults.standard.set(lang, forKey: "app_lang")
+        let path = Bundle.main.path(forResource: lang, ofType: "lproj")
+        bundle = Bundle(path: path!)
+    }
+    
+    public static func getLanguage() -> String {
+        guard let langCode = UserDefaults.standard.string(forKey: "app_lang") else {
+            setLanguage(lang: Locale.current.languageCode ?? "ru")
+            return Locale.current.languageCode ?? "ru"
+        }
+        return langCode
+    }
+
 }
 

@@ -68,6 +68,7 @@ class NetworkAdapter: NetworkAdapterProtocol {
                 completion(.success(tData))
             } catch {
                 debugPrint("Could not translate the data to the requested type. Reason: \(error.localizedDescription)")
+                debugPrint(String(data:data, encoding: .utf8))
                 completion(.failure(error))
             }
         }

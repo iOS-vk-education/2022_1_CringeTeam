@@ -14,6 +14,9 @@
 "Common.Cancel" = "Отмена";
 "Common.Message" = "Сообщение";
 
+"Lang.Russian"="Русский";
+"Lang.English"="Английский";
+
 "SMSCodeViewController.Label.Title" = "Введите код подтверждения";
 "SMSCodeViewController.Label.Subtitle" =  "Код был отправлен \n на номер %@ по SMS";
 "SMSCodeViewController.Label.errorCode" = "Неверный SMS код";
@@ -52,6 +55,7 @@
 "PurchasesViewController.ThirdButton.Title" = "Подтвержденные";
 "PurchasesViewController.Type.Title" = " Черновик ";
 "PurchasesViewController.Type.Title2" = " Счета выставлены ";
+"PurchasesViewController.Alert.FailLoad" =  "Не удалось загрузить список покупок";
 
 "TransfersViewController.Message.FailedLoadTransfer" = "Не удалось загрузить список переводов. Повторите попытку позже";
 
@@ -61,8 +65,9 @@
 "TabBarController.Type.ForthTab" = "Настройки";
 
 "DebtsViewController.Sum.Title" = "Общий баланс";
-"DebtsViewController.SecondButton.Title" = "Оплатить";
-"DebtsViewController.ThirdButton.Title" = "Напомнить";
+"DebtsViewController.Remind" = "Напомнить";
+"DebtsViewController.Pay" = "Оплатить";
+"DebtsViewController.Alert.FailLoad" = "Не удалось загрузить список долгов";
 
 "DebtViewController.Label.Events" =  "События";
 "DebtViewController.Alert.Payment" =  "Оплата";
@@ -86,4 +91,14 @@
 "SettingsViewController.Label.versionTitle" = "Версия";
 "SettingsViewController.Label.usersTitle" = "Всего пользователей";
 "SettingsViewController.Label.developTitle" = "Разработано";
+"SettingsViewController.Label.Logout" = "Выйти";
+"SettingsViewController.LanguageSelected" = "Настройки языка применены";
+"SettingsViewController.LanguageSelectedMessage" = "Перезапустите приложения для того, чтобы увидеть изменения";
 
+"TransfersViewController.Label.transfersTitle" = "Переводы";
+
+"OnBoardViewController.Label.Enter" = "Вход";
+"OnBoardViewController.Label.Text1" = "дели";
+"OnBoardViewController.Label.Text2" = "счета";
+"OnBoardViewController.Label.Text3" = "плати";
+"OnBoardViewController.Label.Text4" = "долги";

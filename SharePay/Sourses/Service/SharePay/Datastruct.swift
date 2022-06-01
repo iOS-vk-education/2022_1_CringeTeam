@@ -39,13 +39,14 @@ struct Status: Codable{
 // GET
 struct PurchaseCodable: Codable{
     var id: Int
-    var description: String
+    var description: String?
     var name: String
     var currency: String = "rub" // На начальном этапе только одна валюта
     var emoji: String
     var draft: Bool
-    var created_at: String
-    var user_purchases: [PurchaseParticipantCodable]
+    var created_at: String?
+    var user_purchases: [PurchaseParticipantCodable]?
+    var amount: Int?
     
     init(id: Int = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantCodable],
          draft: Bool = true,created_at: String = ""){
@@ -71,7 +72,7 @@ struct CreateUpdatePurchaseCodable: Codable{
     var user_purchases_attributes: [PurchaseParticipantCodable]
     
     init(id: Int = 0,name: String, description: String, emoji: String, participants: [PurchaseParticipantCodable],
-         draft: Bool = true, created_at: String = ""){
+         draft: Bool = true, created_at: String){
         self.name = name
         self.description = description
         self.emoji = emoji
@@ -95,11 +96,11 @@ struct PurchaseParticipantCodable: Codable{
 struct CreateUpdatePurchaseResponse: Codable{
     var id: Int
     var name: String
-    var description: String
+    var description: String?
     var emoji: String
     var draft: Bool
     var currency: String
-    var created_at: String
+    var created_at: String?
 }
 
 // DEBT
@@ -110,13 +111,13 @@ struct DebtCodable: Codable{
     var amount: Int
     var creditor_phone: String
     var debtor_phone: String
-    var events: [EventCodable]
+    var events: [EventCodable]?
 }
 
 struct EventCodable: Codable{
     var amount: Int
     var date: String?
-    var description: String?
+    var name: String?
     var emoji: String?
     var type: String
     var event_id: Int
@@ -150,5 +151,6 @@ struct CreatePaymentResponseCodable: Codable{
 struct PaymentCodable: Codable{
     var amount: Int
     var sender_phone: String
+    var receiver_phone: String
     var created_at: String
 }

@@ -35,7 +35,7 @@ final class PhoneNumberViewController: UIViewController{
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
-        titleLabel.text = NSLocalizedString("PhoneNumberViewController.Label.Title", comment: "")
+        titleLabel.text = "PhoneNumberViewController.Label.Title".localized()
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
@@ -44,7 +44,7 @@ final class PhoneNumberViewController: UIViewController{
         let subtitleLabel =  UILabel()
         subtitleLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         subtitleLabel.textAlignment = .center
-        subtitleLabel.text = NSLocalizedString("PhoneNumberViewController.Label.Subtitle", comment: "")
+        subtitleLabel.text = "PhoneNumberViewController.Label.Subtitle".localized()
         return subtitleLabel
     }()
 
@@ -59,7 +59,7 @@ final class PhoneNumberViewController: UIViewController{
 
     let continueButton: UIButton = {
         let getCodeButton = UIButton()
-        getCodeButton.setTitle(NSLocalizedString("PhoneNumberViewController.Button.Continue", comment: ""), for: .normal)
+        getCodeButton.setTitle("PhoneNumberViewController.Button.Continue".localized(), for: .normal)
         getCodeButton.layer.cornerRadius = 25
         getCodeButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return getCodeButton
@@ -147,18 +147,18 @@ final class PhoneNumberViewController: UIViewController{
 extension PhoneNumberViewController: PhoneNumberView{
     func onInvalidNumber() {
         continueButton.isEnabled =  true
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("PhoneNumberViewController.Alert.InvalidNumber", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "PhoneNumberViewController.Alert.InvalidNumber".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
         return
     }
     
     func onServerFail() {
         continueButton.isEnabled =  true
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("PhoneNumberViewController.Alert.ServerFail", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "PhoneNumberViewController.Alert.ServerFail".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
         return
     }

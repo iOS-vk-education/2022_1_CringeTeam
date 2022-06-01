@@ -18,15 +18,15 @@ final class TransfersViewController: UIViewController {
     let allView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         return view
     }()
     
-    let mainTitle = UILabel(text: "Переводы", color: "DarkBlueColor", size: 24)
+    let mainTitle = UILabel(text: "TransfersViewController.Label.transfersTitle".localized(), color: "Label", size: 24)
     let tableView: UITableView = {
         let table = UITableView()
         table.register(TransfersTableViewCell.self, forCellReuseIdentifier: "TransferCell")
-        table.backgroundColor = UIColor(named: "WhiteColor")
+        table.backgroundColor = UIColor(named: "SecondaryFill")
         table.separatorStyle = .none
         return table
     }()
@@ -92,6 +92,9 @@ extension TransfersViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransferCell", for: indexPath)  as? TransfersTableViewCell else {
             return UITableViewCell()
         }
+        if indexPath.row >= self.presenter.listTransfers().count{
+            return UITableViewCell()
+        }
         cell.setData(transfer: self.presenter.listTransfers()[indexPath.row])
         return cell
     }
@@ -106,9 +109,8 @@ extension TransfersViewController: UITableViewDelegate {
 
 extension TransfersViewController: TransfersView {
     func onFailedTransfersLoad() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("TransfersViewController.Message.FailedLoadTransfer", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:"TransfersViewController.Message.FailedLoadTransfer".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     

@@ -64,7 +64,6 @@ class Router: RouterProtocol{
     
     func initialViewController() {
         if let navigationController = navigationController {
-            // TODO onboard check
             if !authService.isAuth(){
                 guard let phoneNumberViewController = assembleBuilder?.createPhoneNumberModule(router: self)else{ return}
                 navigationController.viewControllers = [phoneNumberViewController]
@@ -124,6 +123,7 @@ class Router: RouterProtocol{
             navigationController.dismiss(animated: true)
         }
     }
+    
     
     func setToken(token: String){
         // Если пользователь авторизован необходимо указать актуальный токен длля сервисов бэкенда

@@ -1,17 +1,34 @@
 //
-//  File.swift
+//  DebtsViewCobtroller.swift
 //  SharePay
 //
-//  Created by Denis Kholod on 09.04.2022.
+//  Created by User on 17.04.2022.
+
 import UIKit
 
-final class PurchasesViewController: UIViewController {
+protocol DebtsView: AnyObject{
+    func onSuccesLoad()
+    func onFailedLoad()
+}
+
+final class DebtsViewController: UIViewController {
     
     struct Constants {
         static let headerHeight: CGFloat = 200
     }
     
-///Верхняя полоска
+    var presenter: DebtsPresenter
+    
+    init(presenter: DebtsPresenter){
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+// Верхняя полоска
     let topView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -19,20 +36,19 @@ final class PurchasesViewController: UIViewController {
         return view
     }()
     
-///Заголовок
+// Заголовок
     let mainTitle = UILabel(text: "SharePay", color: "WhiteColor", size: 24)
-///Логотип
+// Логотип
     let logoLabel: UILabel = {
         let label = UILabel()
         label.layer.borderColor = UIColor(named: "WhiteColor")?.cgColor
         label.layer.borderWidth = 1
         label.layer.cornerRadius = 6
         
-    ///Создание градиент
+    // Создание градиента
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: 11, height: 11)
         layer.cornerRadius = 5
-        
         layer.colors = [UIColor(named: "BlueColor")?.cgColor ?? UIColor.blue.cgColor, UIColor(named: "MagentaColor")?.cgColor ?? UIColor.red.cgColor]
         layer.locations = [0.5, 0.5]
         layer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: 0, b: 1, c: -1, d: 0, tx: 1, ty: 0))
@@ -40,7 +56,7 @@ final class PurchasesViewController: UIViewController {
         label.layer.insertSublayer(layer, at: 0)
         return label
     }()
-///Уведомления
+// Уведомления
     let bellButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "bell"), for: .normal)
@@ -48,16 +64,16 @@ final class PurchasesViewController: UIViewController {
         return button
     }()
     
-///Сумма покупок
-    let sumTitleLabel = UILabel(text: NSLocalizedString("PurchasesViewController.Sum.Title", comment: ""), color: "WhiteColor", size: 24)
+// Сумма покупок
+    let sumTitleLabel = UILabel(text: "DebtsViewController.Sum.Title".localized(), color: "WhiteColor", size: 24)
     
     let sumLabel = UILabel(text: "100098 \u{20BD}", color: "WhiteColor", size: 24)
     
-///Констрейнты для паралакса
+// Констрейнты для паралакса
     var headerTopConstraint: NSLayoutConstraint!
     var headerHeightConstraint: NSLayoutConstraint!
     
-///Хедер
+// Хедер
     let headerContainerView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -65,48 +81,110 @@ final class PurchasesViewController: UIViewController {
         return view
     }()
     
-///Меню
+// Меню
     let menuView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = UIColor(named: "WhiteColor")
+        view.backgroundColor = UIColor(named: "SecondaryFill")
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }()
 
-///Кнопки
+// Кнопки
+    let allButton: UIButton = {
+        let button = UIButton(text: "PurchasesViewController.FirstButton.Title".localized(), width: 60)
+        button.backgroundColor =  UIColor(named: "BlueAccentColor")
+        button.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+        return button
+    }()
     
-    let firstButton = UIButton(text: NSLocalizedString("PurchasesViewController.FirstButton.Title", comment: ""), width: 60)
+    let remindButton: UIButton = {
+        let button = UIButton(text: "DebtsViewController.Remind".localized(), width: 100)
+        button.backgroundColor =  UIColor(named: "DarkFillColor")
+        button.setTitleColor(UIColor(named: "Label"), for: .normal)
+        return button
+    }()
     
-    let secondButton = UIButton(text: NSLocalizedString("PurchasesViewController.SecondButton.Title", comment: ""), width: 100)
-    
-    let thirdButton = UIButton(text: NSLocalizedString("PurchasesViewController.ThirdButton.Title", comment: ""), width: 150)
+    let payButton: UIButton = {
+        let button = UIButton(text: "DebtsViewController.Pay".localized(), width: 120)
+        button.backgroundColor =  UIColor(named: "DarkFillColor")
+        button.setTitleColor(UIColor(named: "Label"), for: .normal)
+        return button
+    }()
   
     
-///Таблица
+// Таблица
     let tableView: UITableView = {
         let table = UITableView()
-        table.register(PurchasesTableViewCell.self, forCellReuseIdentifier: "cell")
-        table.backgroundColor = UIColor(named: "WhiteColor")
+        table.register(DebtsTableViewCell.self, forCellReuseIdentifier: "DebtTableViewCell")
+        table.backgroundColor = UIColor(named: "SecondaryFill")
         table.separatorStyle = .none
         return table
     }()
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.dataSource = self
         tableView.delegate = self
         arrangeConstraints()
-        
+        setFilterButtonsActions()
     }
     
-   //Установка констрэйнток
+    func setFilterButtonsActions(){
+        allButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "BlueAccentColor")
+            self?.payButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.remindButton.backgroundColor = UIColor(named: "DarkFillColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            self?.payButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.remindButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .all)
+            self?.tableView.reloadData()
+        }
+        
+        payButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.payButton.backgroundColor =  UIColor(named: "BlueAccentColor")
+            self?.remindButton.backgroundColor = UIColor(named: "DarkFillColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.payButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            self?.remindButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .pay)
+            self?.tableView.reloadData()
+        }
+        
+        remindButton.addAction { [weak self] in
+            self?.allButton.backgroundColor = UIColor(named: "DarkFillColor")
+            self?.payButton.backgroundColor =  UIColor(named: "DarkFillColor")
+            self?.remindButton.backgroundColor = UIColor(named: "BlueAccentColor")
+            
+            self?.allButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.payButton.setTitleColor(UIColor(named: "Label"), for: .normal)
+            self?.remindButton.setTitleColor(UIColor(named: "WhiteColor"), for: .normal)
+            
+            self?.presenter.setFilter(filter: .remind)
+            self?.tableView.reloadData()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presenter.refresh()
+    }
+    
+    @objc func didPullToRefresh(){
+        presenter.refresh()
+    }
+    
+   // Установка констрэйнток
     func arrangeConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [firstButton,
-                                                      secondButton,
-                                                      thirdButton])
+        let stackView = UIStackView(arrangedSubviews: [allButton,
+                                                      remindButton,
+                                                      payButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
         
@@ -200,4 +278,69 @@ $0.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(logoLabelConstraints)
         
     }
+}
+
+
+extension DebtsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0.0 {
+
+            headerHeightConstraint?.constant = Constants.headerHeight - scrollView.contentOffset.y
+            print(scrollView.contentOffset.y)
+
+        } else {
+
+        }
+    }
+}
+
+
+extension DebtsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.listDebts().count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let debtCell = tableView.dequeueReusableCell(withIdentifier: "DebtTableViewCell", for: indexPath) as? DebtsTableViewCell else{
+            return UITableViewCell()
+        }
+        
+        if indexPath.row >= presenter.listDebts().count{
+            return UITableViewCell()
+        }
+        let debt = presenter.listDebts()[indexPath.row]
+        debtCell.setData(item: debt)
+        return debtCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row >= presenter.listDebts().count{
+            return
+        }
+        let debt = presenter.listDebts()[indexPath.row]
+        presenter.openDebt(debt_id: debt.id)
+    }
+}
+
+
+extension DebtsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+}
+
+extension DebtsViewController: DebtsView{
+    
+    func onSuccesLoad() {
+        tableView.reloadData()
+        sumLabel.text = "\(presenter.getTotalCount()) \(presenter.getCurrency().toCurrencySign())"
+    }
+    
+    func onFailedLoad() {
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+                                                    "DebtsViewController.Alert.FailLoad".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }

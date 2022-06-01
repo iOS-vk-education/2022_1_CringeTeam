@@ -14,7 +14,7 @@ protocol AuthServiceProtocol: AnyObject {
     func getPhone() -> String
     func setPhone(phone: String) -> Void
     func isAuth() -> Bool
-    func destroyAllData() -> Void
+    func destroyData() -> Void
 }
 
 
@@ -53,7 +53,7 @@ class AuthService: AuthServiceProtocol {
         return false
     }
     
-    func destroyAllData(){
+    func destroyData(){
         let keychain = KeychainSwift()
         keychain.delete(TOKEN_KEY)
         keychain.delete(PHONE_KEY)

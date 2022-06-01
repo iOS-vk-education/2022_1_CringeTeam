@@ -14,6 +14,9 @@
 "Common.Cancel" = "Cancel";
 "Common.Message" = "Message";
 
+"Lang.Russian"="Russian";
+"Lang.English"="English";
+
 "SMSCodeViewController.Label.Title" = "Enter the confirmation code";
 "SMSCodeViewController.Label.Subtitle" =  "The code has been sent \n to the number %@ by SMS";
 "SMSCodeViewController.Label.errorCode" = "Invalid SMS code";
@@ -52,6 +55,7 @@
 "PurchasesViewController.ThirdButton.Title" = "Confirmed";
 "PurchasesViewController.Type.Title" = "Draft";
 "PurchasesViewController.Type.Title2" = " Billed ";
+"PurchasesViewController.Alert.FailLoad" =  "Failed to load purchases list";
 
 "TransfersViewController.Message.FailedLoadTransfer" = "Failed loading the list of transfers. Try again later";
 
@@ -61,8 +65,10 @@
 "TabBarController.Type.ForthTab" = "Settings";
 
 "DebtsViewController.Sum.Title" = "Balance";
-"DebtsViewController.SecondButton.Title" = "Pay";
-"DebtsViewController.ThirdButton.Title" = "Remind";
+"DebtsViewController.Remind" = "Remind";
+"DebtsViewController.Pay" = "Pay";
+"DebtsViewController.Alert.FailLoad" = "Failed to load debts list";
+
 
 "DebtViewController.Label.Events" =  "Events";
 "DebtViewController.Alert.Payment" =  "Payment";
@@ -78,7 +84,7 @@
 
 "SettingsViewController.Label.mainTitle" = "Settings";
 "SettingsViewController.Label.langTitle" = "Language";
-"SettingsViewController.Label.pushTitle" = "Push-notifivations";
+"SettingsViewController.Label.pushTitle" = "Push-notifications";
 "SettingsViewController.Label.russianTitle" = "Russian";
 "SettingsViewController.Label.englishTitle" = "English";
 "SettingsViewController.Label.newBillTitle" = "New bill";
@@ -86,4 +92,14 @@
 "SettingsViewController.Label.versionTitle" = "Version";
 "SettingsViewController.Label.usersTitle" = "Logged users";
 "SettingsViewController.Label.developTitle" = "Developed by";
+"SettingsViewController.Label.Logout" = "Logout";
+"SettingsViewController.LanguageSelected" = "Language changed";
+"SettingsViewController.LanguageSelectedMessage" = "Restart the applications in order to see the changes";
 
+"TransfersViewController.Label.transfersTitle" = "Transfers";
+
+"OnBoardViewController.Label.Enter" = "Enter";
+"OnBoardViewController.Label.Text1" = "share";
+"OnBoardViewController.Label.Text2" = "bills";
+"OnBoardViewController.Label.Text3" = "pay";
+"OnBoardViewController.Label.Text4" = "debts";

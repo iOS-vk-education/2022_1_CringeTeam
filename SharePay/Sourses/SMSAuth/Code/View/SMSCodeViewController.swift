@@ -33,7 +33,7 @@ final class SMSCodeViewController: UIViewController {
 
     let continueButton: UIButton = {
         let continueButton = UIButton()
-        continueButton.setTitle(NSLocalizedString("SMSCodeViewController.Button.Continue", comment: ""), for: .normal)
+        continueButton.setTitle("SMSCodeViewController.Button.Continue".localized(), for: .normal)
         continueButton.layer.cornerRadius = 25
         continueButton.titleLabel?.font = UIFont(name: "GTEestiProDisplay-Medium", size: 16)
         return continueButton
@@ -43,7 +43,7 @@ final class SMSCodeViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "GTEestiProDisplay-Bold", size: 24)
         titleLabel.textAlignment = .center
-        titleLabel.text = NSLocalizedString("SMSCodeViewController.Label.Title", comment: "")
+        titleLabel.text = "SMSCodeViewController.Label.Title".localized()
         return titleLabel
     }()
 
@@ -70,7 +70,7 @@ final class SMSCodeViewController: UIViewController {
         let errorCodeLabel = UILabel()
         errorCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         errorCodeLabel.textAlignment = .center
-        errorCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.errorCode", comment: "")
+        errorCodeLabel.text = "SMSCodeViewController.Label.errorCode".localized()
         return errorCodeLabel
     }()
 
@@ -78,7 +78,7 @@ final class SMSCodeViewController: UIViewController {
         let notSentCodeLabel = UILabel()
         notSentCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         notSentCodeLabel.textAlignment = .center
-        notSentCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.notSentCode", comment: "")
+        notSentCodeLabel.text = "SMSCodeViewController.Label.notSentCode".localized()
         return notSentCodeLabel
     }()
 
@@ -86,7 +86,7 @@ final class SMSCodeViewController: UIViewController {
         let resendCodeLabel = UILabel()
         resendCodeLabel.font = UIFont(name: "GTEestiProDisplay-Medium", size: 14)
         resendCodeLabel.textAlignment = .center
-        resendCodeLabel.text = NSLocalizedString("SMSCodeViewController.Label.resendCode", comment: "")
+        resendCodeLabel.text = "SMSCodeViewController.Label.resendCode".localized()
         return resendCodeLabel
     }()
 
@@ -202,7 +202,7 @@ final class SMSCodeViewController: UIViewController {
         pinField.appearance.textColor = magentaColor
         pinField.appearance.tokenColor = labelColor
 
-        subtitleLabel.text = String(format: NSLocalizedString("SMSCodeViewController.Label.Subtitle", comment: ""), phoneNumber)
+        subtitleLabel.text = String(format: "SMSCodeViewController.Label.Subtitle".localized(), phoneNumber)
     }
 }
 
@@ -215,16 +215,16 @@ extension SMSCodeViewController: KAPinFieldDelegate{
 extension SMSCodeViewController: SMSCodeView{
     
     func onFailResendCode() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("SMSCodeViewController.Alert.ServerFail", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "SMSCodeViewController.Alert.ServerFail".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     
     func onSuccessResendCode() {
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Message", comment: ""), message:
-        NSLocalizedString("SMSCodeViewController.Alert.SuccessResend", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Message".localized(), message:
+       "SMSCodeViewController.Alert.SuccessResend".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -232,9 +232,9 @@ extension SMSCodeViewController: SMSCodeView{
         errorCodeLabel.isHidden = false
         pinField.animateFailure(nil)
         
-        let alertController = UIAlertController(title:  NSLocalizedString("Common.Error", comment: ""), message:
-        NSLocalizedString("SMSCodeViewController.Alert.IncorrectCode", comment: ""), preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title:  NSLocalizedString("Common.Ok", comment: ""), style: .default))
+        let alertController = UIAlertController(title:  "Common.Error".localized(), message:
+        "SMSCodeViewController.Alert.IncorrectCode".localized(), preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title:  "Common.Ok".localized(), style: .default))
         self.present(alertController, animated: true, completion: nil)
     }
     
